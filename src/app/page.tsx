@@ -1,5 +1,3 @@
 export default function Home() {
-  return (
-    <h1>Bruh</h1>
-  )
+  return <>Test</>;
 }
