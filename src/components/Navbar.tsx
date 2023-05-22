@@ -6,15 +6,15 @@ import ThemeSwitcher from './ThemeSwitcher';
 const Navbar = () => {
   const pathname = usePathname();
   return (
-    <nav className='py-5 px-12 border-b transition duration-300 border-gruvbox-light-text-primary/25 bg-gruvbox-light-bg-secondary dark:border-gruvbox-dark-text-primary/25 dark:bg-gruvbox-dark-bg-secondary'>
+    <nav className='py-5 px-12 border-b transition duration-300 border-light-fg-secondary/25 bg-light-bg-secondary dark:border-dark-fg-secondary/25 dark:bg-dark-bg-secondary'>
       <div className='container flex justify-between items-center mx-auto md:px-32 lg:px-72'>
-        <ol className='flex gap-6 font-semibold text-gruvbox-light-text-primary dark:text-gruvbox-dark-text-primary'>
+        <ol className='flex gap-6 font-semibold text-light-fg-primary dark:text-dark-fg-primary'>
           <li>
             <Link href='/'>
               <button
                 className={`${
-                  pathname == '/' && 'text-gruvbox-green-200 dark:text-gruvbox-green-100'
-                } transition hover:text-gruvbox-blue-100 dark:hover:text-gruvbox-blue-50`}
+                  pathname == '/' && 'text-green-200 dark:text-green-100'
+                } transition hover:text-blue-100 dark:hover:text-blue-50`}
               >
                 Home
               </button>
@@ -24,8 +24,8 @@ const Navbar = () => {
             <Link href='/about'>
               <button
                 className={`${
-                  pathname == '/about' && 'text-gruvbox-green-200 dark:text-gruvbox-green-100'
-                } transition hover:text-gruvbox-blue-100 dark:hover:text-gruvbox-blue-50`}
+                  pathname == '/about' && 'text-green-200 dark:text-green-100'
+                } transition hover:text-blue-100 dark:hover:text-blue-50`}
               >
                 About
               </button>
@@ -35,8 +35,8 @@ const Navbar = () => {
             <Link href='/skills'>
               <button
                 className={`${
-                  pathname == '/skills' && 'text-gruvbox-green-200 dark:text-gruvbox-green-100'
-                } transition hover:text-gruvbox-blue-100 dark:hover:text-gruvbox-blue-50`}
+                  pathname == '/skills' && 'text-green-200 dark:text-green-100'
+                } transition hover:text-blue-100 dark:hover:text-blue-50`}
               >
                 Skills
               </button>
@@ -46,8 +46,8 @@ const Navbar = () => {
             <Link href='/projects'>
               <button
                 className={`${
-                  pathname == '/projects' && 'text-gruvbox-green-200 dark:text-gruvbox-green-100'
-                } transition hover:text-gruvbox-blue-100 dark:hover:text-gruvbox-blue-50`}
+                  pathname == '/projects' && 'text-green-200 dark:text-green-100'
+                } transition hover:text-blue-100 dark:hover:text-blue-50`}
               >
                 Projects
               </button>
@@ -57,8 +57,8 @@ const Navbar = () => {
             <Link href='/contact'>
               <button
                 className={`${
-                  pathname == '/contact' && 'text-gruvbox-green-200 dark:text-gruvbox-green-100'
-                } transition hover:text-gruvbox-blue-100 dark:hover:text-gruvbox-blue-50`}
+                  pathname == '/contact' && 'text-green-200 dark:text-green-100'
+                } transition hover:text-blue-100 dark:hover:text-blue-50`}
               >
                 Contact
               </button>

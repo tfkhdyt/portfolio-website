@@ -56,7 +56,7 @@ const gruvboxLight = {
     accent: colors.orange[50],
     overlay: 'rgba(45, 45, 45, 0.75)',
   },
-  text: {
+  fg: {
     primary: colors.gray[900],
     secondary: colors.gray[800],
     accent: colors.orange[900],
@@ -72,7 +72,7 @@ const gruvboxDark = {
     accent: colors.orange[900],
     overlay: 'rgba(255, 255, 255, 0.75)',
   },
-  text: {
+  fg: {
     primary: colors.gray[50],
     secondary: colors.gray[100],
     accent: colors.orange[50],
@@ -90,11 +90,9 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        gruvbox: {
-          dark: gruvboxDark,
-          light: gruvboxLight,
-          ...colors,
-        },
+        dark: gruvboxDark,
+        light: gruvboxLight,
+        ...colors,
       },
     },
   },

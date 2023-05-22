@@ -8,7 +8,7 @@ export default function Home() {
     <div className='flex justify-around items-center min-h-[75vh]'>
       <div className='space-y-2'>
         <h1 className='text-5xl font-bold'>Taufik Hidayat</h1>
-        <h2 className='text-2xl font-semibold text-transparent bg-clip-text bg-gradient-to-r from-gruvbox-blue-200 to-gruvbox-green-200 dark:from-gruvbox-blue-100 dark:to-gruvbox-green-100'>
+        <h2 className='text-2xl font-semibold text-transparent bg-clip-text bg-gradient-to-r from-blue-200 to-green-200 dark:from-blue-100 dark:to-green-100'>
           <Typewriter
             words={['Junior Back-end Developer', 'Computer Science Student', 'FOSS and GNU/Linux Enthusiast']}
             loop={0}
