@@ -15,13 +15,6 @@ const ThemeSwitcher = () => {
     }
   }, [isDark]);
 
-  useEffect(() => {
-    const themeFromLocalStorage = localStorage.getItem('darkMode');
-    if (typeof themeFromLocalStorage != 'boolean') {
-      setIsDark(window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches);
-    }
-  }, []);
-
   const switchTheme = (e: ChangeEvent<HTMLInputElement>) => {
     setIsDark(e.target.checked);
   };

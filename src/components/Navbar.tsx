@@ -7,7 +7,7 @@ const Navbar = () => {
   const pathname = usePathname();
   return (
     <nav className='py-5 px-12 border-b transition duration-300 border-gruvbox-light-text-primary/25 bg-gruvbox-light-bg-secondary dark:border-gruvbox-dark-text-primary/25 dark:bg-gruvbox-dark-bg-secondary'>
-      <div className='container flex justify-between items-center mx-auto md:px-32 lg:px-64'>
+      <div className='container flex justify-between items-center mx-auto md:px-32 lg:px-72'>
         <ol className='flex gap-6 font-semibold text-gruvbox-light-text-primary dark:text-gruvbox-dark-text-primary'>
           <li>
             <Link href='/'>

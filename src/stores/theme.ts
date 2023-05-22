@@ -1,3 +1,4 @@
 import { atomWithStorage } from 'jotai/utils';
 
-export const themeAtom = atomWithStorage<boolean>('darkMode', false);
+const isDark = window && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+export const themeAtom = atomWithStorage<boolean>('darkMode', isDark);
