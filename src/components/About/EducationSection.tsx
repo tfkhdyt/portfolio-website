@@ -21,7 +21,7 @@ const EducationSection = () => {
         <div className='mx-4'>
           <ol className='relative border-l border-gray-200 dark:border-gray-700'>
             {contents.map((content, idx) => (
-              <li className='mb-10 ml-6' key={idx}>
+              <li className={`ml-6 ${idx !== (contents.length - 1) && 'mb-10'}`} key={idx}>
                 <span className='flex absolute -left-3 justify-center items-center w-6 h-6 bg-green-500 rounded-full ring-8 dark:bg-green-200 ring-light-bg-primary dark:ring-dark-bg-primary'>
                   <svg
                     xmlns='http://www.w3.org/2000/svg'
