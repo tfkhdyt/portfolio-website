@@ -18,7 +18,7 @@ const EducationSection = () => {
     <div className='flex gap-16'>
       <div className='space-y-6'>
         <Title>Education</Title>
-        <div className='mx-6'>
+        <div className='mx-4'>
           <ol className='relative border-l border-gray-200 dark:border-gray-700'>
             {contents.map((content, idx) => (
               <li className='mb-10 ml-6' key={idx}>
@@ -34,13 +34,13 @@ const EducationSection = () => {
                     <path d='M4.462 19.462c.42-.419.753-.89 1-1.394.453.213.902.434 1.347.661a6.743 6.743 0 01-1.286 1.794.75.75 0 11-1.06-1.06z' />
                   </svg>
                 </span>
-                <h3 className='flex items-center mb-1 text-lg font-semibold text-gray-900 dark:text-white'>
+                <h3 className='flex items-center mb-1 text-lg font-semibold text-light-fg-primary dark:text-dark-fg-primary'>
                   {content.title}
                 </h3>
-                <time className='block mb-2 text-sm font-normal leading-none text-gray-400 dark:text-gray-500'>
+                <time className='block mb-2 text-sm font-normal leading-none text-light-fg-secondary/75 dark:text-dark-fg-secondary/75'>
                   {content.period}
                 </time>
-                <p className='mb-4 text-base font-normal text-gray-500 dark:text-gray-400'>
+                <p className='mb-4 text-base font-normal text-light-fg-secondary dark:text-dark-fg-secondary'>
                   {content.majors}
                 </p>
               </li>
