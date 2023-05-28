@@ -18,7 +18,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang='en' id='html' className={rubik.className}>
-      <body className='transition duration-300 bg-light-bg-primary text-light-fg-primary dark:bg-dark-bg-primary dark:text-dark-fg-primary'>
+      <body className='bg-light-bg-primary text-light-fg-primary dark:bg-dark-bg-primary dark:text-dark-fg-primary'>
         <>
           <Navbar />
           <main className='container py-6 mx-auto md:px-32 lg:px-72'>
