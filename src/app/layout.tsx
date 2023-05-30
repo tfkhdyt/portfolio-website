@@ -1,9 +1,21 @@
 import Navbar from '@/components/Navbar';
 import './globals.css';
 import { Metadata } from 'next';
-import { Rubik } from 'next/font/google';
+import localFont from 'next/font/local';
 
-const rubik = Rubik({ subsets: ['latin'] });
+const rubik = localFont({
+  src: [
+    {
+      path: '../../public/fonts/rubik/Rubik-VariableFont_wght.ttf',
+      style: 'normal',
+    },
+    {
+      path: '../../public/fonts/rubik/Rubik-Italic-VariableFont_wght.ttf',
+      style: 'italic',
+    },
+  ],
+  display: 'swap',
+});
 
 export const metadata: Metadata = {
   title: 'Taufik Hidayat - Junior Back-end Developer',
