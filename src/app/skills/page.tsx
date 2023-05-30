@@ -4,7 +4,7 @@ import clsx from 'clsx';
 import Image from 'next/image';
 import { useState } from 'react';
 
-const skillCategories = ['Languages', 'Framework', 'Library', 'DBMS', 'Misc'];
+const skillCategories = ['Language', 'Framework', 'Library', 'DBMS', 'Misc'];
 type Skill = {
   name: string;
   category: (typeof skillCategories)[number];
@@ -15,32 +15,32 @@ const SkillsPage = () => {
   const skills: Skill[] = [
     {
       name: 'HTML',
-      category: 'Languages',
+      category: 'Language',
       photoUrl: 'html.svg',
     },
     {
       name: 'CSS',
-      category: 'Languages',
+      category: 'Language',
       photoUrl: 'css.svg',
     },
     {
       name: 'JavaScript',
-      category: 'Languages',
+      category: 'Language',
       photoUrl: 'js.svg',
     },
     {
       name: 'TypeScript',
-      category: 'Languages',
+      category: 'Language',
       photoUrl: 'ts.svg',
     },
     {
       name: 'Node.js',
-      category: 'Languages',
+      category: 'Language',
       photoUrl: 'node.png',
     },
     {
       name: 'Golang',
-      category: 'Languages',
+      category: 'Language',
       photoUrl: 'golang.svg',
     },
     {
@@ -94,7 +94,7 @@ const SkillsPage = () => {
       photoUrl: 'wwebjs.png',
     },
   ];
-  const [currentCategory, setCurrentCategory] = useState<(typeof skillCategories)[number]>('Languages');
+  const [currentCategory, setCurrentCategory] = useState<(typeof skillCategories)[number]>('Language');
 
   return (
     <div>
@@ -122,11 +122,17 @@ const SkillsPage = () => {
         <div className='grid grid-cols-4 gap-6 mt-6'>
           {skills.filter((skill) => skill.category === currentCategory).map((skill, idx) => (
             <div
-              className='block flex flex-col items-center p-4 space-y-2 bg-white rounded-lg border border-gray-200 shadow dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-700'
+              className='block flex flex-col items-center p-4 space-y-2 bg-white rounded-lg border border-gray-200 shadow dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-100 group dark:hover:bg-gray-700'
               key={idx}
             >
               <div className='relative w-3/6 aspect-square'>
-                <Image src={`/img/tech/${skill.photoUrl}`} alt={skill.name} fill style={{ objectFit: 'contain' }} />
+                <Image
+                  src={`/img/tech/${skill.photoUrl}`}
+                  alt={skill.name}
+                  fill
+                  style={{ objectFit: 'contain' }}
+                  className='grayscale group-hover:grayscale-0'
+                />
               </div>
               <h5 className='text-lg font-bold tracking-tight text-center text-gray-900 dark:text-white'>
                 {skill.name}
