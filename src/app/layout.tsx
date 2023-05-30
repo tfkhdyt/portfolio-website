@@ -1,5 +1,6 @@
 import Navbar from '@/components/Navbar';
 import './globals.css';
+import PageTransitionWrapper from '@/components/PageTransitionWrapper';
 import { Metadata } from 'next';
 import localFont from 'next/font/local';
 
@@ -33,9 +34,9 @@ export default function RootLayout({
       <body className='bg-light-bg-primary text-light-fg-primary dark:bg-dark-bg-primary dark:text-dark-fg-primary'>
         <>
           <Navbar />
-          <main className='container py-6 mx-auto md:px-32 lg:px-72'>
+          <PageTransitionWrapper>
             {children}
-          </main>
+          </PageTransitionWrapper>
         </>
       </body>
     </html>
