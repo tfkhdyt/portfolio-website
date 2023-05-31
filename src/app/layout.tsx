@@ -1,6 +1,5 @@
 import Navbar from '@/components/Navbar';
 import './globals.css';
-import PageTransitionWrapper from '@/components/PageTransitionWrapper';
 import { Metadata } from 'next';
 import localFont from 'next/font/local';
 
@@ -32,12 +31,10 @@ export default function RootLayout({
   return (
     <html lang='en' id='html' className={rubik.className}>
       <body className='bg-light-bg-primary text-light-fg-primary dark:bg-dark-bg-primary dark:text-dark-fg-primary'>
-        <>
-          <Navbar />
-          <PageTransitionWrapper>
-            {children}
-          </PageTransitionWrapper>
-        </>
+        <Navbar />
+        <div className='py-6 px-8 mx-auto md:px-16 lg:container lg:px-32 xl:px-72'>
+          {children}
+        </div>
       </body>
     </html>
   );
