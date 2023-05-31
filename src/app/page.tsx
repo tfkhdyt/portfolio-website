@@ -1,4 +1,5 @@
 import TypewritedDesc from '@/components/Home/TypewritedDesc';
+
 import Image from 'next/image';
 
 export default function Home() {

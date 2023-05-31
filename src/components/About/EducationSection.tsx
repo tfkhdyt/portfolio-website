@@ -1,5 +1,6 @@
-import clsx from 'clsx';
 import Title from '../Title';
+
+import clsx from 'clsx';
 
 const EducationSection = () => {
   const contents = [

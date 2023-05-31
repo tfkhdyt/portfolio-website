@@ -1,5 +1,6 @@
-import clsx from 'clsx';
 import Title from '../Title';
+
+import clsx from 'clsx';
 
 const WorkExperienceSection = () => {
   const contents = [

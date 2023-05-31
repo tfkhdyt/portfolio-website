@@ -1,5 +1,7 @@
-import Navbar from '@/components/Navbar';
 import './globals.css';
+
+import Navbar from '@/components/Navbar';
+
 import { Metadata } from 'next';
 import localFont from 'next/font/local';
 

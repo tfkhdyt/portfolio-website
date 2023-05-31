@@ -1,8 +1,10 @@
 'use client';
+
+import ThemeSwitcher from './ThemeSwitcher';
+
 import clsx from 'clsx';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import ThemeSwitcher from './ThemeSwitcher';
 
 const Navbar = () => {
   const pathname = usePathname();
