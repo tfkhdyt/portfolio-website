@@ -3,10 +3,10 @@ import Title from '@/components/Title';
 
 const SkillsPage = () => {
   return (
-    <div>
+    <main>
       <Title>Skills</Title>
       <SkillCards />
-    </div>
+    </main>
   );
 };
 

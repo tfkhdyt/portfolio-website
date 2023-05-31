@@ -3,7 +3,7 @@ import Image from 'next/image';
 
 export default function Home() {
   return (
-    <div className='flex justify-around items-center min-h-[75vh]'>
+    <main className='flex gap-8 justify-around items-center min-h-[75vh]'>
       <div className='space-y-2'>
         <h1 className='text-5xl font-bold'>Taufik Hidayat</h1>
         <TypewritedDesc />
@@ -30,6 +30,6 @@ export default function Home() {
       <div>
         <Image src='/img/tfkhdyt-avatar.svg' alt='tfkhdyt avatar' width={300} height={300} />
       </div>
-    </div>
+    </main>
   );
 }

@@ -5,11 +5,11 @@ import React from 'react';
 
 const AboutPage = () => {
   return (
-    <div className='space-y-8'>
+    <main className='space-y-8'>
       <AboutMeSection />
       <EducationSection />
       <WorkExperienceSection />
-    </div>
+    </main>
   );
 };
 
