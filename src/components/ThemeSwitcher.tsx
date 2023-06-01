@@ -7,7 +7,6 @@ const ThemeSwitcher = () => {
   const [isDark, setIsDark] = useAtom(themeAtom);
 
   useEffect(() => {
-    console.log({ isDark });
     const htmlEl = document.getElementById('html');
     if (isDark) {
       htmlEl?.classList.add('dark');
