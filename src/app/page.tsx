@@ -4,8 +4,8 @@ import Image from 'next/image';
 
 export default function Home() {
   return (
-    <main className='flex flex-col-reverse gap-4 items-center md:gap-8 md:justify-around min-h-[65vh] md:min-h-[75vh]'>
-      <div className='space-y-2 text-center'>
+    <main className='flex flex-col-reverse gap-4 items-center md:flex-row md:gap-8 md:justify-around min-h-[65vh] md:min-h-[75vh]'>
+      <div className='space-y-2 text-center md:text-left'>
         <h1 className='text-4xl font-bold md:text-5xl'>Taufik Hidayat</h1>
         <TypewritedDesc />
         <p className='pb-2 md:text-lg'>
@@ -14,7 +14,7 @@ export default function Home() {
         <a
           href='/documents/resume.pdf'
           target='_blank'
-          className='flex items-center py-2 px-4 mx-auto text-sm font-medium text-gray-900 bg-white rounded-lg border border-gray-300 md:py-2.5 md:px-5 md:mr-2 md:mb-2 dark:text-white dark:bg-gray-800 dark:border-gray-600 hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 focus:outline-none w-fit dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700'
+          className='flex items-center py-2 px-4 mx-auto text-sm font-medium text-gray-900 bg-white rounded-lg border border-gray-300 md:py-2.5 md:px-5 md:mx-0 dark:text-white dark:bg-gray-800 dark:border-gray-600 hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 focus:outline-none w-fit dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700'
         >
           <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='currentColor' className='mr-2 w-4 h-4'>
             <path
