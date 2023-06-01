@@ -2,22 +2,22 @@ import Title from '../Title';
 
 import clsx from 'clsx';
 
-const WorkExperienceSection = () => {
-  const contents = [
-    {
-      company: 'PT. Inovindo Digital Media',
-      period: 'Jan 2019 – Mar 2019',
-      role: 'Junior Web Developer Intern',
-      jobList: [
-        'Develop an e-commerce website for resellers.',
-        'Deploy websites that have been finished by the dev team to web hosting services.',
-        'Manage a company product list database.',
-        'Publish articles for client’s company blog.',
-        'Improve client’s website Search Engine Optimization.',
-      ],
-    },
-  ];
+const contents = [
+  {
+    company: 'PT. Inovindo Digital Media',
+    period: 'Jan 2019 – Mar 2019',
+    role: 'Junior Web Developer Intern',
+    jobList: [
+      'Develop an e-commerce website for resellers.',
+      'Deploy websites that have been finished by the dev team to web hosting services.',
+      'Manage a company product list database.',
+      'Publish articles for client’s company blog.',
+      'Improve client’s website Search Engine Optimization.',
+    ],
+  },
+];
 
+const WorkExperienceSection = () => {
   return (
     <div className='flex gap-16'>
       <div className='space-y-6'>
@@ -25,7 +25,10 @@ const WorkExperienceSection = () => {
         <div className='mx-6'>
           <ol className='relative border-l border-gray-200 dark:border-gray-700'>
             {contents.map((content, idx) => (
-              <li className={clsx('ml-6', idx !== (contents.length - 1) && 'mb-10')} key={idx}>
+              <li
+                className={clsx('ml-6', idx !== (contents.length - 1) && 'mb-10')}
+                key={idx}
+              >
                 <span className='flex absolute -left-3 justify-center items-center w-6 h-6 bg-green-500 rounded-full ring-8 dark:bg-green-200 ring-light-bg-primary dark:ring-dark-bg-primary'>
                   <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='currentColor' className='w-3 h-3'>
                     <path
@@ -45,8 +48,8 @@ const WorkExperienceSection = () => {
                 <time className='block mb-3 text-sm font-normal leading-none text-light-fg-secondary/75 dark:text-dark-fg-secondary/75'>
                   {content.period}
                 </time>
-                <p className='mb-4 text-base font-normal text-light-fg-secondary dark:text-dark-fg-secondary'>
-                  <ul className='space-y-1 list-disc list-inside'>
+                <p className='mb-4 ml-4 text-base font-normal text-light-fg-secondary dark:text-dark-fg-secondary'>
+                  <ul className='space-y-1 list-disc list-outside'>
                     {content.jobList.map((task, idx) => (
                       <li key={idx}>
                         {task}
