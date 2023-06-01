@@ -32,7 +32,7 @@ export default function Home() {
         <Image
           src='/img/tfkhdyt-avatar.svg'
           alt='tfkhdyt avatar'
-          className='h-64 md:h-auto'
+          className='w-auto h-64 md:h-auto'
           width={300}
           height={300}
         />
