@@ -48,7 +48,7 @@ const WorkExperienceSection = () => {
                 <time className='block mb-3 text-sm font-normal leading-none text-light-fg-secondary/75 dark:text-dark-fg-secondary/75'>
                   {content.period}
                 </time>
-                <p className='mb-4 ml-4 text-base font-normal text-light-fg-secondary dark:text-dark-fg-secondary'>
+                <div className='mb-4 ml-4 text-base font-normal text-light-fg-secondary dark:text-dark-fg-secondary'>
                   <ul className='space-y-1 list-disc list-outside'>
                     {content.jobList.map((task, idx) => (
                       <li key={idx}>
@@ -56,7 +56,7 @@ const WorkExperienceSection = () => {
                       </li>
                     ))}
                   </ul>
-                </p>
+                </div>
               </li>
             ))}
           </ol>
