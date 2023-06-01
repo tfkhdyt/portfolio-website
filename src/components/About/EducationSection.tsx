@@ -2,20 +2,20 @@ import Title from '../Title';
 
 import clsx from 'clsx';
 
-const EducationSection = () => {
-  const contents = [
-    {
-      title: 'Universitas Bale Bandung',
-      period: '2020 - Present',
-      majors: 'Computer Science (Current GPA: 3.64)',
-    },
-    {
-      title: 'SMKN 7 Baleendah',
-      period: '2017 - 2020',
-      majors: 'Software Engineering',
-    },
-  ];
+const contents = [
+  {
+    title: 'Universitas Bale Bandung',
+    period: '2020 - Present',
+    majors: 'Computer Science (Current GPA: 3.64)',
+  },
+  {
+    title: 'SMKN 7 Baleendah',
+    period: '2017 - 2020',
+    majors: 'Software Engineering',
+  },
+];
 
+const EducationSection = () => {
   return (
     <div className='flex gap-16'>
       <div className='space-y-6'>
