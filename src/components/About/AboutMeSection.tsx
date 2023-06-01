@@ -5,13 +5,11 @@ import Image from 'next/image';
 const contents = [
   `Hello, world! My name is Taufik Hidayat. I'm a Junior Back-end Developer, Computer
    Science Student, YouTuber, Free and Open Source Software Enthusiast, and GNU/Linux
-   Nerd. I live in Bandung, Indonesia. I was born in Majalengka, 1 April 2002 (21 years
-   old).`,
-  `I've gained some valuable experience in this field, particularly in web development.
-   I am deeply passionate about pursuing a career as a Back-end Developer, with a strong
-   focus on specializing in TypeScript and Golang. I’m also a fast learner and
-   self-taught. Over the past few years, I have acquired knowledge in numerous new
-   technologies by actively exploring the vast resources available on the internet.`,
+   Nerd. I live in Bandung, Indonesia. I was born in Majalengka on April 1, 2002 (21
+   years old).`,
+  `I have experience as a Junior Web Developer. I have an interest in a career as a 
+   Back-end Developer (TypeScript and Golang). I’m a fast learner and self-taught. I have
+   learned a lot of new technologies in the past few years by myself on the Internet.`,
 ];
 
 const AboutMeSection = () => {
