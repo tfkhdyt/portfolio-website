@@ -6,35 +6,36 @@ import clsx from 'clsx';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
+const contents = [
+  {
+    target: '/',
+    title: 'Home',
+  },
+  {
+    target: '/about',
+    title: 'About',
+  },
+  {
+    target: '/skills',
+    title: 'Skills',
+  },
+  {
+    target: '/projects',
+    title: 'Projects',
+  },
+  {
+    target: '/contact',
+    title: 'Contact',
+  },
+];
+
 const Navbar = () => {
   const pathname = usePathname();
-  const contents = [
-    {
-      target: '/',
-      title: 'Home',
-    },
-    {
-      target: '/about',
-      title: 'About',
-    },
-    {
-      target: '/skills',
-      title: 'Skills',
-    },
-    {
-      target: '/projects',
-      title: 'Projects',
-    },
-    {
-      target: '/contact',
-      title: 'Contact',
-    },
-  ];
 
   return (
     <nav className='border-b border-light-fg-secondary/25 bg-light-bg-secondary dark:border-dark-fg-secondary/25 dark:bg-dark-bg-secondary'>
       <div className='flex justify-between items-center py-5 px-8 mx-auto md:px-16 lg:container lg:px-32 xl:px-72'>
-        <ol className='flex gap-6 font-semibold text-light-fg-primary dark:text-dark-fg-primary'>
+        <ol className='hidden gap-6 font-semibold md:flex text-light-fg-primary dark:text-dark-fg-primary'>
           {contents.map((content, idx) => (
             <li key={idx}>
               <Link href={content.target}>
