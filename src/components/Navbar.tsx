@@ -38,7 +38,7 @@ const Navbar = () => {
   return (
     <div className='fixed top-0 left-0 z-50 w-full'>
       <nav className='border-b md:w-auto border-light-fg-secondary/25 bg-light-bg-secondary dark:border-dark-fg-secondary/25 dark:bg-dark-bg-secondary'>
-        <div className='flex justify-between items-center py-4 px-8 mx-auto md:px-16 lg:container lg:px-32 xl:px-72'>
+        <div className='flex justify-between items-center py-2 px-8 mx-auto md:py-4 md:px-16 lg:container lg:px-32 xl:px-72'>
           <ol className='hidden gap-6 font-semibold md:flex text-light-fg-primary dark:text-dark-fg-primary'>
             {contents.map((content, idx) => (
               <li key={idx}>
@@ -55,12 +55,12 @@ const Navbar = () => {
               </li>
             ))}
           </ol>
-          <div className='md:hidden'>
+          <div className='-ml-2.5 md:hidden'>
             <Hamburger
               toggled={isOpen}
               toggle={setOpen}
               direction='right'
-              size={32}
+              size={28}
               rounded
             />
           </div>
@@ -70,7 +70,7 @@ const Navbar = () => {
       {/* mobile nav */}
       <div
         className={clsx(
-          'absolute w-screen md:hidden h-[90.5vh] bg-light-bg-primary dark:bg-dark-bg-primary -translate-x-full px-10 py-4',
+          'absolute w-screen md:hidden h-[92.5vh] bg-light-bg-primary dark:bg-dark-bg-primary -translate-x-full px-8 py-4',
           isOpen && 'translate-x-0',
         )}
       >
