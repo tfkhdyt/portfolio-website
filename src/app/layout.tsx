@@ -8,11 +8,11 @@ import localFont from 'next/font/local';
 const rubik = localFont({
   src: [
     {
-      path: '../../public/fonts/rubik/Rubik-VariableFont_wght.ttf',
+      path: '../assets/fonts/rubik/Rubik-VariableFont_wght.ttf',
       style: 'normal',
     },
     {
-      path: '../../public/fonts/rubik/Rubik-Italic-VariableFont_wght.ttf',
+      path: '../assets/fonts/rubik/Rubik-Italic-VariableFont_wght.ttf',
       style: 'italic',
     },
   ],
