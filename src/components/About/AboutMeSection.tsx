@@ -32,7 +32,7 @@ const AboutMeSection = () => {
           alt='My photo'
           height={1000}
           width={1000}
-          className='mx-auto w-64 h-64 rounded-full md:w-auto md:h-auto'
+          className='mx-auto w-64 h-auto rounded-full'
         />
       </div>
     </div>
