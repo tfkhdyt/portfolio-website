@@ -21,8 +21,9 @@ const rubik = localFont({
 
 export const metadata: Metadata = {
   title: 'Taufik Hidayat - Junior Back-end Developer',
-  description:
-    "Hi everyone, my name is Taufik Hidayat. I'm a Junior Back-end Developer, Computer Science Student, YouTuber, Free and Open Source Software Enthusiast, and GNU/Linux Nerd",
+  description: `Hi everyone, my name is Taufik Hidayat. I'm a Junior Back-end Developer, 
+    Computer Science Student, YouTuber, Free and Open Source Software Enthusiast, and 
+    GNU/Linux Nerd`,
 };
 
 export default function RootLayout({
@@ -34,7 +35,7 @@ export default function RootLayout({
     <html lang='en' id='html' className={rubik.className}>
       <body className='bg-light-bg-primary text-light-fg-primary dark:bg-dark-bg-primary dark:text-dark-fg-primary'>
         <Navbar />
-        <div className='py-6 px-8 mx-auto mt-20 md:px-16 lg:container lg:px-32 xl:px-72'>
+        <div className='py-6 px-8 mx-auto mt-16 md:px-16 md:mt-14 lg:container lg:px-32 xl:px-72'>
           {children}
         </div>
       </body>
