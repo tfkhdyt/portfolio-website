@@ -36,7 +36,7 @@ const ThemeSwitcher = () => {
         onChange={switchTheme}
       />
 
-      <span className='inline-flex absolute inset-y-0 z-10 justify-center items-center m-1 w-4 h-4 text-gray-400 rounded-full transition-all bg-light-bg-primary start-0 peer-checked:start-6 peer-checked:text-green-200 dark:peer-checked:text-green-100'>
+      <span className='inline-flex absolute inset-y-0 z-10 justify-center items-center m-1 w-4 h-4 text-gray-400 rounded-full transition-all bg-light-bg-primary start-0 peer-checked:start-6 peer-checked:text-green-100'>
         <svg
           data-unchecked-icon
           xmlns='http://www.w3.org/2000/svg'
@@ -61,7 +61,7 @@ const ThemeSwitcher = () => {
         </svg>
       </span>
 
-      <span className='absolute inset-0 bg-gray-400 rounded-full transition peer-checked:bg-green-200 dark:peer-checked:bg-green-100'>
+      <span className='absolute inset-0 bg-gray-400 rounded-full transition peer-checked:bg-green-100'>
       </span>
     </label>
   );
