@@ -4,9 +4,9 @@ import clsx from 'clsx';
 import Image from 'next/image';
 import { useState } from 'react';
 
-const skillCategories = ['Language', 'Framework', 'Library', 'DBMS'];
+const skillCategories = ['Language', 'Framework', 'Library', 'DBMS'] as const;
 
-type Category = (typeof skillCategories)[number];
+type Category = typeof skillCategories[number];
 
 type Skill = {
   name: string;
@@ -14,7 +14,7 @@ type Skill = {
   photoUrl: string;
 };
 
-const skills: Skill[] = [
+export const skills: Skill[] = [
   {
     name: 'HTML',
     category: 'Language',
