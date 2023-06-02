@@ -23,7 +23,10 @@ const EducationSection = () => {
         <div className='mx-4'>
           <ol className='relative border-l border-gray-200 dark:border-gray-700'>
             {contents.map((content, idx) => (
-              <li className={clsx('ml-6', idx !== (contents.length - 1) && 'mb-10')} key={idx}>
+              <li
+                className={clsx('ml-6', idx !== (contents.length - 1) && 'mb-10')}
+                key={idx}
+              >
                 <span className='flex absolute -left-3 justify-center items-center w-6 h-6 bg-green-500 rounded-full ring-8 dark:bg-green-100 ring-light-bg-primary dark:ring-dark-bg-primary'>
                   <svg
                     xmlns='http://www.w3.org/2000/svg'
@@ -42,7 +45,7 @@ const EducationSection = () => {
                 <time className='block mb-2 text-sm font-normal leading-none text-light-fg-secondary/75 dark:text-dark-fg-secondary/75'>
                   {content.period}
                 </time>
-                <p className='mb-4 text-base font-normal text-light-fg-secondary dark:text-dark-fg-secondary'>
+                <p className='mb-4 text-base font-normal dark:text-gray-200 text-light-fg-secondary'>
                   {content.majors}
                 </p>
               </li>

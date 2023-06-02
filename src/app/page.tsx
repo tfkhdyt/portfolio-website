@@ -14,7 +14,7 @@ export default function Home() {
         <a
           href='/documents/resume.pdf'
           target='_blank'
-          className='flex items-center py-2 px-4 mx-auto text-sm font-medium text-gray-900 bg-white rounded-lg border border-gray-300 md:py-2.5 md:px-5 md:mx-0 dark:text-white dark:bg-gray-800 dark:border-gray-600 hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 focus:outline-none w-fit dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700'
+          className='flex items-center py-2 px-4 mx-auto text-sm font-medium text-gray-900 bg-white rounded-lg border border-gray-300 md:py-2.5 md:px-5 md:mx-0 dark:text-white dark:bg-gray-800 dark:border-gray-600 hover:bg-gray-200 focus:ring-4 focus:ring-gray-200 focus:outline-none w-fit dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700'
         >
           <svg
             xmlns='http://www.w3.org/2000/svg'

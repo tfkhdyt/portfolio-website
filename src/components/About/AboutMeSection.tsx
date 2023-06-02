@@ -19,7 +19,7 @@ const AboutMeSection = () => {
         <Title>About Me</Title>
         {contents.map((content, idx) => (
           <p
-            className='text-justify text-light-fg-secondary dark:text-dark-fg-secondary'
+            className='text-justify dark:text-gray-200 text-light-fg-secondary'
             key={idx}
           >
             {content}
