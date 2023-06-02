@@ -187,14 +187,14 @@ const SkillCards = () => {
 
   return (
     <main className='mt-2'>
-      <div className='text-sm font-medium text-center text-gray-500 border-b border-gray-200 dark:text-gray-400 dark:border-gray-700'>
-        <ul className='flex overflow-x-auto -mb-px'>
+      <div className='text-sm font-medium text-center text-gray-500 border-b border-gray-200 md:text-base dark:text-gray-400 dark:border-gray-700'>
+        <ul className='flex overflow-x-auto -mb-px text-center'>
           {skillCategories.map((category, idx) => (
-            <li key={idx}>
+            <li key={idx} className='w-full'>
               <button
                 onClick={() => setCurrentCategory(category)}
                 className={clsx(
-                  'inline-block p-3 rounded-t-lg border-b-2',
+                  'inline-block  p-4 w-full rounded-t-lg border-b-2',
                   category === currentCategory
                     ? 'text-green-200 border-green-200 dark:text-green-100 dark:border-green-100'
                     : 'border-transparent hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300',
