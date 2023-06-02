@@ -1,5 +1,6 @@
 'use client';
 
+// @ts-ignore
 import { useWindowScroll } from '@uidotdev/usehooks';
 import clsx from 'clsx';
 
