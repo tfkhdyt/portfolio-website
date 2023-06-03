@@ -4,7 +4,7 @@ import Image from 'next/image';
 
 export default function Home() {
   return (
-    <main className='flex flex-col-reverse gap-4 items-center md:flex-row md:gap-8 md:justify-around min-h-[65vh] md:min-h-[75vh]'>
+    <main className='flex flex-col-reverse gap-4 items-center md:flex-row md:gap-8 md:justify-around min-h-[65vh] md:min-h-[80vh]'>
       <div className='space-y-2 text-center md:text-left'>
         <h1 className='text-4xl font-bold md:text-5xl'>Taufik Hidayat</h1>
         <TypewritedDesc />
@@ -40,6 +40,7 @@ export default function Home() {
           className='w-64 h-64 md:h-auto'
           width={300}
           height={300}
+          loading='eager'
         />
       </div>
     </main>

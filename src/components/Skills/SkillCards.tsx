@@ -211,11 +211,12 @@ const SkillCards = () => {
                   style={{ objectFit: 'contain' }}
                   className='grayscale group-hover:grayscale-0'
                   sizes='(max-width: 768px) 50vw, (max-width: 1200px) 25vw, 25vw'
+                  loading={skill.category === 'Language' ? 'eager' : 'lazy'}
                 />
               </div>
-              <h5 className='font-medium tracking-tight text-center text-gray-900 md:text-lg dark:text-white'>
+              <h1 className='font-medium tracking-tight text-center text-gray-900 md:text-lg dark:text-white'>
                 {skill.name}
-              </h5>
+              </h1>
             </div>
           ))}
       </div>

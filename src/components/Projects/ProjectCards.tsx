@@ -88,6 +88,7 @@ const ProjectCards = () => {
                   style={{ objectFit: 'cover' }}
                   className='rounded-t-lg grayscale group-hover:grayscale-0'
                   sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 50vw'
+                  loading={project.category === 'Web' ? 'eager' : 'lazy'}
                 />
               </div>
               <div className='p-4 space-y-2'>
@@ -95,8 +96,15 @@ const ProjectCards = () => {
                   <p className='text-xl font-semibold'>{project.name}</p>
                   <div className='flex space-x-1'>
                     {project.url?.repo && (
-                      <Link href={project.url.repo} target='_blank'>
-                        <button className='p-1 rounded hover:bg-gray-300 dark:hover:bg-gray-800'>
+                      <Link
+                        href={project.url.repo}
+                        target='_blank'
+                        aria-label={`${project.name}'s repository`}
+                      >
+                        <button
+                          className='p-1 rounded hover:bg-gray-300 dark:hover:bg-gray-800'
+                          aria-label={`${project.name}'s repository`}
+                        >
                           <svg
                             xmlns='http://www.w3.org/2000/svg'
                             fill='none'
@@ -115,8 +123,15 @@ const ProjectCards = () => {
                       </Link>
                     )}
                     {project.url?.demo && (
-                      <Link href={project.url.demo} target='_blank'>
-                        <button className='p-1 rounded hover:bg-gray-300 dark:hover:bg-gray-800'>
+                      <Link
+                        href={project.url.demo}
+                        target='_blank'
+                        aria-label={`${project.name}'s demo`}
+                      >
+                        <button
+                          className='p-1 rounded hover:bg-gray-300 dark:hover:bg-gray-800'
+                          aria-label={`${project.name}'s demo`}
+                        >
                           <svg
                             xmlns='http://www.w3.org/2000/svg'
                             fill='none'

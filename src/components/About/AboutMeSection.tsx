@@ -30,9 +30,11 @@ const AboutMeSection = () => {
         <Image
           src='/img/tfkhdyt-real-face.jpg'
           alt='My photo'
-          height={1000}
-          width={1000}
+          height={256}
+          width={256}
           className='mx-auto w-64 h-auto rounded-full'
+          loading='eager'
+          sizes='(max-width: 768px) 256px, (max-width: 1200px) 224px, 256px'
         />
       </div>
     </div>
