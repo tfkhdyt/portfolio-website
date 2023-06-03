@@ -39,10 +39,10 @@ const EducationSection = () => {
                     <path d='M4.462 19.462c.42-.419.753-.89 1-1.394.453.213.902.434 1.347.661a6.743 6.743 0 01-1.286 1.794.75.75 0 11-1.06-1.06z' />
                   </svg>
                 </span>
-                <h3 className='flex items-center mb-1 text-lg font-semibold text-light-fg-primary dark:text-dark-fg-primary'>
+                <h1 className='flex items-center mb-1 text-lg font-semibold text-light-fg-primary dark:text-dark-fg-primary'>
                   {content.title}
-                </h3>
-                <time className='block mb-2 text-sm font-normal leading-none text-light-fg-secondary/75 dark:text-dark-fg-secondary/75'>
+                </h1>
+                <time className='block mb-2 text-sm font-normal leading-none text-light-fg-secondary dark:text-dark-fg-secondary/75'>
                   {content.period}
                 </time>
                 <p className='mb-4 text-base font-normal dark:text-gray-200 text-light-fg-secondary'>

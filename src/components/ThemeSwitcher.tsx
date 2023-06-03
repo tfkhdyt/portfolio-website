@@ -18,7 +18,9 @@ const ThemeSwitcher = () => {
   useEffect(() => {
     const themeFromLocalStorage = localStorage.getItem('darkMode');
     if (themeFromLocalStorage === undefined) {
-      setIsDark(window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches);
+      setIsDark(
+        window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches,
+      );
     }
   });
 
@@ -27,10 +29,9 @@ const ThemeSwitcher = () => {
   };
 
   return (
-    <label htmlFor='themeSwitcher' className='relative w-12 h-6 cursor-pointer'>
+    <label className='relative w-12 h-6 cursor-pointer' aria-label='Theme switcher'>
       <input
         type='checkbox'
-        id='themeSwitcher'
         className='peer sr-only [&:checked_+_span_svg[data-checked-icon]]:block [&:checked_+_span_svg[data-unchecked-icon]]:hidden'
         checked={isDark}
         onChange={switchTheme}

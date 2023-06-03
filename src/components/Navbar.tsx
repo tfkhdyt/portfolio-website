@@ -45,8 +45,8 @@ const Navbar = () => {
                 <Link href={content.target}>
                   <button
                     className={clsx(
-                      'hover:text-blue-100',
-                      pathname == content.target && 'text-green-100',
+                      'hover:text-blue-200 dark:hover:text-blue-100',
+                      pathname == content.target && 'text-green-200 dark:text-green-100',
                     )}
                   >
                     {content.title}
@@ -62,6 +62,7 @@ const Navbar = () => {
               direction='right'
               size={28}
               rounded
+              label='Hamburger button'
             />
           </div>
           <ThemeSwitcher />
@@ -82,7 +83,7 @@ const Navbar = () => {
                   className={clsx(
                     'hover:text-blue-100 hover:border-blue-100 py-4 border-b w-full text-left',
                     pathname == content.target
-                      ? 'text-green-100 border-green-100'
+                      ? 'text-green-200 border-green-200 dark:text-green-100 dark:border-green-100'
                       : 'border-light-fg-secondary/50 dark:border-dark-fg-secondary/50',
                   )}
                 >
