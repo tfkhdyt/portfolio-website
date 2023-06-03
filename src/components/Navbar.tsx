@@ -45,8 +45,9 @@ const Navbar = () => {
                 <Link href={content.target}>
                   <button
                     className={clsx(
-                      'hover:text-blue-200 dark:hover:text-blue-100',
-                      pathname == content.target && 'text-green-200 dark:text-green-100',
+                      pathname == content.target
+                        ? 'text-green-200 dark:text-green-100'
+                        : 'hover:text-blue-200 dark:hover:text-blue-100',
                     )}
                   >
                     {content.title}
@@ -81,10 +82,10 @@ const Navbar = () => {
               <Link href={content.target} onClick={() => setOpen(false)}>
                 <button
                   className={clsx(
-                    'hover:text-blue-100 hover:border-blue-100 dark:hover:text-blue-100 dark:hover:border-blue-100 py-4 w-full text-left',
+                    ' py-4 w-full text-left',
                     pathname == content.target
                       ? 'text-green-200 border-green-200 dark:text-green-100 dark:border-green-100 border-b-2'
-                      : 'border-light-fg-secondary/50 dark:border-dark-fg-secondary/50 border-b',
+                      : 'border-light-fg-secondary/50 dark:border-dark-fg-secondary/50 border-b hover:text-blue-100 hover:border-blue-100 dark:hover:text-blue-100 dark:hover:border-blue-100',
                   )}
                 >
                   {content.title}
