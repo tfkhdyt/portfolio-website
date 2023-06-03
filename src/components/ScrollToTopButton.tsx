@@ -12,7 +12,7 @@ const ScrollToTopButton = () => {
       aria-label='Scroll to top button'
       onClick={() => scrollTo({ top: 0, behavior: 'smooth' })}
       className={clsx(
-        'fixed right-5 bottom-5 p-2 rounded-full border border-gray-200 dark:border-gray-700 hover:bg-gray-200 bg-light-bg-secondary dark:bg-dark-bg-secondary dark:hover:bg-gray-700',
+        'fixed right-5 bottom-5 p-3 rounded-full border border-gray-200 dark:border-gray-700 hover:bg-gray-200 bg-light-bg-secondary dark:bg-dark-bg-secondary dark:hover:bg-gray-700',
         y > 100
           ? 'block'
           : 'opacity-0 pointer-events-none',
@@ -24,7 +24,7 @@ const ScrollToTopButton = () => {
         viewBox='0 0 24 24'
         strokeWidth={1.5}
         stroke='currentColor'
-        className='w-4 h-4'
+        className='w-5 h-5'
       >
         <path
           strokeLinecap='round'
