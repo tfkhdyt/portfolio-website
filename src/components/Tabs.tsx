@@ -17,7 +17,7 @@ const Tabs = <T extends string>({ current, items, setter }: PageProps<T>) => {
             className={clsx(
               'inline-block p-4 w-full border-b-2',
               item === current
-                ? 'text-green-300 border-green-300 dark:text-green-100 dark:border-green-100'
+                ? 'text-green-200 border-green-200 dark:text-green-100 dark:border-green-100'
                 : 'font-normal border-transparent text-gray-800 dark:text-gray-400 dark:hover:text-blue-100 dark:hover:border-blue-100 hover:text-blue-200 hover:border-blue-100',
             )}
           >
