@@ -25,7 +25,7 @@ const EducationSection = () => {
             {contents.map((content, idx) => (
               <li
                 className={clsx('ml-6', idx !== (contents.length - 1) && 'mb-10')}
-                key={idx}
+                key={content.title}
               >
                 <span className='flex absolute -left-3 justify-center items-center w-6 h-6 bg-green-500 rounded-full ring-8 dark:bg-green-100 ring-light-bg-primary dark:ring-dark-bg-primary'>
                   <svg

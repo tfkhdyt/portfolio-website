@@ -17,10 +17,10 @@ const AboutMeSection = () => {
     <div className='flex flex-col-reverse gap-8 md:flex-row md:gap-16'>
       <div className='space-y-4 md:w-4/6'>
         <Title>About Me</Title>
-        {contents.map((content, idx) => (
+        {contents.map((content) => (
           <p
             className='text-justify dark:text-gray-200 text-light-fg-secondary'
-            key={idx}
+            key={content}
           >
             {content}
           </p>

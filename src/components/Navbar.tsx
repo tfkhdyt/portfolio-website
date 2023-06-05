@@ -40,8 +40,8 @@ const Navbar = () => {
       <nav className='border-b md:w-auto border-light-fg-secondary/25 bg-light-bg-secondary dark:border-dark-fg-secondary/25 dark:bg-dark-bg-secondary'>
         <div className='flex justify-between items-center py-2 px-8 mx-auto md:py-4 md:px-16 lg:container lg:px-32 xl:px-72'>
           <ol className='hidden gap-6 font-semibold md:flex text-light-fg-primary dark:text-dark-fg-primary'>
-            {contents.map((content, idx) => (
-              <li key={idx}>
+            {contents.map((content) => (
+              <li key={content.title}>
                 <Link href={content.target}>
                   <button
                     className={clsx(
@@ -77,8 +77,8 @@ const Navbar = () => {
         )}
       >
         <ol className='space-y-4 font-medium text-light-fg-primary dark:text-dark-fg-primary'>
-          {contents.map((content, idx) => (
-            <li key={idx}>
+          {contents.map((content) => (
+            <li key={content.title}>
               <Link href={content.target} onClick={() => setOpen(false)}>
                 <button
                   className={clsx(

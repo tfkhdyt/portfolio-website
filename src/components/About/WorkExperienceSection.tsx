@@ -27,7 +27,7 @@ const WorkExperienceSection = () => {
             {contents.map((content, idx) => (
               <li
                 className={clsx('ml-6', idx !== (contents.length - 1) && 'mb-10')}
-                key={idx}
+                key={content.role}
               >
                 <span className='flex absolute -left-3 justify-center items-center w-6 h-6 bg-green-500 rounded-full ring-8 dark:bg-green-100 ring-light-bg-primary dark:ring-dark-bg-primary'>
                   <svg
@@ -55,8 +55,8 @@ const WorkExperienceSection = () => {
                 </time>
                 <div className='mb-4 ml-4 text-base font-normal dark:text-gray-200 text-light-fg-secondary'>
                   <ul className='space-y-1 list-disc list-outside'>
-                    {content.jobList.map((task, idx) => (
-                      <li key={idx}>
+                    {content.jobList.map((task) => (
+                      <li key={task}>
                         {task}
                       </li>
                     ))}

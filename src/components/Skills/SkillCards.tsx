@@ -198,10 +198,10 @@ const SkillCards = () => {
       <div className='grid grid-cols-2 gap-6 mt-6 md:grid-cols-4'>
         {skills
           .filter((skill) => skill.category === currentCategory)
-          .map((skill, idx) => (
+          .map((skill) => (
             <div
               className='block flex flex-col items-center p-4 space-y-2 bg-white rounded-lg border border-gray-200 shadow dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-200 group dark:hover:bg-gray-700'
-              key={idx}
+              key={skill.name}
             >
               <div className='relative w-3/6 aspect-square'>
                 <Image

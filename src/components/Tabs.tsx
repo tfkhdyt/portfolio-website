@@ -10,8 +10,8 @@ type PageProps<T extends string> = {
 const Tabs = <T extends string>({ current, items, setter }: PageProps<T>) => {
   return (
     <ul className='flex overflow-x-auto -mb-px text-center'>
-      {items.map((item, idx) => (
-        <li key={idx} className='w-full'>
+      {items.map((item) => (
+        <li key={item} className='w-full'>
           <button
             onClick={() => setter(item)}
             className={clsx(

@@ -23,10 +23,10 @@ const ProjectCards = () => {
       <div className='grid grid-cols-1 gap-6 mt-6 md:grid-cols-2'>
         {projects
           .filter((project) => project.category === currentCategory)
-          .map((project, idx) => (
+          .map((project) => (
             <div
               className='block flex flex-col bg-white rounded-lg border border-gray-200 shadow dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-200 group dark:hover:bg-gray-700'
-              key={idx}
+              key={project.name}
             >
               <div className='relative w-full aspect-video'>
                 <Image
@@ -107,8 +107,8 @@ const ProjectCards = () => {
                 <div className='flex py-2 space-x-2'>
                   {skills
                     .filter((skill) => project.techStack.includes(skill.name))
-                    .map((skill, idx) => (
-                      <div className='relative w-6 h-6' key={idx}>
+                    .map((skill) => (
+                      <div className='relative w-6 h-6' key={skill.name}>
                         <Image
                           src={`/img/tech/${skill.photoUrl}`}
                           alt={skill.name}

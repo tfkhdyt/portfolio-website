@@ -60,8 +60,8 @@ const ContactPage = () => {
       </p>
       <div className='ml-8 text-base font-normal dark:text-gray-200 text-light-fg-secondary'>
         <ul className='space-y-2 list-disc list-outside'>
-          {contents.map((content, idx) => (
-            <li key={idx}>
+          {contents.map((content) => (
+            <li key={content.name}>
               <span className='font-medium text-gray-800 dark:text-gray-400'>
                 {content.name}
               </span>{' '}
