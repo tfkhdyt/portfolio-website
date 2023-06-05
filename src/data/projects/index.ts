@@ -1,4 +1,4 @@
-import { skills } from '@/components/Skills/SkillCards';
+import { skills } from '../skills';
 import { apiProjects } from './api';
 import { botProjects } from './bot';
 import { cliProjects } from './cli';

@@ -1,9 +1,9 @@
 'use client';
 
 import { Category, projectCategories, projects } from '@/data/projects';
-import { skills } from '../Skills/SkillCards';
 import Tabs from '../Tabs';
 
+import { skills } from '@/data/skills';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useState } from 'react';
