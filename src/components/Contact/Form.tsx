@@ -59,21 +59,25 @@ const Form = () => {
 
     // sendMessage(body.data);
 
-    await toast.promise(sendMessage(body.data), {
-      loading: 'Loading',
-      success: (data) => data.message,
-      error: (err) => err.message,
-    }, {
-      duration: 5000,
-      style: {
-        background: isDarkMode ? '#2e2e2e' : '#ebdbb2',
-        color: isDarkMode ? '#ebdbb2' : '#2e2e2e',
-      },
-    });
+    try {
+      await toast.promise(sendMessage(body.data), {
+        loading: 'Loading',
+        success: (data) => data.message,
+        error: (err) => err.message,
+      }, {
+        duration: 5000,
+        style: {
+          background: isDarkMode ? '#2e2e2e' : '#ebdbb2',
+          color: isDarkMode ? '#ebdbb2' : '#2e2e2e',
+        },
+      });
 
-    setName('');
-    setEmail('');
-    setMessage('');
+      setName('');
+      setEmail('');
+      setMessage('');
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   const sendMessage = (form: FormBody): Promise<{ message: string }> =>
