@@ -30,5 +30,8 @@
     "telegraf": "^4.12.2",
     "typescript": "5.0.4",
     "zod": "^3.21.4"
+  },
+  "devDependencies": {
+    "encoding": "^0.1.13"
   }
 }
