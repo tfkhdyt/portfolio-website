@@ -15,12 +15,12 @@ type TechStack = typeof techStack[number];
 export type Project = {
   name: string;
   desc: string;
-  photoUrl: string;
+  photoUrl?: string;
   category: Category;
   techStack: TechStack[];
   url?: {
     repo?: string;
-    demo?: string;
+    demo?: string | null;
   };
 };
 
