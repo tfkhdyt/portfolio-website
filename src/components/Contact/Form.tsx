@@ -114,6 +114,7 @@ const Form = () => {
               id='name'
               className='block p-2.5 w-full text-gray-900 bg-gray-100 rounded-lg border border-gray-300 outline-none dark:placeholder-gray-400 dark:text-white dark:bg-gray-700 dark:border-gray-600 focus:border-blue-100 focus:ring-2 focus:ring-blue-100 dark:focus:ring-blue-100 dark:focus:border-blue-100'
               placeholder='Your name'
+              value={name}
               onChange={(e) => setName(e.target.value)}
               required
             />
@@ -129,6 +130,7 @@ const Form = () => {
               id='email'
               className='block p-2.5 w-full text-gray-900 bg-gray-100 rounded-lg border border-gray-300 outline-none dark:placeholder-gray-400 dark:text-white dark:bg-gray-700 dark:border-gray-600 focus:border-blue-100 focus:ring-2 focus:ring-blue-100 dark:focus:ring-blue-100 dark:focus:border-blue-100'
               placeholder='Your email'
+              value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
             />
@@ -145,6 +147,7 @@ const Form = () => {
             rows={4}
             className='block p-2.5 w-full text-gray-900 bg-gray-100 rounded-lg border border-gray-300 outline-none dark:placeholder-gray-400 dark:text-white dark:bg-gray-700 dark:border-gray-600 focus:border-blue-100 focus:ring-2 focus:ring-blue-100 dark:focus:ring-blue-100 dark:focus:border-blue-100'
             placeholder='Write your message here...'
+            value={message}
             onChange={(e) => setMessage(e.target.value)}
             required
           >
