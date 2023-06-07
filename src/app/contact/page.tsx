@@ -71,7 +71,7 @@ const ContactPage = () => {
                 <Link
                   href={content.url}
                   target='_blank'
-                  className='relative font-bold underline group underline-offset-[5px] decoration-dashed decoration-1'
+                  className='relative font-bold underline group underline-offset-4 decoration-dotted decoration-2'
                 >
                   {content.username}
                   <span className='absolute left-0 -bottom-0.5 w-0 h-full border-b-2 dark:border-gray-200 group-hover:w-full border-light-fg-secondary'>
