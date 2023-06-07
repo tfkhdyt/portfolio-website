@@ -1,10 +1,11 @@
 'use client';
 
+import MobileNavbarItem from './MobileNavbarItem';
+import NavbarItem from './NavbarItem';
 import ThemeSwitcher from './ThemeSwitcher';
 
 import clsx from 'clsx';
 import { Spin as Hamburger } from 'hamburger-react';
-import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useState } from 'react';
 
@@ -31,6 +32,8 @@ const contents = [
   },
 ];
 
+export type NavbarItemType = typeof contents[number];
+
 const Navbar = () => {
   const pathname = usePathname();
   const [isOpen, setOpen] = useState(false);
@@ -41,19 +44,11 @@ const Navbar = () => {
         <div className='flex justify-between items-center py-2 px-8 mx-auto md:py-4 md:px-16 lg:container lg:px-32 xl:px-72'>
           <ol className='hidden gap-6 font-semibold md:flex text-light-fg-primary dark:text-dark-fg-primary'>
             {contents.map((content) => (
-              <li key={content.title}>
-                <Link href={content.target}>
-                  <button
-                    className={clsx(
-                      pathname == content.target
-                        ? 'text-green-200 dark:text-green-100'
-                        : 'hover:text-blue-200 dark:hover:text-blue-100',
-                    )}
-                  >
-                    {content.title}
-                  </button>
-                </Link>
-              </li>
+              <NavbarItem
+                pathname={pathname}
+                content={content}
+                key={content.title}
+              />
             ))}
           </ol>
           <div className='-ml-2.5 md:hidden'>
@@ -78,20 +73,12 @@ const Navbar = () => {
       >
         <ol className='space-y-4 font-medium text-light-fg-primary dark:text-dark-fg-primary'>
           {contents.map((content) => (
-            <li key={content.title}>
-              <Link href={content.target} onClick={() => setOpen(false)}>
-                <button
-                  className={clsx(
-                    'py-4 w-full text-left border-b-2',
-                    pathname == content.target
-                      ? 'text-green-200 border-green-200 dark:text-green-100 dark:border-green-100'
-                      : 'border-light-fg-secondary/25 dark:border-dark-fg-secondary/25 border-b hover:text-blue-100 hover:border-blue-100 dark:hover:text-blue-100 dark:hover:border-blue-100',
-                  )}
-                >
-                  {content.title}
-                </button>
-              </Link>
-            </li>
+            <MobileNavbarItem
+              pathname={pathname}
+              onClick={() => setOpen(false)}
+              content={content}
+              key={content.title}
+            />
           ))}
         </ol>
       </div>

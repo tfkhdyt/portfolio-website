@@ -57,8 +57,6 @@ const Form = () => {
       });
     }
 
-    // sendMessage(body.data);
-
     try {
       await toast.promise(sendMessage(body.data), {
         loading: 'Loading',
