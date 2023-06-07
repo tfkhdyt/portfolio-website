@@ -30,7 +30,9 @@ const ProjectCards = () => {
             >
               <div className='relative w-full aspect-video'>
                 <Image
-                  src={`/img/projects/${project.photoUrl || '../thumbnail.png'}`}
+                  src={project.photoUrl
+                    ? `/img/projects/${project.photoUrl}`
+                    : '/img/thumbnail.png'}
                   alt={project.name}
                   fill
                   style={{ objectFit: 'cover' }}
