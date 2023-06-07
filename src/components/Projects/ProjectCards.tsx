@@ -23,7 +23,7 @@ const ProjectCards = () => {
       <div className='grid grid-cols-1 gap-6 mt-6 md:grid-cols-2'>
         {projects
           .filter((project) => project.category === currentCategory)
-          .map((project) => (
+          .map((project, idx) => (
             <div
               className='block flex flex-col bg-white rounded-lg border border-gray-200 shadow dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-200 group dark:hover:bg-gray-700'
               key={project.name}
@@ -36,7 +36,7 @@ const ProjectCards = () => {
                   style={{ objectFit: 'cover' }}
                   className='rounded-t-lg grayscale group-hover:grayscale-0'
                   sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 50vw'
-                  loading={project.category === 'Web' ? 'eager' : 'lazy'}
+                  priority={project.category === 'Web' && idx < 4}
                 />
               </div>
               <div className='flex flex-col justify-between p-4 space-y-2 h-full'>
@@ -116,6 +116,7 @@ const ProjectCards = () => {
                           style={{ objectFit: 'contain' }}
                           className='grayscale group-hover:grayscale-0'
                           sizes='(max-width: 768px) 8vw, (max-width: 1200px) 16vw, 32vw'
+                          priority={project.category === 'Web'}
                         />
                       </div>
                     ))}

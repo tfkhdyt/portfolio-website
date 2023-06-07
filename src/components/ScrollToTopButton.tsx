@@ -13,9 +13,8 @@ const ScrollToTopButton = () => {
       onClick={() => scrollTo({ top: 0, behavior: 'smooth' })}
       className={clsx(
         'fixed right-5 bottom-5 p-3 rounded-full border border-gray-200 dark:border-gray-700 hover:bg-gray-200 bg-light-bg-secondary dark:bg-dark-bg-secondary dark:hover:bg-gray-700',
-        y > 100
-          ? 'block'
-          : 'opacity-0 pointer-events-none',
+        y > 200
+          || 'opacity-0 pointer-events-none',
       )}
     >
       <svg

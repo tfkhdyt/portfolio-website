@@ -40,7 +40,7 @@ export default function Home() {
           className='w-64 h-64 md:h-auto'
           width={300}
           height={300}
-          loading='eager'
+          priority
         />
       </div>
     </main>
