@@ -36,9 +36,6 @@ export const metadata: Metadata = {
       `Hi everyone, my name is Taufik Hidayat. I'm a Junior Back-end Developer, Computer Science Student, YouTuber, Free and Open Source Software Enthusiast, and GNU/Linux Nerd`,
     card: 'summary',
     site: 'https://www.tfkhdyt.my.id',
-    images: {
-      url: '/img/thumbnail.png',
-    },
   },
   keywords: [
     'Taufik Hidayat',
@@ -50,9 +47,6 @@ export const metadata: Metadata = {
     'Full Stack',
   ],
   openGraph: {
-    images: {
-      url: '/img/thumbnail.png',
-    },
     description:
       `Hi everyone, my name is Taufik Hidayat. I'm a Junior Back-end Developer, Computer Science Student, YouTuber, Free and Open Source Software Enthusiast, and GNU/Linux Nerd`,
     title: 'Taufik Hidayat - Junior Back-end Developer',
