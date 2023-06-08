@@ -4,7 +4,7 @@ import { themeAtom } from '@/stores/theme';
 
 import { useAtomValue } from 'jotai';
 import { FormEvent, useState } from 'react';
-import toast, { Toaster } from 'react-hot-toast';
+import toast from 'react-hot-toast';
 import { z } from 'zod';
 
 type FormError = {
@@ -164,10 +164,6 @@ const Form = () => {
           </svg>
         </button>
       </form>
-      <Toaster
-        position='bottom-right'
-        reverseOrder={false}
-      />
     </>
   );
 };

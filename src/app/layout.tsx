@@ -1,11 +1,13 @@
 import './globals.css';
 
 import Navbar from '@/components/Navbar';
+import NextAuthWrapper from '@/components/NextAuthWrapper';
 import ScrollToTopButton from '@/components/ScrollToTopButton';
 
 import clsx from 'clsx';
 import { Metadata } from 'next';
 import localFont from 'next/font/local';
+import { Toaster } from 'react-hot-toast';
 
 const rubik = localFont({
   src: [
@@ -53,6 +55,7 @@ export const metadata: Metadata = {
     url: 'https://www.tfkhdyt.my.id',
     type: 'website',
   },
+  metadataBase: new URL('https://tfkhdyt.my.id'),
 };
 
 export default function RootLayout({
@@ -65,7 +68,13 @@ export default function RootLayout({
       <body className='bg-light-bg-primary text-light-fg-primary dark:bg-dark-bg-primary dark:text-dark-fg-primary'>
         <Navbar />
         <div className='relative py-6 px-8 mx-auto mt-16 md:px-16 md:mt-14 lg:container lg:px-32 xl:px-72'>
-          {children}
+          <NextAuthWrapper>
+            {children}
+            <Toaster
+              position='bottom-right'
+              reverseOrder={false}
+            />
+          </NextAuthWrapper>
           <ScrollToTopButton />
         </div>
       </body>
