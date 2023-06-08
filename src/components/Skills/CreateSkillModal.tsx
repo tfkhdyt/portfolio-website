@@ -1,4 +1,6 @@
 import { themeAtom } from '@/stores/theme';
+import { revalidate } from '@/utils/revalidate';
+
 import { SkillCategory } from '@prisma/client';
 import * as Dialog from '@radix-ui/react-dialog';
 import { useAtomValue } from 'jotai';
@@ -16,7 +18,7 @@ const CreateSkillModal = ({ skillCategories, currentCategory }: Props) => {
 
   const [name, setName] = useState('');
   const [category, setCategory] = useState<SkillCategory['id']>(currentCategory.id);
-  const [photo, setPhoto] = useState<File>();
+  const [photo, setPhoto] = useState<File | null>();
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -33,14 +35,16 @@ const CreateSkillModal = ({ skillCategories, currentCategory }: Props) => {
     toast.promise(sendData(body), {
       loading: 'Loading',
       success: () => {
-        setOpen(false);
-        setName('');
-        setCategory(currentCategory.id);
-        setPhoto({} as File);
+        toggleModal(false);
 
         return 'New skill has been added';
       },
-      error: 'Failed to add new skill',
+      error: (err) => {
+        if (err instanceof Error) {
+          console.log(err.message);
+        }
+        return 'Failed to add new skill';
+      },
     }, {
       duration: 5000,
       style: {
@@ -50,22 +54,31 @@ const CreateSkillModal = ({ skillCategories, currentCategory }: Props) => {
     });
   };
 
+  const toggleModal = (open: boolean) => {
+    setName('');
+    setCategory(currentCategory.id);
+    setPhoto(null);
+    setOpen(open);
+  };
+
   const sendData = (body: FormData) =>
     new Promise<void>(async (ok, err) => {
-      const response = await fetch('/api/skills', {
-        body,
-        method: 'POST',
-      });
+      try {
+        await fetch('/api/skills', {
+          body,
+          method: 'POST',
+        });
 
-      const result = await response.text();
+        await revalidate('/skills');
 
-      console.log(result);
-
-      ok();
+        ok();
+      } catch (error) {
+        err(error);
+      }
     });
 
   return (
-    <Dialog.Root open={open} onOpenChange={setOpen}>
+    <Dialog.Root open={open} onOpenChange={toggleModal}>
       <Dialog.Trigger className='py-2.5 px-5 mt-4 mr-2 mb-2 text-sm font-medium text-white bg-blue-100 rounded-lg dark:bg-blue-100 hover:bg-blue-200 focus:ring-4 focus:ring-blue-200 focus:outline-none dark:hover:bg-blue-200 dark:focus:ring-blue-200'>
         Add new skill
       </Dialog.Trigger>
