@@ -67,4 +67,5 @@ model Skill {
   category   SkillCategory? @relation(fields: [categoryId], references: [id], onDelete: SetNull, onUpdate: Cascade)
   categoryId String?
   photoUrl   String
+  photoId    String
 }

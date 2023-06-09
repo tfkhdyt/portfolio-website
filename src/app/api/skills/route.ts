@@ -1,25 +1,7 @@
-import { imagekit } from '@/lib/imagekit';
-import { prisma } from '@/lib/prisma';
+import { skillService } from '@/skill/SkillService';
+import { HTTPError } from '@/utils/error';
 
 import { NextResponse } from 'next/server';
-
-const verifyCategoryId = async (categoryId: string): Promise<void> => {
-  try {
-    const category = await prisma.skillCategory.findUnique({
-      where: {
-        id: categoryId,
-      },
-    });
-
-    if (!category) {
-      throw new Error('Category id is not found');
-    }
-  } catch (error) {
-    if (error instanceof Error) {
-      throw error;
-    }
-  }
-};
 
 export const POST = async (req: Request) => {
   try {
@@ -27,27 +9,16 @@ export const POST = async (req: Request) => {
 
     const name = formData.get('name') as string;
     const categoryId = formData.get('category') as string;
-    await verifyCategoryId(categoryId);
-    const file = formData.get('photo') as File;
+    const photo = formData.get('photo') as File;
 
-    const photoArrayBuffer = await file.arrayBuffer();
+    const response = await skillService.createSkill({ name, categoryId, photo });
 
-    const { url } = await imagekit.upload({
-      file: Buffer.from(photoArrayBuffer),
-      fileName: file.name,
-    });
-
-    const createdSkill = await prisma.skill.create({
-      data: {
-        name,
-        categoryId,
-        photoUrl: url,
-      },
-    });
-
-    return NextResponse.json({ data: createdSkill });
+    return NextResponse.json(response);
   } catch (error) {
-    console.error(error);
-    return NextResponse.json({ error: error }, { status: 500 });
+    if (error instanceof HTTPError) {
+      return NextResponse.json({ error: error.message }, { status: error.statusCode });
+    }
+
+    return NextResponse.json({ error: 'Failed to create new skill' }, { status: 500 });
   }
 };
