@@ -1,9 +1,9 @@
 import { themeAtom } from '@/stores/theme';
-import { revalidate } from '@/utils/revalidate';
 
 import { SkillCategory } from '@prisma/client';
 import * as Dialog from '@radix-ui/react-dialog';
 import { useAtomValue } from 'jotai';
+import { useRouter } from 'next/navigation';
 import { FormEvent, useState } from 'react';
 import { toast } from 'react-hot-toast';
 
@@ -20,6 +20,8 @@ const CreateSkillModal = ({ skillCategories, currentCategory }: Props) => {
   const [category, setCategory] = useState<SkillCategory['id']>(currentCategory.id);
   const [photo, setPhoto] = useState<File | null>();
 
+  const router = useRouter();
+
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
@@ -34,17 +36,13 @@ const CreateSkillModal = ({ skillCategories, currentCategory }: Props) => {
 
     toast.promise(sendData(body), {
       loading: 'Loading',
-      success: () => {
+      success: (data) => {
         toggleModal(false);
+        router.refresh();
 
-        return 'New skill has been added';
+        return data;
       },
-      error: (err) => {
-        if (err instanceof Error) {
-          console.log(err.message);
-        }
-        return 'Failed to add new skill';
-      },
+      error: (err) => err,
     }, {
       duration: 5000,
       style: {
@@ -62,16 +60,17 @@ const CreateSkillModal = ({ skillCategories, currentCategory }: Props) => {
   };
 
   const sendData = (body: FormData) =>
-    new Promise<void>(async (ok, err) => {
+    new Promise<string>(async (ok, err) => {
       try {
-        await fetch('/api/skills', {
+        const response = await fetch('/api/skills', {
           body,
           method: 'POST',
         });
+        const result = await response.json();
 
-        await revalidate('/skills');
+        if (!response.ok) throw new Error(result.error);
 
-        ok();
+        ok(result.message);
       } catch (error) {
         err(error);
       }
@@ -79,15 +78,30 @@ const CreateSkillModal = ({ skillCategories, currentCategory }: Props) => {
 
   return (
     <Dialog.Root open={open} onOpenChange={toggleModal}>
-      <Dialog.Trigger className='py-2.5 px-5 mt-4 mr-2 mb-2 text-sm font-medium text-white bg-blue-100 rounded-lg dark:bg-blue-100 hover:bg-blue-200 focus:ring-4 focus:ring-blue-200 focus:outline-none dark:hover:bg-blue-200 dark:focus:ring-blue-200'>
-        Add new skill
+      <Dialog.Trigger className='block flex flex-col items-center py-6 space-y-2 bg-white rounded-lg border border-gray-200 shadow md:py-12 dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-200 group dark:hover:bg-gray-700'>
+        <div className='m-auto'>
+          <svg
+            xmlns='http://www.w3.org/2000/svg'
+            fill='none'
+            viewBox='0 0 24 24'
+            strokeWidth={1.5}
+            stroke='currentColor'
+            className='w-16 h-16'
+          >
+            <path
+              strokeLinecap='round'
+              strokeLinejoin='round'
+              d='M12 4.5v15m7.5-7.5h-15'
+            />
+          </svg>
+        </div>
       </Dialog.Trigger>
       <Dialog.Portal>
         <Dialog.Overlay className='fixed inset-0 bg-black/75' />
         <Dialog.Content className='fixed top-[50%] left-[50%] max-h-[85vh] w-[90vw] max-w-[450px] translate-x-[-50%] translate-y-[-50%] rounded-[6px] bg-light-bg-primary dark:bg-dark-bg-primary p-[25px] outline-none'>
           <Dialog.Title className='mb-2 text-xl font-medium'>Add new skill</Dialog.Title>
           <form onSubmit={handleSubmit} encType='multipart/form-data'>
-            <div className='space-y-4'>
+            <div className='space-y-6'>
               <div className='w-full'>
                 <label
                   htmlFor='name'
