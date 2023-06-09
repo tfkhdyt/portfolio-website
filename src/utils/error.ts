@@ -18,3 +18,9 @@ export class NotFoundError extends HTTPError {
     super(message, 404);
   }
 }
+
+export class UnprocessableEntityError extends HTTPError {
+  constructor(message: string) {
+    super(message, 422);
+  }
+}

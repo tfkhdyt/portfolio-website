@@ -1,7 +1,7 @@
 import SkillRepository from '@/domains/skill/SkillRepository';
 import { HTTPError, InternalServerError, NotFoundError } from '@/utils/error';
 
-import { Prisma, PrismaClient, SkillCategory } from '@prisma/client';
+import { Prisma, PrismaClient, Skill, SkillCategory } from '@prisma/client';
 
 class SkillRepositoryPostgres implements SkillRepository {
   constructor(private readonly prisma: PrismaClient) {}
@@ -39,7 +39,23 @@ class SkillRepositoryPostgres implements SkillRepository {
         throw error;
       }
 
-      throw new Error('Failed to get skill category');
+      throw new InternalServerError('Failed to get skill category');
+    }
+  }
+
+  async updateSkill(skillId: string, skill: Prisma.SkillUpdateInput): Promise<Skill> {
+    try {
+      const updatedSkill = await this.prisma.skill.update({
+        where: {
+          id: skillId,
+        },
+        data: skill,
+      });
+
+      return updatedSkill;
+    } catch (error) {
+      console.error(error);
+      throw new InternalServerError(`Failed to update skill with id ${skillId}`);
     }
   }
 }

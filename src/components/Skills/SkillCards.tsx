@@ -19,7 +19,6 @@ const SkillCards = ({ skills, skillCategories }: Props) => {
 
   return (
     <>
-      {session && <CreateSkillModal skillCategories={skillCategories} currentCategory={currentCategory} />}
       <main className='mt-2'>
         <div className='text-sm font-medium text-center text-gray-500 border-b border-gray-200 md:text-base dark:text-gray-400 dark:border-gray-700'>
           <Tabs
@@ -34,9 +33,17 @@ const SkillCards = ({ skills, skillCategories }: Props) => {
             .map((skill) => (
               <Card
                 skill={skill}
+                skillCategories={skillCategories}
+                currentCategory={currentCategory}
                 key={skill.name}
               />
             ))}
+          {session && (
+            <CreateSkillModal
+              skillCategories={skillCategories}
+              currentCategory={currentCategory}
+            />
+          )}
         </div>
       </main>
     </>
