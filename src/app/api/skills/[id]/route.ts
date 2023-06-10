@@ -1,4 +1,4 @@
-import { authOptions } from '@/lib/prisma';
+import { authOptions } from '@/lib/nextAuth';
 import { skillService } from '@/skill/SkillService';
 import { BadRequestError, HTTPError, UnauthenticatedError, UnprocessableEntityError } from '@/utils/error';
 

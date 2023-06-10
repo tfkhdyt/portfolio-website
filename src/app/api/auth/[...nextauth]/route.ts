@@ -1,4 +1,4 @@
-import { authOptions } from '@/lib/prisma';
+import { authOptions } from '@/lib/nextAuth';
 
 import NextAuth from 'next-auth/next';
 
