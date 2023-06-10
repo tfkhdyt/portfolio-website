@@ -1,6 +1,8 @@
+import { authOptions } from '@/lib/prisma';
 import { skillService } from '@/skill/SkillService';
-import { HTTPError, UnprocessableEntityError } from '@/utils/error';
+import { HTTPError, UnauthenticatedError, UnprocessableEntityError } from '@/utils/error';
 
+import { getServerSession } from 'next-auth';
 import { NextResponse } from 'next/server';
 import { z } from 'zod';
 
@@ -17,23 +19,32 @@ const createSkillSchema = z.object({
       invalid_type_error: 'Category id must be a string',
     })
     .cuid('Category id is invalid'),
+  photo: z.instanceof(File),
 });
 
 export const POST = async (req: Request) => {
   try {
-    const formData = await req.formData();
-
-    const name = formData.get('name') as string;
-    const categoryId = formData.get('category') as string;
-
-    const { success } = createSkillSchema.safeParse({ name, categoryId });
-    if (!success) {
-      throw new UnprocessableEntityError('Request body is not valid');
+    const session = await getServerSession(authOptions);
+    if (!session) {
+      throw new UnauthenticatedError('You should login first to access this endpoint');
     }
 
-    const photo = formData.get('photo') as File;
+    const formData = await req.formData();
 
-    const response = await skillService.createSkill({ name, categoryId, photo });
+    const result = createSkillSchema.safeParse({
+      name: formData.get('name'),
+      categoryId: formData.get('category'),
+      photo: formData.get('photo'),
+    });
+    if (!result.success) {
+      throw new UnprocessableEntityError(result.error.issues[0].message);
+    }
+
+    const response = await skillService.createSkill({
+      name: result.data.name,
+      categoryId: result.data.categoryId,
+      photo: result.data.photo,
+    });
 
     return NextResponse.json(response);
   } catch (error) {

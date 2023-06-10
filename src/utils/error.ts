@@ -24,3 +24,15 @@ export class UnprocessableEntityError extends HTTPError {
     super(message, 422);
   }
 }
+
+export class UnauthenticatedError extends HTTPError {
+  constructor(message: string) {
+    super(message, 401);
+  }
+}
+
+export class BadRequestError extends HTTPError {
+  constructor(message: string) {
+    super(message, 400);
+  }
+}
