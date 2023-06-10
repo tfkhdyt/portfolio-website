@@ -8,7 +8,10 @@ import SkillRepositoryPostgres from './repositories/SkillRepositoryPostgres';
 import ImageKit from 'imagekit';
 
 class SkillService {
-  constructor(private readonly skillRepo: SkillRepository, private readonly imagekit: ImageKit) {}
+  constructor(
+    private readonly skillRepo: SkillRepository,
+    private readonly imagekit: ImageKit,
+  ) {}
 
   private async verifyCategoryId(categoryId: string) {
     this.skillRepo.getSkillCategoryById(categoryId);
@@ -56,7 +59,13 @@ class SkillService {
     };
   }
 
+  async verifySkillAvailability(skillId: string) {
+    return this.skillRepo.getSkillById(skillId);
+  }
+
   async updateSkill(skillId: string, payload: UpdateSkillRequest) {
+    const oldSkill = await this.verifySkillAvailability(skillId);
+
     if (payload.categoryId) {
       await this.verifyCategoryId(payload.categoryId);
     }
@@ -67,8 +76,6 @@ class SkillService {
       const result = await this.uploadImage(payload.photo, '/tech');
       photoUrl = result.photoUrl;
       photoId = result.photoId;
-
-      await this.deleteImage(photoId);
     }
 
     const updatedSkill = await this.skillRepo.updateSkill(skillId, {
@@ -81,6 +88,10 @@ class SkillService {
       photoUrl,
       photoId,
     });
+
+    if (photoId) {
+      await this.deleteImage(oldSkill.photoId);
+    }
 
     return {
       message: `${updatedSkill.name} has been updated`,
@@ -97,6 +108,16 @@ class SkillService {
       }
       throw new InternalServerError(`Failed to delete image with id ${photoId}`);
     }
+  }
+
+  async deleteSkill(skillId: string) {
+    const skill = await this.verifySkillAvailability(skillId);
+    await this.skillRepo.deleteSkill(skillId);
+    await this.deleteImage(skill.photoId);
+
+    return {
+      message: `${skill.name} has been deleted`,
+    };
   }
 }
 

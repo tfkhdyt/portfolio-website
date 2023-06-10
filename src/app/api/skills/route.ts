@@ -8,13 +8,13 @@ const createSkillSchema = z.object({
   name: z
     .string({
       required_error: 'Name is required',
-      invalid_type_error: 'Name should be in string',
+      invalid_type_error: 'Name must be a string',
     })
-    .max(12, 'Name should not be more than 12 characters'),
+    .max(12, 'Name must not exceed 12 characters'),
   categoryId: z
     .string({
       required_error: 'Category id is required',
-      invalid_type_error: 'Category id should be in string',
+      invalid_type_error: 'Category id must be a string',
     })
     .cuid('Category id is invalid'),
 });

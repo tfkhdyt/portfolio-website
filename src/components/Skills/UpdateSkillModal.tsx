@@ -46,7 +46,13 @@ const UpdateSkillModal = ({ skillCategories, currentCategory, oldData }: Props) 
 
         return data;
       },
-      error: (err) => err,
+      error: (err) => {
+        if (err instanceof Error) {
+          return err.message;
+        }
+
+        return 'Error!';
+      },
     }, {
       duration: 5000,
       style: {
@@ -76,6 +82,7 @@ const UpdateSkillModal = ({ skillCategories, currentCategory, oldData }: Props) 
 
         ok(result.message);
       } catch (error) {
+        console.log(error);
         err(error);
       }
     });
@@ -166,7 +173,7 @@ const UpdateSkillModal = ({ skillCategories, currentCategory, oldData }: Props) 
           </form>
           <Dialog.Close asChild>
             <button
-              className='inline-flex absolute justify-center items-center text-green-100 rounded-full appearance-none hover:bg-gray-800 focus:outline-none top-[10px] right-[10px] h-[25px] w-[25px] focus:shadow-green-50 focus:shadow-[0_0_0_2px]'
+              className='inline-flex absolute justify-center items-center text-green-100 rounded-full appearance-none hover:bg-gray-800 focus:outline-none top-[10px] right-[10px] h-[25px] w-[25px] focus:shadow-gray-800 focus:shadow-[0_0_0_2px]'
               aria-label='Close'
             >
               <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='currentColor' className='w-6 h-6'>

@@ -58,6 +58,32 @@ class SkillRepositoryPostgres implements SkillRepository {
       throw new InternalServerError(`Failed to update skill with id ${skillId}`);
     }
   }
+
+  async deleteSkill(skillId: string): Promise<void> {
+    try {
+      await this.prisma.skill.delete({ where: { id: skillId } });
+    } catch (error) {
+      console.error(error);
+      throw new InternalServerError(`Failed to delete skill with id ${skillId}`);
+    }
+  }
+
+  async getSkillById(skillId: string): Promise<Skill> {
+    try {
+      const skill = await this.prisma.skill.findUnique({ where: { id: skillId } });
+      if (!skill) {
+        throw new NotFoundError(`Skill with id ${skillId} is not found`);
+      }
+
+      return skill;
+    } catch (error) {
+      console.error(error);
+      if (error instanceof HTTPError) {
+        throw error;
+      }
+      throw new InternalServerError('Failed to get skill');
+    }
+  }
 }
 
 export default SkillRepositoryPostgres;

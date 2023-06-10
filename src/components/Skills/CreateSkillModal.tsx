@@ -42,7 +42,13 @@ const CreateSkillModal = ({ skillCategories, currentCategory }: Props) => {
 
         return data;
       },
-      error: (err) => err,
+      error: (err) => {
+        if (err instanceof Error) {
+          return err.message;
+        }
+
+        return 'Error!';
+      },
     }, {
       duration: 5000,
       style: {
@@ -78,7 +84,7 @@ const CreateSkillModal = ({ skillCategories, currentCategory }: Props) => {
 
   return (
     <Dialog.Root open={open} onOpenChange={toggleModal}>
-      <Dialog.Trigger className='block flex flex-col items-center py-6 space-y-2 bg-white rounded-lg border border-gray-200 shadow md:py-12 dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-200 group dark:hover:bg-gray-700'>
+      <Dialog.Trigger className='block flex flex-col items-center py-6 space-y-2 bg-white rounded-lg border border-gray-200 shadow dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-200 group dark:hover:bg-gray-700'>
         <div className='m-auto'>
           <svg
             xmlns='http://www.w3.org/2000/svg'
@@ -176,7 +182,7 @@ const CreateSkillModal = ({ skillCategories, currentCategory }: Props) => {
           </form>
           <Dialog.Close asChild>
             <button
-              className='inline-flex absolute justify-center items-center text-green-100 rounded-full appearance-none hover:bg-gray-800 focus:outline-none top-[10px] right-[10px] h-[25px] w-[25px] focus:shadow-green-50 focus:shadow-[0_0_0_2px]'
+              className='inline-flex absolute justify-center items-center text-green-100 rounded-full appearance-none hover:bg-gray-800 focus:outline-none top-[10px] right-[10px] h-[25px] w-[25px] focus:shadow-gray-800 focus:shadow-[0_0_0_2px]'
               aria-label='Close'
             >
               <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='currentColor' className='w-6 h-6'>
