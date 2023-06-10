@@ -59,7 +59,7 @@ class SkillService {
     };
   }
 
-  async verifySkillAvailability(skillId: string) {
+  private async verifySkillAvailability(skillId: string) {
     return this.skillRepo.getSkillById(skillId);
   }
 
