@@ -64,8 +64,28 @@ model SkillCategory {
 model Skill {
   id         String         @id @default(cuid())
   name       String
-  category   SkillCategory? @relation(fields: [categoryId], references: [id], onDelete: SetNull, onUpdate: Cascade)
-  categoryId String?
   photoUrl   String
   photoId    String
+  projects   Project[]
+  category   SkillCategory? @relation(fields: [categoryId], references: [id], onDelete: SetNull, onUpdate: Cascade)
+  categoryId String?
+}
+
+model ProjectCategory {
+  id       String    @id @default(cuid())
+  name     String
+  projects Project[]
+}
+
+model Project {
+  id         String           @id @default(cuid())
+  name       String
+  desc       String
+  photoUrl   String
+  photoId    String
+  techStack  Skill[]
+  repoUrl    String?
+  demoUrl    String?
+  category   ProjectCategory? @relation(fields: [categoryId], references: [id], onDelete: SetNull, onUpdate: Cascade)
+  categoryId String?
 }
