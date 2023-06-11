@@ -96,8 +96,8 @@ const UpdateSkillModal = ({ skillCategories, currentCategory, oldData }: Props) 
         </svg>
       </Dialog.Trigger>
       <Dialog.Portal>
-        <Dialog.Overlay className='fixed inset-0 bg-black/75' />
-        <Dialog.Content className='fixed top-[50%] left-[50%] max-h-[85vh] w-[90vw] max-w-[450px] translate-x-[-50%] translate-y-[-50%] rounded-[6px] bg-light-bg-primary dark:bg-dark-bg-primary p-[25px] outline-none'>
+        <Dialog.Overlay className='fixed inset-0 z-50 bg-black/75' />
+        <Dialog.Content className='fixed top-[50%] left-[50%] max-h-[85vh] w-[90vw] max-w-[450px] translate-x-[-50%] translate-y-[-50%] rounded-[6px] bg-light-bg-primary dark:bg-dark-bg-primary p-[25px] outline-none z-50'>
           <Dialog.Title className='mb-2 text-xl font-medium'>Edit {oldData.name} data</Dialog.Title>
           <form onSubmit={handleSubmit} encType='multipart/form-data'>
             <div className='space-y-6'>
