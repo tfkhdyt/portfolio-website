@@ -23,7 +23,7 @@ const Card = ({ skill, currentCategory, skillCategories }: Props) => {
           style={{ objectFit: 'contain' }}
           className='grayscale group-hover:grayscale-0'
           sizes='(max-width: 768px) 50vw, (max-width: 1200px) 25vw, 25vw'
-          priority={skill.categoryId === 'Language'}
+          priority={skill.categoryId === skillCategories[0].id}
         />
       </div>
       <h1 className='font-medium tracking-tight text-center text-gray-900 md:text-lg dark:text-white'>
