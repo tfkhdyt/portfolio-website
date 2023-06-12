@@ -2,7 +2,7 @@ import { CreateSkillRequest, UpdateSkillRequest } from '@/domains/skill/SkillDto
 import SkillRepository from '@/domains/skill/SkillRepository';
 import { imagekit } from '@/lib/imagekit';
 import { prisma } from '@/lib/prisma';
-import { HTTPError, InternalServerError } from '@/utils/error';
+import { InternalServerError } from '@/utils/error';
 import SkillRepositoryPostgres from './repositories/SkillRepositoryPostgres';
 
 import ImageKit from 'imagekit';
@@ -17,12 +17,12 @@ class SkillService {
     this.skillRepo.getSkillCategoryById(categoryId);
   }
 
-  private async uploadImage(image: File, folder: string) {
+  private async uploadImage(image: File) {
     try {
       const { url, fileId } = await this.imagekit.upload({
         file: Buffer.from(await image.arrayBuffer()),
         fileName: image.name,
-        folder,
+        folder: '/tech',
       });
 
       return { photoUrl: url, photoId: fileId };
@@ -40,7 +40,7 @@ class SkillService {
   async createSkill(payload: CreateSkillRequest) {
     await this.verifyCategoryId(payload.categoryId);
 
-    const { photoUrl, photoId } = await this.uploadImage(payload.photo, '/tech');
+    const { photoUrl, photoId } = await this.uploadImage(payload.photo);
 
     const createdSkill = await this.skillRepo.createSkill({
       name: payload.name,
@@ -73,7 +73,7 @@ class SkillService {
     let photoUrl: string | undefined;
     let photoId: string | undefined;
     if (payload.photo) {
-      const result = await this.uploadImage(payload.photo, '/tech');
+      const result = await this.uploadImage(payload.photo);
       photoUrl = result.photoUrl;
       photoId = result.photoId;
     }
@@ -89,7 +89,7 @@ class SkillService {
       photoId,
     });
 
-    if (photoId) {
+    if (oldSkill.photoId) {
       await this.deleteImage(oldSkill.photoId);
     }
 
@@ -103,9 +103,6 @@ class SkillService {
       await this.imagekit.deleteFile(photoId);
     } catch (error) {
       console.error(error);
-      if (error instanceof HTTPError) {
-        throw error;
-      }
       throw new InternalServerError(`Failed to delete image with id ${photoId}`);
     }
   }
