@@ -135,21 +135,17 @@ const CreateSkillModal = ({ skillCategories, currentCategory }: Props) => {
                   Category
                   <span className='ml-1 text-red-100'>*</span>
                 </label>
-                {skillCategories
-                  ? (
-                    <select
-                      id='category'
-                      className='block p-2.5 w-full text-gray-900 bg-gray-100 rounded-lg border border-gray-300 outline-none dark:placeholder-gray-400 dark:text-white dark:bg-gray-700 dark:border-gray-600 focus:border-blue-100 focus:ring-blue-100 dark:focus:ring-blue-100 dark:focus:border-blue-100'
-                      value={category}
-                      onChange={(e) => setCategory(e.target.value)}
-                      required
-                    >
-                      {skillCategories.map((category) => (
-                        <option value={category.id} key={category.id}>{category.name}</option>
-                      ))}
-                    </select>
-                  )
-                  : <p>Loading...</p>}
+                <select
+                  id='category'
+                  className='block p-2.5 w-full text-gray-900 bg-gray-100 rounded-lg border border-gray-300 outline-none dark:placeholder-gray-400 dark:text-white dark:bg-gray-700 dark:border-gray-600 focus:border-blue-100 focus:ring-blue-100 dark:focus:ring-blue-100 dark:focus:border-blue-100'
+                  value={category}
+                  onChange={(e) => setCategory(e.target.value)}
+                  required
+                >
+                  {skillCategories.map((category) => (
+                    <option value={category.id} key={category.id}>{category.name}</option>
+                  ))}
+                </select>
               </div>
               <div>
                 <label
