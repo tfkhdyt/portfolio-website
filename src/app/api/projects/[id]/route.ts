@@ -1,6 +1,6 @@
 import { authOptions } from '@/lib/nextAuth';
 import { projectService } from '@/project/ProjectService';
-import { HTTPError, UnauthenticatedError, UnprocessableEntityError } from '@/utils/error';
+import { BadRequestError, HTTPError, UnauthenticatedError, UnprocessableEntityError } from '@/utils/error';
 
 import { getServerSession } from 'next-auth/next';
 import { NextResponse } from 'next/server';
@@ -99,6 +99,47 @@ export const PUT = async (req: Request, {
 
     return NextResponse.json({
       error: `Failed to update project with id ${id}`,
+    }, { status: 500 });
+  }
+};
+
+const deleteProjectSchema = z.object({
+  id: z
+    .string({
+      required_error: 'Id is required',
+      invalid_type_error: 'id must be a string',
+    })
+    .cuid('Id is invalid'),
+});
+
+export const DELETE = async (_: Request, {
+  params,
+}: {
+  params: { id: string };
+}) => {
+  const id = params.id;
+
+  try {
+    const session = await getServerSession(authOptions);
+    if (!session) {
+      throw new UnauthenticatedError('You should login first to access this endpoint');
+    }
+
+    const result = deleteProjectSchema.safeParse({ id });
+    if (!result.success) {
+      throw new BadRequestError(result.error.issues[0].message);
+    }
+
+    const response = await projectService.deleteProject(id);
+
+    return NextResponse.json(response);
+  } catch (error) {
+    if (error instanceof HTTPError) {
+      return NextResponse.json({ error: error.message }, { status: error.statusCode });
+    }
+
+    return NextResponse.json({
+      error: `Failed to delete skill with id ${id}`,
     }, { status: 500 });
   }
 };

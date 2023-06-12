@@ -122,6 +122,16 @@ class ProjectService {
       message: `${updatedProject.name} has been updated`,
     };
   }
+
+  async deleteProject(projectId: string) {
+    const project = await this.verifyProjectAvailability(projectId);
+    await this.projectRepo.deleteProject(projectId);
+    await this.deleteImage(project.photoId);
+
+    return {
+      message: `${project.name} has been deleted`,
+    };
+  }
 }
 
 const projectRepo = new ProjectRepositoryPostgres(prisma);
