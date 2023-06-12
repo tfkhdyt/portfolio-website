@@ -83,6 +83,6 @@ export const POST = async (req: Request) => {
       return NextResponse.json({ error: error.message }, { status: error.statusCode });
     }
 
-    return NextResponse.json({ error: 'Failed to create new skill' }, { status: 500 });
+    return NextResponse.json({ error: 'Failed to create new project' }, { status: 500 });
   }
 };
