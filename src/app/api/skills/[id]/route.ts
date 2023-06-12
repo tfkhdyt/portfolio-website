@@ -25,6 +25,7 @@ const updateSkillSchema = z.object({
     })
     .cuid('Category id is invalid')
     .optional(),
+  photo: z.instanceof(File).or(z.null()),
 });
 
 export const PUT = async (req: Request, {
@@ -46,17 +47,16 @@ export const PUT = async (req: Request, {
       id,
       name: formData.get('name'),
       categoryId: formData.get('category'),
+      photo: formData.get('photo'),
     });
     if (!result.success) {
       throw new UnprocessableEntityError(result.error.issues[0].message);
     }
 
-    const photo = formData.get('photo') as File | undefined;
-
     const response = await skillService.updateSkill(result.data.id, {
       name: result.data.name,
       categoryId: result.data.categoryId,
-      photo,
+      photo: result.data.photo ?? undefined,
     });
 
     return NextResponse.json(response);
