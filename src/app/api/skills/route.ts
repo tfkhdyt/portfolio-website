@@ -2,7 +2,7 @@ import { authOptions } from '@/lib/nextAuth';
 import { skillService } from '@/skill/SkillService';
 import { HTTPError, UnauthenticatedError, UnprocessableEntityError } from '@/utils/error';
 
-import { getServerSession } from 'next-auth';
+import { getServerSession } from 'next-auth/next';
 import { NextResponse } from 'next/server';
 import { z } from 'zod';
 
