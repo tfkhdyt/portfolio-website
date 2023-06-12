@@ -3,9 +3,10 @@
 import { themeAtom } from '@/stores/theme';
 
 import { useAtomValue } from 'jotai';
-import { FormEvent, useState } from 'react';
-import toast, { Toaster } from 'react-hot-toast';
+import { FormEvent, useEffect, useState } from 'react';
+import toast from 'react-hot-toast';
 import { z } from 'zod';
+import LoadingIcon from '../LoadingIcon';
 
 type FormError = {
   name?: string;
@@ -38,6 +39,11 @@ const Form = () => {
   const [message, setMessage] = useState('');
   const [errors, setErrors] = useState<FormError>();
   const isDarkMode = useAtomValue(themeAtom);
+  const [isLoading, setIsLoading] = useState(false);
+
+  useEffect(() => {
+    console.log({ isLoading });
+  }, [isLoading]);
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -64,12 +70,13 @@ const Form = () => {
         setEmail('');
         setMessage('');
 
-        return data.message;
+        return data;
       },
       error: (err) => {
         console.error(err);
+        if (err instanceof Error) return err.message;
 
-        return err.message;
+        return 'Error!';
       },
     }, {
       duration: 5000,
@@ -80,21 +87,27 @@ const Form = () => {
     });
   };
 
-  const sendMessage = (form: FormBody): Promise<{ message: string }> =>
-    new Promise(async (resolve, reject) => {
-      const res = await fetch('/api/message', {
-        body: JSON.stringify(form),
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        method: 'POST',
-      });
-      const result = await res.json();
-      if (!res.ok) {
-        return reject(result);
-      }
+  const sendMessage = (form: FormBody) =>
+    new Promise<string>(async (resolve, reject) => {
+      try {
+        setIsLoading(true);
+        const res = await fetch('/api/messages', {
+          body: JSON.stringify(form),
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          method: 'POST',
+        });
+        const result = await res.json();
 
-      resolve(result);
+        if (!res.ok) throw new Error(result.error);
+
+        resolve(result.message);
+      } catch (error) {
+        reject(error);
+      } finally {
+        setIsLoading(false);
+      }
     });
 
   return (
@@ -156,18 +169,19 @@ const Form = () => {
         </div>
         <button
           type='submit'
-          className='flex items-center py-2.5 px-5 mt-4 mr-2 mb-2 font-medium text-white bg-blue-100 rounded-lg dark:bg-blue-100 hover:bg-blue-200 focus:ring-4 focus:ring-blue-200 focus:outline-none dark:hover:bg-blue-200 dark:focus:ring-blue-200'
+          className='flex items-center py-2.5 px-5 mt-4 mr-2 mb-2 font-medium text-white bg-blue-100 rounded-lg dark:bg-blue-100 hover:bg-blue-200 focus:ring-4 focus:ring-blue-200 focus:outline-none disabled:cursor-wait dark:hover:bg-blue-200 dark:focus:ring-blue-200'
+          disabled={isLoading}
         >
-          Send
-          <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='currentColor' className='ml-2 w-4 h-4'>
-            <path d='M3.478 2.405a.75.75 0 00-.926.94l2.432 7.905H13.5a.75.75 0 010 1.5H4.984l-2.432 7.905a.75.75 0 00.926.94 60.519 60.519 0 0018.445-8.986.75.75 0 000-1.218A60.517 60.517 0 003.478 2.405z' />
-          </svg>
+          {isLoading ? <LoadingIcon /> : (
+            <>
+              Send
+              <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='currentColor' className='ml-2 w-4 h-4'>
+                <path d='M3.478 2.405a.75.75 0 00-.926.94l2.432 7.905H13.5a.75.75 0 010 1.5H4.984l-2.432 7.905a.75.75 0 00.926.94 60.519 60.519 0 0018.445-8.986.75.75 0 000-1.218A60.517 60.517 0 003.478 2.405z' />
+              </svg>
+            </>
+          )}
         </button>
       </form>
-      <Toaster
-        position='bottom-right'
-        reverseOrder={false}
-      />
     </>
   );
 };

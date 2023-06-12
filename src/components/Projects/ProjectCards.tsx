@@ -1,13 +1,24 @@
 'use client';
 
-import { Category, projectCategories, projects } from '@/data/projects';
 import Tabs from '../Tabs';
 import ProjectCard from './Card';
 
+import { Project, ProjectCategory, Skill } from '@prisma/client';
+import { useSession } from 'next-auth/react';
 import { useState } from 'react';
+import CreateProjectModal from './CreateProjectModal';
 
-const ProjectCards = () => {
-  const [currentCategory, setCurrentCategory] = useState<Category>('Web');
+type Props = {
+  projects: (Project & {
+    techStack: Skill[];
+  })[];
+  projectCategories: ProjectCategory[];
+  skills: Skill[];
+};
+
+const ProjectCards = ({ projects, projectCategories, skills }: Props) => {
+  const [currentCategory, setCurrentCategory] = useState<ProjectCategory>(projectCategories[0]);
+  const { data: session } = useSession();
 
   return (
     <main className='mt-2'>
@@ -20,8 +31,24 @@ const ProjectCards = () => {
       </div>
       <div className='grid grid-cols-1 gap-6 mt-6 md:grid-cols-2'>
         {projects
-          .filter((project) => project.category === currentCategory)
-          .map((project, idx) => <ProjectCard project={project} idx={idx} key={project.name} />)}
+          .filter((project) => project.categoryId === currentCategory.id)
+          .map((project, idx) => (
+            <ProjectCard
+              project={project}
+              currentCategory={currentCategory}
+              projectCategories={projectCategories}
+              key={project.name}
+              idx={idx}
+              skills={skills}
+            />
+          ))}
+        {session && (
+          <CreateProjectModal
+            projectCategories={projectCategories}
+            currentCategory={currentCategory}
+            skills={skills}
+          />
+        )}
       </div>
     </main>
   );

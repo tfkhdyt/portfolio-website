@@ -1,31 +1,38 @@
-import { Project } from '@/data/projects';
-import { skills } from '@/data/skills';
+import UpdateProjectModal from './UpdateProjectModal';
 
+import { Project, ProjectCategory, Skill } from '@prisma/client';
+import { useSession } from 'next-auth/react';
 import Image from 'next/image';
 import Link from 'next/link';
+import DeleteProjectModal from './DeleteProjectModal';
 
 type Props = {
-  project: Project;
+  project: Project & {
+    techStack: Skill[];
+  };
+  currentCategory: ProjectCategory;
+  projectCategories: ProjectCategory[];
+  skills: Skill[];
   idx: number;
 };
 
-const ProjectCard = ({ project, idx }: Props) => {
+const ProjectCard = ({ project, currentCategory, projectCategories, skills, idx }: Props) => {
+  const { data: session } = useSession();
+
   return (
     <div
-      className='block flex flex-col bg-white rounded-lg border border-gray-200 shadow dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-200 group dark:hover:bg-gray-700'
+      className='flex relative flex-col bg-white rounded-lg border border-gray-200 shadow dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-200 group dark:hover:bg-gray-700'
       key={project.name}
     >
       <div className='relative w-full aspect-video'>
         <Image
-          src={project.photoUrl
-            ? `/img/projects/${project.photoUrl}`
-            : '/img/thumbnail.png'}
+          src={project.photoUrl}
           alt={project.name}
           fill
           style={{ objectFit: 'cover' }}
           className='rounded-t-lg grayscale group-hover:grayscale-0'
           sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 50vw'
-          priority={project.category === 'Web' && idx < 4}
+          priority={project.categoryId === projectCategories[0].id && idx < 4}
         />
       </div>
       <div className='flex flex-col justify-between p-4 space-y-2 h-full'>
@@ -33,9 +40,9 @@ const ProjectCard = ({ project, idx }: Props) => {
           <div className='flex justify-between items-start'>
             <p className='text-xl font-semibold'>{project.name}</p>
             <div className='flex space-x-1'>
-              {project.url?.repo && (
+              {project.repoUrl && (
                 <Link
-                  href={project.url.repo}
+                  href={project.repoUrl}
                   target='_blank'
                   aria-label={`${project.name}'s repository`}
                 >
@@ -60,9 +67,9 @@ const ProjectCard = ({ project, idx }: Props) => {
                   </button>
                 </Link>
               )}
-              {project.url?.demo && (
+              {project.demoUrl && (
                 <Link
-                  href={project.url.demo}
+                  href={project.demoUrl}
                   target='_blank'
                   aria-label={`${project.name}'s demo`}
                 >
@@ -94,23 +101,33 @@ const ProjectCard = ({ project, idx }: Props) => {
           </p>
         </div>
         <div className='flex py-2 space-x-2'>
-          {skills
-            .filter((skill) => project.techStack.includes(skill.name))
+          {project.techStack
             .map((skill) => (
               <div className='relative w-6 h-6' key={skill.name}>
                 <Image
-                  src={`/img/tech/${skill.photoUrl}`}
+                  src={skill.photoUrl}
                   alt={skill.name}
                   fill
                   style={{ objectFit: 'contain' }}
                   className='grayscale group-hover:grayscale-0'
                   sizes='(max-width: 768px) 8vw, (max-width: 1200px) 16vw, 32vw'
-                  priority={project.category === 'Web'}
+                  priority={project.categoryId === projectCategories[0].id}
                 />
               </div>
             ))}
         </div>
       </div>
+      {session && (
+        <div className='flex absolute inset-x-0 bottom-0 font-medium text-white opacity-0 group-hover:opacity-100 justify-stretch'>
+          <UpdateProjectModal
+            currentCategory={currentCategory}
+            oldData={project}
+            projectCategories={projectCategories}
+            skills={skills}
+          />
+          <DeleteProjectModal oldData={project} />
+        </div>
+      )}
     </div>
   );
 };
