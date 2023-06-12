@@ -6,7 +6,7 @@ import { ProjectCategory, Skill } from '@prisma/client';
 import * as Dialog from '@radix-ui/react-dialog';
 import { useAtomValue } from 'jotai';
 import { useRouter } from 'next/navigation';
-import { FormEvent, useEffect, useState } from 'react';
+import { FormEvent, useState } from 'react';
 import { toast } from 'react-hot-toast';
 
 type Props = {
@@ -28,10 +28,6 @@ const CreateProjectModal = ({ projectCategories, currentCategory, skills }: Prop
   const [category, setCategory] = useState<ProjectCategory['id']>(currentCategory.id);
 
   const router = useRouter();
-
-  useEffect(() => {
-    console.log(category);
-  }, [category]);
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
