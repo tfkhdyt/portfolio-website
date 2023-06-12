@@ -35,9 +35,11 @@ const ProjectCards = ({ projects, projectCategories, skills }: Props) => {
           .map((project, idx) => (
             <ProjectCard
               project={project}
+              currentCategory={currentCategory}
               projectCategories={projectCategories}
               key={project.name}
               idx={idx}
+              skills={skills}
             />
           ))}
         {session && (

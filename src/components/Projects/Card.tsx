@@ -1,4 +1,7 @@
+import UpdateProjectModal from './UpdateProjectModal';
+
 import { Project, ProjectCategory, Skill } from '@prisma/client';
+import { useSession } from 'next-auth/react';
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -6,14 +9,18 @@ type Props = {
   project: Project & {
     techStack: Skill[];
   };
+  currentCategory: ProjectCategory;
   projectCategories: ProjectCategory[];
+  skills: Skill[];
   idx: number;
 };
 
-const ProjectCard = ({ project, projectCategories, idx }: Props) => {
+const ProjectCard = ({ project, currentCategory, projectCategories, skills, idx }: Props) => {
+  const { data: session } = useSession();
+
   return (
     <div
-      className='block flex flex-col bg-white rounded-lg border border-gray-200 shadow dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-200 group dark:hover:bg-gray-700'
+      className='flex relative flex-col bg-white rounded-lg border border-gray-200 shadow dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-200 group dark:hover:bg-gray-700'
       key={project.name}
     >
       <div className='relative w-full aspect-video'>
@@ -109,6 +116,17 @@ const ProjectCard = ({ project, projectCategories, idx }: Props) => {
             ))}
         </div>
       </div>
+      {session && (
+        <div className='flex absolute inset-x-0 bottom-0 font-medium text-white opacity-0 group-hover:opacity-100 justify-stretch'>
+          <UpdateProjectModal
+            currentCategory={currentCategory}
+            oldData={project}
+            projectCategories={projectCategories}
+            skills={skills}
+          />
+          {/* <DeleteSkillModal oldData={skill} /> */}
+        </div>
+      )}
     </div>
   );
 };
