@@ -114,7 +114,7 @@ class ProjectService {
       },
     });
 
-    if (oldProject.photoId) {
+    if (photoId) {
       await this.deleteImage(oldProject.photoId);
     }
 

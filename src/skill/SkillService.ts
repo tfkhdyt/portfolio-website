@@ -89,7 +89,7 @@ class SkillService {
       photoId,
     });
 
-    if (oldSkill.photoId) {
+    if (photoId) {
       await this.deleteImage(oldSkill.photoId);
     }
 
