@@ -1,12 +1,13 @@
 import { themeAtom } from '@/stores/theme';
 
+import TechPicker from './TechPicker';
+
 import { ProjectCategory, Skill } from '@prisma/client';
 import * as Dialog from '@radix-ui/react-dialog';
 import { useAtomValue } from 'jotai';
 import { useRouter } from 'next/navigation';
-import { FormEvent, useState } from 'react';
+import { FormEvent, useEffect, useState } from 'react';
 import { toast } from 'react-hot-toast';
-import TechPicker from './TechPicker';
 
 type Props = {
   projectCategories: ProjectCategory[];
@@ -21,59 +22,62 @@ const CreateProjectModal = ({ projectCategories, currentCategory, skills }: Prop
   const [name, setName] = useState('');
   const [desc, setDesc] = useState('');
   const [photo, setPhoto] = useState<File | null>();
-  const [techStack, setTechStack] = useState(skills.map((skill) => ({
-    id: skill.id,
-    name: skill.name,
-    checked: false,
-  })));
+  const [techStack, setTechStack] = useState<string[]>([]);
   const [repoUrl, setRepoUrl] = useState('');
   const [demoUrl, setDemoUrl] = useState('');
   const [category, setCategory] = useState<ProjectCategory['id']>(currentCategory.id);
 
   const router = useRouter();
 
+  useEffect(() => {
+    console.log(category);
+  }, [category]);
+
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    if (!name || !desc || !techStack || !category || !photo) {
-      return;
-    }
+    const body = new FormData();
+    body.append('name', name);
+    body.append('desc', desc);
+    body.append('photo', photo as File);
+    body.append('techStack', JSON.stringify(techStack));
+    body.append('repoUrl', repoUrl);
+    body.append('demoUrl', demoUrl);
+    body.append('category', category);
 
-    console.log(techStack);
+    toast.promise(sendData(body), {
+      loading: 'Loading',
+      success: (data) => {
+        toggleModal(false);
+        router.refresh();
 
-    // const body = new FormData();
-    // body.append('name', name);
-    // body.append('category', category);
-    // body.append('photo', photo);
-    //
-    // toast.promise(sendData(body), {
-    //   loading: 'Loading',
-    //   success: (data) => {
-    //     toggleModal(false);
-    //     router.refresh();
-    //
-    //     return data;
-    //   },
-    //   error: (err) => {
-    //     if (err instanceof Error) {
-    //       return err.message;
-    //     }
-    //
-    //     return 'Error!';
-    //   },
-    // }, {
-    //   duration: 5000,
-    //   style: {
-    //     background: isDarkMode ? '#2e2e2e' : '#ebdbb2',
-    //     color: isDarkMode ? '#ebdbb2' : '#2e2e2e',
-    //   },
-    // });
+        return data;
+      },
+      error: (err) => {
+        if (err instanceof Error) {
+          return err.message;
+        }
+
+        return 'Error!';
+      },
+    }, {
+      duration: 5000,
+      style: {
+        background: isDarkMode ? '#2e2e2e' : '#ebdbb2',
+        color: isDarkMode ? '#ebdbb2' : '#2e2e2e',
+      },
+    });
   };
 
   const toggleModal = (open: boolean) => {
     setName('');
-    setCategory(currentCategory.id);
+    setDesc('');
     setPhoto(null);
+    setTechStack([]);
+    setRepoUrl('');
+    setDemoUrl('');
+    setCategory(currentCategory.id);
+
     setOpen(open);
   };
 
@@ -220,25 +224,23 @@ const CreateProjectModal = ({ projectCategories, currentCategory, skills }: Prop
                     Category
                     <span className='ml-1 text-red-100'>*</span>
                   </label>
-                  {projectCategories
-                    ? (
-                      <select
-                        id='category'
-                        className='block p-2.5 w-32 text-gray-900 bg-gray-100 rounded-lg border border-gray-300 outline-none dark:placeholder-gray-400 dark:text-white dark:bg-gray-700 dark:border-gray-600 focus:border-blue-100 focus:ring-blue-100 dark:focus:ring-blue-100 dark:focus:border-blue-100'
-                        value={category}
-                        onChange={(e) => setCategory(e.target.value)}
-                        required
-                      >
-                        {projectCategories.map((category) => (
-                          <option value={category.id} key={category.id}>{category.name}</option>
-                        ))}
-                      </select>
-                    )
-                    : <p>Loading...</p>}
+                  <select
+                    id='category'
+                    className='block p-2.5 w-32 text-gray-900 bg-gray-100 rounded-lg border border-gray-300 outline-none dark:placeholder-gray-400 dark:text-white dark:bg-gray-700 dark:border-gray-600 focus:border-blue-100 focus:ring-blue-100 dark:focus:ring-blue-100 dark:focus:border-blue-100'
+                    value={category}
+                    onChange={(e) => setCategory(e.target.value)}
+                    required
+                  >
+                    {projectCategories.map((ctgry) => <option value={ctgry.id} key={ctgry.id}>{ctgry.name}</option>)}
+                  </select>
                 </div>
               </div>
               <div className='space-y-6 md:w-3/6'>
-                <TechPicker techStack={techStack} setTechStack={setTechStack} />
+                <TechPicker
+                  techStack={techStack}
+                  setTechStack={setTechStack}
+                  skills={skills}
+                />
               </div>
             </div>
             <button

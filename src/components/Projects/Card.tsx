@@ -6,12 +6,11 @@ type Props = {
   project: Project & {
     techStack: Skill[];
   };
-  currentCategory: ProjectCategory;
   projectCategories: ProjectCategory[];
   idx: number;
 };
 
-const ProjectCard = ({ project, currentCategory, projectCategories, idx }: Props) => {
+const ProjectCard = ({ project, projectCategories, idx }: Props) => {
   return (
     <div
       className='block flex flex-col bg-white rounded-lg border border-gray-200 shadow dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-200 group dark:hover:bg-gray-700'
@@ -19,9 +18,7 @@ const ProjectCard = ({ project, currentCategory, projectCategories, idx }: Props
     >
       <div className='relative w-full aspect-video'>
         <Image
-          src={project.photoUrl
-            ? `/img/projects/${project.photoUrl}`
-            : '/img/thumbnail.png'}
+          src={project.photoUrl}
           alt={project.name}
           fill
           style={{ objectFit: 'cover' }}
@@ -100,7 +97,7 @@ const ProjectCard = ({ project, currentCategory, projectCategories, idx }: Props
             .map((skill) => (
               <div className='relative w-6 h-6' key={skill.name}>
                 <Image
-                  src={`/img/tech/${skill.photoUrl}`}
+                  src={skill.photoUrl}
                   alt={skill.name}
                   fill
                   style={{ objectFit: 'contain' }}

@@ -36,7 +36,6 @@ const ProjectCards = ({ projects, projectCategories, skills }: Props) => {
             <ProjectCard
               project={project}
               projectCategories={projectCategories}
-              currentCategory={currentCategory}
               key={project.name}
               idx={idx}
             />
