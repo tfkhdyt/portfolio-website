@@ -6,6 +6,7 @@ import { useAtomValue } from 'jotai';
 import { useRouter } from 'next/navigation';
 import { FormEvent, useState } from 'react';
 import { toast } from 'react-hot-toast';
+import LoadingIcon from '../LoadingIcon';
 
 type Props = {
   skillCategories: SkillCategory[];
@@ -16,6 +17,7 @@ type Props = {
 const UpdateSkillModal = ({ skillCategories, currentCategory, oldData }: Props) => {
   const [open, setOpen] = useState(false);
   const isDarkMode = useAtomValue(themeAtom);
+  const [isLoading, setIsLoading] = useState(false);
 
   const [name, setName] = useState(oldData.name);
   const [category, setCategory] = useState<SkillCategory['id']>(oldData.categoryId || currentCategory.id);
@@ -72,6 +74,7 @@ const UpdateSkillModal = ({ skillCategories, currentCategory, oldData }: Props) 
   const sendData = (body: FormData) =>
     new Promise<string>(async (ok, err) => {
       try {
+        setIsLoading(true);
         const response = await fetch(`/api/skills/${oldData.id}`, {
           body,
           method: 'PUT',
@@ -84,6 +87,8 @@ const UpdateSkillModal = ({ skillCategories, currentCategory, oldData }: Props) 
       } catch (error) {
         console.log(error);
         err(error);
+      } finally {
+        setIsLoading(false);
       }
     });
 
@@ -161,9 +166,10 @@ const UpdateSkillModal = ({ skillCategories, currentCategory, oldData }: Props) 
               </div>
               <button
                 type='submit'
-                className='py-2.5 px-5 mt-4 mr-2 mb-2 text-sm font-medium text-white bg-blue-100 rounded-lg dark:bg-blue-100 hover:bg-blue-200 focus:ring-4 focus:ring-blue-200 focus:outline-none dark:hover:bg-blue-200 dark:focus:ring-blue-200'
+                className='py-2.5 px-5 mt-4 mr-2 mb-2 text-sm font-medium text-white bg-blue-100 rounded-lg dark:bg-blue-100 hover:bg-blue-200 focus:ring-4 focus:ring-blue-200 focus:outline-none disabled:cursor-wait dark:hover:bg-blue-200 dark:focus:ring-blue-200'
+                disabled={isLoading}
               >
-                Save
+                {isLoading ? <LoadingIcon /> : 'Save'}
               </button>
             </div>
           </form>

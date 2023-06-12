@@ -4,6 +4,7 @@ import { Project, ProjectCategory, Skill } from '@prisma/client';
 import { useSession } from 'next-auth/react';
 import Image from 'next/image';
 import Link from 'next/link';
+import DeleteProjectModal from './DeleteProjectModal';
 
 type Props = {
   project: Project & {
@@ -124,7 +125,7 @@ const ProjectCard = ({ project, currentCategory, projectCategories, skills, idx 
             projectCategories={projectCategories}
             skills={skills}
           />
-          {/* <DeleteSkillModal oldData={skill} /> */}
+          <DeleteProjectModal oldData={project} />
         </div>
       )}
     </div>

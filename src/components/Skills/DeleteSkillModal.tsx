@@ -6,6 +6,7 @@ import { useAtomValue } from 'jotai';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import { toast } from 'react-hot-toast';
+import LoadingIcon from '../LoadingIcon';
 
 type Props = {
   oldData: Skill;
@@ -14,6 +15,7 @@ type Props = {
 const DeleteSkillModal = ({ oldData }: Props) => {
   const [open, setOpen] = useState(false);
   const isDarkMode = useAtomValue(themeAtom);
+  const [isLoading, setIsLoading] = useState(false);
 
   const router = useRouter();
 
@@ -49,6 +51,7 @@ const DeleteSkillModal = ({ oldData }: Props) => {
   const sendData = (id: string) =>
     new Promise<string>(async (ok, err) => {
       try {
+        setIsLoading(true);
         const response = await fetch(`/api/skills/${id}`, {
           method: 'DELETE',
         });
@@ -59,6 +62,8 @@ const DeleteSkillModal = ({ oldData }: Props) => {
         ok(result.message);
       } catch (error) {
         err(error);
+      } finally {
+        setIsLoading(false);
       }
     });
 
@@ -87,12 +92,13 @@ const DeleteSkillModal = ({ oldData }: Props) => {
           <Dialog.Description className='mb-3 text-lg leading-normal dark:text-gray-200 text-light-fg-secondary mt-[10px]'>
             Are you sure want to delete {oldData.name}?
           </Dialog.Description>
-          <div>
+          <div className='flex items-center'>
             <button
-              className='py-2.5 px-5 mt-2 mr-2 text-sm font-medium text-white bg-red-100 rounded-lg outline-none dark:bg-red-100 hover:bg-red-200 focus:ring-4 focus:ring-red-200 dark:hover:bg-red-200 dark:focus:ring-red-200'
+              className='py-2.5 px-5 mt-2 mr-2 text-sm font-medium text-white bg-red-100 rounded-lg outline-none dark:bg-red-100 hover:bg-red-200 focus:ring-4 focus:ring-red-200 disabled:cursor-wait dark:hover:bg-red-200 dark:focus:ring-red-200'
               onClick={() => handleDelete(oldData.id)}
+              disabled={isLoading}
             >
-              Yes, delete it
+              {isLoading ? <LoadingIcon /> : 'Yes, delete it'}
             </button>
             <button
               className='py-2.5 px-5 mt-2 mr-2 text-sm font-medium text-white bg-gray-100 rounded-lg outline-none dark:bg-gray-800 hover:bg-gray-200 focus:ring-4 focus:ring-gray-200 dark:hover:bg-gray-700 dark:focus:ring-gray-600'

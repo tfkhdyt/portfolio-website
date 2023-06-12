@@ -6,6 +6,7 @@ import { useAtomValue } from 'jotai';
 import { useRouter } from 'next/navigation';
 import { FormEvent, useState } from 'react';
 import { toast } from 'react-hot-toast';
+import LoadingIcon from '../LoadingIcon';
 import TechPicker from './TechPicker';
 
 type Props = {
@@ -20,6 +21,7 @@ type Props = {
 const UpdateProjectModal = ({ projectCategories, currentCategory, oldData, skills }: Props) => {
   const [open, setOpen] = useState(false);
   const isDarkMode = useAtomValue(themeAtom);
+  const [isLoading, setIsLoading] = useState(false);
 
   const [name, setName] = useState(oldData.name);
   const [desc, setDesc] = useState(oldData.desc);
@@ -86,6 +88,7 @@ const UpdateProjectModal = ({ projectCategories, currentCategory, oldData, skill
   const sendData = (body: FormData) =>
     new Promise<string>(async (ok, err) => {
       try {
+        setIsLoading(true);
         const response = await fetch(`/api/projects/${oldData.id}`, {
           body,
           method: 'PUT',
@@ -98,6 +101,8 @@ const UpdateProjectModal = ({ projectCategories, currentCategory, oldData, skill
       } catch (error) {
         console.log(error);
         err(error);
+      } finally {
+        setIsLoading(false);
       }
     });
 
@@ -234,9 +239,10 @@ const UpdateProjectModal = ({ projectCategories, currentCategory, oldData, skill
             </div>
             <button
               type='submit'
-              className='py-2.5 px-5 mt-6 mr-2 mb-2 text-sm font-medium text-white bg-blue-100 rounded-lg dark:bg-blue-100 hover:bg-blue-200 focus:ring-4 focus:ring-blue-200 focus:outline-none dark:hover:bg-blue-200 dark:focus:ring-blue-200'
+              className='py-2.5 px-5 mt-6 mr-2 mb-2 text-sm font-medium text-white bg-blue-100 rounded-lg dark:bg-blue-100 hover:bg-blue-200 focus:ring-4 focus:ring-blue-200 focus:outline-none disabled:cursor-wait dark:hover:bg-blue-200 dark:focus:ring-blue-200'
+              disabled={isLoading}
             >
-              Save
+              {isLoading ? <LoadingIcon /> : 'Save'}
             </button>
           </form>
           <Dialog.Close asChild>
