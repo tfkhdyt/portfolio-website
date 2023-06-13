@@ -1,5 +1,7 @@
 'use client';
 
+import avatar from '../../../public/img/tfkhdyt-avatar.svg';
+
 import { signIn, signOut, useSession } from 'next-auth/react';
 import Image from 'next/image';
 
@@ -9,7 +11,7 @@ const Avatar = () => {
   return (
     <div>
       <Image
-        src='/img/tfkhdyt-avatar.svg'
+        src={avatar}
         alt='tfkhdyt avatar'
         className='w-64 h-64 md:h-auto'
         width={300}

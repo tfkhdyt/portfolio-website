@@ -1,3 +1,4 @@
+import avatar from '../../../public/img/tfkhdyt-real-face.jpg';
 import Title from '../Title';
 
 import Image from 'next/image';
@@ -28,12 +29,13 @@ const AboutMeSection = () => {
       </div>
       <div className='pt-4 md:pr-6 md:w-2/6'>
         <Image
-          src='/img/tfkhdyt-real-face.jpg'
+          src={avatar}
           alt='My photo'
           height={256}
           width={256}
           className='mx-auto w-64 h-auto rounded-full'
           priority
+          placeholder='blur'
           sizes='(max-width: 768px) 256px, (max-width: 1200px) 224px, 256px'
         />
       </div>

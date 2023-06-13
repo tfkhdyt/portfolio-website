@@ -1,10 +1,11 @@
+import { thumbnailDataUrl } from '../../../public/img/thumbnail';
+import DeleteProjectModal from './DeleteProjectModal';
 import UpdateProjectModal from './UpdateProjectModal';
 
 import { Project, ProjectCategory, Skill } from '@prisma/client';
 import { useSession } from 'next-auth/react';
 import Image from 'next/image';
 import Link from 'next/link';
-import DeleteProjectModal from './DeleteProjectModal';
 
 type Props = {
   project: Project & {
@@ -16,7 +17,7 @@ type Props = {
   idx: number;
 };
 
-const ProjectCard = ({ project, currentCategory, projectCategories, skills, idx }: Props) => {
+const ProjectCard = ({ project, currentCategory, projectCategories, skills }: Props) => {
   const { data: session } = useSession();
 
   return (
@@ -32,9 +33,9 @@ const ProjectCard = ({ project, currentCategory, projectCategories, skills, idx 
           style={{ objectFit: 'cover' }}
           className='rounded-t-lg grayscale group-hover:grayscale-0'
           sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 50vw'
-          blurDataURL='/img/thumbnail-burik.png'
+          blurDataURL={thumbnailDataUrl}
           placeholder='blur'
-          priority={project.categoryId === projectCategories[0].id && idx < 4}
+          // priority={project.categoryId === projectCategories[0].id && idx < 4}
         />
       </div>
       <div className='flex flex-col justify-between p-4 space-y-2 h-full'>
@@ -113,7 +114,7 @@ const ProjectCard = ({ project, currentCategory, projectCategories, skills, idx 
                   style={{ objectFit: 'contain' }}
                   className='grayscale group-hover:grayscale-0'
                   sizes='(max-width: 768px) 8vw, (max-width: 1200px) 16vw, 32vw'
-                  priority={project.categoryId === projectCategories[0].id}
+                  // priority={project.categoryId === projectCategories[0].id}
                 />
               </div>
             ))}
