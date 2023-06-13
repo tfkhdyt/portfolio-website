@@ -1,51 +1,29 @@
 import { CreateSkillRequest, UpdateSkillRequest } from '@/domains/skill/SkillDto';
 import SkillRepository from '@/domains/skill/SkillRepository';
-import { imagekit } from '@/lib/imagekit';
-import { prisma } from '@/lib/prisma';
-import { InternalServerError } from '@/utils/error';
-import SkillRepositoryPostgres from './repositories/SkillRepositoryPostgres';
-
-import ImageKit from 'imagekit';
+import { deleteImage, uploadImage } from '@/utils/imagekit';
+import { getLQIP } from '@/utils/plaiceholder';
+import { skillRepo } from './repositories/SkillRepositoryPostgres';
 
 class SkillService {
   constructor(
     private readonly skillRepo: SkillRepository,
-    private readonly imagekit: ImageKit,
   ) {}
 
   private async verifyCategoryId(categoryId: string) {
     this.skillRepo.getSkillCategoryById(categoryId);
   }
 
-  private async uploadImage(image: File) {
-    try {
-      const { url, fileId } = await this.imagekit.upload({
-        file: Buffer.from(await image.arrayBuffer()),
-        fileName: image.name,
-        folder: '/tech',
-      });
-
-      return { photoUrl: url, photoId: fileId };
-    } catch (error) {
-      console.error(error);
-
-      if (error instanceof Error) {
-        throw new InternalServerError(error.message);
-      }
-
-      throw new InternalServerError('Failed to upload image');
-    }
-  }
-
   async createSkill(payload: CreateSkillRequest) {
     await this.verifyCategoryId(payload.categoryId);
 
-    const { photoUrl, photoId } = await this.uploadImage(payload.photo);
+    const { photoUrl, photoId } = await uploadImage(payload.photo, '/tech');
+    const lqip = await getLQIP(payload.photo);
 
     const createdSkill = await this.skillRepo.createSkill({
       name: payload.name,
       photoUrl,
       photoId,
+      lqip,
       category: {
         connect: {
           id: payload.categoryId,
@@ -54,7 +32,7 @@ class SkillService {
     });
 
     return {
-      message: 'New skill has been added',
+      message: `${createdSkill.name} has been added`,
       data: createdSkill,
     };
   }
@@ -72,10 +50,13 @@ class SkillService {
 
     let photoUrl: string | undefined;
     let photoId: string | undefined;
+    let lqip: string | undefined;
     if (payload.photo) {
-      const result = await this.uploadImage(payload.photo);
+      const result = await uploadImage(payload.photo, '/tech');
       photoUrl = result.photoUrl;
       photoId = result.photoId;
+
+      lqip = await getLQIP(payload.photo);
     }
 
     const updatedSkill = await this.skillRepo.updateSkill(skillId, {
@@ -87,30 +68,23 @@ class SkillService {
       },
       photoUrl,
       photoId,
+      lqip,
     });
 
     if (photoId) {
-      await this.deleteImage(oldSkill.photoId);
+      await deleteImage(oldSkill.photoId);
     }
 
     return {
       message: `${updatedSkill.name} has been updated`,
+      data: updatedSkill,
     };
-  }
-
-  private async deleteImage(photoId: string) {
-    try {
-      await this.imagekit.deleteFile(photoId);
-    } catch (error) {
-      console.error(error);
-      throw new InternalServerError(`Failed to delete image with id ${photoId}`);
-    }
   }
 
   async deleteSkill(skillId: string) {
     const skill = await this.verifySkillAvailability(skillId);
     await this.skillRepo.deleteSkill(skillId);
-    await this.deleteImage(skill.photoId);
+    await deleteImage(skill.photoId);
 
     return {
       message: `${skill.name} has been deleted`,
@@ -118,6 +92,4 @@ class SkillService {
   }
 }
 
-const skillRepo = new SkillRepositoryPostgres(prisma);
-
-export const skillService = new SkillService(skillRepo, imagekit);
+export const skillService = new SkillService(skillRepo);

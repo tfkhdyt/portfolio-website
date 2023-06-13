@@ -1,46 +1,23 @@
 import { CreateProjectRequest, UpdateProjectRequest } from '@/domains/project/ProjectDto';
 import ProjectRepository from '@/domains/project/ProjectRepository';
-import { imagekit } from '@/lib/imagekit';
-import { prisma } from '@/lib/prisma';
-import { InternalServerError } from '@/utils/error';
-import ProjectRepositoryPostgres from './repositories/ProjectRepositoryPostgres';
-
-import ImageKit from 'imagekit';
+import { deleteImage, uploadImage } from '@/utils/imagekit';
+import { getLQIP } from '@/utils/plaiceholder';
+import { projectRepo } from './repositories/ProjectRepositoryPostgres';
 
 class ProjectService {
   constructor(
     private readonly projectRepo: ProjectRepository,
-    private readonly imageKit: ImageKit,
   ) {}
 
   private async verifyCategoryId(categoryId: string) {
     this.projectRepo.getProjectCategoryById(categoryId);
   }
 
-  private async uploadImage(image: File) {
-    try {
-      const { url, fileId } = await this.imageKit.upload({
-        file: Buffer.from(await image.arrayBuffer()),
-        fileName: image.name,
-        folder: '/projects',
-      });
-
-      return { photoUrl: url, photoId: fileId };
-    } catch (error) {
-      console.error(error);
-
-      if (error instanceof Error) {
-        throw new InternalServerError(error.message);
-      }
-
-      throw new InternalServerError('Failed to upload image');
-    }
-  }
-
   async createProject(payload: CreateProjectRequest) {
     await this.verifyCategoryId(payload.categoryId);
 
-    const { photoUrl, photoId } = await this.uploadImage(payload.photo);
+    const { photoUrl, photoId } = await uploadImage(payload.photo, '/projects');
+    const lqip = await getLQIP(payload.photo);
 
     const techStackId = payload.techStack.map((tech) => ({ id: tech }));
 
@@ -49,6 +26,7 @@ class ProjectService {
       desc: payload.desc,
       photoId,
       photoUrl,
+      lqip,
       repoUrl: payload.repoUrl,
       demoUrl: payload.demoUrl,
       category: {
@@ -62,22 +40,13 @@ class ProjectService {
     });
 
     return {
-      message: 'New project has been added',
+      message: `${createdProject.name} has been added`,
       data: createdProject,
     };
   }
 
   private async verifyProjectAvailability(projectId: string) {
     return this.projectRepo.getProjectById(projectId);
-  }
-
-  private async deleteImage(photoId: string) {
-    try {
-      await this.imageKit.deleteFile(photoId);
-    } catch (error) {
-      console.error(error);
-      throw new InternalServerError(`Failed to delete image with id ${photoId}`);
-    }
   }
 
   async updateProject(projectId: string, payload: UpdateProjectRequest) {
@@ -89,10 +58,13 @@ class ProjectService {
 
     let photoUrl: string | undefined;
     let photoId: string | undefined;
+    let lqip: string | undefined;
     if (payload.photo) {
-      const result = await this.uploadImage(payload.photo);
+      const result = await uploadImage(payload.photo, '/projects');
       photoUrl = result.photoUrl;
       photoId = result.photoId;
+
+      lqip = await getLQIP(payload.photo);
     }
 
     const updatedProject = await this.projectRepo.updateProject(projectId, {
@@ -100,6 +72,7 @@ class ProjectService {
       desc: payload.desc,
       photoUrl,
       photoId,
+      lqip,
       repoUrl: payload.repoUrl,
       demoUrl: payload.demoUrl,
       category: {
@@ -115,18 +88,19 @@ class ProjectService {
     });
 
     if (photoId) {
-      await this.deleteImage(oldProject.photoId);
+      await deleteImage(oldProject.photoId);
     }
 
     return {
       message: `${updatedProject.name} has been updated`,
+      data: updatedProject,
     };
   }
 
   async deleteProject(projectId: string) {
     const project = await this.verifyProjectAvailability(projectId);
     await this.projectRepo.deleteProject(projectId);
-    await this.deleteImage(project.photoId);
+    await deleteImage(project.photoId);
 
     return {
       message: `${project.name} has been deleted`,
@@ -134,6 +108,4 @@ class ProjectService {
   }
 }
 
-const projectRepo = new ProjectRepositoryPostgres(prisma);
-
-export const projectService = new ProjectService(projectRepo, imagekit);
+export const projectService = new ProjectService(projectRepo);

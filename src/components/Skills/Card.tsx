@@ -23,6 +23,8 @@ const Card = ({ skill, currentCategory, skillCategories }: Props) => {
           style={{ objectFit: 'contain' }}
           className='grayscale group-hover:grayscale-0'
           sizes='(max-width: 768px) 50vw, (max-width: 1200px) 25vw, 25vw'
+          placeholder={skill.lqip ? 'blur' : undefined}
+          blurDataURL={skill.lqip ?? undefined}
           priority={skill.categoryId === skillCategories[0].id}
         />
       </div>

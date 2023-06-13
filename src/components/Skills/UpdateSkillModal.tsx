@@ -20,7 +20,7 @@ const UpdateSkillModal = ({ skillCategories, currentCategory, oldData }: Props) 
   const [isLoading, setIsLoading] = useState(false);
 
   const [name, setName] = useState(oldData.name);
-  const [category, setCategory] = useState<SkillCategory['id']>(oldData.categoryId || currentCategory.id);
+  const [category, setCategory] = useState<SkillCategory['id']>(oldData.categoryId ?? currentCategory.id);
   const [photo, setPhoto] = useState<File | null>();
 
   const router = useRouter();
@@ -66,7 +66,7 @@ const UpdateSkillModal = ({ skillCategories, currentCategory, oldData }: Props) 
 
   const toggleModal = (open: boolean) => {
     setName(oldData.name);
-    setCategory(oldData.categoryId || currentCategory.id);
+    setCategory(oldData.categoryId ?? currentCategory.id);
     setPhoto(null);
     setOpen(open);
   };

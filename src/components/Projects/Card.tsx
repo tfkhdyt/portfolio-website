@@ -17,7 +17,7 @@ type Props = {
   idx: number;
 };
 
-const ProjectCard = ({ project, currentCategory, projectCategories, skills }: Props) => {
+const ProjectCard = ({ project, currentCategory, projectCategories, skills, idx }: Props) => {
   const { data: session } = useSession();
 
   return (
@@ -33,9 +33,9 @@ const ProjectCard = ({ project, currentCategory, projectCategories, skills }: Pr
           style={{ objectFit: 'cover' }}
           className='rounded-t-lg grayscale group-hover:grayscale-0'
           sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 50vw'
-          blurDataURL={thumbnailDataUrl}
+          blurDataURL={project.lqip ?? thumbnailDataUrl}
           placeholder='blur'
-          // priority={project.categoryId === projectCategories[0].id && idx < 4}
+          priority={project.categoryId === projectCategories[0].id && idx < 4}
         />
       </div>
       <div className='flex flex-col justify-between p-4 space-y-2 h-full'>
@@ -114,7 +114,7 @@ const ProjectCard = ({ project, currentCategory, projectCategories, skills }: Pr
                   style={{ objectFit: 'contain' }}
                   className='grayscale group-hover:grayscale-0'
                   sizes='(max-width: 768px) 8vw, (max-width: 1200px) 16vw, 32vw'
-                  // priority={project.categoryId === projectCategories[0].id}
+                  priority={project.categoryId === projectCategories[0].id}
                 />
               </div>
             ))}
