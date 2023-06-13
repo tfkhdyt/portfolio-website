@@ -1,11 +1,12 @@
 import MessageRepository from '@/domains/message/MessageRepository';
+import { telegraf } from '@/lib/telegraf';
 import { InternalServerError } from '@/utils/error';
 
 import { Telegraf } from 'telegraf';
 
 const ADMIN_ID = process.env.ADMIN_ID as string;
 
-export default class MessageRepositoryTelegraf implements MessageRepository {
+class MessageRepositoryTelegraf implements MessageRepository {
   constructor(private readonly telegraf: Telegraf) {}
 
   async sendMessage(message: string) {
@@ -22,3 +23,5 @@ export default class MessageRepositoryTelegraf implements MessageRepository {
     }
   }
 }
+
+export const messageRepo = new MessageRepositoryTelegraf(telegraf);

@@ -1,4 +1,5 @@
 import SkillRepository from '@/domains/skill/SkillRepository';
+import { prisma } from '@/lib/prisma';
 import { HTTPError, InternalServerError, NotFoundError } from '@/utils/error';
 
 import { Prisma, PrismaClient, Skill, SkillCategory } from '@prisma/client';
@@ -86,4 +87,4 @@ class SkillRepositoryPostgres implements SkillRepository {
   }
 }
 
-export default SkillRepositoryPostgres;
+export const skillRepo = new SkillRepositoryPostgres(prisma);

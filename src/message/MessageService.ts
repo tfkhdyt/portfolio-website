@@ -1,7 +1,6 @@
 import { SendMessageRequest } from '@/domains/message/MessageDto';
 import MessageRepository from '@/domains/message/MessageRepository';
-import { telegraf } from '@/lib/telegraf';
-import MessageRepositoryTelegraf from './repositories/MessageRepositoryTelegraf';
+import { messageRepo } from './repositories/MessageRepositoryTelegraf';
 
 class MessageService {
   constructor(private readonly messageRepo: MessageRepository) {}
@@ -17,7 +16,5 @@ ${payload.message}`;
     };
   }
 }
-
-const messageRepo = new MessageRepositoryTelegraf(telegraf);
 
 export const messageService = new MessageService(messageRepo);

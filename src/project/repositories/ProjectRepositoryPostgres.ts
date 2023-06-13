@@ -1,8 +1,9 @@
 import ProjectRepository from '@/domains/project/ProjectRepository';
+import { prisma } from '@/lib/prisma';
 import { HTTPError, InternalServerError, NotFoundError } from '@/utils/error';
 import { Prisma, PrismaClient, Project, ProjectCategory } from '@prisma/client';
 
-export default class ProjectRepositoryPostgres implements ProjectRepository {
+class ProjectRepositoryPostgres implements ProjectRepository {
   constructor(private readonly prisma: PrismaClient) {}
 
   async createProject(project: Prisma.ProjectCreateInput) {
@@ -85,3 +86,5 @@ export default class ProjectRepositoryPostgres implements ProjectRepository {
     }
   }
 }
+
+export const projectRepo = new ProjectRepositoryPostgres(prisma);
