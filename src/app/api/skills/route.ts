@@ -19,7 +19,6 @@ const createSkillSchema = z.object({
       invalid_type_error: 'Category id must be a string',
     })
     .cuid('Category id is invalid'),
-  photo: z.instanceof(File),
 });
 
 export const POST = async (req: Request) => {
@@ -34,16 +33,17 @@ export const POST = async (req: Request) => {
     const result = createSkillSchema.safeParse({
       name: formData.get('name'),
       categoryId: formData.get('category'),
-      photo: formData.get('photo'),
     });
     if (!result.success) {
       throw new UnprocessableEntityError(result.error.issues[0].message);
     }
 
+    const photo = formData.get('photo') as File;
+
     const response = await skillService.createSkill({
       name: result.data.name,
       categoryId: result.data.categoryId,
-      photo: result.data.photo,
+      photo,
     });
 
     return NextResponse.json(response);

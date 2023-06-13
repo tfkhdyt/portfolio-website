@@ -18,7 +18,6 @@ const createProjectSchema = z.object({
       required_error: 'Description is required',
       invalid_type_error: 'Description must be a string',
     }),
-  photo: z.instanceof(File),
   techStack: z.array(
     z.string({
       required_error: 'Tech stack is required',
@@ -57,7 +56,6 @@ export const POST = async (req: Request) => {
     const result = createProjectSchema.safeParse({
       name: formData.get('name'),
       desc: formData.get('desc'),
-      photo: formData.get('photo'),
       techStack: JSON.parse(formData.get('techStack') as string),
       repoUrl: formData.get('repoUrl'),
       demoUrl: formData.get('demoUrl'),
@@ -67,12 +65,14 @@ export const POST = async (req: Request) => {
       throw new UnprocessableEntityError(result.error.issues[0].message);
     }
 
+    const photo = formData.get('photo') as File;
+
     const response = await projectService.createProject({
       name: result.data.name,
       desc: result.data.desc,
       repoUrl: result.data.repoUrl,
       demoUrl: result.data.demoUrl,
-      photo: result.data.photo,
+      photo,
       techStack: result.data.techStack,
       categoryId: result.data.categoryId,
     });
