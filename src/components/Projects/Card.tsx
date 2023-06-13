@@ -106,7 +106,7 @@ const ProjectCard = ({ project, currentCategory, projectCategories, skills, idx 
         <div className='flex py-2 space-x-2'>
           {project.techStack
             .map((skill) => (
-              <div className='relative w-6 h-6' key={skill.name}>
+              <div className='relative w-6 h-6' key={skill.name} title={skill.name}>
                 <Image
                   src={skill.photoUrl}
                   alt={skill.name}
@@ -115,6 +115,8 @@ const ProjectCard = ({ project, currentCategory, projectCategories, skills, idx 
                   className='grayscale group-hover:grayscale-0'
                   sizes='(max-width: 768px) 8vw, (max-width: 1200px) 16vw, 32vw'
                   priority={project.categoryId === projectCategories[0].id}
+                  placeholder={skill.lqip ? 'blur' : undefined}
+                  blurDataURL={skill.lqip ?? undefined}
                 />
               </div>
             ))}
