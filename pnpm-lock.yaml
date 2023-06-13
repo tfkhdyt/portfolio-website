@@ -53,9 +53,6 @@ dependencies:
   react-simple-typewriter:
     specifier: ^5.0.1
     version: 5.0.1(react-dom@18.2.0)(react@18.2.0)
-  sharp:
-    specifier: ^0.32.1
-    version: 0.32.1
   telegraf:
     specifier: ^4.12.2
     version: 4.12.2(encoding@0.1.13)
