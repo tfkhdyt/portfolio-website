@@ -27,9 +27,9 @@ const UpdateProjectModal = ({ projectCategories, currentCategory, oldData, skill
   const [desc, setDesc] = useState(oldData.desc);
   const [photo, setPhoto] = useState<File | null>();
   const [techStack, setTechStack] = useState<string[]>(oldData.techStack.map((tech) => tech.id));
-  const [repoUrl, setRepoUrl] = useState(oldData.repoUrl || '');
-  const [demoUrl, setDemoUrl] = useState(oldData.demoUrl || '');
-  const [category, setCategory] = useState<ProjectCategory['id']>(oldData.categoryId || currentCategory.id);
+  const [repoUrl, setRepoUrl] = useState(oldData.repoUrl ?? '');
+  const [demoUrl, setDemoUrl] = useState(oldData.demoUrl ?? '');
+  const [category, setCategory] = useState<ProjectCategory['id']>(oldData.categoryId ?? currentCategory.id);
 
   const router = useRouter();
 
@@ -78,9 +78,9 @@ const UpdateProjectModal = ({ projectCategories, currentCategory, oldData, skill
     setDesc(oldData.desc);
     setPhoto(null);
     setTechStack(oldData.techStack.map((tech) => tech.id));
-    setRepoUrl(oldData.repoUrl || '');
-    setDemoUrl(oldData.demoUrl || '');
-    setCategory(oldData.categoryId || currentCategory.id);
+    setRepoUrl(oldData.repoUrl ?? '');
+    setDemoUrl(oldData.demoUrl ?? '');
+    setCategory(oldData.categoryId ?? currentCategory.id);
 
     setOpen(open);
   };
