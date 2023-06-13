@@ -32,6 +32,8 @@ const ProjectCard = ({ project, currentCategory, projectCategories, skills, idx 
           style={{ objectFit: 'cover' }}
           className='rounded-t-lg grayscale group-hover:grayscale-0'
           sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 50vw'
+          blurDataURL='/img/thumbnail-burik.png'
+          placeholder='blur'
           priority={project.categoryId === projectCategories[0].id && idx < 4}
         />
       </div>
