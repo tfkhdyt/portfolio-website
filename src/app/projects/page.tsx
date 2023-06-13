@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   title: 'Projects - Taufik Hidayat',
 };
 
-export const revalidate = 0;
+// export const revalidate = 0;
 
 const ProjectsPage = async () => {
   const [projects, projectCategories, skills] = await Promise.all([
