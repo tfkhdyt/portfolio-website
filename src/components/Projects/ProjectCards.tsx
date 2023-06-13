@@ -35,6 +35,7 @@ const ProjectCards = ({ projects, projectCategories, skills }: Props) => {
             projectCategories={projectCategories}
             currentCategory={currentCategory}
             skills={skills}
+            key='add-project-btn'
           />
         )}
         {projects
