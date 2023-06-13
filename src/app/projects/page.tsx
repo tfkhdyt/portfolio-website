@@ -13,7 +13,7 @@ export const revalidate = 0;
 const ProjectsPage = async () => {
   const [projects, projectCategories, skills] = await Promise.all([
     prisma.project.findMany({
-      orderBy: { id: 'asc' },
+      orderBy: { id: 'desc' },
       include: {
         techStack: {
           orderBy: [
