@@ -2,10 +2,12 @@ import { cacheRepo } from '@/cache/repositories/CacheRepositoryRedis';
 import CacheRepository from '@/domains/cache/CacheRepository';
 import LQIPRepository from '@/domains/error/lqip/LQIPRepository';
 import ImageRepository from '@/domains/image/ImageRepository';
+import ProjectRepository from '@/domains/project/ProjectRepository';
 import { CreateSkillRequest, UpdateSkillRequest } from '@/domains/skill/SkillDto';
 import SkillRepository from '@/domains/skill/SkillRepository';
 import { imageRepo } from '@/image/repositories/ImageRepositoryImagekit';
 import { lqipRepo } from '@/lqip/repositories/LQIPRepositoryPlaiceholder';
+import { projectRepo } from '@/project/repositories/ProjectRepositoryPostgres';
 import { skillRepo } from './repositories/SkillRepositoryPostgres';
 
 class SkillService {
@@ -14,6 +16,7 @@ class SkillService {
     private readonly imageRepo: ImageRepository,
     private readonly lqipRepo: LQIPRepository,
     private readonly cacheRepo: CacheRepository,
+    private readonly projectRepo: ProjectRepository,
   ) {}
 
   private async verifyCategoryId(categoryId: string) {
@@ -136,6 +139,8 @@ class SkillService {
   async deleteSkill(skillId: string) {
     const skill = await this.verifySkillAvailability(skillId);
 
+    await this.projectRepo.disconnectTechStackBySkillId(skillId);
+
     await this.skillRepo.deleteSkill(skillId);
     await this.imageRepo.deleteImage(skill.photoId);
     await this.cacheRepo.delete('skills');
@@ -146,4 +151,10 @@ class SkillService {
   }
 }
 
-export const skillService = new SkillService(skillRepo, imageRepo, lqipRepo, cacheRepo);
+export const skillService = new SkillService(
+  skillRepo,
+  imageRepo,
+  lqipRepo,
+  cacheRepo,
+  projectRepo,
+);

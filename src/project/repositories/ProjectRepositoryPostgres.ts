@@ -160,11 +160,47 @@ class ProjectRepositoryPostgres implements ProjectRepository {
       return project;
     } catch (error) {
       console.error(error);
+
       if (error instanceof HTTPError) {
         throw error;
       }
 
       throw new InternalServerError('Failed to get project');
+    }
+  }
+
+  async disconnectTechStackBySkillId(skillId: string): Promise<void> {
+    try {
+      const projects = await this.prisma.project.findMany({
+        where: {
+          techStack: {
+            some: {
+              id: skillId,
+            },
+          },
+        },
+      });
+
+      await Promise.all(projects.map((project) => (
+        this.prisma.project.update({
+          where: { id: project.id },
+          data: {
+            techStack: {
+              disconnect: {
+                id: skillId,
+              },
+            },
+          },
+        })
+      )));
+    } catch (error) {
+      console.error(error);
+
+      if (error instanceof Error) {
+        throw new InternalServerError(error.message);
+      }
+
+      throw new InternalServerError('Failed to disconnect tech stack');
     }
   }
 }

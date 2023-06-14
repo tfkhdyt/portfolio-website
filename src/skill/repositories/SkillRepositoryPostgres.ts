@@ -148,6 +148,11 @@ class SkillRepositoryPostgres implements SkillRepository {
       await this.prisma.skill.delete({ where: { id: skillId } });
     } catch (error) {
       console.error(error);
+
+      if (error instanceof Error) {
+        throw new InternalServerError(error.message);
+      }
+
       throw new InternalServerError(`Failed to delete skill with id ${skillId}`);
     }
   }
