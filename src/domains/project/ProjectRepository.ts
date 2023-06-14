@@ -1,8 +1,9 @@
 import { Prisma, Project, ProjectCategory } from '@prisma/client';
+import { ProjectWithTechStack } from './ProjectDto';
 
 export default interface ProjectRepository {
-  getAllProjectsFromDB(): Promise<Project[]>;
-  getAllProjectsFromCache(): Promise<Project[] | null>;
+  getAllProjectsFromDB(): Promise<ProjectWithTechStack[]>;
+  getAllProjectsFromCache(): Promise<ProjectWithTechStack[] | null>;
   getAllCategoriesFromDB(): Promise<ProjectCategory[]>;
   getAllCategoriesFromCache(): Promise<ProjectCategory[] | null>;
   createProject(project: Prisma.ProjectCreateInput): Promise<Project>;

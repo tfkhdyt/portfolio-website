@@ -39,9 +39,9 @@ class ProjectRepositoryPostgres implements ProjectRepository {
     }
   }
 
-  async getAllProjectsFromCache(): Promise<Project[] | null> {
+  async getAllProjectsFromCache(): Promise<ProjectWithTechStack[] | null> {
     try {
-      const projectsCache = await this.cacheRepo.get<Project[]>('projects');
+      const projectsCache = await this.cacheRepo.get<ProjectWithTechStack[]>('projects');
 
       return projectsCache;
     } catch (error) {
