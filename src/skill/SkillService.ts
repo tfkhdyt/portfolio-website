@@ -1,3 +1,5 @@
+import { cacheRepo } from '@/cache/repositories/CacheRepositoryRedis';
+import CacheRepository from '@/domains/cache/CacheRepository';
 import LQIPRepository from '@/domains/error/lqip/LQIPRepository';
 import ImageRepository from '@/domains/image/ImageRepository';
 import { CreateSkillRequest, UpdateSkillRequest } from '@/domains/skill/SkillDto';
@@ -11,6 +13,7 @@ class SkillService {
     private readonly skillRepo: SkillRepository,
     private readonly imageRepo: ImageRepository,
     private readonly lqipRepo: LQIPRepository,
+    private readonly cacheRepo: CacheRepository,
   ) {}
 
   private async verifyCategoryId(categoryId: string) {
@@ -18,20 +21,38 @@ class SkillService {
   }
 
   async getAllSkills() {
-    const skills = await skillRepo.getAllSkills();
+    const skillsCache = await this.skillRepo.getAllSkillsFromCache();
+    if (!skillsCache) {
+      const skills = await this.skillRepo.getAllSkillsFromDB();
+      await this.cacheRepo.set('skills', JSON.stringify(skills));
+
+      return {
+        message: 'success',
+        data: skills,
+      };
+    }
 
     return {
       message: 'success',
-      data: skills,
+      data: skillsCache,
     };
   }
 
   async getAllCategories() {
-    const categories = await skillRepo.getAllCategories();
+    const categoriesCache = await this.skillRepo.getAllCategoriesFromCache();
+    if (!categoriesCache) {
+      const categories = await this.skillRepo.getAllCategoriesFromDB();
+      await this.cacheRepo.set('skillCategories', JSON.stringify(categories));
+
+      return {
+        message: 'success',
+        data: categories,
+      };
+    }
 
     return {
       message: 'success',
-      data: categories,
+      data: categoriesCache,
     };
   }
 
@@ -54,6 +75,8 @@ class SkillService {
         },
       },
     });
+
+    await this.cacheRepo.delete('skills');
 
     return {
       message: `${createdSkill.name} has been added`,
@@ -98,6 +121,8 @@ class SkillService {
       lqip,
     });
 
+    await this.cacheRepo.delete('skills');
+
     if (photoId) {
       await this.imageRepo.deleteImage(oldSkill.photoId);
     }
@@ -110,8 +135,10 @@ class SkillService {
 
   async deleteSkill(skillId: string) {
     const skill = await this.verifySkillAvailability(skillId);
+
     await this.skillRepo.deleteSkill(skillId);
     await this.imageRepo.deleteImage(skill.photoId);
+    await this.cacheRepo.delete('skills');
 
     return {
       message: `${skill.name} has been deleted`,
@@ -119,4 +146,4 @@ class SkillService {
   }
 }
 
-export const skillService = new SkillService(skillRepo, imageRepo, lqipRepo);
+export const skillService = new SkillService(skillRepo, imageRepo, lqipRepo, cacheRepo);

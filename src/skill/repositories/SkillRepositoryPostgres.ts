@@ -1,60 +1,87 @@
+import { cacheRepo } from '@/cache/repositories/CacheRepositoryRedis';
+import CacheRepository from '@/domains/cache/CacheRepository';
+import { HTTPError, InternalServerError, NotFoundError } from '@/domains/error/ErrorEntity';
 import SkillRepository from '@/domains/skill/SkillRepository';
 import { prisma } from '@/lib/prisma';
-import { HTTPError, InternalServerError, NotFoundError } from '@/domains/error/ErrorEntity';
-import { deleteCache, getCache, setCache } from '@/utils/redis';
 
 import { Prisma, PrismaClient, Skill, SkillCategory } from '@prisma/client';
 
 class SkillRepositoryPostgres implements SkillRepository {
-  constructor(private readonly prisma: PrismaClient) {}
+  constructor(
+    private readonly prisma: PrismaClient,
+    private readonly cacheRepo: CacheRepository,
+  ) {}
 
-  async getAllSkills(): Promise<Skill[]> {
+  async getAllSkillsFromDB(): Promise<Skill[]> {
     try {
-      const skillsCache = await getCache<Skill[]>('skills');
+      const skills = await prisma.skill.findMany({
+        orderBy: [
+          { categoryId: 'asc' },
+          { id: 'asc' },
+        ],
+      });
 
-      if (!skillsCache) {
-        const skills = await prisma.skill.findMany({
-          orderBy: [
-            { categoryId: 'asc' },
-            { id: 'asc' },
-          ],
-        });
+      return skills;
+    } catch (error) {
+      console.error(error);
 
-        await setCache('skills', JSON.stringify(skills));
-
-        return skills;
+      if (error instanceof Error) {
+        throw new InternalServerError(error.message);
       }
+
+      throw new InternalServerError('Failed to get all skills data from db');
+    }
+  }
+
+  async getAllSkillsFromCache(): Promise<Skill[] | null> {
+    try {
+      const skillsCache = await this.cacheRepo.get<Skill[]>('skills');
 
       return skillsCache;
     } catch (error) {
       console.error(error);
+
       if (error instanceof Error) {
         throw new InternalServerError(error.message);
       }
-      throw new InternalServerError('Failed to get all skills data');
+
+      throw new InternalServerError('Failed to get all skills data from cache');
     }
   }
 
-  async getAllCategories(): Promise<SkillCategory[]> {
+  async getAllCategoriesFromDB(): Promise<SkillCategory[]> {
     try {
-      const categoriesCache = await getCache<SkillCategory[]>('skillCategories');
+      const categories = await prisma.skillCategory.findMany({
+        orderBy: [
+          { id: 'asc' },
+        ],
+      });
 
-      if (!categoriesCache) {
-        const categories = await prisma.skillCategory.findMany({
-          orderBy: { id: 'asc' },
-        });
-        await setCache('skillCategories', JSON.stringify(categories));
+      return categories;
+    } catch (error) {
+      console.error(error);
 
-        return categories;
+      if (error instanceof Error) {
+        throw new InternalServerError(error.message);
       }
+
+      throw new InternalServerError('Failed to get all skill categories data from db');
+    }
+  }
+
+  async getAllCategoriesFromCache(): Promise<SkillCategory[] | null> {
+    try {
+      const categoriesCache = await this.cacheRepo.get<SkillCategory[]>('skillCategories');
 
       return categoriesCache;
     } catch (error) {
       console.error(error);
+
       if (error instanceof Error) {
         throw new InternalServerError(error.message);
       }
-      throw new InternalServerError('Failed to get all skill categories data');
+
+      throw new InternalServerError('Failed to get all skill categories data from cache');
     }
   }
 
@@ -63,8 +90,6 @@ class SkillRepositoryPostgres implements SkillRepository {
       const createdSkill = await this.prisma.skill.create({
         data: skill,
       });
-
-      await deleteCache('skills');
 
       return createdSkill;
     } catch (error) {
@@ -111,8 +136,6 @@ class SkillRepositoryPostgres implements SkillRepository {
         data: skill,
       });
 
-      await deleteCache('skills');
-
       return updatedSkill;
     } catch (error) {
       console.error(error);
@@ -123,8 +146,6 @@ class SkillRepositoryPostgres implements SkillRepository {
   async deleteSkill(skillId: string): Promise<void> {
     try {
       await this.prisma.skill.delete({ where: { id: skillId } });
-
-      await deleteCache('skills');
     } catch (error) {
       console.error(error);
       throw new InternalServerError(`Failed to delete skill with id ${skillId}`);
@@ -149,4 +170,4 @@ class SkillRepositoryPostgres implements SkillRepository {
   }
 }
 
-export const skillRepo = new SkillRepositoryPostgres(prisma);
+export const skillRepo = new SkillRepositoryPostgres(prisma, cacheRepo);

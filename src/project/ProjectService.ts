@@ -1,3 +1,5 @@
+import { cacheRepo } from '@/cache/repositories/CacheRepositoryRedis';
+import CacheRepository from '@/domains/cache/CacheRepository';
 import LQIPRepository from '@/domains/error/lqip/LQIPRepository';
 import ImageRepository from '@/domains/image/ImageRepository';
 import { CreateProjectRequest, UpdateProjectRequest } from '@/domains/project/ProjectDto';
@@ -11,6 +13,7 @@ class ProjectService {
     private readonly projectRepo: ProjectRepository,
     private readonly imageRepo: ImageRepository,
     private readonly lqipRepo: LQIPRepository,
+    private readonly cacheRepo: CacheRepository,
   ) {}
 
   private async verifyCategoryId(categoryId: string) {
@@ -18,20 +21,38 @@ class ProjectService {
   }
 
   async getAllProjects() {
-    const projects = await projectRepo.getAllProjects();
+    const projectsCache = await this.projectRepo.getAllProjectsFromCache();
+    if (!projectsCache) {
+      const projects = await this.projectRepo.getAllProjectsFromDB();
+      await this.cacheRepo.set('projects', JSON.stringify(projects));
+
+      return {
+        message: 'success',
+        data: projects,
+      };
+    }
 
     return {
       message: 'success',
-      data: projects,
+      data: projectsCache,
     };
   }
 
   async getAllCategories() {
-    const categories = await projectRepo.getAllCategories();
+    const categoriesCache = await this.projectRepo.getAllCategoriesFromCache();
+    if (!categoriesCache) {
+      const categories = await this.projectRepo.getAllCategoriesFromDB();
+      await this.cacheRepo.set('projectCategories', JSON.stringify(categories));
+
+      return {
+        message: 'success',
+        data: categories,
+      };
+    }
 
     return {
       message: 'success',
-      data: categories,
+      data: categoriesCache,
     };
   }
 
@@ -62,6 +83,8 @@ class ProjectService {
         connect: techStackId,
       },
     });
+
+    await this.cacheRepo.delete('projects');
 
     return {
       message: `${createdProject.name} has been added`,
@@ -114,6 +137,8 @@ class ProjectService {
       },
     });
 
+    await this.cacheRepo.delete('projects');
+
     if (photoId) {
       await this.imageRepo.deleteImage(oldProject.photoId);
     }
@@ -126,8 +151,10 @@ class ProjectService {
 
   async deleteProject(projectId: string) {
     const project = await this.verifyProjectAvailability(projectId);
+
     await this.projectRepo.deleteProject(projectId);
     await this.imageRepo.deleteImage(project.photoId);
+    await this.cacheRepo.delete('projects');
 
     return {
       message: `${project.name} has been deleted`,
@@ -135,4 +162,9 @@ class ProjectService {
   }
 }
 
-export const projectService = new ProjectService(projectRepo, imageRepo, lqipRepo);
+export const projectService = new ProjectService(
+  projectRepo,
+  imageRepo,
+  lqipRepo,
+  cacheRepo,
+);

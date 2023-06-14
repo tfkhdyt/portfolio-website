@@ -1,8 +1,10 @@
 import { Prisma, Project, ProjectCategory } from '@prisma/client';
 
 export default interface ProjectRepository {
-  getAllProjects(): Promise<Project[]>;
-  getAllCategories(): Promise<ProjectCategory[]>;
+  getAllProjectsFromDB(): Promise<Project[]>;
+  getAllProjectsFromCache(): Promise<Project[] | null>;
+  getAllCategoriesFromDB(): Promise<ProjectCategory[]>;
+  getAllCategoriesFromCache(): Promise<ProjectCategory[] | null>;
   createProject(project: Prisma.ProjectCreateInput): Promise<Project>;
   getProjectCategoryById(categoryId: string): Promise<ProjectCategory>;
   getProjectById(projectId: string): Promise<Project>;
