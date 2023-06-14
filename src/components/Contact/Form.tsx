@@ -1,12 +1,12 @@
 'use client';
 
 import { themeAtom } from '@/stores/theme';
+import LoadingIcon from '../LoadingIcon';
 
 import { useAtomValue } from 'jotai';
-import { FormEvent, useEffect, useState } from 'react';
+import { FormEvent, useState } from 'react';
 import toast from 'react-hot-toast';
 import { z } from 'zod';
-import LoadingIcon from '../LoadingIcon';
 
 type FormError = {
   name?: string;
@@ -40,10 +40,6 @@ const Form = () => {
   const [errors, setErrors] = useState<FormError>();
   const isDarkMode = useAtomValue(themeAtom);
   const [isLoading, setIsLoading] = useState(false);
-
-  useEffect(() => {
-    console.log({ isLoading });
-  }, [isLoading]);
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
