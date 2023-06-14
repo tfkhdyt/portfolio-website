@@ -1,6 +1,6 @@
 import { authOptions } from '@/lib/nextAuth';
 import { projectService } from '@/project/ProjectService';
-import { HTTPError, UnauthenticatedError, UnprocessableEntityError } from '@/utils/error';
+import { HTTPError, UnauthenticatedError, UnprocessableEntityError } from '@/domains/error/ErrorEntity';
 
 import { getServerSession } from 'next-auth/next';
 import { NextResponse } from 'next/server';

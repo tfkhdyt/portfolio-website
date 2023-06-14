@@ -1,5 +1,5 @@
+import { InternalServerError } from '@/domains/error/ErrorEntity';
 import { imagekit } from '@/lib/imagekit';
-import { InternalServerError } from './error';
 
 export const uploadImage = async (image: File, folder: string) => {
   try {

@@ -1,5 +1,5 @@
 import { messageService } from '@/message/MessageService';
-import { HTTPError, UnprocessableEntityError } from '@/utils/error';
+import { HTTPError, UnprocessableEntityError } from '@/domains/error/ErrorEntity';
 import { NextResponse } from 'next/server';
 import { z } from 'zod';
 

@@ -1,6 +1,6 @@
 import SkillRepository from '@/domains/skill/SkillRepository';
 import { prisma } from '@/lib/prisma';
-import { HTTPError, InternalServerError, NotFoundError } from '@/utils/error';
+import { HTTPError, InternalServerError, NotFoundError } from '@/domains/error/ErrorEntity';
 import { deleteCache, getCache, setCache } from '@/utils/redis';
 
 import { Prisma, PrismaClient, Skill, SkillCategory } from '@prisma/client';

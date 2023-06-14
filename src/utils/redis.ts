@@ -1,5 +1,5 @@
+import { InternalServerError } from '@/domains/error/ErrorEntity';
 import { redis } from '@/lib/redis';
-import { InternalServerError } from './error';
 
 const NODE_ENV = process.env.NODE_ENV;
 

@@ -1,6 +1,6 @@
+import { InternalServerError } from '@/domains/error/ErrorEntity';
 import MessageRepository from '@/domains/message/MessageRepository';
 import { telegraf } from '@/lib/telegraf';
-import { InternalServerError } from '@/utils/error';
 
 import { Telegraf } from 'telegraf';
 

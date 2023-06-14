@@ -1,5 +1,5 @@
+import { InternalServerError } from '@/domains/error/ErrorEntity';
 import { getPlaiceholder } from 'plaiceholder';
-import { InternalServerError } from './error';
 
 export const getLQIP = async (image: File) => {
   try {

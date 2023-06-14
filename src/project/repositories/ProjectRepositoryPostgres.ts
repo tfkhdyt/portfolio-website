@@ -1,7 +1,7 @@
 import { ProjectWithTechStack } from '@/domains/project/ProjectDto';
 import ProjectRepository from '@/domains/project/ProjectRepository';
 import { prisma } from '@/lib/prisma';
-import { HTTPError, InternalServerError, NotFoundError } from '@/utils/error';
+import { HTTPError, InternalServerError, NotFoundError } from '@/domains/error/ErrorEntity';
 import { deleteCache, getCache, setCache } from '@/utils/redis';
 
 import { Prisma, PrismaClient, Project, ProjectCategory } from '@prisma/client';
