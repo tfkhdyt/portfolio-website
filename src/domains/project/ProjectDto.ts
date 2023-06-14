@@ -1,3 +1,5 @@
+import { Project, Skill } from '@prisma/client';
+
 export type CreateProjectRequest = {
   name: string;
   desc: string;
@@ -16,4 +18,8 @@ export type UpdateProjectRequest = {
   demoUrl?: string;
   categoryId?: string;
   techStack?: string[];
+};
+
+export type ProjectWithTechStack = Project & {
+  techStack: Skill[];
 };

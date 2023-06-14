@@ -13,6 +13,24 @@ class ProjectService {
     this.projectRepo.getProjectCategoryById(categoryId);
   }
 
+  async getAllProjects() {
+    const projects = await projectRepo.getAllProjects();
+
+    return {
+      message: 'success',
+      data: projects,
+    };
+  }
+
+  async getAllCategories() {
+    const categories = await projectRepo.getAllCategories();
+
+    return {
+      message: 'success',
+      data: categories,
+    };
+  }
+
   async createProject(payload: CreateProjectRequest) {
     await this.verifyCategoryId(payload.categoryId);
 

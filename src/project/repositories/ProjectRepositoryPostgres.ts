@@ -1,16 +1,75 @@
+import { ProjectWithTechStack } from '@/domains/project/ProjectDto';
 import ProjectRepository from '@/domains/project/ProjectRepository';
 import { prisma } from '@/lib/prisma';
 import { HTTPError, InternalServerError, NotFoundError } from '@/utils/error';
+import { deleteCache, getCache, setCache } from '@/utils/redis';
+
 import { Prisma, PrismaClient, Project, ProjectCategory } from '@prisma/client';
 
 class ProjectRepositoryPostgres implements ProjectRepository {
   constructor(private readonly prisma: PrismaClient) {}
+
+  async getAllProjects(): Promise<ProjectWithTechStack[]> {
+    try {
+      const projectsCache = await getCache<ProjectWithTechStack[]>('projects');
+
+      if (!projectsCache) {
+        const projects = await prisma.project.findMany({
+          orderBy: { id: 'desc' },
+          include: {
+            techStack: {
+              orderBy: [
+                { categoryId: 'asc' },
+                { id: 'asc' },
+              ],
+            },
+          },
+        });
+
+        await setCache('projects', JSON.stringify(projects));
+
+        return projects;
+      }
+
+      return projectsCache;
+    } catch (error) {
+      console.error(error);
+      if (error instanceof Error) {
+        throw new InternalServerError(error.message);
+      }
+      throw new InternalServerError('Failed to get all projects data');
+    }
+  }
+
+  async getAllCategories(): Promise<ProjectCategory[]> {
+    try {
+      const categoriesCache = await getCache<ProjectCategory[]>('projectCategories');
+
+      if (!categoriesCache) {
+        const categories = await prisma.projectCategory.findMany({ orderBy: { id: 'asc' } });
+
+        await setCache('projectCategories', JSON.stringify(categories));
+
+        return categories;
+      }
+
+      return categoriesCache;
+    } catch (error) {
+      console.error(error);
+      if (error instanceof Error) {
+        throw new InternalServerError(error.message);
+      }
+      throw new InternalServerError('Failed to get all project categories data');
+    }
+  }
 
   async createProject(project: Prisma.ProjectCreateInput) {
     try {
       const createdProject = await this.prisma.project.create({
         data: project,
       });
+
+      await deleteCache('projects');
 
       return createdProject;
     } catch (error) {
@@ -52,6 +111,8 @@ class ProjectRepositoryPostgres implements ProjectRepository {
         data: project,
       });
 
+      await deleteCache('projects');
+
       return updatedProject;
     } catch (error) {
       console.error(error);
@@ -62,6 +123,8 @@ class ProjectRepositoryPostgres implements ProjectRepository {
   async deleteProject(projectId: string): Promise<void> {
     try {
       await this.prisma.project.delete({ where: { id: projectId } });
+
+      await deleteCache('projects');
     } catch (error) {
       console.error(error);
       throw new InternalServerError(`Failed to delete project with id ${projectId}`);

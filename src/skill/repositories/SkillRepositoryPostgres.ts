@@ -1,11 +1,62 @@
 import SkillRepository from '@/domains/skill/SkillRepository';
 import { prisma } from '@/lib/prisma';
 import { HTTPError, InternalServerError, NotFoundError } from '@/utils/error';
+import { deleteCache, getCache, setCache } from '@/utils/redis';
 
 import { Prisma, PrismaClient, Skill, SkillCategory } from '@prisma/client';
 
 class SkillRepositoryPostgres implements SkillRepository {
   constructor(private readonly prisma: PrismaClient) {}
+
+  async getAllSkills(): Promise<Skill[]> {
+    try {
+      const skillsCache = await getCache<Skill[]>('skills');
+
+      if (!skillsCache) {
+        const skills = await prisma.skill.findMany({
+          orderBy: [
+            { categoryId: 'asc' },
+            { id: 'asc' },
+          ],
+        });
+
+        await setCache('skills', JSON.stringify(skills));
+
+        return skills;
+      }
+
+      return skillsCache;
+    } catch (error) {
+      console.error(error);
+      if (error instanceof Error) {
+        throw new InternalServerError(error.message);
+      }
+      throw new InternalServerError('Failed to get all skills data');
+    }
+  }
+
+  async getAllCategories(): Promise<SkillCategory[]> {
+    try {
+      const categoriesCache = await getCache<SkillCategory[]>('skillCategories');
+
+      if (!categoriesCache) {
+        const categories = await prisma.skillCategory.findMany({
+          orderBy: { id: 'asc' },
+        });
+        await setCache('skillCategories', JSON.stringify(categories));
+
+        return categories;
+      }
+
+      return categoriesCache;
+    } catch (error) {
+      console.error(error);
+      if (error instanceof Error) {
+        throw new InternalServerError(error.message);
+      }
+      throw new InternalServerError('Failed to get all skill categories data');
+    }
+  }
 
   async createSkill(skill: Prisma.SkillCreateInput) {
     try {
@@ -13,9 +64,16 @@ class SkillRepositoryPostgres implements SkillRepository {
         data: skill,
       });
 
+      await deleteCache('skills');
+
       return createdSkill;
     } catch (error) {
       console.error(error);
+
+      if (error instanceof Error) {
+        throw new InternalServerError(error.message);
+      }
+
       throw new InternalServerError('Failed to create new skill');
     }
   }
@@ -53,6 +111,8 @@ class SkillRepositoryPostgres implements SkillRepository {
         data: skill,
       });
 
+      await deleteCache('skills');
+
       return updatedSkill;
     } catch (error) {
       console.error(error);
@@ -63,6 +123,8 @@ class SkillRepositoryPostgres implements SkillRepository {
   async deleteSkill(skillId: string): Promise<void> {
     try {
       await this.prisma.skill.delete({ where: { id: skillId } });
+
+      await deleteCache('skills');
     } catch (error) {
       console.error(error);
       throw new InternalServerError(`Failed to delete skill with id ${skillId}`);

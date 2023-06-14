@@ -13,6 +13,24 @@ class SkillService {
     this.skillRepo.getSkillCategoryById(categoryId);
   }
 
+  async getAllSkills() {
+    const skills = await skillRepo.getAllSkills();
+
+    return {
+      message: 'success',
+      data: skills,
+    };
+  }
+
+  async getAllCategories() {
+    const categories = await skillRepo.getAllCategories();
+
+    return {
+      message: 'success',
+      data: categories,
+    };
+  }
+
   async createSkill(payload: CreateSkillRequest) {
     await this.verifyCategoryId(payload.categoryId);
 
