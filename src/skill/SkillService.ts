@@ -1,14 +1,16 @@
+import LQIPRepository from '@/domains/error/lqip/LQIPRepository';
 import ImageRepository from '@/domains/image/ImageRepository';
 import { CreateSkillRequest, UpdateSkillRequest } from '@/domains/skill/SkillDto';
 import SkillRepository from '@/domains/skill/SkillRepository';
 import { imageRepo } from '@/image/repositories/ImageRepositoryImagekit';
-import { getLQIP } from '@/utils/plaiceholder';
+import { lqipRepo } from '@/lqip/repositories/LQIPRepositoryPlaiceholder';
 import { skillRepo } from './repositories/SkillRepositoryPostgres';
 
 class SkillService {
   constructor(
     private readonly skillRepo: SkillRepository,
     private readonly imageRepo: ImageRepository,
+    private readonly lqipRepo: LQIPRepository,
   ) {}
 
   private async verifyCategoryId(categoryId: string) {
@@ -36,11 +38,10 @@ class SkillService {
   async createSkill(payload: CreateSkillRequest) {
     await this.verifyCategoryId(payload.categoryId);
 
-    const { photoUrl, photoId } = await this.imageRepo.uploadImage(
-      payload.photo,
-      '/tech',
-    );
-    const lqip = await getLQIP(payload.photo);
+    const [{ photoUrl, photoId }, lqip] = await Promise.all([
+      this.imageRepo.uploadImage(payload.photo, '/tech'),
+      this.lqipRepo.getLQIP(payload.photo),
+    ]);
 
     const createdSkill = await this.skillRepo.createSkill({
       name: payload.name,
@@ -75,11 +76,14 @@ class SkillService {
     let photoId: string | undefined;
     let lqip: string | undefined;
     if (payload.photo) {
-      const result = await this.imageRepo.uploadImage(payload.photo, '/tech');
+      const [result, base64] = await Promise.all([
+        this.imageRepo.uploadImage(payload.photo, '/tech'),
+        this.lqipRepo.getLQIP(payload.photo),
+      ]);
+
       photoUrl = result.photoUrl;
       photoId = result.photoId;
-
-      lqip = await getLQIP(payload.photo);
+      lqip = base64;
     }
 
     const updatedSkill = await this.skillRepo.updateSkill(skillId, {
@@ -115,4 +119,4 @@ class SkillService {
   }
 }
 
-export const skillService = new SkillService(skillRepo, imageRepo);
+export const skillService = new SkillService(skillRepo, imageRepo, lqipRepo);

@@ -1,14 +1,16 @@
+import LQIPRepository from '@/domains/error/lqip/LQIPRepository';
 import ImageRepository from '@/domains/image/ImageRepository';
 import { CreateProjectRequest, UpdateProjectRequest } from '@/domains/project/ProjectDto';
 import ProjectRepository from '@/domains/project/ProjectRepository';
 import { imageRepo } from '@/image/repositories/ImageRepositoryImagekit';
-import { getLQIP } from '@/utils/plaiceholder';
+import { lqipRepo } from '@/lqip/repositories/LQIPRepositoryPlaiceholder';
 import { projectRepo } from './repositories/ProjectRepositoryPostgres';
 
 class ProjectService {
   constructor(
     private readonly projectRepo: ProjectRepository,
     private readonly imageRepo: ImageRepository,
+    private readonly lqipRepo: LQIPRepository,
   ) {}
 
   private async verifyCategoryId(categoryId: string) {
@@ -36,11 +38,10 @@ class ProjectService {
   async createProject(payload: CreateProjectRequest) {
     await this.verifyCategoryId(payload.categoryId);
 
-    const { photoUrl, photoId } = await this.imageRepo.uploadImage(
-      payload.photo,
-      '/projects',
-    );
-    const lqip = await getLQIP(payload.photo);
+    const [{ photoUrl, photoId }, lqip] = await Promise.all([
+      this.imageRepo.uploadImage(payload.photo, '/projects'),
+      this.lqipRepo.getLQIP(payload.photo),
+    ]);
 
     const techStackId = payload.techStack.map((tech) => ({ id: tech }));
 
@@ -83,11 +84,14 @@ class ProjectService {
     let photoId: string | undefined;
     let lqip: string | undefined;
     if (payload.photo) {
-      const result = await this.imageRepo.uploadImage(payload.photo, '/projects');
+      const [result, base64] = await Promise.all([
+        this.imageRepo.uploadImage(payload.photo, '/projects'),
+        this.lqipRepo.getLQIP(payload.photo),
+      ]);
+
       photoUrl = result.photoUrl;
       photoId = result.photoId;
-
-      lqip = await getLQIP(payload.photo);
+      lqip = base64;
     }
 
     const updatedProject = await this.projectRepo.updateProject(projectId, {
@@ -131,4 +135,4 @@ class ProjectService {
   }
 }
 
-export const projectService = new ProjectService(projectRepo, imageRepo);
+export const projectService = new ProjectService(projectRepo, imageRepo, lqipRepo);
