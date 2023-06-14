@@ -1,12 +1,14 @@
+import ImageRepository from '@/domains/image/ImageRepository';
 import { CreateProjectRequest, UpdateProjectRequest } from '@/domains/project/ProjectDto';
 import ProjectRepository from '@/domains/project/ProjectRepository';
-import { deleteImage, uploadImage } from '@/utils/imagekit';
+import { imageRepo } from '@/image/repositories/ImageRepositoryImagekit';
 import { getLQIP } from '@/utils/plaiceholder';
 import { projectRepo } from './repositories/ProjectRepositoryPostgres';
 
 class ProjectService {
   constructor(
     private readonly projectRepo: ProjectRepository,
+    private readonly imageRepo: ImageRepository,
   ) {}
 
   private async verifyCategoryId(categoryId: string) {
@@ -34,7 +36,10 @@ class ProjectService {
   async createProject(payload: CreateProjectRequest) {
     await this.verifyCategoryId(payload.categoryId);
 
-    const { photoUrl, photoId } = await uploadImage(payload.photo, '/projects');
+    const { photoUrl, photoId } = await this.imageRepo.uploadImage(
+      payload.photo,
+      '/projects',
+    );
     const lqip = await getLQIP(payload.photo);
 
     const techStackId = payload.techStack.map((tech) => ({ id: tech }));
@@ -78,7 +83,7 @@ class ProjectService {
     let photoId: string | undefined;
     let lqip: string | undefined;
     if (payload.photo) {
-      const result = await uploadImage(payload.photo, '/projects');
+      const result = await this.imageRepo.uploadImage(payload.photo, '/projects');
       photoUrl = result.photoUrl;
       photoId = result.photoId;
 
@@ -106,7 +111,7 @@ class ProjectService {
     });
 
     if (photoId) {
-      await deleteImage(oldProject.photoId);
+      await this.imageRepo.deleteImage(oldProject.photoId);
     }
 
     return {
@@ -118,7 +123,7 @@ class ProjectService {
   async deleteProject(projectId: string) {
     const project = await this.verifyProjectAvailability(projectId);
     await this.projectRepo.deleteProject(projectId);
-    await deleteImage(project.photoId);
+    await this.imageRepo.deleteImage(project.photoId);
 
     return {
       message: `${project.name} has been deleted`,
@@ -126,4 +131,4 @@ class ProjectService {
   }
 }
 
-export const projectService = new ProjectService(projectRepo);
+export const projectService = new ProjectService(projectRepo, imageRepo);
