@@ -142,10 +142,12 @@ class SkillService {
     await this.projectRepo.disconnectTechStackBySkillId(skillId);
 
     await this.skillRepo.deleteSkill(skillId);
-    await this.imageRepo.deleteImage(skill.photoId);
 
-    await this.cacheRepo.delete('skills');
-    await this.cacheRepo.delete('projects');
+    await Promise.all([
+      this.imageRepo.deleteImage(skill.photoId),
+      this.cacheRepo.delete('skills'),
+      this.cacheRepo.delete('projects'),
+    ]);
 
     return {
       message: `${skill.name} has been deleted`,
