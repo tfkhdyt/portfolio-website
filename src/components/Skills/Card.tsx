@@ -15,7 +15,7 @@ const Card = ({ skill, currentCategory, skillCategories }: Props) => {
 
   return (
     <div className='flex relative flex-col items-center p-4 space-y-2 bg-white rounded-lg border border-gray-200 shadow dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-200 group dark:hover:bg-gray-700'>
-      <div className='relative w-3/6 aspect-w-1 aspect-h-1'>
+      <div className='relative w-3/6 aspect-w-16 aspect-h-9'>
         <Image
           src={skill.photoUrl}
           alt={skill.name}
