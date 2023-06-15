@@ -9,13 +9,13 @@ import { Prisma, PrismaClient, Project, ProjectCategory } from '@prisma/client';
 
 class ProjectRepositoryPostgres implements ProjectRepository {
   constructor(
-    private readonly prisma: PrismaClient,
+    private readonly db: PrismaClient,
     private readonly cacheRepo: CacheRepository,
   ) {}
 
   async getAllProjectsFromDB(): Promise<ProjectWithTechStack[]> {
     try {
-      const projects = await prisma.project.findMany({
+      const projects = await this.db.project.findMany({
         orderBy: { id: 'desc' },
         include: {
           techStack: {
@@ -47,8 +47,8 @@ class ProjectRepositoryPostgres implements ProjectRepository {
     } catch (error) {
       console.error(error);
 
-      if (error instanceof Error) {
-        throw new InternalServerError(error.message);
+      if (error instanceof HTTPError) {
+        throw error;
       }
 
       throw new InternalServerError('Failed to get all projects data from cache');
@@ -57,7 +57,7 @@ class ProjectRepositoryPostgres implements ProjectRepository {
 
   async getAllCategoriesFromDB(): Promise<ProjectCategory[]> {
     try {
-      const categories = await prisma.projectCategory.findMany({
+      const categories = await this.db.projectCategory.findMany({
         orderBy: { id: 'asc' },
       });
 
@@ -80,8 +80,8 @@ class ProjectRepositoryPostgres implements ProjectRepository {
     } catch (error) {
       console.error(error);
 
-      if (error instanceof Error) {
-        throw new InternalServerError(error.message);
+      if (error instanceof HTTPError) {
+        throw error;
       }
 
       throw new InternalServerError('Failed to get all project categories data from cache');
@@ -90,20 +90,25 @@ class ProjectRepositoryPostgres implements ProjectRepository {
 
   async createProject(project: Prisma.ProjectCreateInput) {
     try {
-      const createdProject = await this.prisma.project.create({
+      const createdProject = await this.db.project.create({
         data: project,
       });
 
       return createdProject;
     } catch (error) {
       console.error(error);
+
+      if (error instanceof Error) {
+        throw new InternalServerError(error.message);
+      }
+
       throw new InternalServerError('Failed to create new project');
     }
   }
 
   async getProjectCategoryById(categoryId: string): Promise<ProjectCategory> {
     try {
-      const category = await this.prisma.projectCategory.findUnique({
+      const category = await this.db.projectCategory.findUnique({
         where: {
           id: categoryId,
         },
@@ -127,7 +132,7 @@ class ProjectRepositoryPostgres implements ProjectRepository {
 
   async updateProject(projectId: string, project: Prisma.ProjectUpdateInput): Promise<Project> {
     try {
-      const updatedProject = await this.prisma.project.update({
+      const updatedProject = await this.db.project.update({
         where: {
           id: projectId,
         },
@@ -137,13 +142,18 @@ class ProjectRepositoryPostgres implements ProjectRepository {
       return updatedProject;
     } catch (error) {
       console.error(error);
+
+      if (error instanceof Error) {
+        throw new InternalServerError(error.message);
+      }
+
       throw new InternalServerError(`Failed to update project with id ${projectId}`);
     }
   }
 
   async deleteProject(projectId: string): Promise<void> {
     try {
-      await this.prisma.project.delete({ where: { id: projectId } });
+      await this.db.project.delete({ where: { id: projectId } });
     } catch (error) {
       console.error(error);
       throw new InternalServerError(`Failed to delete project with id ${projectId}`);
@@ -152,7 +162,7 @@ class ProjectRepositoryPostgres implements ProjectRepository {
 
   async getProjectById(projectId: string): Promise<Project> {
     try {
-      const project = await this.prisma.project.findUnique({ where: { id: projectId } });
+      const project = await this.db.project.findUnique({ where: { id: projectId } });
       if (!project) {
         throw new NotFoundError(`Project with id ${projectId} is not found`);
       }
@@ -171,7 +181,7 @@ class ProjectRepositoryPostgres implements ProjectRepository {
 
   async disconnectTechStackBySkillId(skillId: string): Promise<void> {
     try {
-      const projects = await this.prisma.project.findMany({
+      const projects = await this.db.project.findMany({
         where: {
           techStack: {
             some: {
@@ -182,7 +192,7 @@ class ProjectRepositoryPostgres implements ProjectRepository {
       });
 
       await Promise.all(projects.map((project) => (
-        this.prisma.project.update({
+        this.db.project.update({
           where: { id: project.id },
           data: {
             techStack: {
