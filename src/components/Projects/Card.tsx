@@ -1,23 +1,27 @@
+import { ProjectWithTechStack } from '@/domains/project/ProjectDto';
 import { thumbnailDataUrl } from '../../../public/img/thumbnail';
 import DeleteProjectModal from './DeleteProjectModal';
 import UpdateProjectModal from './UpdateProjectModal';
 
-import { Project, ProjectCategory, Skill } from '@prisma/client';
+import { ProjectCategory, Skill } from '@prisma/client';
 import { useSession } from 'next-auth/react';
 import Image from 'next/image';
 import Link from 'next/link';
 
 type Props = {
-  project: Project & {
-    techStack: Skill[];
-  };
+  project: ProjectWithTechStack;
   currentCategory: ProjectCategory;
   projectCategories: ProjectCategory[];
   skills: Skill[];
   idx: number;
 };
 
-const ProjectCard = ({ project, currentCategory, projectCategories, skills, idx }: Props) => {
+const ProjectCard = ({
+  project,
+  currentCategory,
+  projectCategories,
+  skills,
+}: Props) => {
   const { data: session } = useSession();
 
   return (
@@ -31,11 +35,11 @@ const ProjectCard = ({ project, currentCategory, projectCategories, skills, idx 
           alt={project.name}
           fill
           style={{ objectFit: 'cover' }}
-          className='rounded-t-lg grayscale group-hover:grayscale-0'
+          className='rounded-t-lg grayscale aspect-video group-hover:grayscale-0'
           sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 50vw'
           blurDataURL={project.lqip ?? thumbnailDataUrl}
           placeholder='blur'
-          priority={project.categoryId === projectCategories[0].id && idx < 4}
+          // priority={project.categoryId === projectCategories[0].id && idx < 4}
         />
       </div>
       <div className='flex flex-col justify-between p-4 space-y-2 h-full'>
