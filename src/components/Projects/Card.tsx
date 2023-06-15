@@ -29,13 +29,13 @@ const ProjectCard = ({
       className='flex relative flex-col bg-white rounded-lg border border-gray-200 shadow dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-200 group dark:hover:bg-gray-700'
       key={project.name}
     >
-      <div className='relative w-full aspect-video'>
+      <div className='relative w-full aspect-w-16 aspect-h-9'>
         <Image
           src={project.photoUrl}
           alt={project.name}
           fill
           style={{ objectFit: 'cover' }}
-          className='rounded-t-lg grayscale aspect-video group-hover:grayscale-0'
+          className='rounded-t-lg grayscale group-hover:grayscale-0'
           sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 50vw'
           blurDataURL={project.lqip ?? thumbnailDataUrl}
           placeholder='blur'
