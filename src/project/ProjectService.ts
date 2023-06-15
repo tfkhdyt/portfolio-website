@@ -64,8 +64,6 @@ class ProjectService {
       this.lqipRepo.getLQIP(payload.photo),
     ]);
 
-    const techStackId = payload.techStack.map((tech) => ({ id: tech }));
-
     const createdProject = await this.projectRepo.createProject({
       name: payload.name,
       desc: payload.desc,
@@ -80,7 +78,7 @@ class ProjectService {
         },
       },
       techStack: {
-        connect: techStackId,
+        connect: payload.techStack.map((tech) => ({ id: tech })),
       },
     });
 
@@ -153,8 +151,11 @@ class ProjectService {
     const project = await this.verifyProjectAvailability(projectId);
 
     await this.projectRepo.deleteProject(projectId);
-    await this.imageRepo.deleteImage(project.photoId);
-    await this.cacheRepo.delete('projects');
+
+    await Promise.all([
+      this.imageRepo.deleteImage(project.photoId),
+      this.cacheRepo.delete('projects'),
+    ]);
 
     return {
       message: `${project.name} has been deleted`,
