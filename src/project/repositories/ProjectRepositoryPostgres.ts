@@ -1,8 +1,9 @@
 import { cacheRepo } from '@/cache/repositories/CacheRepositoryRedis';
 import CacheRepository from '@/domains/cache/CacheRepository';
-import { HTTPError, InternalServerError, NotFoundError } from '@/domains/error/ErrorEntity';
+import { NotFoundError } from '@/domains/error/ErrorEntity';
 import { ProjectWithTechStack } from '@/domains/project/ProjectDto';
 import ProjectRepository from '@/domains/project/ProjectRepository';
+import { handleError } from '@/helpers/error';
 import { prisma } from '@/lib/prisma';
 
 import { Prisma, PrismaClient, Project, ProjectCategory } from '@prisma/client';
@@ -29,13 +30,7 @@ class ProjectRepositoryPostgres implements ProjectRepository {
 
       return projects;
     } catch (error) {
-      console.error(error);
-
-      if (error instanceof Error) {
-        throw new InternalServerError(error.message);
-      }
-
-      throw new InternalServerError('Failed to get all projects data from db');
+      throw handleError(error);
     }
   }
 
@@ -45,13 +40,7 @@ class ProjectRepositoryPostgres implements ProjectRepository {
 
       return projectsCache;
     } catch (error) {
-      console.error(error);
-
-      if (error instanceof HTTPError) {
-        throw error;
-      }
-
-      throw new InternalServerError('Failed to get all projects data from cache');
+      throw handleError(error);
     }
   }
 
@@ -63,12 +52,7 @@ class ProjectRepositoryPostgres implements ProjectRepository {
 
       return categories;
     } catch (error) {
-      console.error(error);
-      if (error instanceof Error) {
-        throw new InternalServerError(error.message);
-      }
-
-      throw new InternalServerError('Failed to get all project categories data from db');
+      throw handleError(error);
     }
   }
 
@@ -78,13 +62,7 @@ class ProjectRepositoryPostgres implements ProjectRepository {
 
       return categoriesCache;
     } catch (error) {
-      console.error(error);
-
-      if (error instanceof HTTPError) {
-        throw error;
-      }
-
-      throw new InternalServerError('Failed to get all project categories data from cache');
+      throw handleError(error);
     }
   }
 
@@ -96,13 +74,7 @@ class ProjectRepositoryPostgres implements ProjectRepository {
 
       return createdProject;
     } catch (error) {
-      console.error(error);
-
-      if (error instanceof Error) {
-        throw new InternalServerError(error.message);
-      }
-
-      throw new InternalServerError('Failed to create new project');
+      throw handleError(error);
     }
   }
 
@@ -120,13 +92,7 @@ class ProjectRepositoryPostgres implements ProjectRepository {
 
       return category;
     } catch (error) {
-      console.error(error);
-
-      if (error instanceof HTTPError) {
-        throw error;
-      }
-
-      throw new InternalServerError('Failed to get project category');
+      throw handleError(error);
     }
   }
 
@@ -141,13 +107,7 @@ class ProjectRepositoryPostgres implements ProjectRepository {
 
       return updatedProject;
     } catch (error) {
-      console.error(error);
-
-      if (error instanceof Error) {
-        throw new InternalServerError(error.message);
-      }
-
-      throw new InternalServerError(`Failed to update project with id ${projectId}`);
+      throw handleError(error);
     }
   }
 
@@ -155,8 +115,7 @@ class ProjectRepositoryPostgres implements ProjectRepository {
     try {
       await this.db.project.delete({ where: { id: projectId } });
     } catch (error) {
-      console.error(error);
-      throw new InternalServerError(`Failed to delete project with id ${projectId}`);
+      throw handleError(error);
     }
   }
 
@@ -169,13 +128,7 @@ class ProjectRepositoryPostgres implements ProjectRepository {
 
       return project;
     } catch (error) {
-      console.error(error);
-
-      if (error instanceof HTTPError) {
-        throw error;
-      }
-
-      throw new InternalServerError('Failed to get project');
+      throw handleError(error);
     }
   }
 
@@ -204,13 +157,7 @@ class ProjectRepositoryPostgres implements ProjectRepository {
         })
       )));
     } catch (error) {
-      console.error(error);
-
-      if (error instanceof Error) {
-        throw new InternalServerError(error.message);
-      }
-
-      throw new InternalServerError('Failed to disconnect tech stack');
+      throw handleError(error);
     }
   }
 }

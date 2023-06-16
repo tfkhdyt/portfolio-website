@@ -1,6 +1,6 @@
-import { InternalServerError } from '@/domains/error/ErrorEntity';
 import { Image } from '@/domains/image/ImageEntity';
 import ImageRepository from '@/domains/image/ImageRepository';
+import { handleError } from '@/helpers/error';
 import { imagekit } from '@/lib/imagekit';
 
 import ImageKit from 'imagekit';
@@ -18,13 +18,7 @@ class ImageRepositoryImagekit implements ImageRepository {
 
       return { photoUrl: url, photoId: fileId };
     } catch (error) {
-      console.error(error);
-
-      if (error instanceof Error) {
-        throw new InternalServerError(error.message);
-      }
-
-      throw new InternalServerError('Failed to upload image');
+      throw handleError(error);
     }
   }
 
@@ -32,13 +26,7 @@ class ImageRepositoryImagekit implements ImageRepository {
     try {
       await this.imagekit.deleteFile(photoId);
     } catch (error) {
-      console.error(error);
-
-      if (error instanceof Error) {
-        throw new InternalServerError(error.message);
-      }
-
-      throw new InternalServerError(`Failed to delete image with id ${photoId}`);
+      throw handleError(error);
     }
   }
 }

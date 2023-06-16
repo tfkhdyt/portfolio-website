@@ -1,5 +1,5 @@
-import { InternalServerError } from '@/domains/error/ErrorEntity';
 import MessageRepository from '@/domains/message/MessageRepository';
+import { handleError } from '@/helpers/error';
 import { telegraf } from '@/lib/telegraf';
 
 import { Telegraf } from 'telegraf';
@@ -15,11 +15,7 @@ class MessageRepositoryTelegraf implements MessageRepository {
         parse_mode: 'Markdown',
       });
     } catch (error) {
-      console.error(error);
-      if (error instanceof Error) {
-        throw new InternalServerError(error.message);
-      }
-      throw new InternalServerError('Failed to send message');
+      throw handleError(error);
     }
   }
 }

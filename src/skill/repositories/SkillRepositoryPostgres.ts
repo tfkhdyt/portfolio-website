@@ -1,7 +1,8 @@
 import { cacheRepo } from '@/cache/repositories/CacheRepositoryRedis';
 import CacheRepository from '@/domains/cache/CacheRepository';
-import { HTTPError, InternalServerError, NotFoundError } from '@/domains/error/ErrorEntity';
+import { NotFoundError } from '@/domains/error/ErrorEntity';
 import SkillRepository from '@/domains/skill/SkillRepository';
+import { handleError } from '@/helpers/error';
 import { prisma } from '@/lib/prisma';
 
 import { Prisma, PrismaClient, Skill, SkillCategory } from '@prisma/client';
@@ -23,13 +24,7 @@ class SkillRepositoryPostgres implements SkillRepository {
 
       return skills;
     } catch (error) {
-      console.error(error);
-
-      if (error instanceof Error) {
-        throw new InternalServerError(error.message);
-      }
-
-      throw new InternalServerError('Failed to get all skills data from db');
+      throw handleError(error);
     }
   }
 
@@ -39,13 +34,7 @@ class SkillRepositoryPostgres implements SkillRepository {
 
       return skillsCache;
     } catch (error) {
-      console.error(error);
-
-      if (error instanceof HTTPError) {
-        throw error;
-      }
-
-      throw new InternalServerError('Failed to get all skills data from cache');
+      throw handleError(error);
     }
   }
 
@@ -59,13 +48,7 @@ class SkillRepositoryPostgres implements SkillRepository {
 
       return categories;
     } catch (error) {
-      console.error(error);
-
-      if (error instanceof Error) {
-        throw new InternalServerError(error.message);
-      }
-
-      throw new InternalServerError('Failed to get all skill categories data from db');
+      throw handleError(error);
     }
   }
 
@@ -75,13 +58,7 @@ class SkillRepositoryPostgres implements SkillRepository {
 
       return categoriesCache;
     } catch (error) {
-      console.error(error);
-
-      if (error instanceof HTTPError) {
-        throw error;
-      }
-
-      throw new InternalServerError('Failed to get all skill categories data from cache');
+      throw handleError(error);
     }
   }
 
@@ -93,13 +70,7 @@ class SkillRepositoryPostgres implements SkillRepository {
 
       return createdSkill;
     } catch (error) {
-      console.error(error);
-
-      if (error instanceof Error) {
-        throw new InternalServerError(error.message);
-      }
-
-      throw new InternalServerError('Failed to create new skill');
+      throw handleError(error);
     }
   }
 
@@ -117,13 +88,7 @@ class SkillRepositoryPostgres implements SkillRepository {
 
       return category;
     } catch (error) {
-      console.error(error);
-
-      if (error instanceof HTTPError) {
-        throw error;
-      }
-
-      throw new InternalServerError('Failed to get skill category');
+      throw handleError(error);
     }
   }
 
@@ -138,13 +103,7 @@ class SkillRepositoryPostgres implements SkillRepository {
 
       return updatedSkill;
     } catch (error) {
-      console.error(error);
-
-      if (error instanceof Error) {
-        throw new InternalServerError(error.message);
-      }
-
-      throw new InternalServerError(`Failed to update skill with id ${skillId}`);
+      throw handleError(error);
     }
   }
 
@@ -152,13 +111,7 @@ class SkillRepositoryPostgres implements SkillRepository {
     try {
       await this.db.skill.delete({ where: { id: skillId } });
     } catch (error) {
-      console.error(error);
-
-      if (error instanceof Error) {
-        throw new InternalServerError(error.message);
-      }
-
-      throw new InternalServerError(`Failed to delete skill with id ${skillId}`);
+      throw handleError(error);
     }
   }
 
@@ -171,13 +124,7 @@ class SkillRepositoryPostgres implements SkillRepository {
 
       return skill;
     } catch (error) {
-      console.error(error);
-
-      if (error instanceof HTTPError) {
-        throw error;
-      }
-
-      throw new InternalServerError('Failed to get skill');
+      throw handleError(error);
     }
   }
 }

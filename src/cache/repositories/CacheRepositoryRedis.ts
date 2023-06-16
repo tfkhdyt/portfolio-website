@@ -1,5 +1,5 @@
 import CacheRepository from '@/domains/cache/CacheRepository';
-import { InternalServerError } from '@/domains/error/ErrorEntity';
+import { handleError } from '@/helpers/error';
 import { redis } from '@/lib/redis';
 
 import { Redis } from '@upstash/redis';
@@ -13,20 +13,20 @@ class CacheRepositoryRedis implements CacheRepository {
     try {
       await this.redis.set(`${key}-${NODE_ENV}`, value, { ex: 86400 });
     } catch (error) {
-      console.error(error);
-      if (error instanceof Error) throw new InternalServerError(error.message);
-      throw new InternalServerError(`Failed to set ${key} data to cache`);
+      throw handleError(error);
     }
   }
 
-  async get<T>(key: string): Promise<T> {
+  async get<T>(key: string): Promise<T | null> {
     try {
       const value = await this.redis.get(`${key}-${NODE_ENV}`);
+      if (!value) {
+        return null;
+      }
+
       return value as T;
     } catch (error) {
-      console.error(error);
-      if (error instanceof Error) throw new InternalServerError(error.message);
-      throw new InternalServerError(`Failed to get ${key} data from cache`);
+      throw handleError(error);
     }
   }
 
@@ -34,9 +34,7 @@ class CacheRepositoryRedis implements CacheRepository {
     try {
       await this.redis.del(`${key}-${NODE_ENV}`);
     } catch (error) {
-      console.error(error);
-      if (error instanceof Error) throw new InternalServerError(error.message);
-      throw new InternalServerError(`Failed to delete ${key} data from cache`);
+      throw handleError(error);
     }
   }
 }

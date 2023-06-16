@@ -1,4 +1,4 @@
-import { InternalServerError } from '@/domains/error/ErrorEntity';
+import { handleError } from '@/helpers/error';
 
 import { getPlaiceholder } from 'plaiceholder';
 
@@ -8,13 +8,7 @@ class LQIPRepositoryPlaiceholder {
       const { base64 } = await getPlaiceholder(Buffer.from(await image.arrayBuffer()));
       return base64;
     } catch (error) {
-      console.error(error);
-
-      if (error instanceof Error) {
-        throw new InternalServerError(error.message);
-      }
-
-      throw new InternalServerError('Failed to get LQIP');
+      throw handleError(error);
     }
   }
 }
