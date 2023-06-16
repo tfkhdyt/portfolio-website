@@ -1,8 +1,8 @@
 import './globals.css';
 
-import Navbar from '@/components/Navbar';
+import ScrollToTopButton from '@/components/Buttons/ScrollToTopButton';
+import Navbar from '@/components/Navbar/Navbar';
 import NextAuthWrapper from '@/components/NextAuthWrapper';
-import ScrollToTopButton from '@/components/ScrollToTopButton';
 
 import clsx from 'clsx';
 import { Metadata } from 'next';

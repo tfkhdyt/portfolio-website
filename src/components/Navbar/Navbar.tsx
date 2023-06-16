@@ -1,8 +1,8 @@
 'use client';
 
+import ThemeSwitcher from '../Buttons/ThemeSwitcher';
 import MobileNavbarItem from './MobileNavbarItem';
 import NavbarItem from './NavbarItem';
-import ThemeSwitcher from './ThemeSwitcher';
 
 import clsx from 'clsx';
 import { Spin as Hamburger } from 'hamburger-react';
