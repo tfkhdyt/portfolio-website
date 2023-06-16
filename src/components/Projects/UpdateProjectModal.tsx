@@ -1,20 +1,20 @@
+import { ProjectWithTechStack } from '@/domains/project/ProjectDto';
+import { sendData } from '@/helpers/fetch';
+import { toastPromise } from '@/helpers/toast';
 import { themeAtom } from '@/stores/theme';
+import LoadingIcon from '../LoadingIcon';
+import TechPicker from './TechPicker';
 
-import { Project, ProjectCategory, Skill } from '@prisma/client';
+import { ProjectCategory, Skill } from '@prisma/client';
 import * as Dialog from '@radix-ui/react-dialog';
 import { useAtomValue } from 'jotai';
 import { useRouter } from 'next/navigation';
 import { FormEvent, useState } from 'react';
-import { toast } from 'react-hot-toast';
-import LoadingIcon from '../LoadingIcon';
-import TechPicker from './TechPicker';
 
 type Props = {
   projectCategories: ProjectCategory[];
   currentCategory: ProjectCategory;
-  oldData: Project & {
-    techStack: Skill[];
-  };
+  oldData: ProjectWithTechStack;
   skills: Skill[];
 };
 
@@ -48,29 +48,20 @@ const UpdateProjectModal = ({ projectCategories, currentCategory, oldData, skill
       body.append('photo', photo);
     }
 
-    toast.promise(sendData(body), {
-      loading: 'Loading',
-      success: (data) => {
+    toastPromise(
+      sendData({
+        url: `/api/projects/${oldData.id}`,
+        method: 'PUT',
+        setIsLoading,
+        body,
+      }),
+      (data) => {
         toggleModal(false);
         router.refresh();
-
         return data;
       },
-      error: (err) => {
-        if (err instanceof Error) {
-          console.log(err.message);
-          return err.message;
-        }
-
-        return 'Error!';
-      },
-    }, {
-      duration: 5000,
-      style: {
-        background: isDarkMode ? '#2e2e2e' : '#ebdbb2',
-        color: isDarkMode ? '#ebdbb2' : '#2e2e2e',
-      },
-    });
+      isDarkMode,
+    );
   };
 
   const toggleModal = (open: boolean) => {
@@ -84,27 +75,6 @@ const UpdateProjectModal = ({ projectCategories, currentCategory, oldData, skill
 
     setOpen(open);
   };
-
-  const sendData = (body: FormData) =>
-    new Promise<string>(async (ok, err) => {
-      try {
-        setIsLoading(true);
-        const response = await fetch(`/api/projects/${oldData.id}`, {
-          body,
-          method: 'PUT',
-        });
-        const result = await response.json();
-
-        if (!response.ok) throw new Error(result.error);
-
-        ok(result.message);
-      } catch (error) {
-        console.log(error);
-        err(error);
-      } finally {
-        setIsLoading(false);
-      }
-    });
 
   return (
     <Dialog.Root open={open} onOpenChange={toggleModal}>
