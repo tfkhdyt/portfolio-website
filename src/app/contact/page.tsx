@@ -29,7 +29,7 @@ const contents: SocialMedia[] = [
   {
     name: 'Mastodon',
     username: '@tfkhdyt',
-    url: 'https://fosstodon.org/@tfkhdyt',
+    url: 'https://toot.community/@tfkhdyt',
   },
   {
     name: 'YouTube',
