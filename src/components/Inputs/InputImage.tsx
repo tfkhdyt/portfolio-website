@@ -3,8 +3,9 @@ import { ChangeEvent } from 'react';
 type Props = {
   name: string;
   onChange: (e: ChangeEvent<HTMLInputElement>) => void;
+  required?: boolean;
 };
-const InputImage = ({ name, onChange }: Props) => {
+const InputImage = ({ name, onChange, required = false }: Props) => {
   return (
     <div className='w-full'>
       <label
@@ -12,6 +13,7 @@ const InputImage = ({ name, onChange }: Props) => {
         className='block mb-2 font-medium text-gray-900 md:flex-row dark:text-white'
       >
         {name}
+        {required && <span className='ml-1 text-red-100'>*</span>}
       </label>
 
       <input
@@ -20,6 +22,7 @@ const InputImage = ({ name, onChange }: Props) => {
         type='file'
         accept='image/*'
         onChange={onChange}
+        required={required}
       />
       {/* {errors?.name && <p className='mt-2 font-medium text-red-100'>{errors.name}</p>} */}
     </div>
