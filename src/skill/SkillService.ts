@@ -124,11 +124,14 @@ class SkillService {
       lqip,
     });
 
-    await this.cacheRepo.delete('skills');
-
     if (photoId) {
       await this.imageRepo.deleteImage(oldSkill.photoId);
     }
+
+    await Promise.all([
+      this.cacheRepo.delete('skills'),
+      this.cacheRepo.delete('projects'),
+    ]);
 
     return {
       message: `${updatedSkill.name} has been updated`,
