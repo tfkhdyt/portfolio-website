@@ -35,6 +35,7 @@ const TechPicker = ({ techStack, setTechStack, skills }: Props) => {
 
                 setTechStack((prev) => prev.filter((tech) => tech !== value));
               }}
+              required
             />
 
             <label
