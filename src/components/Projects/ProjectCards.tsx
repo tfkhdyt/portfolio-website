@@ -17,7 +17,9 @@ type Props = {
 };
 
 const ProjectCards = ({ projects, projectCategories, skills }: Props) => {
-  const [currentCategory, setCurrentCategory] = useState<ProjectCategory>(projectCategories[0]);
+  const [currentCategory, setCurrentCategory] = useState<ProjectCategory>(
+    projectCategories[0],
+  );
   const { data: session } = useSession();
 
   return (

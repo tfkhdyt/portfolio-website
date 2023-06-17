@@ -14,7 +14,9 @@ type Props = {
 };
 
 const SkillCards = ({ skills, skillCategories }: Props) => {
-  const [currentCategory, setCurrentCategory] = useState<SkillCategory>(skillCategories[0]);
+  const [currentCategory, setCurrentCategory] = useState<SkillCategory>(
+    skillCategories[0],
+  );
   const { data: session } = useSession();
 
   return (
@@ -42,6 +44,7 @@ const SkillCards = ({ skills, skillCategories }: Props) => {
             <CreateSkillModal
               skillCategories={skillCategories}
               currentCategory={currentCategory}
+              key='add-skill-btn'
             />
           )}
         </div>
