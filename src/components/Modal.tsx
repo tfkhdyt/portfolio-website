@@ -1,5 +1,7 @@
 import * as Dialog from '@radix-ui/react-dialog';
+import clsx from 'clsx';
 import { ReactNode } from 'react';
+import { match } from 'ts-pattern';
 
 type Props = {
   open: boolean;
@@ -8,6 +10,7 @@ type Props = {
   children: ReactNode;
   trigger: ReactNode;
   triggerContainerClassNames?: string;
+  size: 'sm' | 'md';
 };
 
 const Modal = ({
@@ -17,6 +20,7 @@ const Modal = ({
   children,
   trigger,
   triggerContainerClassNames,
+  size,
 }: Props) => {
   return (
     <Dialog.Root open={open} onOpenChange={onOpenChange}>
@@ -25,7 +29,15 @@ const Modal = ({
       </Dialog.Trigger>
       <Dialog.Portal>
         <Dialog.Overlay className='fixed inset-0 z-50 bg-black/75' />
-        <Dialog.Content className='fixed top-[50%] left-[50%] max-h-[85vh] w-[90vw] max-w-[900px] translate-x-[-50%] translate-y-[-50%] rounded-[6px] bg-light-bg-primary dark:bg-dark-bg-primary p-[25px] outline-none z-50 overflow-y-auto'>
+        <Dialog.Content
+          className={clsx(
+            'fixed top-[50%] left-[50%] max-h-[85vh] w-[90vw] translate-x-[-50%] translate-y-[-50%] rounded-[6px] bg-light-bg-primary dark:bg-dark-bg-primary p-[25px] outline-none z-50 overflow-y-auto',
+            match(size)
+              .with('sm', () => 'max-w-[450px]')
+              .with('md', () => 'max-w-[900px]')
+              .exhaustive(),
+          )}
+        >
           <Dialog.Title className='mb-2 text-xl font-medium'>{title}</Dialog.Title>
           {children}
           <Dialog.Close asChild>

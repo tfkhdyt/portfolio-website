@@ -93,6 +93,7 @@ const UpdateProjectModal = ({
       title={`Edit ${oldData.name} data`}
       open={open}
       onOpenChange={toggleModal}
+      size='md'
       triggerContainerClassNames='p-3 w-full bg-gradient-to-b from-transparent to-blue-100 rounded-bl-lg hover:to-blue-200'
       trigger={
         <svg
