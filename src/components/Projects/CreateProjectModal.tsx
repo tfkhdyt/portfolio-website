@@ -77,7 +77,7 @@ const CreateProjectModal = ({ projectCategories, currentCategory, skills }: Prop
   return (
     <Modal
       open={open}
-      onOpenChange={setOpen}
+      onOpenChange={toggleModal}
       title='Create new project'
       triggerContainerClassNames='block flex flex-col items-center py-6 space-y-2 bg-white rounded-lg border border-gray-200 shadow dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-200 group dark:hover:bg-gray-700'
       trigger={
