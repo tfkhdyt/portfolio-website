@@ -27,7 +27,7 @@ const rubik = localFont({
 export const metadata: Metadata = {
   title: 'Taufik Hidayat - Junior Back-end Developer',
   description:
-    `Hi everyone, my name is Taufik Hidayat. I'm a Junior Back-end Developer, Computer Science Student, YouTuber, Free and Open Source Software Enthusiast, and GNU/Linux Nerd`,
+    "Hello, world! My name is Taufik Hidayat. I'm a Junior Back-end Developer, Computer Science Student, YouTuber, Free and Open Source Software Enthusiast, and GNU/Linux Nerd.",
   authors: {
     name: 'Taufik Hidayat',
   },
@@ -36,7 +36,7 @@ export const metadata: Metadata = {
     creator: 'Taufik Hidayat',
     title: 'Taufik Hidayat - Junior Back-end Developer',
     description:
-      `Hi everyone, my name is Taufik Hidayat. I'm a Junior Back-end Developer, Computer Science Student, YouTuber, Free and Open Source Software Enthusiast, and GNU/Linux Nerd`,
+      "Hello, world! My name is Taufik Hidayat. I'm a Junior Back-end Developer, Computer Science Student, YouTuber, Free and Open Source Software Enthusiast, and GNU/Linux Nerd.",
     card: 'summary',
     site: 'https://www.tfkhdyt.my.id',
   },
@@ -51,7 +51,7 @@ export const metadata: Metadata = {
   ],
   openGraph: {
     description:
-      `Hi everyone, my name is Taufik Hidayat. I'm a Junior Back-end Developer, Computer Science Student, YouTuber, Free and Open Source Software Enthusiast, and GNU/Linux Nerd`,
+      "Hello, world! My name is Taufik Hidayat. I'm a Junior Back-end Developer, Computer Science Student, YouTuber, Free and Open Source Software Enthusiast, and GNU/Linux Nerd.",
     title: 'Taufik Hidayat - Junior Back-end Developer',
     url: 'https://www.tfkhdyt.my.id',
     type: 'website',
