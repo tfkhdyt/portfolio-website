@@ -10,7 +10,7 @@ import Modal from '../Modal';
 import { Skill, SkillCategory } from '@prisma/client';
 import { useAtomValue } from 'jotai';
 import { useRouter } from 'next/navigation';
-import { MouseEvent, useState } from 'react';
+import { FormEvent, useState } from 'react';
 
 type Props = {
   skillCategories: SkillCategory[];
@@ -30,7 +30,7 @@ const UpdateSkillModal = ({ skillCategories, currentCategory, oldData }: Props) 
   );
   const [photo, setPhoto] = useState<File | null>();
 
-  const handleSubmit = async (e: MouseEvent<HTMLButtonElement>) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     if (!name || !category) {
@@ -87,7 +87,7 @@ const UpdateSkillModal = ({ skillCategories, currentCategory, oldData }: Props) 
         </svg>
       }
     >
-      <form>
+      <form onSubmit={handleSubmit}>
         <div className='space-y-6'>
           <Input
             name='Name'
@@ -109,9 +109,8 @@ const UpdateSkillModal = ({ skillCategories, currentCategory, oldData }: Props) 
                 setPhoto(e.target.files[0]);
               }
             }}
-            required
           />
-          <SaveButton isLoading={isLoading} onClick={handleSubmit} />
+          <SaveButton isLoading={isLoading} />
         </div>
       </form>
     </Modal>

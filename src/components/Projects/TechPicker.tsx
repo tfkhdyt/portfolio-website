@@ -12,7 +12,6 @@ const TechPicker = ({ techStack, setTechStack, skills }: Props) => {
     <div>
       <label className='font-medium text-gray-900 md:flex-row dark:text-white'>
         Tech Stack
-        <span className='ml-1 text-red-100'>*</span>
       </label>
       <fieldset className='flex flex-wrap gap-3 mt-2'>
         <legend className='sr-only'>Color</legend>
@@ -35,7 +34,6 @@ const TechPicker = ({ techStack, setTechStack, skills }: Props) => {
 
                 setTechStack((prev) => prev.filter((tech) => tech !== value));
               }}
-              required
             />
 
             <label

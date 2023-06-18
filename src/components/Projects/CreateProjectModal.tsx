@@ -11,7 +11,7 @@ import TechPicker from './TechPicker';
 import { ProjectCategory, Skill } from '@prisma/client';
 import { useAtomValue } from 'jotai';
 import { useRouter } from 'next/navigation';
-import { MouseEvent, useState } from 'react';
+import { FormEvent, useState } from 'react';
 
 type Props = {
   projectCategories: ProjectCategory[];
@@ -34,7 +34,7 @@ const CreateProjectModal = ({ projectCategories, currentCategory, skills }: Prop
 
   const router = useRouter();
 
-  const handleSubmit = async (e: MouseEvent<HTMLButtonElement>) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     const body = new FormData();
@@ -100,7 +100,7 @@ const CreateProjectModal = ({ projectCategories, currentCategory, skills }: Prop
         </div>
       }
     >
-      <form>
+      <form onSubmit={handleSubmit}>
         <div className='flex flex-col gap-6 md:flex-row'>
           <div className='space-y-6 md:w-3/6'>
             <Input
@@ -156,7 +156,7 @@ const CreateProjectModal = ({ projectCategories, currentCategory, skills }: Prop
             />
           </div>
         </div>
-        <SaveButton isLoading={isLoading} onClick={handleSubmit} />
+        <SaveButton isLoading={isLoading} />
       </form>
     </Modal>
   );
