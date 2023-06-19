@@ -67,7 +67,7 @@ const Navbar = () => {
       {/* mobile nav */}
       <div
         className={clsx(
-          'absolute w-screen md:hidden h-[92.5vh] bg-light-bg-primary dark:bg-dark-bg-primary -translate-x-full px-8 py-4',
+          'absolute w-screen md:hidden h-[92.5vh] bg-light-bg-primary dark:bg-dark-bg-primary -translate-x-full px-8 py-4 translate-all duration-300',
           isOpen && 'translate-x-0',
         )}
       >
