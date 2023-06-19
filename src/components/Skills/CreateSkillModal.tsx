@@ -69,7 +69,7 @@ const CreateSkillModal = ({ skillCategories, currentCategory }: Props) => {
       onOpenChange={toggleModal}
       size='sm'
       title='Add new skill'
-      triggerContainerClassNames='block flex flex-col items-center py-6 space-y-2 bg-white rounded-lg border border-gray-200 shadow dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-200 group dark:hover:bg-gray-700'
+      triggerContainerClassNames='block flex flex-col items-center py-6 space-y-2 bg-white rounded-lg border border-gray-200 shadow dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-200 group dark:hover:bg-gray-700 transition duration-300'
       trigger={
         <div className='m-auto'>
           <svg

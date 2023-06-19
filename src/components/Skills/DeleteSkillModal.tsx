@@ -94,14 +94,14 @@ const DeleteSkillModal = ({ oldData }: Props) => {
           </Dialog.Description>
           <div className='flex items-center'>
             <button
-              className='py-2.5 px-5 mt-2 mr-2 text-sm font-medium text-white bg-red-100 rounded-lg outline-none dark:bg-red-100 hover:bg-red-200 focus:ring-4 focus:ring-red-200 disabled:cursor-wait dark:hover:bg-red-200 dark:focus:ring-red-200'
+              className='py-2.5 px-5 mt-2 mr-2 text-sm font-medium text-white bg-red-100 rounded-lg transition duration-300 outline-none dark:bg-red-100 hover:bg-red-200 focus:ring-4 focus:ring-red-200 disabled:cursor-wait dark:hover:bg-red-200 dark:focus:ring-red-200'
               onClick={() => handleDelete(oldData.id)}
               disabled={isLoading}
             >
               {isLoading ? <LoadingIcon /> : 'Yes, delete it'}
             </button>
             <button
-              className='py-2.5 px-5 mt-2 mr-2 text-sm font-medium text-white bg-gray-100 rounded-lg outline-none dark:bg-gray-800 hover:bg-gray-200 focus:ring-4 focus:ring-gray-200 dark:hover:bg-gray-700 dark:focus:ring-gray-600'
+              className='py-2.5 px-5 mt-2 mr-2 text-sm font-medium text-white bg-gray-100 rounded-lg transition duration-300 outline-none dark:bg-gray-800 hover:bg-gray-200 focus:ring-4 focus:ring-gray-200 dark:hover:bg-gray-700 dark:focus:ring-gray-600'
               onClick={() => toggleModal(false)}
             >
               Cancel

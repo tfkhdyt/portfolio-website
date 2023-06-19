@@ -26,7 +26,7 @@ const ProjectCard = ({
 
   return (
     <div
-      className='flex relative flex-col bg-white rounded-lg border border-gray-200 shadow dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-200 group dark:hover:bg-gray-700'
+      className='flex relative flex-col bg-white rounded-lg border border-gray-200 shadow transition duration-300 dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-200 group dark:hover:bg-gray-700'
       key={project.name}
     >
       <div className='relative w-full aspect-w-16 aspect-h-9'>
@@ -35,7 +35,7 @@ const ProjectCard = ({
           alt={project.name}
           fill
           style={{ objectFit: 'cover' }}
-          className='rounded-t-lg grayscale group-hover:grayscale-0'
+          className='rounded-t-lg transition duration-300 grayscale group-hover:grayscale-0'
           sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 50vw'
           blurDataURL={project.lqip ?? thumbnailDataUrl}
           placeholder='blur'
@@ -54,7 +54,7 @@ const ProjectCard = ({
                   aria-label={`${project.name}'s repository`}
                 >
                   <button
-                    className='p-1 rounded hover:bg-gray-300 dark:hover:bg-gray-800'
+                    className='p-1 rounded transition duration-300 hover:bg-gray-300 dark:hover:bg-gray-800'
                     aria-label={`${project.name}'s repository`}
                   >
                     <svg
@@ -81,7 +81,7 @@ const ProjectCard = ({
                   aria-label={`${project.name}'s demo`}
                 >
                   <button
-                    className='p-1 rounded hover:bg-gray-300 dark:hover:bg-gray-800'
+                    className='p-1 rounded transition duration-300 hover:bg-gray-300 dark:hover:bg-gray-800'
                     aria-label={`${project.name}'s demo`}
                   >
                     <svg
@@ -116,7 +116,7 @@ const ProjectCard = ({
                   alt={skill.name}
                   fill
                   style={{ objectFit: 'contain' }}
-                  className='grayscale group-hover:grayscale-0'
+                  className='transition duration-300 grayscale group-hover:grayscale-0'
                   sizes='(max-width: 768px) 8vw, (max-width: 1200px) 16vw, 32vw'
                   priority={project.categoryId === projectCategories[0].id}
                   placeholder={skill.lqip ? 'blur' : undefined}
@@ -127,7 +127,7 @@ const ProjectCard = ({
         </div>
       </div>
       {session && (
-        <div className='flex absolute inset-x-0 bottom-0 font-medium text-white opacity-0 group-hover:opacity-100 justify-stretch'>
+        <div className='flex absolute inset-x-0 bottom-0 font-medium text-white opacity-0 transition duration-300 group-hover:opacity-100 justify-stretch'>
           <UpdateProjectModal
             currentCategory={currentCategory}
             oldData={project}
