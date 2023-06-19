@@ -113,10 +113,14 @@ const Form = () => {
             onChange={(e) => setName(e.target.value)}
             required
           />
-          {errors?.name && <p className='mt-2 font-medium text-red-100'>{errors.name}</p>}
+          {errors?.name
+            && <p className='mt-2 font-medium text-red-100'>{errors.name}</p>}
         </div>
         <div className='w-full'>
-          <label htmlFor='email' className='block mb-2 font-medium text-gray-900 dark:text-white'>
+          <label
+            htmlFor='email'
+            className='block mb-2 font-medium text-gray-900 dark:text-white'
+          >
             Email
             <span className='ml-1 text-red-100'>*</span>
           </label>
@@ -129,11 +133,15 @@ const Form = () => {
             onChange={(e) => setEmail(e.target.value)}
             required
           />
-          {errors?.email && <p className='mt-2 font-medium text-red-100'>{errors.email}</p>}
+          {errors?.email
+            && <p className='mt-2 font-medium text-red-100'>{errors.email}</p>}
         </div>
       </div>
       <div className='mt-4'>
-        <label htmlFor='message' className='block mb-2 font-medium text-gray-900 dark:text-white'>
+        <label
+          htmlFor='message'
+          className='block mb-2 font-medium text-gray-900 dark:text-white'
+        >
           Your message
           <span className='ml-1 text-red-100'>*</span>
         </label>
@@ -147,13 +155,17 @@ const Form = () => {
           required
         >
         </textarea>
-        {errors?.message && <p className='mt-2 font-medium text-red-100'>{errors.message}</p>}
+        {errors?.message
+          && <p className='mt-2 font-medium text-red-100'>{errors.message}</p>}
       </div>
       <Turnstile
         siteKey={NEXT_PUBLIC_TURNSTILE_SITE_KEY}
         className='mt-4'
         onSuccess={setToken}
         ref={captcha}
+        options={{
+          theme: isDarkMode ? 'dark' : 'light',
+        }}
       />
       <button
         type='submit'
@@ -163,7 +175,12 @@ const Form = () => {
         {isLoading ? <LoadingIcon /> : (
           <>
             Send
-            <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='currentColor' className='ml-2 w-4 h-4'>
+            <svg
+              xmlns='http://www.w3.org/2000/svg'
+              viewBox='0 0 24 24'
+              fill='currentColor'
+              className='ml-2 w-4 h-4'
+            >
               <path d='M3.478 2.405a.75.75 0 00-.926.94l2.432 7.905H13.5a.75.75 0 010 1.5H4.984l-2.432 7.905a.75.75 0 00.926.94 60.519 60.519 0 0018.445-8.986.75.75 0 000-1.218A60.517 60.517 0 003.478 2.405z' />
             </svg>
           </>
