@@ -8,6 +8,9 @@ dependencies:
   '@auth/prisma-adapter':
     specifier: ^1.0.0
     version: 1.0.0(@prisma/client@4.15.0)
+  '@marsidev/react-turnstile':
+    specifier: ^0.2.1
+    version: 0.2.1(react-dom@18.2.0)(react@18.2.0)
   '@plaiceholder/next':
     specifier: ^3.0.0
     version: 3.0.0(next@13.4.5)(plaiceholder@3.0.0)(sharp@0.32.1)
@@ -243,6 +246,16 @@ packages:
       '@jridgewell/resolve-uri': 3.1.0
       '@jridgewell/sourcemap-codec': 1.4.14
     dev: true
+
+  /@marsidev/react-turnstile@0.2.1(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-W/jxe6nn55wvbAwCOAtrm+tIg90/1oqBlbWwWaWJ2zuo3pmEBoaz3cnkU5PO5Hhi7NL51H46qL1syrkq/5CN0Q==}
+    peerDependencies:
+      react: '>=16.8.0'
+      react-dom: '>=16.8.0'
+    dependencies:
+      react: 18.2.0
+      react-dom: 18.2.0(react@18.2.0)
+    dev: false
 
   /@next/env@13.4.5:
     resolution: {integrity: sha512-SG/gKH6eij4vwQy87b/3mbpQ1X3x2vUdnpwq6/qL2IQWjtq58EY/UuNAp9CoEZoC9sI4L9AD1r+73Z9r4d3uug==}
