@@ -2,11 +2,11 @@
 
 import Tabs from '../Tabs';
 import ProjectCard from './Card';
+import CreateProjectModal from './CreateProjectModal';
 
 import { Project, ProjectCategory, Skill } from '@prisma/client';
 import { useSession } from 'next-auth/react';
 import { useState } from 'react';
-import CreateProjectModal from './CreateProjectModal';
 
 type Props = {
   projects: (Project & {
