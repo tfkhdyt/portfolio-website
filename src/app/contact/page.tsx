@@ -3,7 +3,6 @@ import Form from '@/components/Contact/Form';
 import Title from '@/components/Title';
 
 import { Metadata } from 'next';
-import Link from 'next/link';
 
 export const metadata: Metadata = {
   title: 'Contact - Taufik Hidayat',
