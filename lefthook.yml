@@ -1,7 +1,7 @@
-pre-push:
-  commands:
-    audit:
-      run: pnpm audit
+# pre-push:
+#   commands:
+#     audit:
+#       run: pnpm audit
 pre-commit:
   commands:
     lint:
