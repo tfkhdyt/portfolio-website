@@ -1,4 +1,10 @@
-const LoadingIcon = () => {
+import clsx from 'clsx';
+
+type Props = {
+  className?: string;
+};
+
+const LoadingIcon = ({ className }: Props) => {
   return (
     <svg
       xmlns='http://www.w3.org/2000/svg'
@@ -6,7 +12,7 @@ const LoadingIcon = () => {
       viewBox='0 0 24 24'
       strokeWidth={1.5}
       stroke='currentColor'
-      className='w-5 h-5 animate-spin'
+      className={clsx('w-5 h-5 animate-spin', className)}
     >
       <path
         strokeLinecap='round'
