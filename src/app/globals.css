@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+body {
+  font-family: "Rubik Variable", sans-serif;
+}
+
 .wave {
   animation-name: wave-animation;
   animation-duration: 2.5s;
