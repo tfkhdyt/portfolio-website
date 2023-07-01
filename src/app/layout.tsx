@@ -4,25 +4,11 @@ import './globals.css';
 import ScrollToTopButton from '@/components/Buttons/ScrollToTopButton';
 import Navbar from '@/components/Navbar/Navbar';
 import NextAuthWrapper from '@/components/NextAuthWrapper';
+import Providers from './providers';
 
 import { Metadata } from 'next';
-// import localFont from 'next/font/local';
 import NextTopLoader from 'nextjs-toploader';
 import { Toaster } from 'react-hot-toast';
-
-// const rubik = localFont({
-//   src: [
-//     {
-//       path: '../assets/fonts/rubik/Rubik-VariableFont_wght.ttf',
-//       style: 'normal',
-//     },
-//     {
-//       path: '../assets/fonts/rubik/Rubik-Italic-VariableFont_wght.ttf',
-//       style: 'italic',
-//     },
-//   ],
-//   display: 'swap',
-// });
 
 export const metadata: Metadata = {
   title: 'Taufik Hidayat - Junior Back-end Developer',
@@ -67,18 +53,20 @@ export default function RootLayout({
   return (
     <html lang='en' id='html' className='dark'>
       <body className='bg-light-bg-primary text-light-fg-primary dark:bg-dark-bg-primary dark:text-dark-fg-primary'>
-        <Navbar />
-        <div className='relative py-6 px-8 mx-auto mt-16 md:px-16 md:mt-14 lg:container lg:px-32 xl:px-72'>
-          <NextAuthWrapper>
-            <NextTopLoader showSpinner={false} color='#98971a' />
-            {children}
-            <Toaster
-              position='bottom-right'
-              reverseOrder={false}
-            />
-          </NextAuthWrapper>
-          <ScrollToTopButton />
-        </div>
+        <Providers>
+          <Navbar />
+          <div className='relative py-6 px-8 mx-auto mt-16 md:px-16 md:mt-14 lg:container lg:px-32 xl:px-72'>
+            <NextAuthWrapper>
+              <NextTopLoader showSpinner={false} color='#98971a' />
+              {children}
+              <Toaster
+                position='bottom-right'
+                reverseOrder={false}
+              />
+            </NextAuthWrapper>
+            <ScrollToTopButton />
+          </div>
+        </Providers>
       </body>
     </html>
   );
