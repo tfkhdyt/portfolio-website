@@ -39,7 +39,8 @@ const formSchema = z.object({
   }),
 });
 
-const NEXT_PUBLIC_TURNSTILE_SITE_KEY = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY as string;
+const NEXT_PUBLIC_TURNSTILE_SITE_KEY = process.env
+  .NEXT_PUBLIC_TURNSTILE_SITE_KEY as string;
 
 const Form = () => {
   const [name, setName] = useState('');
@@ -114,7 +115,8 @@ const Form = () => {
             required
           />
           {errors?.name
-            && <p className='mt-2 font-medium text-red-100'>{errors.name}</p>}
+            ? <p className='mt-2 font-medium text-red-100'>{errors.name}</p>
+            : null}
         </div>
         <div className='w-full'>
           <label
@@ -134,7 +136,8 @@ const Form = () => {
             required
           />
           {errors?.email
-            && <p className='mt-2 font-medium text-red-100'>{errors.email}</p>}
+            ? <p className='mt-2 font-medium text-red-100'>{errors.email}</p>
+            : null}
         </div>
       </div>
       <div className='mt-4'>
@@ -156,7 +159,8 @@ const Form = () => {
         >
         </textarea>
         {errors?.message
-          && <p className='mt-2 font-medium text-red-100'>{errors.message}</p>}
+          ? <p className='mt-2 font-medium text-red-100'>{errors.message}</p>
+          : null}
       </div>
       <Turnstile
         siteKey={NEXT_PUBLIC_TURNSTILE_SITE_KEY}
@@ -172,6 +176,8 @@ const Form = () => {
         className='flex items-center py-2.5 px-5 mt-4 mr-2 mb-2 font-medium text-white bg-blue-100 rounded-lg transition duration-300 dark:bg-blue-100 hover:bg-blue-200 focus:ring-4 focus:ring-blue-200 focus:outline-none disabled:cursor-wait dark:hover:bg-blue-200 dark:focus:ring-blue-200'
         disabled={isLoading}
         data-event-umami='Send message button'
+        data-event-umami-name={name ?? undefined}
+        data-event-umami-email={email ?? undefined}
       >
         {isLoading ? <LoadingIcon /> : (
           <>

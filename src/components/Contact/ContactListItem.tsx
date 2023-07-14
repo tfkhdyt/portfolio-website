@@ -16,7 +16,8 @@ const ContactListItem = ({ content }: Props) => {
         href={content.url}
         target='_blank'
         className='relative font-bold underline group underline-offset-[4.5px] decoration-dotted decoration-1 md:underline-offset-4 md:decoration-2'
-        data-umami-event-contact={content.name}
+        data-umami-event='Contact link'
+        data-umami-event-name={content.name}
       >
         {content.username}
         <span className='absolute left-0 -bottom-0.5 w-0 h-full border-b-2 transition-all duration-300 dark:border-gray-200 group-hover:w-full border-light-fg-secondary'>

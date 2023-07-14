@@ -57,7 +57,8 @@ const ProjectCard = ({
                     <button
                       className='p-1 rounded transition duration-300 hover:bg-gray-300 dark:hover:bg-gray-800'
                       aria-label={`${project.name}'s repository`}
-                      data-umami-event-repository={project.name}
+                      data-umami-event='Project repository link'
+                      data-umami-event-name={project.name}
                       title='Repository'
                     >
                       <svg
@@ -88,6 +89,7 @@ const ProjectCard = ({
                     <button
                       className='p-1 rounded transition duration-300 hover:bg-gray-300 dark:hover:bg-gray-800'
                       aria-label={`${project.name}'s demo`}
+                      data-umami-event='Project demo link'
                       data-umami-event-demo={project.name}
                       title='Demo'
                     >
