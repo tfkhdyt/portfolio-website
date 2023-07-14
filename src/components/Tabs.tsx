@@ -8,7 +8,9 @@ type PageProps<T extends SkillCategory> = {
   setter: Dispatch<SetStateAction<T>>;
 };
 
-const Tabs = <T extends SkillCategory>({ current, items, setter }: PageProps<T>) => {
+const Tabs = <T extends SkillCategory>(
+  { current, items, setter }: PageProps<T>,
+) => {
   return (
     <ul className='flex overflow-x-auto -mb-px text-center'>
       {items.map((item) => (
@@ -21,8 +23,7 @@ const Tabs = <T extends SkillCategory>({ current, items, setter }: PageProps<T>)
                 ? 'text-green-200 border-green-200 dark:text-green-100 dark:border-green-100'
                 : 'font-normal border-transparent text-gray-800 dark:text-gray-400 dark:hover:text-blue-100 dark:hover:border-blue-100 hover:text-blue-200 hover:border-blue-100',
             )}
-            data-umami-event='Tab'
-            data-umami-event-name={item.name}
+            data-umami-event={`${item.name} tab`}
           >
             {item.name}
           </button>

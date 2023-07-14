@@ -57,8 +57,7 @@ const ProjectCard = ({
                     <button
                       className='p-1 rounded transition duration-300 hover:bg-gray-300 dark:hover:bg-gray-800'
                       aria-label={`${project.name}'s repository`}
-                      data-umami-event='Project repository link'
-                      data-umami-event-name={project.name}
+                      data-umami-event={`Project repository link | ${project.name}`}
                       title='Repository'
                     >
                       <svg
@@ -89,8 +88,7 @@ const ProjectCard = ({
                     <button
                       className='p-1 rounded transition duration-300 hover:bg-gray-300 dark:hover:bg-gray-800'
                       aria-label={`${project.name}'s demo`}
-                      data-umami-event='Project demo link'
-                      data-umami-event-demo={project.name}
+                      data-umami-event={`Project demo link | ${project.name}`}
                       title='Demo'
                     >
                       <svg
@@ -120,7 +118,11 @@ const ProjectCard = ({
         <div className='flex py-2 space-x-2'>
           {project.techStack
             .map((skill) => (
-              <div className='relative w-6 h-6' key={skill.name} title={skill.name}>
+              <div
+                className='relative w-6 h-6'
+                key={skill.name}
+                title={skill.name}
+              >
                 <Image
                   src={skill.photoUrl}
                   alt={skill.name}
