@@ -47,60 +47,68 @@ const ProjectCard = ({
           <div className='flex justify-between items-start'>
             <p className='text-xl font-semibold'>{project.name}</p>
             <div className='flex space-x-1'>
-              {project.repoUrl && (
-                <Link
-                  href={project.repoUrl}
-                  target='_blank'
-                  aria-label={`${project.name}'s repository`}
-                >
-                  <button
-                    className='p-1 rounded transition duration-300 hover:bg-gray-300 dark:hover:bg-gray-800'
+              {project.repoUrl
+                ? (
+                  <Link
+                    href={project.repoUrl}
+                    target='_blank'
                     aria-label={`${project.name}'s repository`}
                   >
-                    <svg
-                      xmlns='http://www.w3.org/2000/svg'
-                      fill='none'
-                      viewBox='0 0 24 24'
-                      strokeWidth={1.5}
-                      stroke='currentColor'
-                      className='w-6 h-6'
+                    <button
+                      className='p-1 rounded transition duration-300 hover:bg-gray-300 dark:hover:bg-gray-800'
+                      aria-label={`${project.name}'s repository`}
+                      data-umami-event-repository={project.name}
+                      title='Repository'
                     >
-                      <path
-                        strokeLinecap='round'
-                        strokeLinejoin='round'
-                        d='M14.25 9.75L16.5 12l-2.25 2.25m-4.5 0L7.5 12l2.25-2.25M6 20.25h12A2.25 2.25 0 0020.25 18V6A2.25 2.25 0 0018 3.75H6A2.25 2.25 0 003.75 6v12A2.25 2.25 0 006 20.25z'
-                      />
-                    </svg>
-                  </button>
-                </Link>
-              )}
-              {project.demoUrl && (
-                <Link
-                  href={project.demoUrl}
-                  target='_blank'
-                  aria-label={`${project.name}'s demo`}
-                >
-                  <button
-                    className='p-1 rounded transition duration-300 hover:bg-gray-300 dark:hover:bg-gray-800'
+                      <svg
+                        xmlns='http://www.w3.org/2000/svg'
+                        fill='none'
+                        viewBox='0 0 24 24'
+                        strokeWidth={1.5}
+                        stroke='currentColor'
+                        className='w-6 h-6'
+                      >
+                        <path
+                          strokeLinecap='round'
+                          strokeLinejoin='round'
+                          d='M14.25 9.75L16.5 12l-2.25 2.25m-4.5 0L7.5 12l2.25-2.25M6 20.25h12A2.25 2.25 0 0020.25 18V6A2.25 2.25 0 0018 3.75H6A2.25 2.25 0 003.75 6v12A2.25 2.25 0 006 20.25z'
+                        />
+                      </svg>
+                    </button>
+                  </Link>
+                )
+                : null}
+              {project.demoUrl
+                ? (
+                  <Link
+                    href={project.demoUrl}
+                    target='_blank'
                     aria-label={`${project.name}'s demo`}
                   >
-                    <svg
-                      xmlns='http://www.w3.org/2000/svg'
-                      fill='none'
-                      viewBox='0 0 24 24'
-                      strokeWidth={1.5}
-                      stroke='currentColor'
-                      className='w-6 h-6'
+                    <button
+                      className='p-1 rounded transition duration-300 hover:bg-gray-300 dark:hover:bg-gray-800'
+                      aria-label={`${project.name}'s demo`}
+                      data-umami-event-demo={project.name}
+                      title='Demo'
                     >
-                      <path
-                        strokeLinecap='round'
-                        strokeLinejoin='round'
-                        d='M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25'
-                      />
-                    </svg>
-                  </button>
-                </Link>
-              )}
+                      <svg
+                        xmlns='http://www.w3.org/2000/svg'
+                        fill='none'
+                        viewBox='0 0 24 24'
+                        strokeWidth={1.5}
+                        stroke='currentColor'
+                        className='w-6 h-6'
+                      >
+                        <path
+                          strokeLinecap='round'
+                          strokeLinejoin='round'
+                          d='M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25'
+                        />
+                      </svg>
+                    </button>
+                  </Link>
+                )
+                : null}
             </div>
           </div>
           <p className='dark:text-gray-200 text-light-fg-secondary'>
@@ -126,17 +134,19 @@ const ProjectCard = ({
             ))}
         </div>
       </div>
-      {session && (
-        <div className='flex absolute inset-x-0 bottom-0 font-medium text-white opacity-0 transition duration-300 group-hover:opacity-100 justify-stretch'>
-          <UpdateProjectModal
-            currentCategory={currentCategory}
-            oldData={project}
-            projectCategories={projectCategories}
-            skills={skills}
-          />
-          <DeleteProjectModal oldData={project} />
-        </div>
-      )}
+      {session
+        ? (
+          <div className='flex absolute inset-x-0 bottom-0 font-medium text-white opacity-0 transition duration-300 group-hover:opacity-100 justify-stretch'>
+            <UpdateProjectModal
+              currentCategory={currentCategory}
+              oldData={project}
+              projectCategories={projectCategories}
+              skills={skills}
+            />
+            <DeleteProjectModal oldData={project} />
+          </div>
+        )
+        : null}
     </div>
   );
 };
