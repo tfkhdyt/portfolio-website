@@ -32,14 +32,16 @@ const ProjectCards = ({ projects, projectCategories, skills }: Props) => {
         />
       </div>
       <div className='grid grid-cols-1 gap-6 mt-6 md:grid-cols-2'>
-        {session && (
-          <CreateProjectModal
-            projectCategories={projectCategories}
-            currentCategory={currentCategory}
-            skills={skills}
-            key='add-project-btn'
-          />
-        )}
+        {session
+          ? (
+            <CreateProjectModal
+              projectCategories={projectCategories}
+              currentCategory={currentCategory}
+              skills={skills}
+              key='add-project-btn'
+            />
+          )
+          : null}
         {projects
           .filter((project) => project.categoryId === currentCategory.id)
           .map((project, idx) => (

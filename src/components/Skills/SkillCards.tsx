@@ -40,13 +40,15 @@ const SkillCards = ({ skills, skillCategories }: Props) => {
                 key={skill.name}
               />
             ))}
-          {session && (
-            <CreateSkillModal
-              skillCategories={skillCategories}
-              currentCategory={currentCategory}
-              key='add-skill-btn'
-            />
-          )}
+          {session
+            ? (
+              <CreateSkillModal
+                skillCategories={skillCategories}
+                currentCategory={currentCategory}
+                key='add-skill-btn'
+              />
+            )
+            : null}
         </div>
       </main>
     </>

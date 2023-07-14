@@ -11,7 +11,9 @@ type Props = {
   value: Value;
   onChange: (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
 };
-const Input = ({ name, required = false, type, placeholder, value, onChange }: Props) => {
+const Input = (
+  { name, required = false, type, placeholder, value, onChange }: Props,
+) => {
   return (
     <div className='w-full'>
       <label
@@ -19,7 +21,7 @@ const Input = ({ name, required = false, type, placeholder, value, onChange }: P
         className='block mb-2 font-medium text-gray-900 md:flex-row dark:text-white'
       >
         {name}
-        {required && <span className='ml-1 text-red-100'>*</span>}
+        {required ? <span className='ml-1 text-red-100'>*</span> : null}
       </label>
       {match(type)
         .with('textarea', () => (

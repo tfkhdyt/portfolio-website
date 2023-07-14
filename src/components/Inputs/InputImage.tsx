@@ -13,7 +13,7 @@ const InputImage = ({ name, onChange, required = false }: Props) => {
         className='block mb-2 font-medium text-gray-900 md:flex-row dark:text-white'
       >
         {name}
-        {required && <span className='ml-1 text-red-100'>*</span>}
+        {required ? <span className='ml-1 text-red-100'>*</span> : null}
       </label>
 
       <input
