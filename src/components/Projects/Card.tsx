@@ -53,11 +53,11 @@ const ProjectCard = ({
                     href={project.repoUrl}
                     target='_blank'
                     aria-label={`${project.name}'s repository`}
+                    data-umami-event={`Project repository link | ${project.name}`}
                   >
                     <button
                       className='p-1 rounded transition duration-300 hover:bg-gray-300 dark:hover:bg-gray-800'
                       aria-label={`${project.name}'s repository`}
-                      data-umami-event={`Project repository link | ${project.name}`}
                       title='Repository'
                     >
                       <svg
@@ -84,11 +84,11 @@ const ProjectCard = ({
                     href={project.demoUrl}
                     target='_blank'
                     aria-label={`${project.name}'s demo`}
+                    data-umami-event={`Project demo link | ${project.name}`}
                   >
                     <button
                       className='p-1 rounded transition duration-300 hover:bg-gray-300 dark:hover:bg-gray-800'
                       aria-label={`${project.name}'s demo`}
-                      data-umami-event={`Project demo link | ${project.name}`}
                       title='Demo'
                     >
                       <svg
