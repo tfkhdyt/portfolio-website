@@ -28,7 +28,7 @@ const contents: SocialMedia[] = [
   {
     name: 'Fediverse',
     username: '@tfkhdyt',
-    url: 'https://kalckey.com/@tfkhdyt',
+    url: 'https://toot.community/@tfkhdyt',
   },
   {
     name: 'YouTube',
