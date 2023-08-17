@@ -1,8 +1,12 @@
-# pre-push:
-#   commands:
-#     audit:
-#       run: pnpm audit
 pre-commit:
   commands:
     lint:
+      glob: "*.{ts,tsx}"
       run: pnpm lint
+pre-push:
+  parallel: true
+  commands:
+    audit:
+      run: pnpm audit
+    taze:
+      run: taze --failOnOutdated
