@@ -47,8 +47,8 @@ const contents: SocialMedia[] = [
   },
   {
     name: 'Email',
-    username: 'tfkhdyt@proton.me',
-    url: 'mailto:tfkhdyt@proton.me',
+    username: 'me@tfkhdyt.my.id',
+    url: 'mailto:me@tfkhdyt.my.id',
   },
 ];
 
