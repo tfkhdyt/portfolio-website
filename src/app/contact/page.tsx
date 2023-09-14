@@ -28,7 +28,7 @@ const contents: SocialMedia[] = [
   {
     name: 'Fediverse',
     username: '@tfkhdyt',
-    url: 'https://mas.to/@tfkhdyt',
+    url: 'https://mementomori.social/@tfkhdyt',
   },
   {
     name: 'YouTube',
@@ -38,12 +38,12 @@ const contents: SocialMedia[] = [
   {
     name: 'LinkedIn',
     username: 'Taufik Hidayat',
-    url: 'https://www.linkedin.com/in/tfkhdyt142/',
+    url: 'https://www.linkedin.com/in/tfkhdyt142',
   },
   {
     name: 'Facebook',
     username: 'Taufik Hidayat',
-    url: 'https://www.facebook.com/tfkhdyt142/',
+    url: 'https://www.facebook.com/tfkhdyt142',
   },
   {
     name: 'Email',
@@ -52,28 +52,26 @@ const contents: SocialMedia[] = [
   },
 ];
 
-export type Contact = typeof contents[number];
+export type Contact = (typeof contents)[number];
 
 const ContactPage = () => {
   return (
-    <main className='space-y-10'>
-      <div className='space-y-4'>
+    <main className="space-y-10">
+      <div className="space-y-4">
         <Title>Contact</Title>
-        <p className='dark:text-gray-200 text-light-fg-secondary'>
-          Please don’t hesitate to get in touch with me by following my social media below:
+        <p className="dark:text-gray-200 text-light-fg-secondary">
+          Please don’t hesitate to get in touch with me by following my social
+          media below:
         </p>
-        <div className='ml-8 text-base font-normal dark:text-gray-200 text-light-fg-secondary'>
-          <ul className='space-y-2 list-disc list-outside'>
+        <div className="ml-8 text-base font-normal dark:text-gray-200 text-light-fg-secondary">
+          <ul className="space-y-2 list-disc list-outside">
             {contents.map((content) => (
-              <ContactListItem
-                content={content}
-                key={content.name}
-              />
+              <ContactListItem content={content} key={content.name} />
             ))}
           </ul>
         </div>
       </div>
-      <div className='space-y-4'>
+      <div className="space-y-4">
         <Title>Message</Title>
         <div>
           <Form />
