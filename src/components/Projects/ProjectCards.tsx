@@ -1,26 +1,28 @@
 'use client';
 
+import { useSearchParams } from 'next/navigation';
 import Tabs from '../Tabs';
 import ProjectCard from './Card';
 import CreateProjectModal from './CreateProjectModal';
 
-import { Project, ProjectCategory, Skill } from '@prisma/client';
+import { ProjectCategory, Skill } from '@prisma/client';
 import { useSession } from 'next-auth/react';
-import { useState } from 'react';
+import { z } from 'zod';
+import { ProjectWithTechStack } from '@/domains/project/ProjectDto';
 
 type Props = {
-  projects: (Project & {
-    techStack: Skill[];
-  })[];
+  projects: ProjectWithTechStack[];
   projectCategories: ProjectCategory[];
   skills: Skill[];
 };
 
+const CategorySchema = z.enum(['Web', 'API', 'CLI', 'Bot']).catch('Web');
+
 const ProjectCards = ({ projects, projectCategories, skills }: Props) => {
-  const [currentCategory, setCurrentCategory] = useState<ProjectCategory>(
-    projectCategories[0],
-  );
+  const searchParams = useSearchParams();
   const { data: session } = useSession();
+
+  const currentCategory = CategorySchema.parse(searchParams.get('category'));
 
   return (
     <main className="mt-2">
@@ -28,7 +30,6 @@ const ProjectCards = ({ projects, projectCategories, skills }: Props) => {
         <Tabs
           items={[...projectCategories]}
           currentCategory={currentCategory}
-          setter={setCurrentCategory}
         />
       </div>
       <div className="grid grid-cols-1 gap-6 mt-6 md:grid-cols-2">
@@ -41,7 +42,7 @@ const ProjectCards = ({ projects, projectCategories, skills }: Props) => {
           />
         ) : null}
         {projects
-          .filter((project) => project.categoryId === currentCategory.id)
+          .filter((project) => project.category?.name === currentCategory)
           .map((project, idx) => (
             <ProjectCard
               project={project}

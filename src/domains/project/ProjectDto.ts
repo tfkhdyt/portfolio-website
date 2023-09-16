@@ -22,4 +22,7 @@ export type UpdateProjectRequest = {
 
 export type ProjectWithTechStack = Project & {
   techStack: Skill[];
+  category: {
+    name: string;
+  } | null;
 };
