@@ -1,12 +1,13 @@
 pre-commit:
   commands:
     lint:
-      glob: "*.{ts,tsx}"
-      run: pnpm lint
+      glob: "**/*.{ts,tsx}"
+      run: bunx eslint --fix {staged_files}
 pre-push:
   parallel: true
   commands:
-    audit:
-      run: pnpm audit
+    lint:
+      glob: "**/*.{ts,tsx}"
+      run: bunx eslint --fix {all_files}
     taze:
       run: taze --failOnOutdated
