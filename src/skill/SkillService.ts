@@ -3,10 +3,7 @@ import CacheRepository from '@/domains/cache/CacheRepository';
 import LQIPRepository from '@/domains/error/lqip/LQIPRepository';
 import ImageRepository from '@/domains/image/ImageRepository';
 import ProjectRepository from '@/domains/project/ProjectRepository';
-import {
-  CreateSkillRequest,
-  UpdateSkillRequest,
-} from '@/domains/skill/SkillDto';
+import { CreateSkillRequest, UpdateSkillRequest } from '@/domains/skill/SkillDto';
 import SkillRepository from '@/domains/skill/SkillRepository';
 import { imageRepo } from '@/image/repositories/ImageRepositoryImagekit';
 import { lqipRepo } from '@/lqip/repositories/LQIPRepositoryPlaiceholder';
@@ -20,28 +17,28 @@ class SkillService {
     private readonly lqipRepo: LQIPRepository,
     private readonly cacheRepo: CacheRepository,
     private readonly projectRepo: ProjectRepository,
-  ) { }
+  ) {}
 
   private async verifyCategoryId(categoryId: string) {
     this.skillRepo.getSkillCategoryById(categoryId);
   }
 
   async getAllSkills() {
-    // const skillsCache = await this.skillRepo.getAllSkillsFromCache();
-    // if (!skillsCache) {
-    const skills = await this.skillRepo.getAllSkillsFromDB();
-    await this.cacheRepo.set('skills', JSON.stringify(skills));
+    const skillsCache = await this.skillRepo.getAllSkillsFromCache();
+    if (!skillsCache) {
+      const skills = await this.skillRepo.getAllSkillsFromDB();
+      await this.cacheRepo.set('skills', JSON.stringify(skills));
+
+      return {
+        message: 'success',
+        data: skills,
+      };
+    }
 
     return {
       message: 'success',
-      data: skills,
+      data: skillsCache,
     };
-    // }
-    //
-    // return {
-    //   message: 'success',
-    //   data: skillsCache,
-    // };
   }
 
   async getAllCategories() {

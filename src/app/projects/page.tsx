@@ -12,12 +12,11 @@ export const metadata: Metadata = {
 export const revalidate = 0;
 
 const ProjectsPage = async () => {
-  const [{ data: projects }, { data: projectCategories }, { data: skills }] =
-    await Promise.all([
-      projectService.getAllProjects(),
-      projectService.getAllCategories(),
-      skillService.getAllSkills(),
-    ]);
+  const [{ data: projects }, { data: projectCategories }, { data: skills }] = await Promise.all([
+    projectService.getAllProjects(),
+    projectService.getAllCategories(),
+    skillService.getAllSkills(),
+  ]);
 
   return (
     <main>

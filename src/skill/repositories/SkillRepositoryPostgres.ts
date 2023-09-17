@@ -1,9 +1,7 @@
 import { cacheRepo } from '@/cache/repositories/CacheRepositoryRedis';
 import CacheRepository from '@/domains/cache/CacheRepository';
 import { NotFoundError } from '@/domains/error/ErrorEntity';
-import SkillRepository, {
-  SkillWithCategory,
-} from '@/domains/skill/SkillRepository';
+import SkillRepository from '@/domains/skill/SkillRepository';
 import { handleError } from '@/helpers/error';
 import { prisma } from '@/lib/prisma';
 
@@ -13,19 +11,15 @@ class SkillRepositoryPostgres implements SkillRepository {
   constructor(
     private readonly db: PrismaClient,
     private readonly cacheRepo: CacheRepository,
-  ) { }
+  ) {}
 
-  async getAllSkillsFromDB() {
+  async getAllSkillsFromDB(): Promise<Skill[]> {
     try {
       const skills = await this.db.skill.findMany({
-        orderBy: [{ categoryId: 'asc' }, { id: 'asc' }],
-        include: {
-          category: {
-            select: {
-              name: true,
-            },
-          },
-        },
+        orderBy: [
+          { categoryId: 'asc' },
+          { id: 'asc' },
+        ],
       });
 
       return skills;
@@ -34,10 +28,9 @@ class SkillRepositoryPostgres implements SkillRepository {
     }
   }
 
-  async getAllSkillsFromCache(): Promise<SkillWithCategory[] | null> {
+  async getAllSkillsFromCache(): Promise<Skill[] | null> {
     try {
-      const skillsCache =
-        await this.cacheRepo.get<SkillWithCategory[]>('skills');
+      const skillsCache = await this.cacheRepo.get<Skill[]>('skills');
 
       return skillsCache;
     } catch (error) {
@@ -48,7 +41,9 @@ class SkillRepositoryPostgres implements SkillRepository {
   async getAllCategoriesFromDB(): Promise<SkillCategory[]> {
     try {
       const categories = await this.db.skillCategory.findMany({
-        orderBy: [{ id: 'asc' }],
+        orderBy: [
+          { id: 'asc' },
+        ],
       });
 
       return categories;
@@ -59,8 +54,7 @@ class SkillRepositoryPostgres implements SkillRepository {
 
   async getAllCategoriesFromCache(): Promise<SkillCategory[] | null> {
     try {
-      const categoriesCache =
-        await this.cacheRepo.get<SkillCategory[]>('skillCategories');
+      const categoriesCache = await this.cacheRepo.get<SkillCategory[]>('skillCategories');
 
       return categoriesCache;
     } catch (error) {
@@ -89,9 +83,7 @@ class SkillRepositoryPostgres implements SkillRepository {
       });
 
       if (!category) {
-        throw new NotFoundError(
-          `Skill category with id ${categoryId} is not found`,
-        );
+        throw new NotFoundError(`Skill category with id ${categoryId} is not found`);
       }
 
       return category;
@@ -100,10 +92,7 @@ class SkillRepositoryPostgres implements SkillRepository {
     }
   }
 
-  async updateSkill(
-    skillId: string,
-    skill: Prisma.SkillUpdateInput,
-  ): Promise<Skill> {
+  async updateSkill(skillId: string, skill: Prisma.SkillUpdateInput): Promise<Skill> {
     try {
       const updatedSkill = await this.db.skill.update({
         where: {

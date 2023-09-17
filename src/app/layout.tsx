@@ -8,6 +8,7 @@ import Providers from './providers';
 
 import { Metadata } from 'next';
 import Script from 'next/script';
+import NextTopLoader from 'nextjs-toploader';
 import { Toaster } from 'react-hot-toast';
 
 export const metadata: Metadata = {
@@ -51,23 +52,26 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" id="html" className="dark">
-      <body className="bg-light-bg-primary text-light-fg-primary dark:bg-dark-bg-primary dark:text-dark-fg-primary">
+    <html lang='en' id='html' className='dark'>
+      <body className='bg-light-bg-primary text-light-fg-primary dark:bg-dark-bg-primary dark:text-dark-fg-primary'>
         <Providers>
           <Navbar />
-          <div className="relative py-6 px-8 mx-auto mt-16 md:px-16 md:mt-14 lg:container lg:px-32 xl:px-72">
+          <div className='relative py-6 px-8 mx-auto mt-16 md:px-16 md:mt-14 lg:container lg:px-32 xl:px-72'>
             <NextAuthWrapper>
-              {/* <NextTopLoader showSpinner={false} color='#98971a' /> */}
+              <NextTopLoader showSpinner={false} color='#98971a' />
               {children}
-              <Toaster position="bottom-right" reverseOrder={false} />
+              <Toaster
+                position='bottom-right'
+                reverseOrder={false}
+              />
             </NextAuthWrapper>
             <ScrollToTopButton />
           </div>
         </Providers>
         <Script
           async
-          src="https://analytics.umami.is/script.js"
-          data-website-id="c306b611-d27b-4966-b6f1-a4ac7f51fdc9"
+          src='https://analytics.umami.is/script.js'
+          data-website-id='c306b611-d27b-4966-b6f1-a4ac7f51fdc9'
         />
       </body>
     </html>
