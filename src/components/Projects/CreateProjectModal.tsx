@@ -15,15 +15,11 @@ import { FormEvent, useState } from 'react';
 
 type Props = {
   projectCategories: ProjectCategory[];
-  currentCategory: string;
+  currentCategory: ProjectCategory;
   skills: Skill[];
 };
 
-const CreateProjectModal = ({
-  projectCategories,
-  currentCategory,
-  skills,
-}: Props) => {
+const CreateProjectModal = ({ projectCategories, currentCategory, skills }: Props) => {
   const [open, setOpen] = useState(false);
   const isDarkMode = useAtomValue(themeAtom);
   const [isLoading, setIsLoading] = useState(false);
@@ -34,16 +30,12 @@ const CreateProjectModal = ({
   const [techStack, setTechStack] = useState<string[]>([]);
   const [repoUrl, setRepoUrl] = useState('');
   const [demoUrl, setDemoUrl] = useState('');
-  const [category, setCategory] = useState(currentCategory);
+  const [category, setCategory] = useState<ProjectCategory['id']>(currentCategory.id);
 
   const router = useRouter();
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-
-    const categoryId = projectCategories.filter(
-      (cat) => cat.name === category,
-    )[0].id;
 
     const body = new FormData();
     body.append('name', name);
@@ -52,7 +44,7 @@ const CreateProjectModal = ({
     body.append('techStack', JSON.stringify(techStack));
     body.append('repoUrl', repoUrl);
     body.append('demoUrl', demoUrl);
-    body.append('category', categoryId);
+    body.append('category', category);
 
     toastPromise(
       sendData({
@@ -77,7 +69,7 @@ const CreateProjectModal = ({
     setTechStack([]);
     setRepoUrl('');
     setDemoUrl('');
-    setCategory(currentCategory);
+    setCategory(currentCategory.id);
 
     setOpen(open);
   };
@@ -86,49 +78,49 @@ const CreateProjectModal = ({
     <Modal
       open={open}
       onOpenChange={toggleModal}
-      title="Create new project"
-      size="md"
-      triggerContainerClassNames="block flex flex-col items-center py-6 space-y-2 bg-white rounded-lg border border-gray-200 shadow dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-200 group dark:hover:bg-gray-700 transition duration-300"
+      title='Create new project'
+      size='md'
+      triggerContainerClassNames='block flex flex-col items-center py-6 space-y-2 bg-white rounded-lg border border-gray-200 shadow dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-200 group dark:hover:bg-gray-700 transition duration-300'
       trigger={
-        <div className="m-auto">
+        <div className='m-auto'>
           <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
+            xmlns='http://www.w3.org/2000/svg'
+            fill='none'
+            viewBox='0 0 24 24'
             strokeWidth={1.5}
-            stroke="currentColor"
-            className="w-16 h-16"
+            stroke='currentColor'
+            className='w-16 h-16'
           >
             <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M12 4.5v15m7.5-7.5h-15"
+              strokeLinecap='round'
+              strokeLinejoin='round'
+              d='M12 4.5v15m7.5-7.5h-15'
             />
           </svg>
         </div>
       }
     >
       <form onSubmit={handleSubmit}>
-        <div className="flex flex-col gap-6 md:flex-row">
-          <div className="space-y-6 md:w-3/6">
+        <div className='flex flex-col gap-6 md:flex-row'>
+          <div className='space-y-6 md:w-3/6'>
             <Input
-              type="text"
-              name="Name"
+              type='text'
+              name='Name'
               value={name}
               onChange={(e) => setName(e.target.value)}
-              placeholder="Project name"
+              placeholder='Project name'
               required
             />
             <Input
-              type="textarea"
-              name="Description"
+              type='textarea'
+              name='Description'
               value={desc}
               onChange={(e) => setDesc(e.target.value)}
-              placeholder="Project description"
+              placeholder='Project description'
               required
             />
             <InputImage
-              name="Photo"
+              name='Photo'
               onChange={(e) => {
                 if (e.target.files) {
                   setPhoto(e.target.files[0]);
@@ -137,18 +129,18 @@ const CreateProjectModal = ({
               required
             />
             <Input
-              name="Repository URL"
-              type="url"
+              name='Repository URL'
+              type='url'
               value={repoUrl}
               onChange={(e) => setRepoUrl(e.target.value)}
-              placeholder="Repository URL"
+              placeholder='Repository URL'
             />
             <Input
-              name="Demo URL"
-              type="url"
+              name='Demo URL'
+              type='url'
               value={demoUrl}
               onChange={(e) => setDemoUrl(e.target.value)}
-              placeholder="Demo URL"
+              placeholder='Demo URL'
             />
             <CategoryPicker
               value={category}
@@ -156,7 +148,7 @@ const CreateProjectModal = ({
               categories={projectCategories}
             />
           </div>
-          <div className="space-y-6 md:w-3/6">
+          <div className='space-y-6 md:w-3/6'>
             <TechPicker
               techStack={techStack}
               setTechStack={setTechStack}
