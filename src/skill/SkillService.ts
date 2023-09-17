@@ -27,21 +27,21 @@ class SkillService {
   }
 
   async getAllSkills() {
-    const skillsCache = await this.skillRepo.getAllSkillsFromCache();
-    if (!skillsCache) {
-      const skills = await this.skillRepo.getAllSkillsFromDB();
-      await this.cacheRepo.set('skills', JSON.stringify(skills));
-
-      return {
-        message: 'success',
-        data: skills,
-      };
-    }
+    // const skillsCache = await this.skillRepo.getAllSkillsFromCache();
+    // if (!skillsCache) {
+    const skills = await this.skillRepo.getAllSkillsFromDB();
+    await this.cacheRepo.set('skills', JSON.stringify(skills));
 
     return {
       message: 'success',
-      data: skillsCache,
+      data: skills,
     };
+    // }
+    //
+    // return {
+    //   message: 'success',
+    //   data: skillsCache,
+    // };
   }
 
   async getAllCategories() {
