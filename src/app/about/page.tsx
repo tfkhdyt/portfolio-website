@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 
 const AboutPage = () => {
   return (
-    <main className='space-y-8'>
+    <main className="space-y-8">
       <AboutMeSection />
       <EducationSection />
       <WorkExperienceSection />
