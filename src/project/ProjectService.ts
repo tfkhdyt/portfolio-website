@@ -2,7 +2,10 @@ import { cacheRepo } from '@/cache/repositories/CacheRepositoryRedis';
 import CacheRepository from '@/domains/cache/CacheRepository';
 import LQIPRepository from '@/domains/error/lqip/LQIPRepository';
 import ImageRepository from '@/domains/image/ImageRepository';
-import { CreateProjectRequest, UpdateProjectRequest } from '@/domains/project/ProjectDto';
+import {
+  CreateProjectRequest,
+  UpdateProjectRequest,
+} from '@/domains/project/ProjectDto';
 import ProjectRepository from '@/domains/project/ProjectRepository';
 import { imageRepo } from '@/image/repositories/ImageRepositoryImagekit';
 import { lqipRepo } from '@/lqip/repositories/LQIPRepositoryPlaiceholder';
@@ -14,7 +17,7 @@ class ProjectService {
     private readonly imageRepo: ImageRepository,
     private readonly lqipRepo: LQIPRepository,
     private readonly cacheRepo: CacheRepository,
-  ) {}
+  ) { }
 
   private async verifyCategoryId(categoryId: string) {
     this.projectRepo.getProjectCategoryById(categoryId);
