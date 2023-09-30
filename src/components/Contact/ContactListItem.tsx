@@ -19,8 +19,7 @@ const ContactListItem = ({ content }: Props) => {
         data-umami-event={`Contact link | ${content.name}`}
       >
         {content.username}
-        <span className='absolute left-0 -bottom-0.5 w-0 h-full border-b-2 transition-all duration-300 dark:border-gray-200 group-hover:w-full border-light-fg-secondary'>
-        </span>
+        <span className='absolute left-0 -bottom-0.5 w-0 h-full border-b-2 transition-all duration-300 dark:border-gray-200 group-hover:w-full border-light-fg-secondary'></span>
       </Link>
     </li>
   );

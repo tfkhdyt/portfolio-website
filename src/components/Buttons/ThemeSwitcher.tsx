@@ -19,7 +19,8 @@ const ThemeSwitcher = () => {
     const themeFromLocalStorage = localStorage.getItem('darkMode');
     if (themeFromLocalStorage === undefined) {
       setIsDark(
-        window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches,
+        window.matchMedia &&
+          window.matchMedia('(prefers-color-scheme: dark)').matches,
       );
     }
   });
@@ -29,7 +30,10 @@ const ThemeSwitcher = () => {
   };
 
   return (
-    <label className='relative w-12 h-6 cursor-pointer' aria-label='Theme switcher'>
+    <label
+      className='relative w-12 h-6 cursor-pointer'
+      aria-label='Theme switcher'
+    >
       <input
         type='checkbox'
         className='peer sr-only [&:checked_+_span_svg[data-checked-icon]]:block [&:checked_+_span_svg[data-unchecked-icon]]:hidden'
@@ -62,8 +66,7 @@ const ThemeSwitcher = () => {
         </svg>
       </span>
 
-      <span className='absolute inset-0 bg-gray-400 rounded-full transition peer-checked:bg-green-100'>
-      </span>
+      <span className='absolute inset-0 bg-gray-400 rounded-full transition peer-checked:bg-green-100'></span>
     </label>
   );
 };

@@ -15,7 +15,7 @@ const Avatar = () => {
         width={300}
         height={300}
         priority
-        onClick={() => session ? signOut() : signIn()}
+        onClick={() => (session ? signOut() : signIn())}
       />
     </div>
   );

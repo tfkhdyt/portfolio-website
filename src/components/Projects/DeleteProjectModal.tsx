@@ -20,28 +20,32 @@ const DeleteProjectModal = ({ oldData }: Props) => {
   const router = useRouter();
 
   const handleDelete = async (id: string) => {
-    toast.promise(sendData(id), {
-      loading: 'Loading',
-      success: (data) => {
-        toggleModal(false);
-        router.refresh();
+    toast.promise(
+      sendData(id),
+      {
+        loading: 'Loading',
+        success: (data) => {
+          toggleModal(false);
+          router.refresh();
 
-        return data;
-      },
-      error: (err) => {
-        if (err instanceof Error) {
-          return err.message;
-        }
+          return data;
+        },
+        error: (err) => {
+          if (err instanceof Error) {
+            return err.message;
+          }
 
-        return 'Error!';
+          return 'Error!';
+        },
       },
-    }, {
-      duration: 5000,
-      style: {
-        background: isDarkMode ? '#2e2e2e' : '#ebdbb2',
-        color: isDarkMode ? '#ebdbb2' : '#2e2e2e',
+      {
+        duration: 5000,
+        style: {
+          background: isDarkMode ? '#2e2e2e' : '#ebdbb2',
+          color: isDarkMode ? '#ebdbb2' : '#2e2e2e',
+        },
       },
-    });
+    );
   };
 
   const toggleModal = (open: boolean) => {

@@ -17,7 +17,7 @@ const contents = [
   },
 ];
 
-export type WorkExperience = typeof contents[number];
+export type WorkExperience = (typeof contents)[number];
 
 const WorkExperienceSection = () => {
   return (

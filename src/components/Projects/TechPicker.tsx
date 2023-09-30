@@ -53,7 +53,9 @@ const TechPicker = ({ techStack, setTechStack, skills }: Props) => {
                 />
               </svg>
 
-              <p className='text-sm font-medium transition-none'>{skill.name}</p>
+              <p className='text-sm font-medium transition-none'>
+                {skill.name}
+              </p>
             </label>
           </div>
         ))}

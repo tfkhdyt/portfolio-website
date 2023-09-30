@@ -10,7 +10,7 @@ type Props = {
 
 const WorkExperienceListItem = ({ idx, contentsLength, content }: Props) => {
   return (
-    <li className={clsx('ml-6', idx !== (contentsLength - 1) && 'mb-10')}>
+    <li className={clsx('ml-6', idx !== contentsLength - 1 && 'mb-10')}>
       <span className='flex absolute -left-3 justify-center items-center w-6 h-6 bg-green-500 rounded-full ring-8 dark:bg-green-100 ring-light-bg-primary dark:ring-dark-bg-primary'>
         <svg
           xmlns='http://www.w3.org/2000/svg'
@@ -38,9 +38,7 @@ const WorkExperienceListItem = ({ idx, contentsLength, content }: Props) => {
       <div className='mb-4 ml-4 text-base font-normal dark:text-gray-200 text-light-fg-secondary'>
         <ul className='space-y-1 list-disc list-outside'>
           {content.jobList.map((task) => (
-            <li key={task}>
-              {task}
-            </li>
+            <li key={task}>{task}</li>
           ))}
         </ul>
       </div>

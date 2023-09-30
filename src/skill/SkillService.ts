@@ -3,7 +3,10 @@ import CacheRepository from '@/domains/cache/CacheRepository';
 import LQIPRepository from '@/domains/error/lqip/LQIPRepository';
 import ImageRepository from '@/domains/image/ImageRepository';
 import ProjectRepository from '@/domains/project/ProjectRepository';
-import { CreateSkillRequest, UpdateSkillRequest } from '@/domains/skill/SkillDto';
+import {
+  CreateSkillRequest,
+  UpdateSkillRequest,
+} from '@/domains/skill/SkillDto';
 import SkillRepository from '@/domains/skill/SkillRepository';
 import { imageRepo } from '@/image/repositories/ImageRepositoryImagekit';
 import { lqipRepo } from '@/lqip/repositories/LQIPRepositoryPlaiceholder';

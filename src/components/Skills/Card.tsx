@@ -31,18 +31,16 @@ const Card = ({ skill, currentCategory, skillCategories }: Props) => {
       <h1 className='font-medium tracking-tight text-center text-gray-900 md:text-lg dark:text-white'>
         {skill.name}
       </h1>
-      {session
-        ? (
-          <div className='flex absolute inset-x-0 bottom-0 font-medium text-white opacity-0 transition duration-300 group-hover:opacity-100 justify-stretch'>
-            <UpdateSkillModal
-              currentCategory={currentCategory}
-              oldData={skill}
-              skillCategories={skillCategories}
-            />
-            <DeleteSkillModal oldData={skill} />
-          </div>
-        )
-        : null}
+      {session ? (
+        <div className='flex absolute inset-x-0 bottom-0 font-medium text-white opacity-0 transition duration-300 group-hover:opacity-100 justify-stretch'>
+          <UpdateSkillModal
+            currentCategory={currentCategory}
+            oldData={skill}
+            skillCategories={skillCategories}
+          />
+          <DeleteSkillModal oldData={skill} />
+        </div>
+      ) : null}
     </div>
   );
 };

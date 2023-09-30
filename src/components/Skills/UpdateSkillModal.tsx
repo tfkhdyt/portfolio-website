@@ -18,7 +18,11 @@ type Props = {
   oldData: Skill;
 };
 
-const UpdateSkillModal = ({ skillCategories, currentCategory, oldData }: Props) => {
+const UpdateSkillModal = ({
+  skillCategories,
+  currentCategory,
+  oldData,
+}: Props) => {
   const [open, setOpen] = useState(false);
   const isDarkMode = useAtomValue(themeAtom);
   const [isLoading, setIsLoading] = useState(false);

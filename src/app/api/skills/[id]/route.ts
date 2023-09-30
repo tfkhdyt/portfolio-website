@@ -1,6 +1,11 @@
 import { authOptions } from '@/lib/nextAuth';
 import { skillService } from '@/skill/SkillService';
-import { BadRequestError, HTTPError, UnauthenticatedError, UnprocessableEntityError } from '@/domains/error/ErrorEntity';
+import {
+  BadRequestError,
+  HTTPError,
+  UnauthenticatedError,
+  UnprocessableEntityError,
+} from '@/domains/error/ErrorEntity';
 
 import { getServerSession } from 'next-auth/next';
 import { NextResponse } from 'next/server';
@@ -27,17 +32,22 @@ const updateSkillSchema = z.object({
     .optional(),
 });
 
-export const PUT = async (req: Request, {
-  params,
-}: {
-  params: { id: string };
-}) => {
+export const PUT = async (
+  req: Request,
+  {
+    params,
+  }: {
+    params: { id: string };
+  },
+) => {
   const id = params.id;
 
   try {
     const session = await getServerSession(authOptions);
     if (!session) {
-      throw new UnauthenticatedError('You should login first to access this endpoint');
+      throw new UnauthenticatedError(
+        'You should login first to access this endpoint',
+      );
     }
 
     const formData = await req.formData();
@@ -62,12 +72,18 @@ export const PUT = async (req: Request, {
     return NextResponse.json(response);
   } catch (error) {
     if (error instanceof HTTPError) {
-      return NextResponse.json({ error: error.message }, { status: error.statusCode });
+      return NextResponse.json(
+        { error: error.message },
+        { status: error.statusCode },
+      );
     }
 
-    return NextResponse.json({
-      error: `Failed to update skill with id ${id}`,
-    }, { status: 500 });
+    return NextResponse.json(
+      {
+        error: `Failed to update skill with id ${id}`,
+      },
+      { status: 500 },
+    );
   }
 };
 
@@ -80,17 +96,22 @@ const deleteSkillSchema = z.object({
     .cuid('Id is invalid'),
 });
 
-export const DELETE = async (_: Request, {
-  params,
-}: {
-  params: { id: string };
-}) => {
+export const DELETE = async (
+  _: Request,
+  {
+    params,
+  }: {
+    params: { id: string };
+  },
+) => {
   const id = params.id;
 
   try {
     const session = await getServerSession(authOptions);
     if (!session) {
-      throw new UnauthenticatedError('You should login first to access this endpoint');
+      throw new UnauthenticatedError(
+        'You should login first to access this endpoint',
+      );
     }
 
     const result = deleteSkillSchema.safeParse({ id });
@@ -103,11 +124,17 @@ export const DELETE = async (_: Request, {
     return NextResponse.json(response);
   } catch (error) {
     if (error instanceof HTTPError) {
-      return NextResponse.json({ error: error.message }, { status: error.statusCode });
+      return NextResponse.json(
+        { error: error.message },
+        { status: error.statusCode },
+      );
     }
 
-    return NextResponse.json({
-      error: `Failed to delete skill with id ${id}`,
-    }, { status: 500 });
+    return NextResponse.json(
+      {
+        error: `Failed to delete skill with id ${id}`,
+      },
+      { status: 500 },
+    );
   }
 };

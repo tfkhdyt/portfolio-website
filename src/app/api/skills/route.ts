@@ -1,6 +1,10 @@
 import { authOptions } from '@/lib/nextAuth';
 import { skillService } from '@/skill/SkillService';
-import { HTTPError, UnauthenticatedError, UnprocessableEntityError } from '@/domains/error/ErrorEntity';
+import {
+  HTTPError,
+  UnauthenticatedError,
+  UnprocessableEntityError,
+} from '@/domains/error/ErrorEntity';
 
 import { getServerSession } from 'next-auth/next';
 import { NextResponse } from 'next/server';
@@ -25,7 +29,9 @@ export const POST = async (req: Request) => {
   try {
     const session = await getServerSession(authOptions);
     if (!session) {
-      throw new UnauthenticatedError('You should login first to access this endpoint');
+      throw new UnauthenticatedError(
+        'You should login first to access this endpoint',
+      );
     }
 
     const formData = await req.formData();
@@ -49,9 +55,15 @@ export const POST = async (req: Request) => {
     return NextResponse.json(response);
   } catch (error) {
     if (error instanceof HTTPError) {
-      return NextResponse.json({ error: error.message }, { status: error.statusCode });
+      return NextResponse.json(
+        { error: error.message },
+        { status: error.statusCode },
+      );
     }
 
-    return NextResponse.json({ error: 'Failed to create new skill' }, { status: 500 });
+    return NextResponse.json(
+      { error: 'Failed to create new skill' },
+      { status: 500 },
+    );
   }
 };

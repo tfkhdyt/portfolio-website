@@ -5,22 +5,26 @@ export function toastPromise<T>(
   onSuccess: ValueOrFunction<Renderable, T>,
   isDarkMode: boolean,
 ) {
-  toast.promise(promise, {
-    loading: 'Loading',
-    success: onSuccess,
-    error: (err) => {
-      if (err instanceof Error) {
-        console.error(err);
-        return err.message;
-      }
+  toast.promise(
+    promise,
+    {
+      loading: 'Loading',
+      success: onSuccess,
+      error: (err) => {
+        if (err instanceof Error) {
+          console.error(err);
+          return err.message;
+        }
 
-      return 'Error!';
+        return 'Error!';
+      },
     },
-  }, {
-    duration: 5000,
-    style: {
-      background: isDarkMode ? '#2e2e2e' : '#ebdbb2',
-      color: isDarkMode ? '#ebdbb2' : '#2e2e2e',
+    {
+      duration: 5000,
+      style: {
+        background: isDarkMode ? '#2e2e2e' : '#ebdbb2',
+        color: isDarkMode ? '#ebdbb2' : '#2e2e2e',
+      },
     },
-  });
+  );
 }

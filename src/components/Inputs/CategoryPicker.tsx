@@ -26,10 +26,7 @@ const CategoryPicker = ({ value, onChange, categories }: Props) => {
         required
       >
         {categories.map((category) => (
-          <option
-            value={category.id}
-            key={category.id}
-          >
+          <option value={category.id} key={category.id}>
             {category.name}
           </option>
         ))}

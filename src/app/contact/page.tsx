@@ -56,22 +56,22 @@ export type Contact = (typeof contents)[number];
 
 const ContactPage = () => {
   return (
-    <main className="space-y-10">
-      <div className="space-y-4">
+    <main className='space-y-10'>
+      <div className='space-y-4'>
         <Title>Contact</Title>
-        <p className="dark:text-gray-200 text-light-fg-secondary">
+        <p className='dark:text-gray-200 text-light-fg-secondary'>
           Please don’t hesitate to get in touch with me by following my social
           media below:
         </p>
-        <div className="ml-8 text-base font-normal dark:text-gray-200 text-light-fg-secondary">
-          <ul className="space-y-2 list-disc list-outside">
+        <div className='ml-8 text-base font-normal dark:text-gray-200 text-light-fg-secondary'>
+          <ul className='space-y-2 list-disc list-outside'>
             {contents.map((content) => (
               <ContactListItem content={content} key={content.name} />
             ))}
           </ul>
         </div>
       </div>
-      <div className="space-y-4">
+      <div className='space-y-4'>
         <Title>Message</Title>
         <div>
           <Form />

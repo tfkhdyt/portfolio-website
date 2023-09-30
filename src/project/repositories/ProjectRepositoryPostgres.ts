@@ -20,10 +20,7 @@ class ProjectRepositoryPostgres implements ProjectRepository {
         orderBy: { id: 'desc' },
         include: {
           techStack: {
-            orderBy: [
-              { categoryId: 'asc' },
-              { id: 'asc' },
-            ],
+            orderBy: [{ categoryId: 'asc' }, { id: 'asc' }],
           },
         },
       });
@@ -36,7 +33,8 @@ class ProjectRepositoryPostgres implements ProjectRepository {
 
   async getAllProjectsFromCache(): Promise<ProjectWithTechStack[] | null> {
     try {
-      const projectsCache = await this.cacheRepo.get<ProjectWithTechStack[]>('projects');
+      const projectsCache =
+        await this.cacheRepo.get<ProjectWithTechStack[]>('projects');
 
       return projectsCache;
     } catch (error) {
@@ -58,7 +56,8 @@ class ProjectRepositoryPostgres implements ProjectRepository {
 
   async getAllCategoriesFromCache(): Promise<ProjectCategory[] | null> {
     try {
-      const categoriesCache = await this.cacheRepo.get<ProjectCategory[]>('projectCategories');
+      const categoriesCache =
+        await this.cacheRepo.get<ProjectCategory[]>('projectCategories');
 
       return categoriesCache;
     } catch (error) {
@@ -87,7 +86,9 @@ class ProjectRepositoryPostgres implements ProjectRepository {
       });
 
       if (!category) {
-        throw new NotFoundError(`Project category with id ${categoryId} is not found`);
+        throw new NotFoundError(
+          `Project category with id ${categoryId} is not found`,
+        );
       }
 
       return category;
@@ -96,7 +97,10 @@ class ProjectRepositoryPostgres implements ProjectRepository {
     }
   }
 
-  async updateProject(projectId: string, project: Prisma.ProjectUpdateInput): Promise<Project> {
+  async updateProject(
+    projectId: string,
+    project: Prisma.ProjectUpdateInput,
+  ): Promise<Project> {
     try {
       const updatedProject = await this.db.project.update({
         where: {
@@ -121,7 +125,9 @@ class ProjectRepositoryPostgres implements ProjectRepository {
 
   async getProjectById(projectId: string): Promise<Project> {
     try {
-      const project = await this.db.project.findUnique({ where: { id: projectId } });
+      const project = await this.db.project.findUnique({
+        where: { id: projectId },
+      });
       if (!project) {
         throw new NotFoundError(`Project with id ${projectId} is not found`);
       }
@@ -144,18 +150,20 @@ class ProjectRepositoryPostgres implements ProjectRepository {
         },
       });
 
-      await Promise.all(projects.map((project) => (
-        this.db.project.update({
-          where: { id: project.id },
-          data: {
-            techStack: {
-              disconnect: {
-                id: skillId,
+      await Promise.all(
+        projects.map((project) =>
+          this.db.project.update({
+            where: { id: project.id },
+            data: {
+              techStack: {
+                disconnect: {
+                  id: skillId,
+                },
               },
             },
-          },
-        })
-      )));
+          }),
+        ),
+      );
     } catch (error) {
       throw handleError(error);
     }

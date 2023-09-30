@@ -11,9 +11,14 @@ type Props = {
   value: Value;
   onChange: (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
 };
-const Input = (
-  { name, required = false, type, placeholder, value, onChange }: Props,
-) => {
+const Input = ({
+  name,
+  required = false,
+  type,
+  placeholder,
+  value,
+  onChange,
+}: Props) => {
   return (
     <div className='w-full'>
       <label
@@ -33,8 +38,7 @@ const Input = (
             value={value}
             onChange={onChange}
             required={required}
-          >
-          </textarea>
+          ></textarea>
         ))
         .otherwise(() => (
           <input

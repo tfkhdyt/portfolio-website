@@ -32,7 +32,7 @@ const contents = [
   },
 ];
 
-export type NavbarItemType = typeof contents[number];
+export type NavbarItemType = (typeof contents)[number];
 
 const Navbar = () => {
   const pathname = usePathname();

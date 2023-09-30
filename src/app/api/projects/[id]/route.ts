@@ -1,6 +1,11 @@
 import { authOptions } from '@/lib/nextAuth';
 import { projectService } from '@/project/ProjectService';
-import { BadRequestError, HTTPError, UnauthenticatedError, UnprocessableEntityError } from '@/domains/error/ErrorEntity';
+import {
+  BadRequestError,
+  HTTPError,
+  UnauthenticatedError,
+  UnprocessableEntityError,
+} from '@/domains/error/ErrorEntity';
 
 import { getServerSession } from 'next-auth/next';
 import { NextResponse } from 'next/server';
@@ -19,29 +24,32 @@ const updateProjectSchema = z.object({
       invalid_type_error: 'Name must be a string',
     })
     .max(50, 'Name must not exceed 50 characters'),
-  desc: z
-    .string({
-      required_error: 'Description is required',
-      invalid_type_error: 'Description must be a string',
-    }),
+  desc: z.string({
+    required_error: 'Description is required',
+    invalid_type_error: 'Description must be a string',
+  }),
   techStack: z.array(
-    z.string({
-      required_error: 'Tech stack is required',
-      invalid_type_error: 'Tech stack must be a string',
-    }).cuid('Tech stack is invalid'),
+    z
+      .string({
+        required_error: 'Tech stack is required',
+        invalid_type_error: 'Tech stack must be a string',
+      })
+      .cuid('Tech stack is invalid'),
   ),
   repoUrl: z
     .string({
       invalid_type_error: 'Repository URL must be a string',
     })
     .url('Repository URL must be a valid URL')
-    .optional().or(z.literal('')),
+    .optional()
+    .or(z.literal('')),
   demoUrl: z
     .string({
       invalid_type_error: 'Demo URL must be a string',
     })
     .url('Demo URL must be a valid URL')
-    .optional().or(z.literal('')),
+    .optional()
+    .or(z.literal('')),
   categoryId: z
     .string({
       required_error: 'Category id is required',
@@ -50,17 +58,22 @@ const updateProjectSchema = z.object({
     .cuid('Category id is invalid'),
 });
 
-export const PUT = async (req: Request, {
-  params,
-}: {
-  params: { id: string };
-}) => {
+export const PUT = async (
+  req: Request,
+  {
+    params,
+  }: {
+    params: { id: string };
+  },
+) => {
   const id = params.id;
 
   try {
     const session = await getServerSession(authOptions);
     if (!session) {
-      throw new UnauthenticatedError('You should login first to access this endpoint');
+      throw new UnauthenticatedError(
+        'You should login first to access this endpoint',
+      );
     }
 
     const formData = await req.formData();
@@ -94,12 +107,18 @@ export const PUT = async (req: Request, {
     return NextResponse.json(response);
   } catch (error) {
     if (error instanceof HTTPError) {
-      return NextResponse.json({ error: error.message }, { status: error.statusCode });
+      return NextResponse.json(
+        { error: error.message },
+        { status: error.statusCode },
+      );
     }
 
-    return NextResponse.json({
-      error: `Failed to update project with id ${id}`,
-    }, { status: 500 });
+    return NextResponse.json(
+      {
+        error: `Failed to update project with id ${id}`,
+      },
+      { status: 500 },
+    );
   }
 };
 
@@ -112,17 +131,22 @@ const deleteProjectSchema = z.object({
     .cuid('Id is invalid'),
 });
 
-export const DELETE = async (_: Request, {
-  params,
-}: {
-  params: { id: string };
-}) => {
+export const DELETE = async (
+  _: Request,
+  {
+    params,
+  }: {
+    params: { id: string };
+  },
+) => {
   const id = params.id;
 
   try {
     const session = await getServerSession(authOptions);
     if (!session) {
-      throw new UnauthenticatedError('You should login first to access this endpoint');
+      throw new UnauthenticatedError(
+        'You should login first to access this endpoint',
+      );
     }
 
     const result = deleteProjectSchema.safeParse({ id });
@@ -135,11 +159,17 @@ export const DELETE = async (_: Request, {
     return NextResponse.json(response);
   } catch (error) {
     if (error instanceof HTTPError) {
-      return NextResponse.json({ error: error.message }, { status: error.statusCode });
+      return NextResponse.json(
+        { error: error.message },
+        { status: error.statusCode },
+      );
     }
 
-    return NextResponse.json({
-      error: `Failed to delete skill with id ${id}`,
-    }, { status: 500 });
+    return NextResponse.json(
+      {
+        error: `Failed to delete skill with id ${id}`,
+      },
+      { status: 500 },
+    );
   }
 };

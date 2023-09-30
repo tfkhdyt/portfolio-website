@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 body {
-  font-family: "Rubik Variable", sans-serif;
+  font-family: 'Rubik Variable', sans-serif;
 }
 
 .wave {
@@ -56,6 +56,6 @@ html.dark {
   color-scheme: dark;
 }
 
-.custom-zoom [data-rmiz-modal-overlay="visible"] {
-  background-color: #282828F2;
+.custom-zoom [data-rmiz-modal-overlay='visible'] {
+  background-color: #282828f2;
 }

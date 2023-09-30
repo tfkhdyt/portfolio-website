@@ -17,7 +17,7 @@ class ProjectService {
     private readonly imageRepo: ImageRepository,
     private readonly lqipRepo: LQIPRepository,
     private readonly cacheRepo: CacheRepository,
-  ) { }
+  ) {}
 
   private async verifyCategoryId(categoryId: string) {
     this.projectRepo.getProjectCategoryById(categoryId);

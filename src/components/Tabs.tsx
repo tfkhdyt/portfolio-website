@@ -8,9 +8,11 @@ type PageProps<T extends SkillCategory> = {
   setter: Dispatch<SetStateAction<T>>;
 };
 
-const Tabs = <T extends SkillCategory>(
-  { current, items, setter }: PageProps<T>,
-) => {
+const Tabs = <T extends SkillCategory>({
+  current,
+  items,
+  setter,
+}: PageProps<T>) => {
   return (
     <ul className='flex overflow-x-auto -mb-px text-center'>
       {items.map((item) => (

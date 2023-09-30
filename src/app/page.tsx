@@ -9,7 +9,8 @@ export default async function Home() {
         <h1 className='text-4xl font-bold md:text-5xl'>Taufik Hidayat</h1>
         <TypewritedDesc />
         <p className='pb-2 md:text-lg'>
-          Hi everyone <span className='wave'>👋🏼</span>, welcome to my portfolio website.
+          Hi everyone <span className='wave'>👋🏼</span>, welcome to my portfolio
+          website.
         </p>
         <DownloadResumeButton />
       </div>

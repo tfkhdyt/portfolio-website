@@ -19,7 +19,11 @@ type Props = {
   skills: Skill[];
 };
 
-const CreateProjectModal = ({ projectCategories, currentCategory, skills }: Props) => {
+const CreateProjectModal = ({
+  projectCategories,
+  currentCategory,
+  skills,
+}: Props) => {
   const [open, setOpen] = useState(false);
   const isDarkMode = useAtomValue(themeAtom);
   const [isLoading, setIsLoading] = useState(false);
@@ -30,7 +34,9 @@ const CreateProjectModal = ({ projectCategories, currentCategory, skills }: Prop
   const [techStack, setTechStack] = useState<string[]>([]);
   const [repoUrl, setRepoUrl] = useState('');
   const [demoUrl, setDemoUrl] = useState('');
-  const [category, setCategory] = useState<ProjectCategory['id']>(currentCategory.id);
+  const [category, setCategory] = useState<ProjectCategory['id']>(
+    currentCategory.id,
+  );
 
   const router = useRouter();
 

@@ -23,7 +23,9 @@ const CreateSkillModal = ({ skillCategories, currentCategory }: Props) => {
   const [isLoading, setIsLoading] = useState(false);
 
   const [name, setName] = useState('');
-  const [category, setCategory] = useState<SkillCategory['id']>(currentCategory.id);
+  const [category, setCategory] = useState<SkillCategory['id']>(
+    currentCategory.id,
+  );
   const [photo, setPhoto] = useState<File | null>();
 
   const router = useRouter();

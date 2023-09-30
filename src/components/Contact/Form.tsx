@@ -18,20 +18,26 @@ type FormError = {
 };
 
 const formSchema = z.object({
-  name: z.string({
-    required_error: 'Name is required',
-    invalid_type_error: 'Name should be in string',
-  }).min(3, 'Name should be at least 3 characters'),
+  name: z
+    .string({
+      required_error: 'Name is required',
+      invalid_type_error: 'Name should be in string',
+    })
+    .min(3, 'Name should be at least 3 characters'),
 
-  email: z.string({
-    required_error: 'Email is required',
-    invalid_type_error: 'Email should be in string',
-  }).email('Email is invalid'),
+  email: z
+    .string({
+      required_error: 'Email is required',
+      invalid_type_error: 'Email should be in string',
+    })
+    .email('Email is invalid'),
 
-  message: z.string({
-    required_error: 'Email is required',
-    invalid_type_error: 'Email should be in string',
-  }).max(256, 'Message should not longer than 256 characters'),
+  message: z
+    .string({
+      required_error: 'Email is required',
+      invalid_type_error: 'Email should be in string',
+    })
+    .max(256, 'Message should not longer than 256 characters'),
 
   token: z.string({
     required_error: 'Captcha token is required',
@@ -59,7 +65,7 @@ const Form = () => {
 
     const body = formSchema.safeParse({ name, email, message, token });
     if (!body.success) {
-      const errs = body.error.issues.map(err => ({
+      const errs = body.error.issues.map((err) => ({
         message: err.message,
         field: err.path[0],
       }));
@@ -114,9 +120,9 @@ const Form = () => {
             onChange={(e) => setName(e.target.value)}
             required
           />
-          {errors?.name
-            ? <p className='mt-2 font-medium text-red-100'>{errors.name}</p>
-            : null}
+          {errors?.name ? (
+            <p className='mt-2 font-medium text-red-100'>{errors.name}</p>
+          ) : null}
         </div>
         <div className='w-full'>
           <label
@@ -135,9 +141,9 @@ const Form = () => {
             onChange={(e) => setEmail(e.target.value)}
             required
           />
-          {errors?.email
-            ? <p className='mt-2 font-medium text-red-100'>{errors.email}</p>
-            : null}
+          {errors?.email ? (
+            <p className='mt-2 font-medium text-red-100'>{errors.email}</p>
+          ) : null}
         </div>
       </div>
       <div className='mt-4'>
@@ -156,11 +162,10 @@ const Form = () => {
           value={message}
           onChange={(e) => setMessage(e.target.value)}
           required
-        >
-        </textarea>
-        {errors?.message
-          ? <p className='mt-2 font-medium text-red-100'>{errors.message}</p>
-          : null}
+        ></textarea>
+        {errors?.message ? (
+          <p className='mt-2 font-medium text-red-100'>{errors.message}</p>
+        ) : null}
       </div>
       <Turnstile
         siteKey={NEXT_PUBLIC_TURNSTILE_SITE_KEY}
@@ -179,7 +184,9 @@ const Form = () => {
         data-event-umami-name={name ?? undefined}
         data-event-umami-email={email ?? undefined}
       >
-        {isLoading ? <LoadingIcon /> : (
+        {isLoading ? (
+          <LoadingIcon />
+        ) : (
           <>
             Send
             <svg

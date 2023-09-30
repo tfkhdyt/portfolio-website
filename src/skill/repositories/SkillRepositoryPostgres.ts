@@ -16,10 +16,7 @@ class SkillRepositoryPostgres implements SkillRepository {
   async getAllSkillsFromDB(): Promise<Skill[]> {
     try {
       const skills = await this.db.skill.findMany({
-        orderBy: [
-          { categoryId: 'asc' },
-          { id: 'asc' },
-        ],
+        orderBy: [{ categoryId: 'asc' }, { id: 'asc' }],
       });
 
       return skills;
@@ -41,9 +38,7 @@ class SkillRepositoryPostgres implements SkillRepository {
   async getAllCategoriesFromDB(): Promise<SkillCategory[]> {
     try {
       const categories = await this.db.skillCategory.findMany({
-        orderBy: [
-          { id: 'asc' },
-        ],
+        orderBy: [{ id: 'asc' }],
       });
 
       return categories;
@@ -54,7 +49,8 @@ class SkillRepositoryPostgres implements SkillRepository {
 
   async getAllCategoriesFromCache(): Promise<SkillCategory[] | null> {
     try {
-      const categoriesCache = await this.cacheRepo.get<SkillCategory[]>('skillCategories');
+      const categoriesCache =
+        await this.cacheRepo.get<SkillCategory[]>('skillCategories');
 
       return categoriesCache;
     } catch (error) {
@@ -83,7 +79,9 @@ class SkillRepositoryPostgres implements SkillRepository {
       });
 
       if (!category) {
-        throw new NotFoundError(`Skill category with id ${categoryId} is not found`);
+        throw new NotFoundError(
+          `Skill category with id ${categoryId} is not found`,
+        );
       }
 
       return category;
@@ -92,7 +90,10 @@ class SkillRepositoryPostgres implements SkillRepository {
     }
   }
 
-  async updateSkill(skillId: string, skill: Prisma.SkillUpdateInput): Promise<Skill> {
+  async updateSkill(
+    skillId: string,
+    skill: Prisma.SkillUpdateInput,
+  ): Promise<Skill> {
     try {
       const updatedSkill = await this.db.skill.update({
         where: {

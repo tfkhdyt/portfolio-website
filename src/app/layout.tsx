@@ -60,10 +60,7 @@ export default function RootLayout({
             <NextAuthWrapper>
               <NextTopLoader showSpinner={false} color='#98971a' />
               {children}
-              <Toaster
-                position='bottom-right'
-                reverseOrder={false}
-              />
+              <Toaster position='bottom-right' reverseOrder={false} />
             </NextAuthWrapper>
             <ScrollToTopButton />
           </div>
