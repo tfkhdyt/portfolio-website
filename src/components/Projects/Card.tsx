@@ -31,7 +31,13 @@ const ProjectCard = ({
       className='flex relative flex-col bg-white rounded-lg border border-gray-200 shadow transition duration-300 dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-200 group dark:hover:bg-gray-700'
       key={project.name}
     >
-      <Zoom classDialog='custom-zoom'>
+      <Zoom
+        classDialog='custom-zoom'
+        zoomImg={{
+          src: project.photoUrl,
+          sizes: '(min-width: 0px) 100vw',
+        }}
+      >
         <div className='relative w-full aspect-w-16 aspect-h-9'>
           <Image
             src={project.photoUrl}
