@@ -54,6 +54,7 @@ export default function RootLayout({
   return (
     <html lang='en' id='html' className='dark'>
       <body className='bg-light-bg-primary text-light-fg-primary dark:bg-dark-bg-primary dark:text-dark-fg-primary'>
+        <a rel="me" href="https://mementomori.social/@tfkhdyt" className='hidden'>Mastodon</a>
         <Providers>
           <Navbar />
           <div className='relative py-6 px-8 mx-auto mt-16 md:px-16 md:mt-14 lg:container lg:px-32 xl:px-72'>
