@@ -12,18 +12,18 @@ import NextTopLoader from 'nextjs-toploader';
 import { Toaster } from 'react-hot-toast';
 
 export const metadata: Metadata = {
-  title: 'Taufik Hidayat - Junior Back-end Developer',
+  title: 'Taufik Hidayat - Full Stack Developer',
   description:
-    "Hello, world! My name is Taufik Hidayat. I'm a Junior Back-end Developer, Computer Science Student, YouTuber, Free and Open Source Software Enthusiast, and GNU/Linux Nerd.",
+    "Hello, world! My name is Taufik Hidayat. I'm a Full Stack Developer, Computer Science Student, YouTuber, Free and Open Source Software Enthusiast, and GNU/Linux Nerd.",
   authors: {
     name: 'Taufik Hidayat',
   },
   creator: 'Taufik Hidayat',
   twitter: {
     creator: 'Taufik Hidayat',
-    title: 'Taufik Hidayat - Junior Back-end Developer',
+    title: 'Taufik Hidayat - Full Stack Developer',
     description:
-      "Hello, world! My name is Taufik Hidayat. I'm a Junior Back-end Developer, Computer Science Student, YouTuber, Free and Open Source Software Enthusiast, and GNU/Linux Nerd.",
+      "Hello, world! My name is Taufik Hidayat. I'm a Full Stack Developer, Computer Science Student, YouTuber, Free and Open Source Software Enthusiast, and GNU/Linux Nerd.",
     card: 'summary',
     site: 'https://www.tfkhdyt.my.id',
   },
@@ -38,8 +38,8 @@ export const metadata: Metadata = {
   ],
   openGraph: {
     description:
-      "Hello, world! My name is Taufik Hidayat. I'm a Junior Back-end Developer, Computer Science Student, YouTuber, Free and Open Source Software Enthusiast, and GNU/Linux Nerd.",
-    title: 'Taufik Hidayat - Junior Back-end Developer',
+      "Hello, world! My name is Taufik Hidayat. I'm a Full Stack Developer, Computer Science Student, YouTuber, Free and Open Source Software Enthusiast, and GNU/Linux Nerd.",
+    title: 'Taufik Hidayat - Full Stack Developer',
     url: 'https://www.tfkhdyt.my.id',
     type: 'website',
   },

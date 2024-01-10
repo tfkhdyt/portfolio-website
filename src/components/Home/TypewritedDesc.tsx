@@ -7,7 +7,7 @@ const TypewritedDesc = () => {
     <h2 className='text-xl font-semibold text-transparent bg-clip-text bg-gradient-to-r from-blue-100 to-green-100 md:text-2xl'>
       <Typewriter
         words={[
-          'Junior Back-end Developer',
+          'Full Stack Developer',
           'Computer Science Student',
           'FOSS Enthusiast',
           'GNU/Linux User',

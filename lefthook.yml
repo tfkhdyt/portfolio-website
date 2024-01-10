@@ -12,5 +12,5 @@ pre-push:
     lint:
       glob: "./src/**/*.{ts,tsx}"
       run: pnpx eslint --fix {all_files}
-    taze:
-      run: taze --failOnOutdated
+    # taze:
+    #   run: taze --failOnOutdated

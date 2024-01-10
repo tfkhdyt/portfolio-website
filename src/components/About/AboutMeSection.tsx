@@ -4,7 +4,7 @@ import Title from '../Title';
 import Image from 'next/image';
 
 const contents = [
-  `Hello, world! My name is Taufik Hidayat. I'm a Junior Back-end Developer, Computer
+  `Hello, world! My name is Taufik Hidayat. I'm a Full Stack Developer, Computer
    Science Student, YouTuber, Free and Open Source Software Enthusiast, and GNU/Linux
    Nerd. I live in Bandung, Indonesia. I was born in Majalengka on April 1, 2002 (21
    years old).`,
