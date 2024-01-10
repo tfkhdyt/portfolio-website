@@ -6,6 +6,10 @@ const contents = [
     title: 'Universitas Bale Bandung',
     period: '2020 - Present',
     majors: 'Computer Science (Current GPA: 3.66)',
+    achievements: [
+      '"Best Academic Achievement” in MSIB Batch 5 at seKODlah (Forest Interactive)',
+      '"Best Capstone Project Winner (Yukitanya)” in MSIB Batch 5 at seKODlah (Forest Interactive)',
+    ],
   },
   {
     title: 'SMKN 7 Baleendah',

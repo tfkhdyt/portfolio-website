@@ -26,12 +26,21 @@ const EducationListItem = ({ idx, contentsLength, content }: Props) => {
       <h1 className='flex items-center mb-1 text-lg font-semibold text-light-fg-primary dark:text-dark-fg-primary'>
         {content.title}
       </h1>
-      <time className='block mb-2 text-sm font-normal leading-none text-light-fg-secondary dark:text-dark-fg-secondary/75'>
-        {content.period}
-      </time>
-      <p className='mb-4 text-base font-normal dark:text-gray-200 text-light-fg-secondary'>
+      <p className='block mb-3 italic font-normal leading-none text-light-fg-secondary dark:text-dark-fg-secondary/75'>
         {content.majors}
       </p>
+      <time className='block mb-3 text-sm font-normal leading-none text-light-fg-secondary dark:text-dark-fg-secondary/75'>
+        {content.period}
+      </time>
+      {content.achievements && content.achievements?.length > 0 && (
+        <div className='mb-4 ml-4 text-base font-normal dark:text-gray-200 text-light-fg-secondary'>
+          <ul className='space-y-1 list-disc list-outside'>
+            {content.achievements.map((acv) => (
+              <li key={acv}>{acv}</li>
+              ))}
+          </ul>
+        </div>
+      )}
     </li>
   );
 };
