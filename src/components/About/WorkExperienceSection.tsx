@@ -4,7 +4,20 @@ import WorkExperienceListItem from './WorkExperienceListItem';
 
 const contents = [
   {
-    company: 'PT. Inovindo Digital Media',
+    company: 'Netovas Eterna Teknologi',
+    period: 'Dec 2022 – Present',
+    role: 'Full Stack Developer',
+    jobList: [
+      'Designing and implementing responsive and visually appealing user interfaces for a CRM application.',
+      'Utilizing cutting-edge front-end technologies such as TypeScript, Next.js, and Tailwind CSS to create a seamless user experience.',
+      'Design and implement RESTful APIs for seamless communication between the frontend and backend.',
+      'Implement authentication and authorization mechanisms to ensure data security and user access control',
+      'Implement and maintain CI/CD pipelines to automate the testing, building, and deployment processes.',
+      'Orchestrate deployment workflows using Docker/Podman, ensuring consistency across various environments.',
+    ],
+  },
+  {
+    company: 'Inovindo Digital Media',
     period: 'Jan 2019 – Mar 2019',
     role: 'Junior Web Developer Intern',
     jobList: [
