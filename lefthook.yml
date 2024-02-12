@@ -1,16 +1,10 @@
 pre-commit:
   commands:
-    lint:
+    check:
       glob: "./src/**/*.{ts,tsx}"
-      run: pnpx eslint --fix {staged_files}
-    format:
-      glob: "./src/*"
-      run: pnpx prettier -cw {staged_files}
+      run: pnpm biome check --apply-unsafe ./src
 pre-push:
   parallel: true
   commands:
-    lint:
-      glob: "./src/**/*.{ts,tsx}"
-      run: pnpx eslint --fix {all_files}
-    # taze:
-    #   run: taze --failOnOutdated
+    taze:
+      run: pnpx taze --failOnOutdated

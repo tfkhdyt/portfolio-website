@@ -6,29 +6,29 @@ import { skillService } from '@/skill/SkillService';
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Projects - Taufik Hidayat',
+	title: 'Projects - Taufik Hidayat',
 };
 
 export const revalidate = 0;
 
 const ProjectsPage = async () => {
-  const [{ data: projects }, { data: projectCategories }, { data: skills }] =
-    await Promise.all([
-      projectService.getAllProjects(),
-      projectService.getAllCategories(),
-      skillService.getAllSkills(),
-    ]);
+	const [{ data: projects }, { data: projectCategories }, { data: skills }] =
+		await Promise.all([
+			projectService.getAllProjects(),
+			projectService.getAllCategories(),
+			skillService.getAllSkills(),
+		]);
 
-  return (
-    <main>
-      <Title>Projects</Title>
-      <ProjectCards
-        projects={projects}
-        projectCategories={projectCategories}
-        skills={skills}
-      />
-    </main>
-  );
+	return (
+		<main>
+			<Title>Projects</Title>
+			<ProjectCards
+				projects={projects}
+				projectCategories={projectCategories}
+				skills={skills}
+			/>
+		</main>
+	);
 };
 
 export default ProjectsPage;

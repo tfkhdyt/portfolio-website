@@ -9,30 +9,30 @@ const ADMIN_EMAIL = process.env.ADMIN_EMAIL as string;
 const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD as string;
 
 export const authOptions: AuthOptions = {
-  adapter: PrismaAdapter(prisma) as Adapter,
-  session: {
-    strategy: 'jwt',
-  },
-  providers: [
-    CredentialsProvider({
-      name: 'Admin Login',
-      credentials: {
-        email: { label: 'Email', type: 'email' },
-        password: { label: 'Password', type: 'password' },
-      },
-      async authorize(credentials) {
-        if (credentials?.email !== ADMIN_EMAIL) {
-          return null;
-        }
+	adapter: PrismaAdapter(prisma) as Adapter,
+	session: {
+		strategy: 'jwt',
+	},
+	providers: [
+		CredentialsProvider({
+			name: 'Admin Login',
+			credentials: {
+				email: { label: 'Email', type: 'email' },
+				password: { label: 'Password', type: 'password' },
+			},
+			async authorize(credentials) {
+				if (credentials?.email !== ADMIN_EMAIL) {
+					return null;
+				}
 
-        if (credentials.password !== ADMIN_PASSWORD) {
-          return null;
-        }
+				if (credentials.password !== ADMIN_PASSWORD) {
+					return null;
+				}
 
-        const user = { id: 'admin', name: 'admin', email: credentials.email };
+				const user = { id: 'admin', name: 'admin', email: credentials.email };
 
-        return user;
-      },
-    }),
-  ],
+				return user;
+			},
+		}),
+	],
 };

@@ -5,17 +5,17 @@ import WorkExperienceSection from '@/components/About/WorkExperienceSection';
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'About Me - Taufik Hidayat',
+	title: 'About Me - Taufik Hidayat',
 };
 
 const AboutPage = () => {
-  return (
-    <main className='space-y-8'>
-      <AboutMeSection />
-      <EducationSection />
-      <WorkExperienceSection />
-    </main>
-  );
+	return (
+		<main className='space-y-8'>
+			<AboutMeSection />
+			<EducationSection />
+			<WorkExperienceSection />
+		</main>
+	);
 };
 
 export default AboutPage;
