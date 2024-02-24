@@ -1,4 +1,4 @@
-import { createDirectus, rest, readSingleton } from '@directus/sdk';
+import { createDirectus, rest, readSingleton, readItems } from '@directus/sdk';
 
 const directusUrl = import.meta.env.DIRECTUS_URL;
 
@@ -16,9 +16,19 @@ type About = {
   description: string;
 };
 
+type Education = {
+  name: string;
+  major: string;
+  gpa?: number;
+  time_span_start: string;
+  time_span_end?: string;
+  achievements?: string[];
+};
+
 type Collection = {
   home: Home;
   about_me: About;
+  education: Education[];
 };
 
 export function fetchHome() {
@@ -27,6 +37,10 @@ export function fetchHome() {
 
 export function fetchAbout() {
   return client.request(readSingleton('about_me'));
+}
+
+export function fetchEducation() {
+  return client.request(readItems('education'));
 }
 
 export function getFileUrl(fileId: string) {

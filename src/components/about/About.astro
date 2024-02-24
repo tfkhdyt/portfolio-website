@@ -1,13 +1,15 @@
 ---
 import { fetchAbout, getFileUrl } from '@/lib/directus';
+import Heading from '@/components/Heading.astro';
+import Education from '@/components/about/Education.astro';
 
 const { photo, description } = await fetchAbout();
 const photoUrl = getFileUrl(photo);
 ---
 
-<section class='min-h-[100dvh] bg-gray-800'>
-  <div class='container mx-auto'>
-    <h2 class='pb-10 pt-28 text-center text-4xl font-extrabold'>About</h2>
+<section class='min-h-[100dvh] bg-gray-800' id='about'>
+  <div class='container mx-auto py-20'>
+    <Heading>About</Heading>
     <div class='flex gap-16'>
       <div class='w-1/4'>
         <img
@@ -24,5 +26,6 @@ const photoUrl = getFileUrl(photo);
         </p>
       </div>
     </div>
+    <Education />
   </div>
 </section>

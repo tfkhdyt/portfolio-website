@@ -9,6 +9,7 @@ const cvUrl = getFileUrl(result.cv);
 
 <section
   class='container mx-auto flex min-h-[100dvh] flex-col justify-center space-y-6 text-center'
+  id='home'
 >
   <img
     src={imageUrl}
@@ -24,11 +25,11 @@ const cvUrl = getFileUrl(result.cv);
   <h3 class='mx-auto max-w-lg text-xl font-light text-gray-300'>
     {result.description}
   </h3>
-  <div>
+  <div class='pt-4'>
     <a
       href={cvUrl}
       download
-      class='mx-auto mt-4 w-fit bg-teal-300 px-4 py-3 font-semibold text-black hover:bg-teal-400'
+      class='mx-auto w-fit bg-teal-300 px-5 py-3 font-semibold text-black hover:bg-teal-400'
     >
       Download CV
     </a>
