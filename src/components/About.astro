@@ -1,0 +1,28 @@
+---
+import { fetchAbout, getFileUrl } from '@/lib/directus';
+
+const { photo, description } = await fetchAbout();
+const photoUrl = getFileUrl(photo);
+---
+
+<section class='min-h-[100dvh] bg-gray-800'>
+  <div class='container mx-auto'>
+    <h2 class='pb-10 pt-28 text-center text-4xl font-extrabold'>About</h2>
+    <div class='flex gap-16'>
+      <div class='w-1/4'>
+        <img
+          src={photoUrl}
+          alt='Foto gweh'
+          height='400'
+          width='400'
+          class='rounded-full'
+        />
+      </div>
+      <div class='w-3/4'>
+        <p class='whitespace-pre-line text-justify text-lg text-gray-300'>
+          {description}
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
