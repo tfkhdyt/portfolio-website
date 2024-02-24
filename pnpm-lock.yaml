@@ -49,15 +49,12 @@ devDependencies:
   '@typescript-eslint/parser':
     specifier: ^7.0.2
     version: 7.0.2(eslint@8.57.0)(typescript@5.3.3)
+  astro-eslint-parser:
+    specifier: ^0.16.3
+    version: 0.16.3
   eslint:
     specifier: ^8.57.0
     version: 8.57.0
-  eslint-config-xo:
-    specifier: ^0.44.0
-    version: 0.44.0(eslint@8.57.0)
-  eslint-config-xo-typescript:
-    specifier: ^3.0.0
-    version: 3.0.0(@typescript-eslint/eslint-plugin@7.0.2)(@typescript-eslint/parser@7.0.2)(eslint@8.57.0)(typescript@5.3.3)
   eslint-plugin-astro:
     specifier: ^0.31.4
     version: 0.31.4(eslint@8.57.0)
@@ -2621,13 +2618,6 @@ packages:
       }
     dev: true
 
-  /confusing-browser-globals@1.0.11:
-    resolution:
-      {
-        integrity: sha512-JsPKdmh8ZkmnHxDk55FZ1TqVLvEQTvoByJZRN9jzI0UjxK/QgAmsphz7PGtqgPieQZ/CQcHWXCR7ATDNhGe+YA==,
-      }
-    dev: true
-
   /convert-source-map@2.0.0:
     resolution:
       {
@@ -3116,37 +3106,6 @@ packages:
     dependencies:
       eslint: 8.57.0
       semver: 7.6.0
-    dev: true
-
-  /eslint-config-xo-typescript@3.0.0(@typescript-eslint/eslint-plugin@7.0.2)(@typescript-eslint/parser@7.0.2)(eslint@8.57.0)(typescript@5.3.3):
-    resolution:
-      {
-        integrity: sha512-8C1EFMHBHMxnFuY+0gSLrnOfSvGG766L85EEFYNqEfO7XmfAVvEKUDgLMwDQ34Dq/bEpOSvVx8gkN9Owx3iKEw==,
-      }
-    engines: { node: '>=18' }
-    peerDependencies:
-      '@typescript-eslint/eslint-plugin': '>=7.0.2'
-      '@typescript-eslint/parser': '>=7.0.2'
-      eslint: '>=8.56.0'
-      typescript: '>=5.0.0'
-    dependencies:
-      '@typescript-eslint/eslint-plugin': 7.0.2(@typescript-eslint/parser@7.0.2)(eslint@8.57.0)(typescript@5.3.3)
-      '@typescript-eslint/parser': 7.0.2(eslint@8.57.0)(typescript@5.3.3)
-      eslint: 8.57.0
-      typescript: 5.3.3
-    dev: true
-
-  /eslint-config-xo@0.44.0(eslint@8.57.0):
-    resolution:
-      {
-        integrity: sha512-YG4gdaor0mJJi8UBeRJqDPO42MedTWYMaUyucF5bhm2pi/HS98JIxfFQmTLuyj6hGpQlAazNfyVnn7JuDn+Sew==,
-      }
-    engines: { node: '>=18' }
-    peerDependencies:
-      eslint: '>=8.56.0'
-    dependencies:
-      confusing-browser-globals: 1.0.11
-      eslint: 8.57.0
     dev: true
 
   /eslint-plugin-astro@0.31.4(eslint@8.57.0):
