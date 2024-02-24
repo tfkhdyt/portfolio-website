@@ -1,13 +1,14 @@
 ---
-import { fetchHome, getImageUrl } from '@/lib/directus';
+import { fetchHome, getFileUrl } from '@/lib/directus';
 
 const result = await fetchHome();
 const fullName = result.full_name.replace(' ', '');
-const imageUrl = getImageUrl(result.image);
+const imageUrl = getFileUrl(result.image);
+const cvUrl = getFileUrl(result.cv);
 ---
 
 <section
-  class='container mx-auto flex min-h-[75dvh] flex-col justify-center space-y-6 text-center'
+  class='container mx-auto flex min-h-[100dvh] flex-col justify-center space-y-6 text-center'
 >
   <img
     src={imageUrl}
@@ -20,11 +21,16 @@ const imageUrl = getImageUrl(result.image);
     Hi, I'm <span class='text-indigo-500'>{'<'}</span>{fullName}
     <span class='text-indigo-500'>{' />'}</span>
   </h2>
-  <h3 class='mx-auto max-w-xl text-xl font-light'>{result.description}</h3>
+  <h3 class='mx-auto max-w-lg text-xl font-light text-gray-300'>
+    {result.description}
+  </h3>
   <div>
-    <button
+    <a
+      href={cvUrl}
+      download
       class='mx-auto mt-4 w-fit bg-teal-300 px-4 py-3 font-semibold text-black hover:bg-teal-400'
-      >Download CV</button
     >
+      Download CV
+    </a>
   </div>
 </section>

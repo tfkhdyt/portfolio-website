@@ -8,16 +8,27 @@ type Home = {
   full_name: string;
   description: string;
   image: string;
+  cv: string;
+};
+
+type About = {
+  photo: string;
+  description: string;
 };
 
 type Collection = {
   home: Home;
+  about_me: About;
 };
 
-export async function fetchHome() {
+export function fetchHome() {
   return client.request(readSingleton('home'));
 }
 
-export function getImageUrl(fileId: string) {
+export function fetchAbout() {
+  return client.request(readSingleton('about_me'));
+}
+
+export function getFileUrl(fileId: string) {
   return `${directusUrl}/assets/${fileId}`;
 }
