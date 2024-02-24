@@ -15,7 +15,7 @@ type Collection = {
 };
 
 export async function fetchHome() {
-  return await client.request(readSingleton('home'));
+  return client.request(readSingleton('home'));
 }
 
 export function getImageUrl(fileId: string) {
