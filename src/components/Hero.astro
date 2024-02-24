@@ -1,0 +1,30 @@
+---
+import { fetchHome, getImageUrl } from '@/lib/directus';
+
+const result = await fetchHome();
+const fullName = result.full_name.replace(' ', '');
+const imageUrl = getImageUrl(result.image);
+---
+
+<section
+  class='container mx-auto flex min-h-[75dvh] flex-col justify-center space-y-6 text-center'
+>
+  <img
+    src={imageUrl}
+    alt='tfkhdyt logo'
+    width='150'
+    height='150'
+    class='mx-auto mb-4'
+  />
+  <h2 class='text-5xl font-extrabold'>
+    Hi, I'm <span class='text-indigo-500'>{'<'}</span>{fullName}
+    <span class='text-indigo-500'>{' />'}</span>
+  </h2>
+  <h3 class='mx-auto max-w-xl text-xl font-light'>{result.description}</h3>
+  <div>
+    <button
+      class='mx-auto mt-4 w-fit bg-teal-300 px-4 py-3 font-semibold text-black hover:bg-teal-400'
+      >Download CV</button
+    >
+  </div>
+</section>
