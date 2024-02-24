@@ -9,7 +9,9 @@
   "overrides": [
     {
       // Define the configuration for `.astro` file.
-      "files": ["*.astro"],
+      "files": [
+        "*.astro"
+      ],
       // Allows Astro components to be parsed.
       "parser": "astro-eslint-parser",
       "processor": "astro/client-side-ts",
@@ -17,7 +19,9 @@
       // It's the setting you need when using TypeScript.
       "parserOptions": {
         "parser": "@typescript-eslint/parser",
-        "extraFileExtensions": [".astro"]
+        "extraFileExtensions": [
+          ".astro"
+        ]
       },
       "rules": {
         // override/add rules settings here, such as:
@@ -25,7 +29,11 @@
       }
     },
     {
-      "files": ["*.ts", "*.tsx"],
+      "files": [
+        "*.ts",
+        "*.tsx",
+        "*.mjs"
+      ],
       "parser": "@typescript-eslint/parser"
     }
     // ...
