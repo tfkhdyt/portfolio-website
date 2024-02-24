@@ -2,8 +2,11 @@ export default {
   // ...
   extends: [
     // ...
+    'eslint:recommended',
     'plugin:astro/recommended',
     'plugin:astro/jsx-a11y-recommended',
+    'xo',
+    "xo-typescript"
   ],
   // ...
   overrides: [
