@@ -6,8 +6,8 @@ pre-commit:
   parallel: true
   commands:
     eslint:
-      glob: "./src/**/*.{js,ts,jsx,tsx,astro}"
+      glob: './src/**/*.{js,ts,jsx,tsx,astro}'
       run: pnpm lint
     prettier:
-      glob: "./src/**/*.{js,ts,jsx,tsx,astro}"
+      glob: './src/**/*.{js,ts,jsx,tsx,astro}'
       run: pnpm format
