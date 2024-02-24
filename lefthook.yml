@@ -1,0 +1,13 @@
+pre-push:
+  commands:
+    outdated-deps:
+      run: pnpx taze --failOnOutdated
+pre-commit:
+  parallel: true
+  commands:
+    eslint:
+      glob: "./src/**/*.{js,ts,jsx,tsx,astro}"
+      run: pnpm lint
+    prettier:
+      glob: "./src/**/*.{js,ts,jsx,tsx,astro}"
+      run: pnpm format
