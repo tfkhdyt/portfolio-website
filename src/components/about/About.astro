@@ -1,7 +1,8 @@
 ---
 import { fetchAbout, getFileUrl } from '@/lib/directus';
 import Heading from '@/components/Heading.astro';
-import Education from '@/components/about/Education.astro';
+import Education from './Education.astro';
+import WorkExperience from './WorkExperience.astro';
 
 const { photo, description } = await fetchAbout();
 const photoUrl = getFileUrl(photo);
@@ -27,5 +28,6 @@ const photoUrl = getFileUrl(photo);
       </div>
     </div>
     <Education />
+    <WorkExperience />
   </div>
 </section>

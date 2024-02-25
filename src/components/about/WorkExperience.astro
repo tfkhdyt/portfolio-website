@@ -1,0 +1,35 @@
+---
+import Heading from '@/components/Heading.astro';
+import { fetchWorkExperience } from '@/lib/directus';
+
+const workExperiences = await fetchWorkExperience();
+---
+
+<Heading>Work Experience</Heading>
+<div class='relative col-span-12 space-y-6 px-4 sm:col-span-9'>
+  <div
+    class='relative col-span-12 space-y-12 px-4 sm:col-span-8 sm:space-y-8 sm:before:absolute sm:before:-left-3 sm:before:bottom-0 sm:before:top-2 sm:before:w-0.5 before:dark:bg-gray-700'
+  >
+    {
+      workExperiences.map((exp) => (
+        <div class='flex flex-col sm:relative sm:before:absolute sm:before:left-[-35px] sm:before:top-2 sm:before:z-[1] sm:before:h-4 sm:before:w-4 sm:before:rounded-full before:dark:bg-teal-300'>
+          <h3 class='text-2xl font-bold'>{exp.company_name}</h3>
+          <p class='text-lg italic dark:text-gray-400'>{exp.role}</p>
+          <time class='text-lg dark:text-gray-400'>
+            {new Date(exp.time_span_start).getFullYear()} -{' '}
+            {exp.time_span_end
+              ? new Date(exp.time_span_end).getFullYear()
+              : 'present'}
+          </time>
+          {exp.job_desk.length > 0 && (
+            <ul class='ml-6 mt-3 list-disc text-lg text-gray-300'>
+              {exp.job_desk.map((job) => (
+                <li>{job}</li>
+              ))}
+            </ul>
+          )}
+        </div>
+      ))
+    }
+  </div>
+</div>

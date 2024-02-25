@@ -25,10 +25,19 @@ type Education = {
   achievements?: string[];
 };
 
+type WorkExperince = {
+  company_name: string;
+  role: string;
+  time_span_start: string;
+  time_span_end?: string;
+  job_desk: string[];
+};
+
 type Collection = {
   home: Home;
   about_me: About;
   education: Education[];
+  work_experience: WorkExperince[];
 };
 
 export function fetchHome() {
@@ -41,6 +50,10 @@ export function fetchAbout() {
 
 export function fetchEducation() {
   return client.request(readItems('education'));
+}
+
+export function fetchWorkExperience() {
+  return client.request(readItems('work_experience'));
 }
 
 export function getFileUrl(fileId: string) {
