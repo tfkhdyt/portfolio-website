@@ -25,7 +25,7 @@ const educations = await fetchEducation();
               : 'present'}
           </time>
           {education.achievements && education.achievements?.length > 0 && (
-            <ul class='mt-3 list-inside list-disc text-lg text-gray-300'>
+            <ul class='ml-6 mt-3 list-disc text-lg text-gray-300'>
               {education.achievements.map((achievement) => (
                 <li>{achievement}</li>
               ))}
