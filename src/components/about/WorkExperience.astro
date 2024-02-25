@@ -1,8 +1,17 @@
 ---
-import Heading from '@/components/Heading.astro';
+import Heading from '@/components/heading/Heading.astro';
 import { fetchWorkExperience } from '@/lib/directus';
 
 const workExperiences = await fetchWorkExperience();
+
+const dateMonthFormatter = Intl.DateTimeFormat('en-US', {
+  month: 'short',
+  year: 'numeric',
+});
+
+function formatDateString(date: string) {
+  return dateMonthFormatter.format(new Date(date));
+}
 ---
 
 <Heading>WorkExperience</Heading>
@@ -16,9 +25,9 @@ const workExperiences = await fetchWorkExperience();
           <h3 class='text-2xl font-bold'>{exp.company_name}</h3>
           <p class='text-lg italic text-gray-400'>{exp.role}</p>
           <time class='text-lg text-gray-400'>
-            {new Date(exp.time_span_start).getFullYear()} -{' '}
+            {formatDateString(exp.time_span_start)} -{' '}
             {exp.time_span_end
-              ? new Date(exp.time_span_end).getFullYear()
+              ? formatDateString(exp.time_span_end)
               : 'present'}
           </time>
           {exp.job_desk.length > 0 && (

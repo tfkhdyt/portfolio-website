@@ -1,0 +1,52 @@
+---
+import Heading from '@/components/heading/Heading.astro';
+import HeadingFE from '@/components/heading/HeadingFE.astro';
+import HeadingBE from '@/components/heading/HeadingBE.astro';
+import HeadingFS from '@/components/heading/HeadingFS.astro';
+
+import { getFileUrl } from '@/lib/directus';
+import { fetchSkillSet } from '@/lib/directus';
+import SkillCarousel from './SkillCarousel';
+
+const skills = await fetchSkillSet();
+
+const frontEnd = skills
+  .filter((skill) => skill.type === 'front_end')
+  .map((skill) => ({
+    name: skill.name,
+    logo: getFileUrl(skill.logo),
+  }));
+
+const backEnd = skills
+  .filter((skill) => skill.type === 'back_end')
+  .map((skill) => ({
+    name: skill.name,
+    logo: getFileUrl(skill.logo),
+  }));
+const fullStack = skills
+  .filter((skill) => skill.type === 'full_stack')
+  .map((skill) => ({
+    name: skill.name,
+    logo: getFileUrl(skill.logo),
+  }));
+---
+
+<section class='min-h-[100dvh]' id='skill'>
+  <div class='container mx-auto py-20'>
+    <Heading>SkillSet</Heading>
+    <div class='space-y-10'>
+      <div>
+        <HeadingFE>FrontEnd</HeadingFE>
+        <SkillCarousel skillSets={frontEnd} client:visible />
+      </div>
+      <div>
+        <HeadingBE>"back_end"</HeadingBE>
+        <SkillCarousel skillSets={backEnd} client:visible />
+      </div>
+      <div>
+        <HeadingFS>fullStack</HeadingFS>
+        <SkillCarousel skillSets={fullStack} client:visible />
+      </div>
+    </div>
+  </div>
+</section>

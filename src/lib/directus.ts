@@ -33,11 +33,19 @@ type WorkExperince = {
   job_desk: string[];
 };
 
+type SkillSet = {
+  name: string;
+  type: string;
+  logo: string;
+  status: string;
+};
+
 type Collection = {
   home: Home;
   about_me: About;
   education: Education[];
   work_experience: WorkExperince[];
+  skill_set: SkillSet[];
 };
 
 export function fetchHome() {
@@ -54,6 +62,19 @@ export function fetchEducation() {
 
 export function fetchWorkExperience() {
   return client.request(readItems('work_experience'));
+}
+
+export function fetchSkillSet() {
+  return client.request(
+    readItems('skill_set', {
+      filter: {
+        status: {
+          _eq: 'published',
+        },
+      },
+      fields: ['name', 'type', 'logo'],
+    }),
+  );
 }
 
 export function getFileUrl(fileId: string) {
