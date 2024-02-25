@@ -19,8 +19,10 @@ const cvUrl = getFileUrl(result.cv);
     class='mx-auto mb-4'
   />
   <h2 class='text-5xl font-extrabold'>
-    Hi, I'm <span class='text-indigo-500'>{'<'}</span>{fullName}
-    <span class='text-indigo-500'>{' />'}</span>
+    Hi, I'm <span class='font-mono'
+      ><span class='text-indigo-500'>{'<'}</span>{fullName}
+      <span class='text-indigo-500'>{' />'}</span></span
+    >
   </h2>
   <h3 class='mx-auto max-w-lg text-xl font-light text-gray-300'>
     {result.description}
