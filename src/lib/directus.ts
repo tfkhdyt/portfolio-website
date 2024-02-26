@@ -77,6 +77,11 @@ export function fetchSkillSet() {
   );
 }
 
-export function getFileUrl(fileId: string) {
-  return `${directusUrl}/assets/${fileId}`;
+export function getFileUrl(fileId: string, params?: Record<string, string>) {
+  const searchParams = new URLSearchParams({
+    ...params,
+    format: 'auto',
+    quality: '75',
+  });
+  return `${directusUrl}/assets/${fileId}?${searchParams}`;
 }

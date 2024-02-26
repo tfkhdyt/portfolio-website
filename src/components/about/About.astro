@@ -5,7 +5,7 @@ import Education from './Education.astro';
 import WorkExperience from './WorkExperience.astro';
 
 const { photo, description } = await fetchAbout();
-const photoUrl = getFileUrl(photo);
+const photoUrl = getFileUrl(photo, { width: '400', height: '400' });
 ---
 
 <section class='min-h-[100dvh] bg-gray-800' id='about'>

@@ -3,7 +3,7 @@ import { fetchHome, getFileUrl } from '@/lib/directus';
 
 const result = await fetchHome();
 const fullName = result.full_name.replace(' ', '');
-const imageUrl = getFileUrl(result.image);
+const imageUrl = getFileUrl(result.image, { width: '150', height: '150' });
 const cvUrl = getFileUrl(result.cv);
 ---
 
