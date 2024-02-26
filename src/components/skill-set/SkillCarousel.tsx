@@ -16,7 +16,7 @@ const SkillCarousel = ({
   }[];
 }) => {
   return (
-    <Carousel className='mt-6 px-4'>
+    <Carousel className='mt-6 px-4' opts={{ slidesToScroll: 1 }}>
       <CarouselContent>
         {skillSets.map((skill) => (
           <CarouselItem className='basis-1/6' key={skill.name}>

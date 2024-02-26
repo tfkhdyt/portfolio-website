@@ -3,6 +3,7 @@ import Heading from '@/components/heading/Heading.astro';
 import HeadingFE from '@/components/heading/HeadingFE.astro';
 import HeadingBE from '@/components/heading/HeadingBE.astro';
 import HeadingFS from '@/components/heading/HeadingFS.astro';
+import HeadingDB from '@/components/heading/HeadingDB.astro';
 
 import { getFileUrl } from '@/lib/directus';
 import { fetchSkillSet } from '@/lib/directus';
@@ -29,6 +30,12 @@ const fullStack = skills
     name: skill.name,
     logo: getFileUrl(skill.logo),
   }));
+const database = skills
+  .filter((skill) => skill.type === 'database')
+  .map((skill) => ({
+    name: skill.name,
+    logo: getFileUrl(skill.logo),
+  }));
 ---
 
 <section class='min-h-[100dvh]' id='skill'>
@@ -46,6 +53,10 @@ const fullStack = skills
       <div>
         <HeadingFS>fullStack</HeadingFS>
         <SkillCarousel skillSets={fullStack} client:visible />
+      </div>
+      <div>
+        <HeadingDB>databases</HeadingDB>
+        <SkillCarousel skillSets={database} client:visible />
       </div>
     </div>
   </div>
