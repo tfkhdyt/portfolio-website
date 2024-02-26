@@ -28,6 +28,8 @@ const SkillCarousel = ({
                   width={100}
                   height={100}
                   className='w-2h-28 mx-auto h-28 object-contain grayscale transition group-hover:grayscale-0'
+                  decoding='async'
+                  loading='lazy'
                 />
                 <p className='text-center text-xl font-semibold'>
                   {skill.name}

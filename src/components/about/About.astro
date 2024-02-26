@@ -3,6 +3,7 @@ import { fetchAbout, getFileUrl } from '@/lib/directus';
 import Heading from '@/components/heading/Heading.astro';
 import Education from './Education.astro';
 import WorkExperience from './WorkExperience.astro';
+import { Image } from 'astro:assets';
 
 const { photo, description } = await fetchAbout();
 const photoUrl = getFileUrl(photo, { width: '400', height: '400' });
@@ -13,7 +14,7 @@ const photoUrl = getFileUrl(photo, { width: '400', height: '400' });
     <Heading>About</Heading>
     <div class='flex gap-16'>
       <div class='w-1/4'>
-        <img
+        <Image
           src={photoUrl}
           alt='Foto gweh'
           height='400'
