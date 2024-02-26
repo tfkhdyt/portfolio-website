@@ -11,6 +11,10 @@ export default {
       },
     },
     extend: {
+      fontFamily: {
+        sans: 'Nunito Variable, sans-serif',
+        mono: 'JetBrains Mono Variable, monospace',
+      },
       colors: {
         trueGray: {
           50: '#fafafa',
