@@ -6,7 +6,7 @@ const result = await fetchHome();
 const fullName = result.full_name.replace(' ', '');
 ---
 
-<footer>
+<footer class='bg-[#18202a]'>
   <div
     class='container mx-auto flex flex-col-reverse justify-between gap-10 py-10 text-lg md:py-14 lg:flex-row'
   >
@@ -17,12 +17,12 @@ const fullName = result.full_name.replace(' ', '');
     <div class='flex flex-wrap gap-x-12 gap-y-6 md:gap-24'>
       <div>
         <p class='text-lg font-bold uppercase text-teal-300 md:text-xl'>
-          Find me on
+          Contacts
         </p>
-        <ol class='space-y-1 pt-2 md:space-y-2 md:pt-4 md:text-lg'>
+        <ol class='space-y-1 pt-2 md:space-y-2 md:pt-4'>
           {
             contact.map((c) => (
-              <li class='text-xl font-semibold decoration-2 underline-offset-4 hover:underline md:text-2xl'>
+              <li class='text-xl font-medium decoration-2 underline-offset-4 hover:underline'>
                 <a href={c.url}>{c.name}</a>
               </li>
             ))
@@ -30,28 +30,35 @@ const fullName = result.full_name.replace(' ', '');
         </ol>
       </div>
       <div>
-        <p class='text-lg font-bold uppercase text-teal-300 md:text-xl'>Menu</p>
+        <p class='text-lg font-bold uppercase text-teal-300 md:text-xl'>
+          Navigation
+        </p>
         <ol class='space-y-1 pt-2 md:space-y-2 md:pt-4 md:text-lg'>
           <li
-            class='text-xl font-semibold decoration-2 underline-offset-4 hover:underline md:text-2xl'
+            class='text-xl font-medium decoration-2 underline-offset-4 hover:underline'
           >
             <a href='#home'>Home</a>
           </li>
           <li
-            class='text-xl font-semibold decoration-2 underline-offset-4 hover:underline md:text-2xl'
+            class='text-xl font-medium decoration-2 underline-offset-4 hover:underline'
           >
             <a href='#about'>About</a>
           </li>
 
           <li
-            class='text-xl font-semibold decoration-2 underline-offset-4 hover:underline md:text-2xl'
+            class='text-xl font-medium decoration-2 underline-offset-4 hover:underline'
           >
             <a href='#skill'>Skill Set</a>
           </li>
           <li
-            class='text-xl font-semibold decoration-2 underline-offset-4 hover:underline md:text-2xl'
+            class='text-xl font-medium decoration-2 underline-offset-4 hover:underline'
           >
             <a href='#portfolio'>Portfolio</a>
+          </li>
+          <li
+            class='text-xl font-medium decoration-2 underline-offset-4 hover:underline'
+          >
+            <a href='#certifications'>Certifications</a>
           </li>
         </ol>
       </div>
@@ -62,14 +69,14 @@ const fullName = result.full_name.replace(' ', '');
         </p>
         <ol class='space-y-1 pt-2 md:space-y-2 md:pt-4 md:text-lg'>
           <li
-            class='text-xl font-semibold decoration-2 underline-offset-4 hover:underline md:text-2xl'
+            class='text-xl font-medium decoration-2 underline-offset-4 hover:underline'
           >
             <a href='https://github.com/tfkhdyt/portfolio-website'
               >Source Code</a
             >
           </li>
           <li
-            class='text-xl font-semibold decoration-2 underline-offset-4 hover:underline md:text-2xl'
+            class='text-xl font-medium decoration-2 underline-offset-4 hover:underline'
           >
             <a href='/'>License</a>
           </li>
