@@ -117,10 +117,14 @@ export function fetchPortfolio(): Promise<Portfolio[]> {
 }
 
 export function getFileUrl(fileId: string, params?: Record<string, string>) {
-  const searchParams = new URLSearchParams({
-    ...params,
-    format: 'auto',
-    quality: '75',
-  });
+  const searchParams = new URLSearchParams(
+    params
+      ? {
+          ...params,
+          format: 'auto',
+          quality: '75',
+        }
+      : undefined,
+  );
   return `${directusUrl}/assets/${fileId}?${searchParams}`;
 }

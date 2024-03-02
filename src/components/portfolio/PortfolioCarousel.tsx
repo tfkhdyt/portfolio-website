@@ -29,7 +29,10 @@ const PortfolioCarousel = ({
     <Carousel className='mt-6 px-4'>
       <CarouselContent>
         {portfolios.map((portfolio) => (
-          <CarouselItem className='basis-1/2 lg:basis-1/3' key={portfolio.name}>
+          <CarouselItem
+            className='md:basis-1/2 lg:basis-1/3'
+            key={portfolio.name}
+          >
             <Card className='group border-2 bg-gray-900 p-0 transition hover:border-teal-300'>
               <img
                 src={portfolio.image}
@@ -42,7 +45,7 @@ const PortfolioCarousel = ({
               />
               <CardContent className='space-y-2 p-6'>
                 <div className='flex items-center justify-between'>
-                  <h4 className='flex-wrap text-2xl font-bold'>
+                  <h4 className='flex-wrap text-xl font-bold md:text-2xl'>
                     {portfolio.name}
                   </h4>
                   <div className='flex items-center space-x-1'>
@@ -68,8 +71,8 @@ const PortfolioCarousel = ({
                     )}
                   </div>
                 </div>
-                <p className='text-xl'>{portfolio.description}</p>
-                <div className='flex space-x-3 pt-3'>
+                <p className='text-lg md:text-xl'>{portfolio.description}</p>
+                <div className='flex flex-wrap gap-3 pt-3'>
                   {portfolio.tech_stack.map((tech) => (
                     <img
                       src={tech.logo}

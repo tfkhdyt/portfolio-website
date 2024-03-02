@@ -19,9 +19,12 @@ const SkillCarousel = ({
     <Carousel className='mt-6 px-4'>
       <CarouselContent>
         {skillSets.map((skill) => (
-          <CarouselItem className='basis-1/4 lg:basis-1/6' key={skill.name}>
+          <CarouselItem
+            className='basis-1/2 md:basis-1/4 lg:basis-1/6'
+            key={skill.name}
+          >
             <Card className='group border-2 bg-gray-800 transition hover:border-teal-300'>
-              <CardContent className='flex flex-col justify-between gap-4 p-6 lg:h-[200px]'>
+              <CardContent className='flex select-none flex-col justify-between gap-4 p-6 lg:h-[200px]'>
                 <img
                   src={skill.logo}
                   alt={skill.name}
@@ -31,7 +34,7 @@ const SkillCarousel = ({
                   decoding='async'
                   loading='lazy'
                 />
-                <p className='text-center text-xl font-semibold'>
+                <p className='text-center text-lg font-semibold md:text-xl'>
                   {skill.name}
                 </p>
               </CardContent>
