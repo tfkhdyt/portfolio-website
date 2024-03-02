@@ -12,19 +12,44 @@ const MobileNav = () => {
           <MenuIcon />
         </button>
       </SheetTrigger>
-      <SheetContent className='flex flex-col gap-6 border-gray-950 bg-gray-900 pt-12 text-xl font-semibold'>
-        <a href='#home' onClick={() => setOpen(false)}>
-          Home
-        </a>
-        <a href='#about' onClick={() => setOpen(false)}>
-          About
-        </a>
-        <a href='#skill' onClick={() => setOpen(false)}>
-          Skill Set
-        </a>
-        <a href='#portfolio' onClick={() => setOpen(false)}>
-          Portfolio
-        </a>
+      <SheetContent className='w-[250px] border-gray-950 bg-gray-900 pt-12'>
+        <div className='flex flex-col space-y-4  text-xl font-medium'>
+          <a
+            href='#home'
+            className='decoration-2 underline-offset-4 hover:underline'
+            onClick={() => setOpen(false)}
+          >
+            Home
+          </a>
+          <a
+            href='#about'
+            className='decoration-2 underline-offset-4 hover:underline'
+            onClick={() => setOpen(false)}
+          >
+            About
+          </a>
+          <a
+            href='#skill'
+            className='decoration-2 underline-offset-4 hover:underline'
+            onClick={() => setOpen(false)}
+          >
+            Skill Set
+          </a>
+          <a
+            href='#portfolio'
+            className='decoration-2 underline-offset-4 hover:underline'
+            onClick={() => setOpen(false)}
+          >
+            Portfolio
+          </a>
+          <a
+            href='#certifications'
+            className='decoration-2 underline-offset-4 hover:underline'
+            onClick={() => setOpen(false)}
+          >
+            Certifications
+          </a>
+        </div>
       </SheetContent>
     </Sheet>
   );
