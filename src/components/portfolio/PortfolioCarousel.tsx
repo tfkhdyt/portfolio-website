@@ -26,10 +26,10 @@ const PortfolioCarousel = ({
   }[];
 }) => {
   return (
-    <Carousel className='mt-6 px-4' opts={{ slidesToScroll: 2 }}>
+    <Carousel className='mt-6 px-4'>
       <CarouselContent>
         {portfolios.map((portfolio) => (
-          <CarouselItem className='basis-1/3' key={portfolio.name}>
+          <CarouselItem className='basis-1/2 lg:basis-1/3' key={portfolio.name}>
             <Card className='group border-2 bg-gray-900 p-0 transition hover:border-teal-300'>
               <img
                 src={portfolio.image}
@@ -45,11 +45,11 @@ const PortfolioCarousel = ({
                   <h4 className='flex-wrap text-2xl font-bold'>
                     {portfolio.name}
                   </h4>
-                  <div className='flex items-center space-x-2'>
+                  <div className='flex items-center space-x-1'>
                     {portfolio.repo_url && (
                       <a
                         href={portfolio.repo_url}
-                        className='cursor-pointer p-2 hover:bg-gray-800'
+                        className='cursor-pointer rounded p-2 hover:bg-gray-800'
                         title='Repository'
                         aria-label='Repo URL'
                       >
@@ -59,7 +59,7 @@ const PortfolioCarousel = ({
                     {portfolio.demo_url && (
                       <a
                         href={portfolio.demo_url}
-                        className='cursor-pointer p-2 hover:bg-gray-800'
+                        className='cursor-pointer rounded p-2 hover:bg-gray-800'
                         title='Demo'
                         aria-label='Demo URL'
                       >
@@ -85,8 +85,8 @@ const PortfolioCarousel = ({
           </CarouselItem>
         ))}
       </CarouselContent>
-      <CarouselPrevious className='border-gray-800 bg-gray-900' />
-      <CarouselNext className='border-gray-800 bg-gray-900' />
+      <CarouselPrevious className='-left-6 border-gray-800 bg-gray-900 lg:-left-12' />
+      <CarouselNext className='-right-6 border-gray-800 bg-gray-900 lg:-right-12' />
     </Carousel>
   );
 };

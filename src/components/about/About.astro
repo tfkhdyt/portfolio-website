@@ -10,25 +10,31 @@ const photoUrl = getFileUrl(photo, { width: '400', height: '400' });
 ---
 
 <section class='min-h-[100dvh] bg-gray-800' id='about'>
-  <div class='container mx-auto py-20'>
-    <Heading>About</Heading>
-    <div class='flex gap-16'>
-      <div class='w-1/4'>
-        <Image
-          src={photoUrl}
-          alt='Foto gweh'
-          height='400'
-          width='400'
-          class='rounded-full'
-        />
-      </div>
-      <div class='w-3/4'>
-        <p class='whitespace-pre-line text-justify text-lg text-gray-300'>
-          {description}
-        </p>
+  <div class='container mx-auto space-y-8 pb-32 pt-20'>
+    <div>
+      <Heading>About</Heading>
+      <div class='flex gap-16'>
+        <div class='w-1/4'>
+          <Image
+            src={photoUrl}
+            alt='Foto gweh'
+            height='400'
+            width='400'
+            class='rounded-full'
+          />
+        </div>
+        <div class='w-3/4'>
+          <p class='whitespace-pre-line text-justify text-lg text-gray-300'>
+            {description}
+          </p>
+        </div>
       </div>
     </div>
-    <Education />
-    <WorkExperience />
+    <div>
+      <Education />
+    </div>
+    <div>
+      <WorkExperience />
+    </div>
   </div>
 </section>
