@@ -54,6 +54,12 @@ type Portfolio = {
   }[];
 };
 
+type Contact = {
+  name: string;
+  username: string;
+  url: string;
+};
+
 type Collection = {
   home: Home;
   about_me: About;
@@ -61,6 +67,7 @@ type Collection = {
   work_experience: WorkExperince[];
   skill_set: SkillSet[];
   portfolio: Portfolio[];
+  contact: Contact[];
 };
 
 export function fetchHome() {
@@ -77,6 +84,10 @@ export function fetchEducation() {
 
 export function fetchWorkExperience() {
   return client.request(readItems('work_experience'));
+}
+
+export function fetchContact() {
+  return client.request(readItems('contact'));
 }
 
 export function fetchSkillSet() {

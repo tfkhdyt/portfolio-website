@@ -1,0 +1,30 @@
+---
+import Heading from './heading/Heading.astro';
+import { fetchContact } from '@/lib/directus';
+
+const contact = await fetchContact();
+---
+
+<section id='contact'>
+  <div class='container mx-auto pb-32 pt-20 text-lg text-gray-300'>
+    <Heading>Contact</Heading>
+    <h3 class='text-lg text-gray-300'>
+      Feel free to contact me by following my social media below:
+    </h3>
+    <ol class='ml-6 mt-2 list-disc space-y-1 text-lg'>
+      {
+        contact.map((c) => (
+          <li class='font-bold text-gray-400'>
+            {c.name} -{' '}
+            <a
+              href={c.url}
+              class='text-gray-300 underline underline-offset-4 transition hover:text-indigo-500 active:text-teal-300'
+            >
+              {c.username}
+            </a>
+          </li>
+        ))
+      }
+    </ol>
+  </div>
+</section>
