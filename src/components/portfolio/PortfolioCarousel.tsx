@@ -48,16 +48,20 @@ const PortfolioCarousel = ({
                   <div className='flex items-center space-x-2'>
                     {portfolio.repo_url && (
                       <a
+                        href={portfolio.repo_url}
                         className='cursor-pointer p-2 hover:bg-gray-800'
                         title='Repository'
+                        aria-label='Repo URL'
                       >
                         <Code2Icon className='h-4 w-4' />
                       </a>
                     )}
                     {portfolio.demo_url && (
                       <a
+                        href={portfolio.demo_url}
                         className='cursor-pointer p-2 hover:bg-gray-800'
                         title='Demo'
+                        aria-label='Demo URL'
                       >
                         <ArrowUpRightFromSquareIcon className='h-4 w-4' />
                       </a>

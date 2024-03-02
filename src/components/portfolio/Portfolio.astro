@@ -17,6 +17,16 @@ const web = portfolio
       logo: getFileUrl(t.skill_set_id.logo, { height: '25' }),
     })),
   }));
+const api = portfolio
+  .filter((p) => p.type === 'api')
+  .map((p) => ({
+    ...p,
+    image: getFileUrl(p.image, { width: '500' }),
+    tech_stack: p.tech_stack.map((t) => ({
+      ...t.skill_set_id,
+      logo: getFileUrl(t.skill_set_id.logo, { height: '25' }),
+    })),
+  }));
 ---
 
 <section id='portfolio' class='min-h-[100dvh] bg-gray-800'>
@@ -29,6 +39,7 @@ const web = portfolio
       </div>
       <div>
         <HeadingBE>API</HeadingBE>
+        <PortfolioCarousel portfolios={api} client:visible />
       </div>
       <div>
         <h3 class='mb-4 font-mono text-3xl font-extrabold'>API</h3>
