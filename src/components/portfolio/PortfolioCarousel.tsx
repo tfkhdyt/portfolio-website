@@ -45,7 +45,7 @@ const PortfolioCarousel = ({
               />
               <CardContent className='space-y-2 p-6'>
                 <div className='flex items-center justify-between'>
-                  <h4 className='flex-wrap text-xl font-bold md:text-2xl'>
+                  <h4 className='flex-wrap text-lg font-bold md:text-xl'>
                     {portfolio.name}
                   </h4>
                   <div className='flex items-center space-x-1'>
@@ -71,7 +71,7 @@ const PortfolioCarousel = ({
                     )}
                   </div>
                 </div>
-                <p className='text-lg md:text-xl'>{portfolio.description}</p>
+                <p className='md:text-lg'>{portfolio.description}</p>
                 <div className='flex flex-wrap gap-3 pt-3'>
                   {portfolio.tech_stack.map((tech) => (
                     <img

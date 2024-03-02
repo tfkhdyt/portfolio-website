@@ -1,11 +1,14 @@
 ---
 import HeadingFE from './heading/HeadingFE.astro';
+import MobileNav from '@/components/MobileNav';
 ---
 
 <header
   class='fixed inset-x-0 top-0 z-50 bg-gray-900/75 py-4 backdrop-blur md:py-5'
 >
-  <div class='container mx-auto flex items-center'>
+  <div
+    class='container mx-auto flex items-center justify-between lg:justify-normal'
+  >
     <HeadingFE className='mb-0 text-xl'>TFKHDYT</HeadingFE>
     <div class='mx-auto hidden space-x-8 pr-40 text-lg font-semibold lg:block'>
       <a href='#home'>Home</a>
@@ -13,6 +16,9 @@ import HeadingFE from './heading/HeadingFE.astro';
       <a href='#skill'>Skill Set</a>
       <a href='#portfolio'>Portfolio</a>
       <a href='#contact'>Contact</a>
+    </div>
+    <div class='lg:hidden'>
+      <MobileNav client:load />
     </div>
   </div>
 </header>
