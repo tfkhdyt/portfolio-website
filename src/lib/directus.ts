@@ -60,6 +60,14 @@ type Contact = {
   url: string;
 };
 
+type Certifications = {
+  title: string;
+  publisher: string;
+  published_date: Date;
+  file: string;
+  status: string;
+};
+
 type Collection = {
   home: Home;
   about_me: About;
@@ -68,6 +76,7 @@ type Collection = {
   skill_set: SkillSet[];
   portfolio: Portfolio[];
   contact: Contact[];
+  certifications: Certifications[];
 };
 
 export function fetchHome() {
@@ -112,6 +121,18 @@ export function fetchPortfolio(): Promise<Portfolio[]> {
         },
       },
       fields: ['*', 'tech_stack.skill_set_id.*'],
+    }),
+  );
+}
+
+export function fetchCertifications(): Promise<Certifications[]> {
+  return client.request(
+    readItems('certifications', {
+      filter: {
+        status: {
+          _eq: 'published',
+        },
+      },
     }),
   );
 }

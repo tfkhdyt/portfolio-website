@@ -1,0 +1,46 @@
+---
+import { fetchCertifications, getFileUrl } from '@/lib/directus';
+import Heading from './heading/Heading.astro';
+import { EyeIcon } from 'lucide-react';
+
+let certifications = await fetchCertifications();
+certifications = certifications.map((c) => ({
+  ...c,
+  file: getFileUrl(c.file),
+}));
+---
+
+<section class='min-h-[100dvh]' id='certifications'>
+  <div class='container mx-auto pb-24 pt-10 md:pb-32 md:pt-20'>
+    <Heading>Certifications</Heading>
+    <div class='relative col-span-9 space-y-6 px-4'>
+      <div
+        class='relative col-span-8 space-y-8 px-4 before:absolute before:-left-3 before:bottom-0 before:top-2 before:w-0.5 before:bg-gray-700'
+      >
+        {
+          certifications.map((cert) => (
+            <div class='relative flex flex-col before:absolute before:left-[-35px] before:top-2 before:z-[1] before:h-4 before:w-4 before:rounded-full before:bg-teal-300'>
+              <h3 class='text-xl font-bold md:text-2xl'>{cert.title}</h3>
+              <p class='italic text-gray-400 md:text-lg'>{cert.publisher}</p>
+              <time class='text-gray-400 md:text-lg'>
+                {new Date(cert.published_date).toLocaleDateString('en-US', {
+                  month: 'long',
+                  day: 'numeric',
+                  year: 'numeric',
+                })}
+              </time>
+              <a
+                href={cert.file}
+                download
+                class='mt-2 flex w-fit items-center rounded bg-teal-300 px-3 py-2 font-semibold text-black transition hover:bg-teal-400'
+              >
+                <EyeIcon className='mr-2 h-5 w-5' />
+                View Certificate
+              </a>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+</section>
