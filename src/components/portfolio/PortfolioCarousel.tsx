@@ -36,7 +36,7 @@ const PortfolioCarousel = ({
                 alt={portfolio.name}
                 width={500}
                 height={500}
-                className='mx-auto aspect-video w-full rounded-t-md object-contain grayscale transition group-hover:grayscale-0'
+                className='mx-auto aspect-video w-full rounded-t-md object-cover grayscale transition group-hover:grayscale-0'
                 decoding='async'
                 loading='lazy'
               />

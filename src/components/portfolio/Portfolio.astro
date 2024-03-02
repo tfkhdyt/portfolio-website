@@ -27,6 +27,26 @@ const api = portfolio
       logo: getFileUrl(t.skill_set_id.logo, { height: '25' }),
     })),
   }));
+const cli = portfolio
+  .filter((p) => p.type === 'cli')
+  .map((p) => ({
+    ...p,
+    image: getFileUrl(p.image, { width: '500' }),
+    tech_stack: p.tech_stack.map((t) => ({
+      ...t.skill_set_id,
+      logo: getFileUrl(t.skill_set_id.logo, { height: '25' }),
+    })),
+  }));
+const bot = portfolio
+  .filter((p) => p.type === 'bot')
+  .map((p) => ({
+    ...p,
+    image: getFileUrl(p.image, { width: '500' }),
+    tech_stack: p.tech_stack.map((t) => ({
+      ...t.skill_set_id,
+      logo: getFileUrl(t.skill_set_id.logo, { height: '25' }),
+    })),
+  }));
 ---
 
 <section id='portfolio' class='min-h-[100dvh] bg-gray-800'>
@@ -38,14 +58,16 @@ const api = portfolio
         <PortfolioCarousel portfolios={web} client:visible />
       </div>
       <div>
-        <HeadingBE>API</HeadingBE>
+        <HeadingBE>"API"</HeadingBE>
         <PortfolioCarousel portfolios={api} client:visible />
       </div>
       <div>
-        <h3 class='mb-4 font-mono text-3xl font-extrabold'>API</h3>
+        <h3 class='mb-4 font-mono text-3xl font-extrabold'>CLI</h3>
+        <PortfolioCarousel portfolios={cli} client:visible />
       </div>
       <div>
         <h3 class='mb-4 font-mono text-3xl font-extrabold'>Bot</h3>
+        <PortfolioCarousel portfolios={bot} client:visible />
       </div>
     </div>
   </div>
