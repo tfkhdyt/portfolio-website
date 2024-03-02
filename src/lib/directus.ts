@@ -33,11 +33,25 @@ type WorkExperince = {
   job_desk: string[];
 };
 
-type SkillSet = {
+export type SkillSet = {
   name: string;
   type: string;
   logo: string;
   status: string;
+};
+
+type Portfolio = {
+  status: string;
+  date_created: Date;
+  name: string;
+  description: string;
+  repo_url?: string | null;
+  demo_url?: string | null;
+  type: string;
+  image: string;
+  tech_stack: {
+    skill_set_id: SkillSet;
+  }[];
 };
 
 type Collection = {
@@ -46,6 +60,7 @@ type Collection = {
   education: Education[];
   work_experience: WorkExperince[];
   skill_set: SkillSet[];
+  portfolio: Portfolio[];
 };
 
 export function fetchHome() {
@@ -73,6 +88,19 @@ export function fetchSkillSet() {
         },
       },
       fields: ['name', 'type', 'logo'],
+    }),
+  );
+}
+
+export function fetchPortfolio(): Promise<Portfolio[]> {
+  return client.request(
+    readItems('portfolio', {
+      filter: {
+        status: {
+          _eq: 'published',
+        },
+      },
+      fields: ['*', 'tech_stack.skill_set_id.*'],
     }),
   );
 }

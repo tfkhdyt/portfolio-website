@@ -1,0 +1,41 @@
+---
+import Heading from '../heading/Heading.astro';
+import HeadingFE from '../heading/HeadingFE.astro';
+import HeadingBE from '../heading/HeadingBE.astro';
+import { fetchPortfolio, getFileUrl } from '@/lib/directus';
+import PortfolioCarousel from './PortfolioCarousel';
+
+const portfolio = await fetchPortfolio();
+
+const web = portfolio
+  .filter((p) => p.type === 'web')
+  .map((p) => ({
+    ...p,
+    image: getFileUrl(p.image, { width: '500' }),
+    tech_stack: p.tech_stack.map((t) => ({
+      ...t.skill_set_id,
+      logo: getFileUrl(t.skill_set_id.logo, { height: '25' }),
+    })),
+  }));
+---
+
+<section id='portfolio' class='min-h-[100dvh] bg-gray-800'>
+  <div class='container mx-auto py-20'>
+    <Heading>Portfolio</Heading>
+    <div class='space-y-10'>
+      <div>
+        <HeadingFE>Web</HeadingFE>
+        <PortfolioCarousel portfolios={web} client:visible />
+      </div>
+      <div>
+        <HeadingBE>API</HeadingBE>
+      </div>
+      <div>
+        <h3 class='mb-4 font-mono text-3xl font-extrabold'>API</h3>
+      </div>
+      <div>
+        <h3 class='mb-4 font-mono text-3xl font-extrabold'>Bot</h3>
+      </div>
+    </div>
+  </div>
+</section>
