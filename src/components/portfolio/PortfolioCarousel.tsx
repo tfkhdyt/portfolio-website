@@ -52,7 +52,7 @@ const PortfolioCarousel = ({
                     {portfolio.repo_url && (
                       <a
                         href={portfolio.repo_url}
-                        className='cursor-pointer rounded p-2 hover:bg-gray-800'
+                        className='cursor-pointer rounded p-2 hover:bg-[#18202a]'
                         title='Repository'
                         aria-label='Repo URL'
                       >
@@ -62,7 +62,7 @@ const PortfolioCarousel = ({
                     {portfolio.demo_url && (
                       <a
                         href={portfolio.demo_url}
-                        className='cursor-pointer rounded p-2 hover:bg-gray-800'
+                        className='cursor-pointer rounded p-2 hover:bg-[#18202a]'
                         title='Demo'
                         aria-label='Demo URL'
                       >
@@ -88,8 +88,8 @@ const PortfolioCarousel = ({
           </CarouselItem>
         ))}
       </CarouselContent>
-      <CarouselPrevious className='-left-6 border-gray-800 bg-gray-900 lg:-left-12' />
-      <CarouselNext className='-right-6 border-gray-800 bg-gray-900 lg:-right-12' />
+      <CarouselPrevious className='-left-6 border-[#18202a] bg-gray-900 lg:-left-12' />
+      <CarouselNext className='-right-6 border-[#18202a] bg-gray-900 lg:-right-12' />
     </Carousel>
   );
 };

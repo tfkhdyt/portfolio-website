@@ -8,7 +8,7 @@ const MobileNav = () => {
   return (
     <Sheet open={open} onOpenChange={setOpen}>
       <SheetTrigger asChild>
-        <button className='rounded p-1 transition hover:bg-gray-800'>
+        <button className='rounded p-1 transition hover:bg-[#18202a]'>
           <MenuIcon />
         </button>
       </SheetTrigger>
@@ -24,9 +24,6 @@ const MobileNav = () => {
         </a>
         <a href='#portfolio' onClick={() => setOpen(false)}>
           Portfolio
-        </a>
-        <a href='#contact' onClick={() => setOpen(false)}>
-          Contact
         </a>
       </SheetContent>
     </Sheet>

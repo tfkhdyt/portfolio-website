@@ -1,0 +1,96 @@
+---
+import { fetchContact, fetchHome } from '@/lib/directus';
+
+const contact = await fetchContact();
+const result = await fetchHome();
+const fullName = result.full_name.replace(' ', '');
+---
+
+<footer>
+  <div
+    class='container mx-auto flex flex-col-reverse justify-between gap-10 py-10 text-lg md:py-14 lg:flex-row'
+  >
+    <p class='text-right text-sm font-light text-gray-300 md:text-lg lg:hidden'>
+      Copyright &copy; {result.full_name}
+      {new Date().getFullYear()}
+    </p>
+    <div class='flex flex-wrap gap-x-12 gap-y-6 md:gap-24'>
+      <div>
+        <p class='text-lg font-bold uppercase text-teal-300 md:text-xl'>
+          Find me on
+        </p>
+        <ol class='space-y-1 pt-2 md:space-y-2 md:pt-4 md:text-lg'>
+          {
+            contact.map((c) => (
+              <li class='text-xl font-semibold decoration-2 underline-offset-4 hover:underline md:text-2xl'>
+                <a href={c.url}>{c.name}</a>
+              </li>
+            ))
+          }
+        </ol>
+      </div>
+      <div>
+        <p class='text-lg font-bold uppercase text-teal-300 md:text-xl'>Menu</p>
+        <ol class='space-y-1 pt-2 md:space-y-2 md:pt-4 md:text-lg'>
+          <li
+            class='text-xl font-semibold decoration-2 underline-offset-4 hover:underline md:text-2xl'
+          >
+            <a href='#home'>Home</a>
+          </li>
+          <li
+            class='text-xl font-semibold decoration-2 underline-offset-4 hover:underline md:text-2xl'
+          >
+            <a href='#about'>About</a>
+          </li>
+
+          <li
+            class='text-xl font-semibold decoration-2 underline-offset-4 hover:underline md:text-2xl'
+          >
+            <a href='#skill'>Skill Set</a>
+          </li>
+          <li
+            class='text-xl font-semibold decoration-2 underline-offset-4 hover:underline md:text-2xl'
+          >
+            <a href='#portfolio'>Portfolio</a>
+          </li>
+        </ol>
+      </div>
+
+      <div>
+        <p class='text-lg font-bold uppercase text-teal-300 md:text-xl'>
+          Links
+        </p>
+        <ol class='space-y-1 pt-2 md:space-y-2 md:pt-4 md:text-lg'>
+          <li
+            class='text-xl font-semibold decoration-2 underline-offset-4 hover:underline md:text-2xl'
+          >
+            <a href='https://github.com/tfkhdyt/portfolio-website'
+              >Source Code</a
+            >
+          </li>
+          <li
+            class='text-xl font-semibold decoration-2 underline-offset-4 hover:underline md:text-2xl'
+          >
+            <a href='/'>License</a>
+          </li>
+        </ol>
+      </div>
+    </div>
+    <div class='flex flex-col justify-between lg:text-right'>
+      <div class='space-y-6'>
+        <span class='font-mono text-2xl font-extrabold md:text-4xl'
+          ><span class='text-indigo-500'>{'<'}</span>{fullName}
+          <span class='text-indigo-500'>{' />'}</span></span
+        >
+        <h3 class='max-w-lg font-light text-gray-300 md:text-xl'>
+          {result.description}
+        </h3>
+      </div>
+
+      <p class='hidden font-light text-gray-300 md:text-lg lg:block'>
+        Copyright &copy; {result.full_name}
+        {new Date().getFullYear()}
+      </p>
+    </div>
+  </div>
+</footer>

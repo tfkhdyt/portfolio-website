@@ -23,7 +23,7 @@ const SkillCarousel = ({
             className='basis-1/2 md:basis-1/4 lg:basis-1/6'
             key={skill.name}
           >
-            <Card className='group border-2 bg-gray-800 transition hover:border-teal-300'>
+            <Card className='group border-2 bg-[#18202a] transition hover:border-teal-300'>
               <CardContent className='flex select-none flex-col justify-between gap-4 p-6 lg:h-[200px]'>
                 <img
                   src={skill.logo}
@@ -42,8 +42,8 @@ const SkillCarousel = ({
           </CarouselItem>
         ))}
       </CarouselContent>
-      <CarouselPrevious className='-left-6 border-gray-900 bg-gray-800 lg:-left-12' />
-      <CarouselNext className='-right-6 border-gray-900 bg-gray-800 lg:-right-12' />
+      <CarouselPrevious className='-left-6 border-gray-900 bg-[#18202a] lg:-left-12' />
+      <CarouselNext className='-right-6 border-gray-900 bg-[#18202a] lg:-right-12' />
     </Carousel>
   );
 };
