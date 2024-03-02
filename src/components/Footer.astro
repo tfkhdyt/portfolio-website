@@ -23,7 +23,9 @@ const fullName = result.full_name.replace(' ', '');
           {
             contact.map((c) => (
               <li class='text-xl font-medium decoration-2 underline-offset-4 hover:underline'>
-                <a href={c.url}>{c.name}</a>
+                <a href={c.url} target='_blank'>
+                  {c.name}
+                </a>
               </li>
             ))
           }
@@ -71,14 +73,15 @@ const fullName = result.full_name.replace(' ', '');
           <li
             class='text-xl font-medium decoration-2 underline-offset-4 hover:underline'
           >
-            <a href='https://github.com/tfkhdyt/portfolio-website'
-              >Source Code</a
+            <a
+              href='https://github.com/tfkhdyt/portfolio-website'
+              target='_blank'>Source Code</a
             >
           </li>
           <li
             class='text-xl font-medium decoration-2 underline-offset-4 hover:underline'
           >
-            <a href='/'>License</a>
+            <a href='/' target='_blank'>License</a>
           </li>
         </ol>
       </div>
