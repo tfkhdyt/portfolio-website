@@ -19,35 +19,35 @@ const MobileNav = () => {
         <div className='flex flex-col space-y-4  text-xl font-medium'>
           <a
             href='#home'
-            className='decoration-teal-300 decoration-[3px] underline-offset-4 hover:underline'
+            className='decoration-teal-300 decoration-[3px] underline-offset-[6px] hover:underline'
             onClick={() => setOpen(false)}
           >
             Home
           </a>
           <a
             href='#about'
-            className='decoration-teal-300 decoration-[3px] underline-offset-4 hover:underline'
+            className='decoration-teal-300 decoration-[3px] underline-offset-[6px] hover:underline'
             onClick={() => setOpen(false)}
           >
             About
           </a>
           <a
             href='#skill'
-            className='decoration-teal-300 decoration-[3px] underline-offset-4 hover:underline'
+            className='decoration-teal-300 decoration-[3px] underline-offset-[6px] hover:underline'
             onClick={() => setOpen(false)}
           >
             Skill Set
           </a>
           <a
             href='#portfolio'
-            className='decoration-teal-300 decoration-[3px] underline-offset-4 hover:underline'
+            className='decoration-teal-300 decoration-[3px] underline-offset-[6px] hover:underline'
             onClick={() => setOpen(false)}
           >
             Portfolio
           </a>
           <a
             href='#certifications'
-            className='decoration-teal-300 decoration-[3px] underline-offset-4 hover:underline'
+            className='decoration-teal-300 decoration-[3px] underline-offset-[6px] hover:underline'
             onClick={() => setOpen(false)}
           >
             Certifications
