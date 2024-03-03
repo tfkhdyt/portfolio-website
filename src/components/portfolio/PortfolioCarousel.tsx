@@ -48,7 +48,7 @@ const PortfolioCarousel = ({
               />
               <CardContent className='space-y-2 p-6'>
                 <div className='flex items-center justify-between'>
-                  <h4 className='flex-wrap text-lg font-bold md:text-xl'>
+                  <h4 className='flex-wrap font-bold md:text-xl'>
                     {portfolio.name}
                   </h4>
                   <div className='flex items-center space-x-1'>
@@ -74,7 +74,7 @@ const PortfolioCarousel = ({
                     )}
                   </div>
                 </div>
-                <p className='md:text-lg'>{portfolio.description}</p>
+                <p className='text-sm md:text-lg'>{portfolio.description}</p>
                 <div className='flex flex-wrap gap-3 pt-3'>
                   {portfolio.tech_stack.map((tech) => (
                     <img
@@ -82,7 +82,7 @@ const PortfolioCarousel = ({
                       alt={tech.name}
                       width={25}
                       height={25}
-                      className='h-6 w-auto object-contain grayscale group-hover:grayscale-0'
+                      className='h-4 w-auto object-contain grayscale group-hover:grayscale-0 md:h-6'
                       key={tech.name}
                     />
                   ))}

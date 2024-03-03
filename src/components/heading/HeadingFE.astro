@@ -8,7 +8,7 @@ type Props = {
 const { className } = Astro.props;
 ---
 
-<h3 class={cn('mb-4 font-mono text-2xl md:text-3xl font-extrabold', className)}>
+<h3 class={cn('mb-4 font-mono text-xl md:text-3xl font-extrabold', className)}>
   <span class='text-indigo-500'>{'<'}</span><slot />
   <span class='text-indigo-500'>{' />'}</span>
 </h3>

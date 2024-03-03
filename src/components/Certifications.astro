@@ -20,9 +20,11 @@ certifications = certifications.map((c) => ({
         {
           certifications.map((cert) => (
             <div class='relative flex flex-col before:absolute before:left-[-35px] before:top-2 before:z-[1] before:h-4 before:w-4 before:rounded-full before:bg-teal-300'>
-              <h3 class='text-xl font-bold md:text-2xl'>{cert.title}</h3>
-              <p class='italic text-gray-400 md:text-lg'>{cert.publisher}</p>
-              <time class='text-gray-400 md:text-lg'>
+              <h3 class='text-lg font-bold md:text-2xl'>{cert.title}</h3>
+              <p class='text-sm italic text-gray-400 md:text-lg'>
+                {cert.publisher}
+              </p>
+              <time class='text-sm text-gray-400 md:text-lg'>
                 {new Date(cert.published_date).toLocaleDateString('en-US', {
                   month: 'long',
                   day: 'numeric',
@@ -32,7 +34,7 @@ certifications = certifications.map((c) => ({
               <a
                 href={cert.file}
                 download
-                class='mt-2 flex w-fit items-center rounded bg-teal-300 px-3 py-2 font-semibold text-black transition hover:bg-teal-400'
+                class='mt-2 flex w-fit items-center rounded bg-teal-300 px-3 py-2 text-sm font-semibold text-black transition hover:bg-teal-400'
               >
                 <EyeIcon className='mr-2 h-5 w-5' />
                 View Certificate

@@ -38,7 +38,7 @@ const SkillCarousel = ({
                   decoding='async'
                   loading='lazy'
                 />
-                <p className='text-center text-lg font-semibold md:text-xl'>
+                <p className='text-center font-semibold md:text-xl'>
                   {skill.name}
                 </p>
               </CardContent>

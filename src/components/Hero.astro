@@ -20,20 +20,20 @@ const cvUrl = getFileUrl(result.cv);
     class='mx-auto mb-4'
     loading='eager'
   />
-  <h2 class='text-3xl font-extrabold md:text-5xl'>
-    Hi, I'm <span class='font-mono'
+  <h2 class='text-2xl font-extrabold md:text-5xl'>
+    Hi, I'm <span class='whitespace-nowrap font-mono'
       ><span class='text-indigo-500'>{'<'}</span>{fullName}
       <span class='text-indigo-500'>{' />'}</span></span
     >
   </h2>
-  <h3 class='mx-auto max-w-lg text-lg font-light text-gray-300 md:text-xl'>
+  <h3 class='mx-auto max-w-lg font-light text-gray-300 md:text-xl'>
     {result.description}
   </h3>
-  <div class='pt-4'>
+  <div class='pt-2 md:pt-4'>
     <a
       href={cvUrl}
       download
-      class='mx-auto w-fit rounded bg-teal-300 px-5 py-3 font-semibold text-black transition hover:bg-teal-400'
+      class='mx-auto w-fit rounded bg-teal-300 px-4 py-2 font-semibold text-black transition hover:bg-teal-400 md:px-5 md:py-3'
     >
       View CV
     </a>

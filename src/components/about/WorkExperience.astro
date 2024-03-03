@@ -22,16 +22,16 @@ function formatDateString(date: string) {
     {
       workExperiences.map((exp) => (
         <div class='relative flex flex-col before:absolute before:left-[-35px] before:top-2 before:z-[1] before:h-4 before:w-4 before:rounded-full before:bg-teal-300'>
-          <h3 class='text-xl font-bold md:text-2xl'>{exp.company_name}</h3>
-          <p class='italic text-gray-400 md:text-lg'>{exp.role}</p>
-          <time class='text-gray-400 md:text-lg'>
+          <h3 class='text-lg font-bold md:text-2xl'>{exp.company_name}</h3>
+          <p class='text-sm italic text-gray-400 md:text-lg'>{exp.role}</p>
+          <time class='text-sm text-gray-400 md:text-lg'>
             {formatDateString(exp.time_span_start)} -{' '}
             {exp.time_span_end
               ? formatDateString(exp.time_span_end)
               : 'present'}
           </time>
           {exp.job_desk.length > 0 && (
-            <ul class='ml-6 mt-3 list-disc text-gray-300 md:text-lg'>
+            <ul class='ml-6 mt-3 list-disc text-sm text-gray-300 md:text-lg'>
               {exp.job_desk.map((job) => (
                 <li>{job}</li>
               ))}

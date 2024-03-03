@@ -16,13 +16,11 @@ const fullName = result.full_name.replace(' ', '');
     </p>
     <div class='flex flex-wrap gap-x-12 gap-y-6 md:gap-24'>
       <div>
-        <p class='text-lg font-bold uppercase text-teal-300 md:text-xl'>
-          Contacts
-        </p>
+        <p class='font-bold uppercase text-teal-300 md:text-xl'>Contacts</p>
         <ol class='space-y-1 pt-2 md:space-y-2 md:pt-4'>
           {
             contact.map((c) => (
-              <li class='text-xl font-medium decoration-teal-300 decoration-[3px] underline-offset-4 hover:underline'>
+              <li class='text-lg font-medium decoration-teal-300 decoration-[3px] underline-offset-4 hover:underline md:text-xl'>
                 <a href={c.url} target='_blank'>
                   {c.name}
                 </a>
@@ -32,33 +30,31 @@ const fullName = result.full_name.replace(' ', '');
         </ol>
       </div>
       <div>
-        <p class='text-lg font-bold uppercase text-teal-300 md:text-xl'>
-          Navigation
-        </p>
-        <ol class='space-y-1 pt-2 md:space-y-2 md:pt-4 md:text-lg'>
+        <p class='font-bold uppercase text-teal-300 md:text-xl'>Navigation</p>
+        <ol class='space-y-1 pt-2 text-lg md:space-y-2 md:pt-4 md:text-lg'>
           <li
-            class='text-xl font-medium decoration-teal-300 decoration-[3px] underline-offset-4 hover:underline'
+            class='font-medium decoration-teal-300 decoration-[3px] underline-offset-4 hover:underline'
           >
             <a href='#home'>Home</a>
           </li>
           <li
-            class='text-xl font-medium decoration-teal-300 decoration-[3px] underline-offset-4 hover:underline'
+            class='font-medium decoration-teal-300 decoration-[3px] underline-offset-4 hover:underline'
           >
             <a href='#about'>About</a>
           </li>
 
           <li
-            class='text-xl font-medium decoration-teal-300 decoration-[3px] underline-offset-4 hover:underline'
+            class='font-medium decoration-teal-300 decoration-[3px] underline-offset-4 hover:underline'
           >
             <a href='#skill'>Skill Set</a>
           </li>
           <li
-            class='text-xl font-medium decoration-teal-300 decoration-[3px] underline-offset-4 hover:underline'
+            class='font-medium decoration-teal-300 decoration-[3px] underline-offset-4 hover:underline'
           >
             <a href='#portfolio'>Portfolio</a>
           </li>
           <li
-            class='text-xl font-medium decoration-teal-300 decoration-[3px] underline-offset-4 hover:underline'
+            class='font-medium decoration-teal-300 decoration-[3px] underline-offset-4 hover:underline'
           >
             <a href='#certifications'>Certifications</a>
           </li>
@@ -66,12 +62,10 @@ const fullName = result.full_name.replace(' ', '');
       </div>
 
       <div>
-        <p class='text-lg font-bold uppercase text-teal-300 md:text-xl'>
-          Links
-        </p>
+        <p class='font-bold uppercase text-teal-300 md:text-xl'>Links</p>
         <ol class='space-y-1 pt-2 md:space-y-2 md:pt-4 md:text-lg'>
           <li
-            class='text-xl font-medium decoration-teal-300 decoration-[3px] underline-offset-4 hover:underline'
+            class='text-lg font-medium decoration-teal-300 decoration-[3px] underline-offset-4 hover:underline'
           >
             <a
               href='https://github.com/tfkhdyt/portfolio-website'
@@ -79,7 +73,7 @@ const fullName = result.full_name.replace(' ', '');
             >
           </li>
           <li
-            class='text-xl font-medium decoration-teal-300 decoration-[3px] underline-offset-4 hover:underline'
+            class='text-lg font-medium decoration-teal-300 decoration-[3px] underline-offset-4 hover:underline'
           >
             <a href='/' target='_blank'>License</a>
           </li>
@@ -88,11 +82,11 @@ const fullName = result.full_name.replace(' ', '');
     </div>
     <div class='flex flex-col justify-between lg:text-right'>
       <div class='space-y-6'>
-        <span class='font-mono text-2xl font-extrabold md:text-4xl'
+        <span class='font-mono text-xl font-extrabold md:text-4xl'
           ><span class='text-indigo-500'>{'<'}</span>{fullName}
           <span class='text-indigo-500'>{' />'}</span></span
         >
-        <h3 class='max-w-lg font-light text-gray-300 md:text-xl'>
+        <h3 class='max-w-lg text-sm font-light text-gray-300 md:text-xl'>
           {result.description}
         </h3>
       </div>
