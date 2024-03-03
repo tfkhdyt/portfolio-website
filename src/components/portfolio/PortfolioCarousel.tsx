@@ -1,11 +1,10 @@
 import { ArrowUpRightFromSquareIcon, Code2Icon } from 'lucide-react';
+import Autoplay from 'embla-carousel-autoplay';
 
 import {
   Carousel,
   CarouselContent,
   CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
 } from '@/components/ui/carousel';
 import { Card, CardContent } from '../ui/card';
 import type { SkillSet } from '@/lib/directus';
@@ -26,7 +25,11 @@ const PortfolioCarousel = ({
   }[];
 }) => {
   return (
-    <Carousel className='mt-6 px-4'>
+    <Carousel
+      className='mt-6'
+      plugins={[Autoplay()]}
+      opts={{ loop: true, align: 'start' }}
+    >
       <CarouselContent>
         {portfolios.map((portfolio) => (
           <CarouselItem
@@ -89,8 +92,6 @@ const PortfolioCarousel = ({
           </CarouselItem>
         ))}
       </CarouselContent>
-      <CarouselPrevious className='-left-6 border-[#18202a] bg-gray-900 lg:-left-12' />
-      <CarouselNext className='-right-6 border-[#18202a] bg-gray-900 lg:-right-12' />
     </Carousel>
   );
 };

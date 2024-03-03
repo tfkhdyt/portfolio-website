@@ -1,9 +1,9 @@
+import Autoplay from 'embla-carousel-autoplay';
+
 import {
   Carousel,
   CarouselContent,
   CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
 } from '@/components/ui/carousel';
 import { Card, CardContent } from '../ui/card';
 
@@ -16,7 +16,11 @@ const SkillCarousel = ({
   }[];
 }) => {
   return (
-    <Carousel className='mt-6 px-4'>
+    <Carousel
+      className='mt-6'
+      plugins={[Autoplay()]}
+      opts={{ loop: true, align: 'start' }}
+    >
       <CarouselContent>
         {skillSets.map((skill) => (
           <CarouselItem
@@ -42,8 +46,6 @@ const SkillCarousel = ({
           </CarouselItem>
         ))}
       </CarouselContent>
-      <CarouselPrevious className='-left-6 border-gray-900 bg-[#18202a] lg:-left-12' />
-      <CarouselNext className='-right-6 border-gray-900 bg-[#18202a] lg:-right-12' />
     </Carousel>
   );
 };
