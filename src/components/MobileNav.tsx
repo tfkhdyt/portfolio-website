@@ -8,7 +8,10 @@ const MobileNav = () => {
   return (
     <Sheet open={open} onOpenChange={setOpen}>
       <SheetTrigger asChild>
-        <button className='rounded p-1 transition hover:bg-[#18202a]'>
+        <button
+          className='rounded p-1 transition hover:bg-[#18202a]'
+          aria-label='Menu'
+        >
           <MenuIcon />
         </button>
       </SheetTrigger>
