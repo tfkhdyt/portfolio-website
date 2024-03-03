@@ -10,15 +10,50 @@ import MobileNav from '@/components/MobileNav';
     class='container mx-auto flex items-center justify-between lg:justify-normal'
   >
     <HeadingFE className='mb-0 text-xl'>TFKHDYT</HeadingFE>
-    <div class='mx-auto hidden space-x-8 pr-40 text-lg font-semibold lg:block'>
-      <a href='#home'>Home</a>
-      <a href='#about'>About</a>
-      <a href='#skill'>Skill Set</a>
-      <a href='#portfolio'>Portfolio</a>
-      <a href='#certifications'>Certifications</a>
+    <div
+      class='mx-auto hidden space-x-8 pr-40 text-lg font-semibold text-gray-400 lg:block'
+    >
+      <a href='#home' class='nav-item'>Home</a>
+      <a href='#about' class='nav-item'>About</a>
+      <a href='#skill' class='nav-item'>Skill Set</a>
+      <a href='#portfolio' class='nav-item'>Portfolio</a>
+      <a href='#certifications' class='nav-item'>Certifications</a>
     </div>
     <div class='lg:hidden'>
       <MobileNav client:load />
     </div>
   </div>
 </header>
+
+<style>
+  .active,
+  .nav-item:hover {
+    text-decoration: underline;
+    text-decoration-thickness: 3px;
+    text-underline-offset: 4px;
+    text-decoration-color: #5eead4;
+    color: #f5f5f5;
+  }
+</style>
+
+<script>
+  const navItems = document.querySelectorAll<HTMLAnchorElement>('.nav-item');
+  const sections = document.querySelectorAll('section');
+
+  let currentSection = 'home';
+  window.addEventListener('scroll', () => {
+    for (const section of sections) {
+      if (window.scrollY >= section.offsetTop - section.clientHeight / 8) {
+        currentSection = section.id;
+      }
+    }
+
+    for (const navItem of navItems) {
+      if (navItem.href.includes(currentSection)) {
+        navItem.classList.add('active');
+      } else {
+        navItem.classList.remove('active');
+      }
+    }
+  });
+</script>
