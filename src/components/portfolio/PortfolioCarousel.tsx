@@ -80,6 +80,7 @@ const PortfolioCarousel = ({
                       width={25}
                       height={25}
                       className='h-6 w-auto object-contain grayscale group-hover:grayscale-0'
+                      key={tech.name}
                     />
                   ))}
                 </div>
