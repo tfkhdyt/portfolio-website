@@ -1,5 +1,4 @@
 import { ArrowUpRightFromSquareIcon, Code2Icon } from 'lucide-react';
-import Autoplay from 'embla-carousel-autoplay';
 
 import {
   Carousel,
@@ -25,11 +24,7 @@ const PortfolioCarousel = ({
   }[];
 }) => {
   return (
-    <Carousel
-      className='mt-6'
-      plugins={[Autoplay()]}
-      opts={{ loop: true, align: 'start' }}
-    >
+    <Carousel className='mt-6' opts={{ loop: true, align: 'start' }}>
       <CarouselContent>
         {portfolios.map((portfolio) => (
           <CarouselItem

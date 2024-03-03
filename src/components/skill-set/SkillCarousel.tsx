@@ -1,5 +1,3 @@
-import Autoplay from 'embla-carousel-autoplay';
-
 import {
   Carousel,
   CarouselContent,
@@ -16,11 +14,7 @@ const SkillCarousel = ({
   }[];
 }) => {
   return (
-    <Carousel
-      className='mt-6'
-      plugins={[Autoplay()]}
-      opts={{ loop: true, align: 'start' }}
-    >
+    <Carousel className='mt-6' opts={{ loop: true, align: 'start' }}>
       <CarouselContent>
         {skillSets.map((skill) => (
           <CarouselItem
