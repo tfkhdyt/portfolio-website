@@ -7,62 +7,49 @@ import PortfolioCarousel from './PortfolioCarousel.astro';
 
 const portfolio = await fetchPortfolio();
 
-const web = await Promise.all(
-  portfolio
-    .filter((p) => p.type === 'web')
-    .map(async (p) => ({
-      ...p,
-      image: await getFileUrl(p.image, { width: '500' }),
-      tech_stack: await Promise.all(
-        p.tech_stack.map(async (t) => ({
-          ...t.skill_set_id,
-          logo: await getFileUrl(t.skill_set_id.logo, { height: '100' }),
-        })),
-      ),
+const web = portfolio
+  .filter((p) => p.type === 'web')
+  .map((p) => ({
+    ...p,
+    image: getFileUrl(p.image),
+    tech_stack: p.tech_stack.map((t) => ({
+      ...t.skill_set_id,
+      logo: getFileUrl(t.skill_set_id.logo),
     })),
-);
-const api = await Promise.all(
-  portfolio
-    .filter((p) => p.type === 'api')
-    .map(async (p) => ({
-      ...p,
-      image: await getFileUrl(p.image, { width: '500' }),
-      tech_stack: await Promise.all(
-        p.tech_stack.map(async (t) => ({
-          ...t.skill_set_id,
-          logo: await getFileUrl(t.skill_set_id.logo, { height: '100' }),
-        })),
-      ),
+  }));
+
+const api = portfolio
+  .filter((p) => p.type === 'api')
+  .map((p) => ({
+    ...p,
+    image: getFileUrl(p.image),
+    tech_stack: p.tech_stack.map((t) => ({
+      ...t.skill_set_id,
+      logo: getFileUrl(t.skill_set_id.logo),
     })),
-);
-const cli = await Promise.all(
-  portfolio
-    .filter((p) => p.type === 'cli')
-    .map(async (p) => ({
-      ...p,
-      image: await getFileUrl(p.image, { width: '500' }),
-      tech_stack: await Promise.all(
-        p.tech_stack.map(async (t) => ({
-          ...t.skill_set_id,
-          logo: await getFileUrl(t.skill_set_id.logo, { height: '100' }),
-        })),
-      ),
+  }));
+
+const cli = portfolio
+  .filter((p) => p.type === 'cli')
+  .map((p) => ({
+    ...p,
+    image: getFileUrl(p.image),
+    tech_stack: p.tech_stack.map((t) => ({
+      ...t.skill_set_id,
+      logo: getFileUrl(t.skill_set_id.logo),
     })),
-);
-const bot = await Promise.all(
-  portfolio
-    .filter((p) => p.type === 'bot')
-    .map(async (p) => ({
-      ...p,
-      image: await getFileUrl(p.image, { width: '500' }),
-      tech_stack: await Promise.all(
-        p.tech_stack.map(async (t) => ({
-          ...t.skill_set_id,
-          logo: await getFileUrl(t.skill_set_id.logo, { height: '100' }),
-        })),
-      ),
+  }));
+
+const bot = portfolio
+  .filter((p) => p.type === 'bot')
+  .map((p) => ({
+    ...p,
+    image: getFileUrl(p.image),
+    tech_stack: p.tech_stack.map((t) => ({
+      ...t.skill_set_id,
+      logo: getFileUrl(t.skill_set_id.logo),
     })),
-);
+  }));
 ---
 
 <section id='portfolio' class='min-h-[100svh] bg-[#18202a]'>

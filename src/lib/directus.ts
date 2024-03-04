@@ -1,10 +1,4 @@
-import {
-  createDirectus,
-  rest,
-  readSingleton,
-  readItems,
-  readFile,
-} from '@directus/sdk';
+import { createDirectus, rest, readSingleton, readItems } from '@directus/sdk';
 
 const directusUrl = import.meta.env.DIRECTUS_URL;
 
@@ -143,24 +137,6 @@ export function fetchCertifications(): Promise<Certifications[]> {
   );
 }
 
-export async function getFileUrl(
-  fileId: string,
-  params?: Record<string, string>,
-) {
-  const result = await client.request(readFile(fileId));
-
-  if (result.type === 'image/png' || result.type === 'image/jpeg') {
-    const searchParams = new URLSearchParams(
-      params
-        ? {
-            ...params,
-            format: 'auto',
-            quality: '75',
-          }
-        : undefined,
-    );
-    return `${directusUrl}/assets/${fileId}?${searchParams}`;
-  }
-
+export function getFileUrl(fileId: string) {
   return `${directusUrl}/assets/${fileId}`;
 }

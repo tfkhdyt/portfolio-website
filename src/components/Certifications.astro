@@ -4,12 +4,10 @@ import Heading from './heading/Heading.astro';
 import { EyeIcon } from 'lucide-react';
 
 let certifications = await fetchCertifications();
-certifications = await Promise.all(
-  certifications.map(async (c) => ({
-    ...c,
-    file: await getFileUrl(c.file),
-  })),
-);
+certifications = certifications.map((c) => ({
+  ...c,
+  file: getFileUrl(c.file),
+}));
 ---
 
 <section class='min-h-[100svh]' id='certifications'>

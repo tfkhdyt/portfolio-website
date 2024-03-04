@@ -5,11 +5,8 @@ import blob from '@/assets/blobs/blob.svg';
 
 const result = await fetchHome();
 const fullName = result.full_name.replace(' ', '');
-const imageUrl = await getFileUrl(result.image, {
-  width: '150',
-  height: '150',
-});
-const cvUrl = await getFileUrl(result.cv);
+const imageUrl = getFileUrl(result.image);
+const cvUrl = getFileUrl(result.cv);
 ---
 
 <Image
