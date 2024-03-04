@@ -15,16 +15,12 @@ const { title } = Astro.props;
 ---
 
 <!doctype html>
-<html lang='en'>
+<html lang='en' class='overflow-x-hidden'>
   <head>
     <meta charset='UTF-8' />
-    <meta
-      name='viewport'
-      content='width=device-width, initial-scale=1, minimum-scale=1'
-    />
+    <meta name='viewport' content='width=device-width' />
     <link rel='icon' type='image/svg+xml' href='/favicon.svg' />
     <meta name='generator' content={Astro.generator} />
-    <title>{title}</title>
     <SEO
       title={title}
       description="Hello, world! My name is Taufik Hidayat. I'm a Full Stack Developer, Computer Science Student, YouTuber, Free and Open Source Software Enthusiast, and GNU/Linux Nerd."
