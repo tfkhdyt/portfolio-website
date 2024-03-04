@@ -6,7 +6,7 @@ import WorkExperience from './WorkExperience.astro';
 import { Image } from 'astro:assets';
 
 const { photo, description } = await fetchAbout();
-const photoUrl = getFileUrl(photo, { width: '400', height: '400' });
+const photoUrl = await getFileUrl(photo, { width: '400', height: '400' });
 ---
 
 <section class='min-h-[100svh] bg-[#18202a]' id='about'>

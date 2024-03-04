@@ -4,8 +4,11 @@ import { Image } from 'astro:assets';
 
 const result = await fetchHome();
 const fullName = result.full_name.replace(' ', '');
-const imageUrl = getFileUrl(result.image, { width: '150', height: '150' });
-const cvUrl = getFileUrl(result.cv);
+const imageUrl = await getFileUrl(result.image, {
+  width: '150',
+  height: '150',
+});
+const cvUrl = await getFileUrl(result.cv);
 ---
 
 <section

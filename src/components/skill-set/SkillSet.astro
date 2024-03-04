@@ -12,37 +12,50 @@ import { Image } from 'astro:assets';
 
 const skills = await fetchSkillSet();
 
-const frontEnd = skills
-  .filter((skill) => skill.type === 'front_end')
-  .map((skill) => ({
-    name: skill.name,
-    logo: getFileUrl(skill.logo, { width: '100' }),
-  }));
+const frontEnd = await Promise.all(
+  skills
+    .filter((skill) => skill.type === 'front_end')
+    .map(async (skill) => ({
+      name: skill.name,
+      logo: await getFileUrl(skill.logo, { width: '100' }),
+    })),
+);
 
-const backEnd = skills
-  .filter((skill) => skill.type === 'back_end')
-  .map((skill) => ({
-    name: skill.name,
-    logo: getFileUrl(skill.logo, { width: '100' }),
-  }));
-const fullStack = skills
-  .filter((skill) => skill.type === 'full_stack')
-  .map((skill) => ({
-    name: skill.name,
-    logo: getFileUrl(skill.logo, { width: '100' }),
-  }));
-const database = skills
-  .filter((skill) => skill.type === 'database')
-  .map((skill) => ({
-    name: skill.name,
-    logo: getFileUrl(skill.logo, { width: '100' }),
-  }));
-const devOps = skills
-  .filter((skill) => skill.type === 'devops')
-  .map((skill) => ({
-    name: skill.name,
-    logo: getFileUrl(skill.logo, { width: '100' }),
-  }));
+const backEnd = await Promise.all(
+  skills
+    .filter((skill) => skill.type === 'back_end')
+    .map(async (skill) => ({
+      name: skill.name,
+      logo: await getFileUrl(skill.logo, { width: '100' }),
+    })),
+);
+
+const fullStack = await Promise.all(
+  skills
+    .filter((skill) => skill.type === 'full_stack')
+    .map(async (skill) => ({
+      name: skill.name,
+      logo: await getFileUrl(skill.logo, { width: '100' }),
+    })),
+);
+
+const database = await Promise.all(
+  skills
+    .filter((skill) => skill.type === 'database')
+    .map(async (skill) => ({
+      name: skill.name,
+      logo: await getFileUrl(skill.logo, { width: '100' }),
+    })),
+);
+
+const devOps = await Promise.all(
+  skills
+    .filter((skill) => skill.type === 'devops')
+    .map(async (skill) => ({
+      name: skill.name,
+      logo: await getFileUrl(skill.logo, { width: '100' }),
+    })),
+);
 ---
 
 <section class='min-h-[100svh]' id='skill'>
