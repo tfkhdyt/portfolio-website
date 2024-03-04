@@ -41,7 +41,7 @@ const database = skills
   }));
 
 const devOps = skills
-  .filter((skill) => skill.type === 'dev_ops')
+  .filter((skill) => skill.type === 'devops')
   .map((skill) => ({
     name: skill.name,
     logo: getFileUrl(skill.logo),
