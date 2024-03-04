@@ -3,7 +3,7 @@ import Heading from '../heading/Heading.astro';
 import HeadingFE from '../heading/HeadingFE.astro';
 import HeadingBE from '../heading/HeadingBE.astro';
 import { fetchPortfolio, getFileUrl } from '@/lib/directus';
-import PortfolioCarousel from './PortfolioCarousel';
+import PortfolioCarousel from './PortfolioCarousel.astro';
 
 const portfolio = await fetchPortfolio();
 
@@ -55,19 +55,19 @@ const bot = portfolio
     <div class='space-y-10'>
       <div>
         <HeadingFE>Web</HeadingFE>
-        <PortfolioCarousel portfolios={web} client:visible />
+        <PortfolioCarousel portfolios={web} />
       </div>
       <div>
         <HeadingBE>"API"</HeadingBE>
-        <PortfolioCarousel portfolios={api} client:visible />
+        <PortfolioCarousel portfolios={api} />
       </div>
       <div>
         <h3 class='mb-4 font-mono text-xl font-extrabold md:text-3xl'>CLI</h3>
-        <PortfolioCarousel portfolios={cli} client:visible />
+        <PortfolioCarousel portfolios={cli} />
       </div>
       <div>
         <h3 class='mb-4 font-mono text-xl font-extrabold md:text-3xl'>Bot</h3>
-        <PortfolioCarousel portfolios={bot} client:visible />
+        <PortfolioCarousel portfolios={bot} />
       </div>
     </div>
   </div>

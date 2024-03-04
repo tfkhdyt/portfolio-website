@@ -8,7 +8,7 @@ import HeadingDO from '@/components/heading/HeadingDO.astro';
 
 import { getFileUrl } from '@/lib/directus';
 import { fetchSkillSet } from '@/lib/directus';
-import SkillCarousel from './SkillCarousel';
+import { Image } from 'astro:assets';
 
 const skills = await fetchSkillSet();
 
@@ -46,28 +46,103 @@ const devOps = skills
 ---
 
 <section class='min-h-[100svh]' id='skill'>
-  <div class='container mx-auto pb-24 pt-10 md:pb-32 md:pt-20'>
+  <div class='container mx-auto pb-20 pt-10 md:pb-32 md:pt-20'>
     <Heading>SkillSet</Heading>
     <div class='space-y-10'>
-      <div>
+      <div class='space-y-6'>
         <HeadingFE>FrontEnd</HeadingFE>
-        <SkillCarousel skillSets={frontEnd} client:visible />
+        <div class='flex flex-wrap gap-6'>
+          {
+            frontEnd.map((fe) => (
+              <div class='group aspect-square h-20 w-20'>
+                <Image
+                  src={fe.logo}
+                  alt={fe.name}
+                  height={100}
+                  width={100}
+                  class='mx-auto h-20 w-auto object-contain grayscale transition group-hover:grayscale-0'
+                  title={fe.name}
+                />
+              </div>
+            ))
+          }
+        </div>
       </div>
-      <div>
+      <div class='space-y-6'>
         <HeadingBE>"back_end"</HeadingBE>
-        <SkillCarousel skillSets={backEnd} client:visible />
+        <div class='flex flex-wrap gap-6'>
+          {
+            backEnd.map((be) => (
+              <div class='group aspect-square h-20 w-20'>
+                <Image
+                  src={be.logo}
+                  alt={be.name}
+                  height={100}
+                  width={100}
+                  class='mx-auto h-20 w-auto object-contain grayscale transition group-hover:grayscale-0'
+                  title={be.name}
+                />
+              </div>
+            ))
+          }
+        </div>
       </div>
-      <div>
+      <div class='space-y-6'>
         <HeadingFS>fullStack</HeadingFS>
-        <SkillCarousel skillSets={fullStack} client:visible />
+        <div class='flex flex-wrap gap-6'>
+          {
+            fullStack.map((fs) => (
+              <div class='group aspect-square h-20 w-20'>
+                <Image
+                  src={fs.logo}
+                  alt={fs.name}
+                  height={100}
+                  width={100}
+                  class='mx-auto h-20 w-auto object-contain grayscale transition group-hover:grayscale-0'
+                  title={fs.name}
+                />
+              </div>
+            ))
+          }
+        </div>
       </div>
-      <div>
+      <div class='space-y-6'>
         <HeadingDB>databases</HeadingDB>
-        <SkillCarousel skillSets={database} client:visible />
+        <div class='flex flex-wrap gap-6'>
+          {
+            database.map((db) => (
+              <div class='group aspect-square h-20 w-20'>
+                <Image
+                  src={db.logo}
+                  alt={db.name}
+                  height={100}
+                  width={100}
+                  class='mx-auto h-20 w-auto object-contain grayscale transition group-hover:grayscale-0'
+                  title={db.name}
+                />
+              </div>
+            ))
+          }
+        </div>
       </div>
-      <div>
+      <div class='space-y-6'>
         <HeadingDO>DevOps</HeadingDO>
-        <SkillCarousel skillSets={devOps} client:visible />
+        <div class='flex flex-wrap gap-6'>
+          {
+            devOps.map((it) => (
+              <div class='group aspect-square h-20 w-20'>
+                <Image
+                  src={it.logo}
+                  alt={it.name}
+                  height={100}
+                  width={100}
+                  class='mx-auto h-20 w-auto object-contain grayscale transition group-hover:grayscale-0'
+                  title={it.name}
+                />
+              </div>
+            ))
+          }
+        </div>
       </div>
     </div>
   </div>

@@ -1,0 +1,78 @@
+---
+import { ArrowUpRightFromSquareIcon, Code2Icon } from 'lucide-react';
+
+import { Card, CardContent } from '../ui/card';
+import type { SkillSet } from '@/lib/directus';
+import { Image } from 'astro:assets';
+
+type Props = {
+  portfolios: {
+    tech_stack: SkillSet[];
+    status: string;
+    date_created: Date;
+    name: string;
+    description: string;
+    repo_url?: string | null;
+    demo_url?: string | null;
+    type: string;
+    image: string;
+  }[];
+};
+
+const { portfolios } = Astro.props;
+---
+
+<div class='flex touch-pan-x snap-x snap-mandatory gap-2 overflow-x-auto'>
+  {
+    portfolios.map((portfolio) => (
+      <Card className='group border-2 bg-gray-900 transition hover:border-teal-300 w-full md:w-[49.5%] lg:w-[32.75%] flex-shrink-0 snap-center'>
+        <Image
+          src={portfolio.image}
+          alt={portfolio.name}
+          width={500}
+          height={500}
+          class='mx-auto aspect-video w-full rounded-t-md object-cover grayscale transition group-hover:grayscale-0'
+        />
+        <CardContent className='space-y-2 p-6'>
+          <div class='flex items-center justify-between'>
+            <h4 class='flex-wrap font-bold md:text-xl'>{portfolio.name}</h4>
+            <div class='flex items-center space-x-1'>
+              {portfolio.repo_url && (
+                <a
+                  href={portfolio.repo_url}
+                  class='cursor-pointer rounded p-2 hover:bg-[#18202a]'
+                  title='Repository'
+                  aria-label='Repo URL'
+                >
+                  <Code2Icon className='h-4 w-4' />
+                </a>
+              )}
+              {portfolio.demo_url && (
+                <a
+                  href={portfolio.demo_url}
+                  class='cursor-pointer rounded p-2 hover:bg-[#18202a]'
+                  title='Demo'
+                  aria-label='Demo URL'
+                >
+                  <ArrowUpRightFromSquareIcon className='h-4 w-4' />
+                </a>
+              )}
+            </div>
+          </div>
+          <p class='text-sm md:text-lg'>{portfolio.description}</p>
+          <div class='flex flex-wrap gap-3 pt-3'>
+            {portfolio.tech_stack.map((tech) => (
+              <Image
+                src={tech.logo}
+                alt={tech.name}
+                width={25}
+                height={25}
+                class='h-4 w-auto object-contain grayscale group-hover:grayscale-0 md:h-6'
+              />
+            ))}
+          </div>
+        </CardContent>
+      </Card>
+    ))
+  }
+</div>
