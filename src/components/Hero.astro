@@ -5,8 +5,8 @@ import { Image } from 'astro:assets';
 const result = await fetchHome();
 const fullName = result.full_name.replace(' ', '');
 const imageUrl = await getFileUrl(result.image, {
-  width: '225',
-  height: '225',
+  width: '150',
+  height: '150',
 });
 const cvUrl = await getFileUrl(result.cv);
 ---
@@ -18,8 +18,8 @@ const cvUrl = await getFileUrl(result.cv);
   <Image
     src={imageUrl}
     alt='tfkhdyt logo'
-    width='225'
-    height='225'
+    width='150'
+    height='150'
     class='mx-auto mb-4'
     loading='eager'
   />

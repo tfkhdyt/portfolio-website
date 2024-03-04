@@ -16,7 +16,7 @@ const web = await Promise.all(
       tech_stack: await Promise.all(
         p.tech_stack.map(async (t) => ({
           ...t.skill_set_id,
-          logo: await getFileUrl(t.skill_set_id.logo, { height: '25' }),
+          logo: await getFileUrl(t.skill_set_id.logo, { height: '100' }),
         })),
       ),
     })),
@@ -30,7 +30,7 @@ const api = await Promise.all(
       tech_stack: await Promise.all(
         p.tech_stack.map(async (t) => ({
           ...t.skill_set_id,
-          logo: await getFileUrl(t.skill_set_id.logo, { height: '25' }),
+          logo: await getFileUrl(t.skill_set_id.logo, { height: '100' }),
         })),
       ),
     })),
@@ -44,7 +44,7 @@ const cli = await Promise.all(
       tech_stack: await Promise.all(
         p.tech_stack.map(async (t) => ({
           ...t.skill_set_id,
-          logo: await getFileUrl(t.skill_set_id.logo, { height: '25' }),
+          logo: await getFileUrl(t.skill_set_id.logo, { height: '100' }),
         })),
       ),
     })),
@@ -58,7 +58,7 @@ const bot = await Promise.all(
       tech_stack: await Promise.all(
         p.tech_stack.map(async (t) => ({
           ...t.skill_set_id,
-          logo: await getFileUrl(t.skill_set_id.logo, { height: '25' }),
+          logo: await getFileUrl(t.skill_set_id.logo, { height: '100' }),
         })),
       ),
     })),
