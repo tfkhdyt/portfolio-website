@@ -1,32 +1,10 @@
 ---
 import { fetchContact, fetchHome } from '@/lib/directus';
+import { navigations } from '@/constants/sections';
 
 const contact = await fetchContact();
 const result = await fetchHome();
 const fullName = result.full_name.replace(' ', '');
-
-const navigations = [
-  {
-    name: 'Home',
-    to: '#home',
-  },
-  {
-    name: 'About',
-    to: '#about',
-  },
-  {
-    name: 'Skill Set',
-    to: '#skill',
-  },
-  {
-    name: 'Portfolio',
-    to: '#portfolio',
-  },
-  {
-    name: 'Certifications',
-    to: '#certifications',
-  },
-];
 
 const links = [
   {
