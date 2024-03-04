@@ -20,9 +20,9 @@
     "@fontsource-variable/nunito": "^5.0.18",
     "@radix-ui/react-dialog": "^1.0.5",
     "@radix-ui/react-slot": "^1.0.2",
-    "@types/react": "^18.2.61",
+    "@types/react": "^18.2.62",
     "@types/react-dom": "^18.2.19",
-    "astro": "^4.4.10",
+    "astro": "^4.4.11",
     "astro-compress": "^2.2.11",
     "astro-seo": "^0.8.3",
     "class-variance-authority": "^0.7.0",
@@ -37,8 +37,8 @@
     "typescript": "^5.3.3"
   },
   "devDependencies": {
-    "@typescript-eslint/eslint-plugin": "^7.1.0",
-    "@typescript-eslint/parser": "^7.1.0",
+    "@typescript-eslint/eslint-plugin": "^7.1.1",
+    "@typescript-eslint/parser": "^7.1.1",
     "astro-eslint-parser": "^0.16.3",
     "eslint": "^8.57.0",
     "eslint-plugin-astro": "^0.31.4",
