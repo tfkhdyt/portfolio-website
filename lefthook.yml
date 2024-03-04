@@ -1,10 +1,13 @@
-pre-commit:
-  commands:
-    check:
-      glob: "./src/**/*.{ts,tsx}"
-      run: pnpm biome check --apply-unsafe ./src
 pre-push:
+  commands:
+    outdated-deps:
+      run: pnpx taze --failOnOutdated
+pre-commit:
   parallel: true
   commands:
-    taze:
-      run: pnpx taze --failOnOutdated
+    eslint:
+      glob: './src/**/*.{js,ts,jsx,tsx,astro}'
+      run: pnpm lint
+    prettier:
+      glob: './src/**/*.{js,ts,jsx,tsx,astro}'
+      run: pnpm format

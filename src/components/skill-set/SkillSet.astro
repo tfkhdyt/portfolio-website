@@ -1,0 +1,152 @@
+---
+import Heading from '@/components/heading/Heading.astro';
+import HeadingFE from '@/components/heading/HeadingFE.astro';
+import HeadingBE from '@/components/heading/HeadingBE.astro';
+import HeadingFS from '@/components/heading/HeadingFS.astro';
+import HeadingDB from '@/components/heading/HeadingDB.astro';
+import HeadingDO from '@/components/heading/HeadingDO.astro';
+
+import { getFileUrl } from '@/lib/directus';
+import { fetchSkillSet } from '@/lib/directus';
+import { Image } from 'astro:assets';
+
+const skills = await fetchSkillSet();
+
+const frontEnd = skills
+  .filter((skill) => skill.type === 'front_end')
+  .map((skill) => ({
+    name: skill.name,
+    logo: getFileUrl(skill.logo),
+  }));
+
+const backEnd = skills
+  .filter((skill) => skill.type === 'back_end')
+  .map((skill) => ({
+    name: skill.name,
+    logo: getFileUrl(skill.logo),
+  }));
+
+const fullStack = skills
+  .filter((skill) => skill.type === 'full_stack')
+  .map((skill) => ({
+    name: skill.name,
+    logo: getFileUrl(skill.logo),
+  }));
+
+const database = skills
+  .filter((skill) => skill.type === 'database')
+  .map((skill) => ({
+    name: skill.name,
+    logo: getFileUrl(skill.logo),
+  }));
+
+const devOps = skills
+  .filter((skill) => skill.type === 'devops')
+  .map((skill) => ({
+    name: skill.name,
+    logo: getFileUrl(skill.logo),
+  }));
+---
+
+<section class='min-h-[100svh]' id='skill'>
+  <div class='container mx-auto pb-20 pt-10 md:pb-32 md:pt-20'>
+    <Heading>SkillSet</Heading>
+    <div class='space-y-10'>
+      <div class='space-y-6'>
+        <HeadingFE>FrontEnd</HeadingFE>
+        <div class='flex flex-wrap gap-6'>
+          {
+            frontEnd.map((fe) => (
+              <div class='group aspect-square h-20 w-20'>
+                <Image
+                  src={fe.logo}
+                  alt={fe.name}
+                  height={300}
+                  width={300}
+                  class='mx-auto h-20 w-auto object-contain grayscale transition group-hover:grayscale-0'
+                  title={fe.name}
+                />
+              </div>
+            ))
+          }
+        </div>
+      </div>
+      <div class='space-y-6'>
+        <HeadingBE>"back_end"</HeadingBE>
+        <div class='flex flex-wrap gap-6'>
+          {
+            backEnd.map((be) => (
+              <div class='group aspect-square h-20 w-20'>
+                <Image
+                  src={be.logo}
+                  alt={be.name}
+                  height={100}
+                  width={100}
+                  class='mx-auto h-20 w-auto object-contain grayscale transition group-hover:grayscale-0'
+                  title={be.name}
+                />
+              </div>
+            ))
+          }
+        </div>
+      </div>
+      <div class='space-y-6'>
+        <HeadingFS>fullStack</HeadingFS>
+        <div class='flex flex-wrap gap-6'>
+          {
+            fullStack.map((fs) => (
+              <div class='group aspect-square h-20 w-20'>
+                <Image
+                  src={fs.logo}
+                  alt={fs.name}
+                  height={100}
+                  width={100}
+                  class='mx-auto h-20 w-auto object-contain grayscale transition group-hover:grayscale-0'
+                  title={fs.name}
+                />
+              </div>
+            ))
+          }
+        </div>
+      </div>
+      <div class='space-y-6'>
+        <HeadingDB>databases</HeadingDB>
+        <div class='flex flex-wrap gap-6'>
+          {
+            database.map((db) => (
+              <div class='group aspect-square h-20 w-20'>
+                <Image
+                  src={db.logo}
+                  alt={db.name}
+                  height={100}
+                  width={100}
+                  class='mx-auto h-20 w-auto object-contain grayscale transition group-hover:grayscale-0'
+                  title={db.name}
+                />
+              </div>
+            ))
+          }
+        </div>
+      </div>
+      <div class='space-y-6'>
+        <HeadingDO>DevOps</HeadingDO>
+        <div class='flex flex-wrap gap-6'>
+          {
+            devOps.map((it) => (
+              <div class='group aspect-square h-20 w-20'>
+                <Image
+                  src={it.logo}
+                  alt={it.name}
+                  height={100}
+                  width={100}
+                  class='mx-auto h-20 w-auto object-contain grayscale transition group-hover:grayscale-0'
+                  title={it.name}
+                />
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

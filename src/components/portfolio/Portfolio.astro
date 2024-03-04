@@ -1,0 +1,77 @@
+---
+import Heading from '../heading/Heading.astro';
+import HeadingFE from '../heading/HeadingFE.astro';
+import HeadingBE from '../heading/HeadingBE.astro';
+import { fetchPortfolio, getFileUrl } from '@/lib/directus';
+import PortfolioCarousel from './PortfolioCarousel.astro';
+
+const portfolio = await fetchPortfolio();
+
+const web = portfolio
+  .filter((p) => p.type === 'web')
+  .map((p) => ({
+    ...p,
+    image: getFileUrl(p.image),
+    tech_stack: p.tech_stack.map((t) => ({
+      ...t.skill_set_id,
+      logo: getFileUrl(t.skill_set_id.logo),
+    })),
+  }));
+
+const api = portfolio
+  .filter((p) => p.type === 'api')
+  .map((p) => ({
+    ...p,
+    image: getFileUrl(p.image),
+    tech_stack: p.tech_stack.map((t) => ({
+      ...t.skill_set_id,
+      logo: getFileUrl(t.skill_set_id.logo),
+    })),
+  }));
+
+const cli = portfolio
+  .filter((p) => p.type === 'cli')
+  .map((p) => ({
+    ...p,
+    image: getFileUrl(p.image),
+    tech_stack: p.tech_stack.map((t) => ({
+      ...t.skill_set_id,
+      logo: getFileUrl(t.skill_set_id.logo),
+    })),
+  }));
+
+const bot = portfolio
+  .filter((p) => p.type === 'bot')
+  .map((p) => ({
+    ...p,
+    image: getFileUrl(p.image),
+    tech_stack: p.tech_stack.map((t) => ({
+      ...t.skill_set_id,
+      logo: getFileUrl(t.skill_set_id.logo),
+    })),
+  }));
+---
+
+<section id='portfolio' class='min-h-[100svh] bg-[#18202a]'>
+  <div class='container mx-auto pb-24 pt-10 md:pb-32 md:pt-20'>
+    <Heading>Portfolio</Heading>
+    <div class='space-y-10'>
+      <div>
+        <HeadingFE>Web</HeadingFE>
+        <PortfolioCarousel portfolios={web} />
+      </div>
+      <div>
+        <HeadingBE>"API"</HeadingBE>
+        <PortfolioCarousel portfolios={api} />
+      </div>
+      <div>
+        <h3 class='mb-4 font-mono text-xl font-extrabold md:text-3xl'>CLI</h3>
+        <PortfolioCarousel portfolios={cli} />
+      </div>
+      <div>
+        <h3 class='mb-4 font-mono text-xl font-extrabold md:text-3xl'>Bot</h3>
+        <PortfolioCarousel portfolios={bot} />
+      </div>
+    </div>
+  </div>
+</section>

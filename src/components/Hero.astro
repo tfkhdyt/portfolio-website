@@ -1,0 +1,58 @@
+---
+import { Image } from 'astro:assets';
+import { fetchHome, getFileUrl } from '@/lib/directus';
+import blob from '@/assets/blobs/blob.svg';
+
+const result = await fetchHome();
+const fullName = result.full_name.replace(' ', '');
+const imageUrl = getFileUrl(result.image);
+const cvUrl = getFileUrl(result.cv);
+---
+
+<Image
+  src={blob}
+  alt='blob1'
+  height={500}
+  width={500}
+  class='absolute -right-52 -top-52 lg:-right-40 lg:-top-40'
+  loading='eager'
+/>
+<Image
+  src={blob}
+  alt='blob2'
+  height={400}
+  width={400}
+  class='absolute -bottom-52 -left-52 lg:-left-40 lg:bottom-10'
+  loading='eager'
+/>
+<section
+  class='container mx-auto flex min-h-[100svh] flex-col justify-center space-y-6 text-center'
+  id='home'
+>
+  <Image
+    src={imageUrl}
+    alt='tfkhdyt logo'
+    width={500}
+    height={500}
+    class='mx-auto mb-4 h-40 w-auto'
+    loading='eager'
+  />
+  <h2 class='text-2xl font-extrabold md:text-5xl'>
+    Hi, I'm <span class='whitespace-nowrap font-mono'
+      ><span class='text-indigo-500'>{'<'}</span>{fullName}
+      <span class='text-indigo-500'>{' />'}</span></span
+    >
+  </h2>
+  <h3 class='mx-auto max-w-lg font-light text-gray-300 md:text-xl'>
+    {result.description}
+  </h3>
+  <div class='pt-2 md:pt-4'>
+    <a
+      href={cvUrl}
+      download
+      class='mx-auto w-fit rounded bg-teal-300 px-4 py-2 font-semibold text-black transition hover:bg-teal-400 md:px-5 md:py-3'
+    >
+      View CV
+    </a>
+  </div>
+</section>

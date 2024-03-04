@@ -1,0 +1,70 @@
+---
+import HeadingFE from './heading/HeadingFE.astro';
+import MobileNav from '@/components/MobileNav';
+---
+
+<header
+  class='fixed inset-x-0 top-0 z-50 bg-transparent py-4 transition-all md:py-5'
+>
+  <div
+    class='container mx-auto flex items-center justify-between lg:justify-normal'
+  >
+    <HeadingFE className='mb-0 text-lg'>TFKHDYT</HeadingFE>
+    <div
+      class='mx-auto hidden space-x-8 pr-40 font-medium text-gray-400 lg:block lg:text-lg'
+    >
+      <a href='#home' class='nav-item active'>Home</a>
+      <a href='#about' class='nav-item'>About</a>
+      <a href='#skill' class='nav-item'>Skill Set</a>
+      <a href='#portfolio' class='nav-item'>Portfolio</a>
+      <a href='#certifications' class='nav-item'>Certifications</a>
+    </div>
+    <div class='lg:hidden'>
+      <MobileNav client:load />
+    </div>
+  </div>
+</header>
+
+<style>
+  .active,
+  .nav-item:hover {
+    text-decoration: underline;
+    text-decoration-thickness: 3px;
+    text-underline-offset: 6px;
+    text-decoration-color: #5eead4;
+    color: #f5f5f5;
+  }
+
+  .navbar-blur {
+    @apply bg-gray-900/75 backdrop-blur;
+  }
+</style>
+
+<script>
+  const navItems = document.querySelectorAll<HTMLAnchorElement>('.nav-item');
+  const sections = document.querySelectorAll('section');
+  const header = document.querySelector('header');
+
+  let currentSection = 'home';
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 50) {
+      header?.classList.add('navbar-blur');
+    } else {
+      header?.classList.remove('navbar-blur');
+    }
+
+    for (const section of sections) {
+      if (window.scrollY >= section.offsetTop - section.clientHeight / 8) {
+        currentSection = section.id;
+      }
+    }
+
+    for (const navItem of navItems) {
+      if (navItem.href.includes(currentSection)) {
+        navItem.classList.add('active');
+      } else {
+        navItem.classList.remove('active');
+      }
+    }
+  });
+</script>

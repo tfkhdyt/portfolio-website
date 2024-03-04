@@ -1,0 +1,44 @@
+---
+import Heading from '@/components/heading/Heading.astro';
+import { fetchWorkExperience } from '@/lib/directus';
+
+const workExperiences = await fetchWorkExperience();
+
+const dateMonthFormatter = Intl.DateTimeFormat('en-US', {
+  month: 'short',
+  year: 'numeric',
+});
+
+function formatDateString(date: string) {
+  return dateMonthFormatter.format(new Date(date));
+}
+---
+
+<Heading>WorkExperience</Heading>
+<div class='relative col-span-9 space-y-6 px-4'>
+  <div
+    class='relative col-span-8 space-y-8 px-4 before:absolute before:-left-3 before:bottom-0 before:top-2 before:w-0.5 before:bg-gray-700'
+  >
+    {
+      workExperiences.map((exp) => (
+        <div class='relative flex flex-col before:absolute before:left-[-35px] before:top-2 before:z-[1] before:h-4 before:w-4 before:rounded-full before:bg-teal-300'>
+          <h3 class='text-lg font-bold md:text-2xl'>{exp.company_name}</h3>
+          <p class='text-sm italic text-gray-400 md:text-lg'>{exp.role}</p>
+          <time class='text-sm text-gray-400 md:text-lg'>
+            {formatDateString(exp.time_span_start)} -{' '}
+            {exp.time_span_end
+              ? formatDateString(exp.time_span_end)
+              : 'present'}
+          </time>
+          {exp.job_desk.length > 0 && (
+            <ul class='ml-6 mt-3 list-disc text-sm text-gray-300 md:text-lg'>
+              {exp.job_desk.map((job) => (
+                <li>{job}</li>
+              ))}
+            </ul>
+          )}
+        </div>
+      ))
+    }
+  </div>
+</div>

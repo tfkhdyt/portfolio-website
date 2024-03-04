@@ -1,0 +1,38 @@
+---
+import Heading from '@/components/heading/Heading.astro';
+import { fetchEducation } from '@/lib/directus';
+
+const educations = await fetchEducation();
+---
+
+<Heading>Education</Heading>
+<div class='relative col-span-9 space-y-6 px-4'>
+  <div
+    class='relative col-span-8 space-y-8 px-4 before:absolute before:-left-3 before:bottom-0 before:top-2 before:w-0.5 before:bg-gray-700'
+  >
+    {
+      educations.map((education) => (
+        <div class='relative flex flex-col before:absolute before:left-[-35px] before:top-2 before:z-[1] before:h-4 before:w-4 before:rounded-full before:bg-teal-300'>
+          <h3 class='text-lg font-bold md:text-2xl'>{education.name}</h3>
+          <p class='text-sm italic text-gray-400 md:text-lg'>
+            {education.major}{' '}
+            {education.gpa && `(Current GPA: ${education.gpa})`}
+          </p>
+          <time class='text-sm text-gray-400 md:text-lg'>
+            {new Date(education.time_span_start).getFullYear()} -{' '}
+            {education.time_span_end
+              ? new Date(education.time_span_end).getFullYear()
+              : 'present'}
+          </time>
+          {education.achievements && education.achievements?.length > 0 && (
+            <ul class='ml-6 mt-3 list-disc text-sm text-gray-300 md:text-lg'>
+              {education.achievements.map((achievement) => (
+                <li>{achievement}</li>
+              ))}
+            </ul>
+          )}
+        </div>
+      ))
+    }
+  </div>
+</div>
