@@ -24,6 +24,22 @@ const { title } = Astro.props;
     <SEO
       title={title}
       description="Hello, world! My name is Taufik Hidayat. I'm a Full Stack Developer, Computer Science Student, YouTuber, Free and Open Source Software Enthusiast, and GNU/Linux Nerd."
+      canonical='https://tfkhdyt.my.id'
+      openGraph={{
+        basic: {
+          image: '/favicon.svg',
+          title: 'Taufik Hidayat',
+          type: 'website',
+          url: 'https://tfkhdyt.my.id',
+        },
+      }}
+      twitter={{
+        card: 'summary',
+        title: 'Taufik Hidayat',
+        image: '/favicon.svg',
+        description:
+          "Hello, world! My name is Taufik Hidayat. I'm a Full Stack Developer, Computer Science Student, YouTuber, Free and Open Source Software Enthusiast, and GNU/Linux Nerd.",
+      }}
     />
   </head>
   <body class='dark overflow-x-hidden bg-gray-900 text-trueGray-100'>
