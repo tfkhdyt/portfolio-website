@@ -1,6 +1,7 @@
 ---
-import { fetchHome, getFileUrl } from '@/lib/directus';
 import { Image } from 'astro:assets';
+import { fetchHome, getFileUrl } from '@/lib/directus';
+import blob from '@/assets/blobs/blob.svg';
 
 const result = await fetchHome();
 const fullName = result.full_name.replace(' ', '');
@@ -11,6 +12,20 @@ const imageUrl = await getFileUrl(result.image, {
 const cvUrl = await getFileUrl(result.cv);
 ---
 
+<Image
+  src={blob}
+  alt='blob1'
+  height={500}
+  width={500}
+  class='absolute -right-52 -top-52 lg:-right-40 lg:-top-40'
+/>
+<Image
+  src={blob}
+  alt='blob2'
+  height={400}
+  width={400}
+  class='absolute -bottom-52 -left-52 lg:-left-40 lg:bottom-10'
+/>
 <section
   class='container mx-auto flex min-h-[100svh] flex-col justify-center space-y-6 text-center'
   id='home'

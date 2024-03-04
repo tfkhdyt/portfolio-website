@@ -9,7 +9,7 @@ const MobileNav = () => {
     <Sheet open={open} onOpenChange={setOpen}>
       <SheetTrigger asChild>
         <button
-          className='rounded p-1 transition hover:bg-[#18202a]'
+          className='relative z-50 rounded p-1 transition hover:bg-[#18202a]'
           aria-label='Menu'
         >
           <MenuIcon />

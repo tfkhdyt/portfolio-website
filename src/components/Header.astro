@@ -4,7 +4,7 @@ import MobileNav from '@/components/MobileNav';
 ---
 
 <header
-  class='fixed inset-x-0 top-0 z-50 bg-gray-900/75 py-4 backdrop-blur md:py-5'
+  class='fixed inset-x-0 top-0 z-50 bg-transparent py-4 transition-all md:py-5'
 >
   <div
     class='container mx-auto flex items-center justify-between lg:justify-normal'
@@ -34,14 +34,25 @@ import MobileNav from '@/components/MobileNav';
     text-decoration-color: #5eead4;
     color: #f5f5f5;
   }
+
+  .navbar-blur {
+    @apply bg-gray-900/75 backdrop-blur;
+  }
 </style>
 
 <script>
   const navItems = document.querySelectorAll<HTMLAnchorElement>('.nav-item');
   const sections = document.querySelectorAll('section');
+  const header = document.querySelector('header');
 
   let currentSection = 'home';
   window.addEventListener('scroll', () => {
+    if (window.scrollY > 50) {
+      header?.classList.add('navbar-blur');
+    } else {
+      header?.classList.remove('navbar-blur');
+    }
+
     for (const section of sections) {
       if (window.scrollY >= section.offsetTop - section.clientHeight / 8) {
         currentSection = section.id;
