@@ -11,4 +11,7 @@ export default defineConfig({
     }),
     react(),
   ],
+  image: {
+    domains: ['admin.tfkhdyt.my.id'],
+  },
 });
