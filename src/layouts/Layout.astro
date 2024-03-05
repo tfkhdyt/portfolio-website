@@ -15,6 +15,7 @@ type Props = {
 const { title } = Astro.props;
 
 const keywords = await fetchKeywords()
+const keywordsStr = keywords.map(k => k.value).join(',')
 
 ---
 
@@ -46,7 +47,7 @@ const keywords = await fetchKeywords()
       }}
       extend={{
         meta: [
-          {name: 'keywords', content: keywords.join(',')}
+          {name: 'keywords', content: keywordsStr}
         ]
       }}
     />
