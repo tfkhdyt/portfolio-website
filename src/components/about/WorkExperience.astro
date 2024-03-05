@@ -31,7 +31,7 @@ function formatDateString(date: string) {
               : 'present'}
           </time>
           {exp.job_desk.length > 0 && (
-            <ul class='ml-6 mt-3 list-disc text-sm text-gray-300 md:text-lg'>
+            <ul class='ml-6 mt-3 list-disc space-y-1 text-sm text-gray-300 md:text-lg'>
               {exp.job_desk.map((job) => (
                 <li>{job}</li>
               ))}
