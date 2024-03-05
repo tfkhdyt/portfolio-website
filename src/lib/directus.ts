@@ -60,11 +60,16 @@ type Contact = {
   url: string;
 };
 
-type Certifications = {
+type Certification = {
   title: string;
   publisher: string;
   published_date: Date;
   file: string;
+  status: string;
+};
+
+type Keyword = {
+  value: string;
   status: string;
 };
 
@@ -76,7 +81,8 @@ type Collection = {
   skill_set: SkillSet[];
   portfolio: Portfolio[];
   contact: Contact[];
-  certifications: Certifications[];
+  certifications: Certification[];
+  keywords: Keyword[];
 };
 
 export function fetchHome() {
@@ -125,9 +131,21 @@ export function fetchPortfolio(): Promise<Portfolio[]> {
   );
 }
 
-export function fetchCertifications(): Promise<Certifications[]> {
+export function fetchCertifications(): Promise<Certification[]> {
   return client.request(
     readItems('certifications', {
+      filter: {
+        status: {
+          _eq: 'published',
+        },
+      },
+    }),
+  );
+}
+
+export function fetchKeywords(): Promise<Keyword[]> {
+  return client.request(
+    readItems('keywords', {
       filter: {
         status: {
           _eq: 'published',

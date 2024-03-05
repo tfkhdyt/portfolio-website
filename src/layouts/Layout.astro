@@ -6,12 +6,16 @@ import '@fontsource-variable/jetbrains-mono';
 import { SEO } from 'astro-seo';
 
 import '@/styles/globals.css';
+import { fetchKeywords } from '@/lib/directus';
 
 type Props = {
   title: string;
 };
 
 const { title } = Astro.props;
+
+const keywords = await fetchKeywords()
+
 ---
 
 <!doctype html>
@@ -39,6 +43,11 @@ const { title } = Astro.props;
         image: '/favicon.svg',
         description:
           "Hello, world! My name is Taufik Hidayat. I'm a Full Stack Developer, Computer Science Student, YouTuber, Free and Open Source Software Enthusiast, and GNU/Linux Nerd.",
+      }}
+      extend={{
+        meta: [
+          {name: 'keywords', content: keywords.join(',')}
+        ]
       }}
     />
   </head>
