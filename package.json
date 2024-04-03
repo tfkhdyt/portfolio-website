@@ -12,18 +12,18 @@
     "format": "prettier --write --plugin=prettier-plugin-astro \"src/**/*.{js,ts,jsx,tsx,astro}\""
   },
   "dependencies": {
-    "@astrojs/check": "^0.5.6",
-    "@astrojs/react": "^3.0.10",
+    "@astrojs/check": "^0.5.10",
+    "@astrojs/react": "^3.1.1",
     "@astrojs/tailwind": "^5.1.0",
-    "@directus/sdk": "^15.0.1",
+    "@directus/sdk": "^15.0.3",
     "@fontsource-variable/jetbrains-mono": "^5.0.20",
     "@fontsource-variable/nunito": "^5.0.18",
     "@radix-ui/react-dialog": "^1.0.5",
     "@radix-ui/react-slot": "^1.0.2",
-    "@types/react": "^18.2.63",
-    "@types/react-dom": "^18.2.19",
-    "astro": "^4.4.11",
-    "astro-compress": "^2.2.11",
+    "@types/react": "^18.2.74",
+    "@types/react-dom": "^18.2.23",
+    "astro": "^4.5.14",
+    "astro-compress": "^2.2.21",
     "astro-seo": "^0.8.3",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.0",
@@ -31,21 +31,21 @@
     "lucide-react": "^0.344.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "tailwind-merge": "^2.2.1",
-    "tailwindcss": "^3.4.1",
+    "tailwind-merge": "^2.2.2",
+    "tailwindcss": "^3.4.3",
     "tailwindcss-animate": "^1.0.7",
-    "typescript": "^5.3.3"
+    "typescript": "^5.4.3"
   },
   "devDependencies": {
-    "@typescript-eslint/eslint-plugin": "^7.1.1",
-    "@typescript-eslint/parser": "^7.1.1",
+    "@typescript-eslint/eslint-plugin": "^7.5.0",
+    "@typescript-eslint/parser": "^7.5.0",
     "astro-eslint-parser": "^0.16.3",
     "eslint": "^8.57.0",
     "eslint-plugin-astro": "^0.31.4",
     "eslint-plugin-jsx-a11y": "^6.8.0",
     "prettier": "^3.2.5",
     "prettier-plugin-astro": "^0.13.0",
-    "prettier-plugin-tailwindcss": "^0.5.11",
-    "sharp": "^0.33.2"
+    "prettier-plugin-tailwindcss": "^0.5.13",
+    "sharp": "^0.33.3"
   }
 }
