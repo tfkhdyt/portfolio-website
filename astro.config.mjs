@@ -18,5 +18,9 @@ export default defineConfig({
   image: {
     domains: ['admin.tfkhdyt.my.id'],
   },
+  server: {
+    hmr: {
+      port: 3004,
+    },
+  },
 });
-
