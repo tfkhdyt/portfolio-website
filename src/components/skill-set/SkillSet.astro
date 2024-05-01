@@ -54,10 +54,12 @@ const devOps = skills
     <div class='space-y-10'>
       <div class='space-y-6'>
         <HeadingFE>FrontEnd</HeadingFE>
-        <div class='flex flex-wrap gap-4 md:gap-6'>
+        <div
+          class='flex flex-wrap justify-center gap-4 md:gap-6 lg:justify-normal'
+        >
           {
             frontEnd.map((fe) => (
-              <div class='group aspect-square h-16 w-16 md:h-20 md:w-20'>
+              <div class='group aspect-[4/3] h-16 w-auto md:h-20'>
                 <Image
                   src={fe.logo}
                   alt={fe.name}
@@ -73,10 +75,12 @@ const devOps = skills
       </div>
       <div class='space-y-6'>
         <HeadingBE>"back_end"</HeadingBE>
-        <div class='flex flex-wrap gap-4 md:gap-6'>
+        <div
+          class='flex flex-wrap justify-center gap-4 md:gap-6 lg:justify-normal'
+        >
           {
             backEnd.map((be) => (
-              <div class='group aspect-square h-16 w-16 md:h-20 md:w-20'>
+              <div class='group aspect-[4/3] h-16 w-auto md:h-20'>
                 <Image
                   src={be.logo}
                   alt={be.name}
@@ -92,10 +96,12 @@ const devOps = skills
       </div>
       <div class='space-y-6'>
         <HeadingFS>fullStack</HeadingFS>
-        <div class='flex flex-wrap gap-4 md:gap-6'>
+        <div
+          class='flex flex-wrap justify-center gap-4 md:gap-6 lg:justify-normal'
+        >
           {
             fullStack.map((fs) => (
-              <div class='group aspect-square h-16 w-16 md:h-20 md:w-20'>
+              <div class='group aspect-[4/3] h-16 w-auto md:h-20'>
                 <Image
                   src={fs.logo}
                   alt={fs.name}
@@ -111,10 +117,12 @@ const devOps = skills
       </div>
       <div class='space-y-6'>
         <HeadingDB>databases</HeadingDB>
-        <div class='flex flex-wrap gap-4 md:gap-6'>
+        <div
+          class='flex flex-wrap justify-center gap-4 md:gap-6 lg:justify-normal'
+        >
           {
             database.map((db) => (
-              <div class='group aspect-square h-16 w-16 md:h-20 md:w-20'>
+              <div class='group aspect-[4/3] h-16 w-auto md:h-20'>
                 <Image
                   src={db.logo}
                   alt={db.name}
@@ -130,10 +138,12 @@ const devOps = skills
       </div>
       <div class='space-y-6'>
         <HeadingDO>DevOps</HeadingDO>
-        <div class='flex flex-wrap gap-4 md:gap-6'>
+        <div
+          class='flex flex-wrap justify-center gap-4 md:gap-6 lg:justify-normal'
+        >
           {
             devOps.map((it) => (
-              <div class='group aspect-square h-16 w-16 md:h-20 md:w-20'>
+              <div class='group aspect-[4/3] h-16 w-auto md:h-20'>
                 <Image
                   src={it.logo}
                   alt={it.name}
