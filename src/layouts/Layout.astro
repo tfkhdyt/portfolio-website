@@ -14,9 +14,8 @@ type Props = {
 
 const { title } = Astro.props;
 
-const keywords = await fetchKeywords()
-const keywordsStr = keywords.map(k => k.value).join(',')
-
+const keywords = await fetchKeywords();
+const keywordsStr = keywords.map((k) => k.value).join(',');
 ---
 
 <!doctype html>
@@ -32,7 +31,7 @@ const keywordsStr = keywords.map(k => k.value).join(',')
       canonical='https://tfkhdyt.my.id'
       openGraph={{
         basic: {
-          image: '/favicon.svg',
+          image: '/taufik-chibi.webp',
           title: 'Taufik Hidayat',
           type: 'website',
           url: 'https://tfkhdyt.my.id',
@@ -41,14 +40,12 @@ const keywordsStr = keywords.map(k => k.value).join(',')
       twitter={{
         card: 'summary',
         title: 'Taufik Hidayat',
-        image: '/favicon.svg',
+        image: '/taufik-chibi.webp',
         description:
           "Hello, world! My name is Taufik Hidayat. I'm a Full Stack Developer, Computer Science Student, YouTuber, Free and Open Source Software Enthusiast, and GNU/Linux Nerd.",
       }}
       extend={{
-        meta: [
-          {name: 'keywords', content: keywordsStr}
-        ]
+        meta: [{ name: 'keywords', content: keywordsStr }],
       }}
     />
   </head>
