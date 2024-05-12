@@ -1,19 +1,27 @@
-name: deploy
+name: Build and deploy to SSH
 on:
   push:
-    branches: [master]
+    branches:
+      - master
+    paths:
+      - "**.js"
+      - "**.jsx"
+      - "**.ts"
+      - "**.tsx"
+      - "**.astro"
 jobs:
   build:
+    name: Build and deploy
     runs-on: ubuntu-latest
     steps:
-      - name: deploy to ssh server
+      - name: Build and deploy
         uses: appleboy/ssh-action@v1.0.3
         with:
-          host: ${{ secrets.SSH_HOST }}
-          username: ${{ secrets.SSH_USERNAME }}
-          key: ${{ secrets.SSH_KEY }}
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          key: ${{ secrets.KEY }}
           script: |
-            cd /var/www/portfolio-website/
+            cd /var/www/portfolio-website
             git pull
             npx pnpm i
             npm run build
