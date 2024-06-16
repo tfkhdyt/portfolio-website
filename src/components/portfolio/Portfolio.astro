@@ -50,6 +50,17 @@ const bot = portfolio
       logo: getFileUrl(t.skill_set_id.logo),
     })),
   }));
+
+const desktop = portfolio
+  .filter((p) => p.type === 'desktop')
+  .map((p) => ({
+    ...p,
+    image: getFileUrl(p.image),
+    tech_stack: p.tech_stack.map((t) => ({
+      ...t.skill_set_id,
+      logo: getFileUrl(t.skill_set_id.logo),
+    })),
+  }));
 ---
 
 <section id='portfolio' class='min-h-[100svh] bg-[#18202a]'>
@@ -71,6 +82,12 @@ const bot = portfolio
       <div>
         <h3 class='mb-4 font-mono text-xl font-extrabold md:text-3xl'>Bot</h3>
         <PortfolioCarousel portfolios={bot} />
+      </div>
+      <div>
+        <h3 class='mb-4 font-mono text-xl font-extrabold md:text-3xl'>
+          Desktop
+        </h3>
+        <PortfolioCarousel portfolios={desktop} />
       </div>
     </div>
   </div>
