@@ -27,7 +27,7 @@ const { portfolios } = Astro.props;
 >
   {
     portfolios.map((portfolio) => (
-      <Card className='group border-2 bg-gray-900 transition hover:border-teal-300 w-full md:w-[49.5%] lg:w-[32.75%] flex-shrink-0 snap-center h-fit '>
+      <Card className='group border-2 bg-gray-900 transition hover:border-teal-300 w-full md:w-[49.5%] lg:w-[32.75%] flex-shrink-0 snap-center relative h-[20rem] md:h-[24.5rem] lg:h-[25.5rem]'>
         <Image
           src={portfolio.image}
           alt={portfolio.name}
@@ -35,7 +35,7 @@ const { portfolios } = Astro.props;
           height={500}
           class='mx-auto aspect-video w-full rounded-t-md object-cover grayscale transition group-hover:grayscale-0'
         />
-        <div class='flex flex-col justify-between space-y-2 p-4 pb-6 md:p-6'>
+        <div class='absolute inset-x-0 bottom-0 z-40 flex flex-col justify-between space-y-2 bg-gray-900 p-4 pb-6 transition-all md:p-6'>
           <div class='space-y-2'>
             <div class='flex items-center justify-between'>
               <h4 class='flex-wrap font-bold md:text-xl'>{portfolio.name}</h4>
@@ -62,9 +62,11 @@ const { portfolios } = Astro.props;
                 )}
               </div>
             </div>
-            <p class='text-sm md:text-lg'>{portfolio.description}</p>
+            <p class='description h-7 truncate text-sm transition-all duration-200 ease-in-out group-hover:overflow-visible group-hover:whitespace-normal md:text-base lg:text-lg'>
+              {portfolio.description}
+            </p>
           </div>
-          <div class='flex flex-wrap gap-2 pt-3'>
+          <div class='flex flex-wrap gap-2 pt-0 md:pt-3'>
             {portfolio.tech_stack.map((tech) => (
               <Image
                 src={tech.logo}
@@ -72,7 +74,7 @@ const { portfolios } = Astro.props;
                 title={tech.name}
                 width={100}
                 height={100}
-                class='h-4 w-auto object-contain grayscale group-hover:grayscale-0 md:h-6'
+                class='aspect-[4/3] h-4 w-auto object-contain grayscale group-hover:grayscale-0 md:h-6'
               />
             ))}
           </div>
@@ -81,3 +83,101 @@ const { portfolios } = Astro.props;
     ))
   }
 </div>
+
+<script>
+  type Breakpoint = 'sm' | 'md' | 'lg' | 'xl' | '2xl';
+
+  const breakpoints: Record<Breakpoint, number> = {
+    sm: 640,
+    md: 768,
+    lg: 1024,
+    xl: 1280,
+    '2xl': 1536,
+  };
+
+  function checkBreakpoint(breakpoint: Breakpoint): boolean {
+    if (!(breakpoint in breakpoints)) {
+      console.error(`Unknown breakpoint: ${breakpoint}`);
+      return false;
+    }
+    const query = `(min-width: ${breakpoints[breakpoint]}px)`;
+    return window.matchMedia(query).matches;
+  }
+
+  function getHeight(str: string) {
+    const lines = countLines(str);
+    const className = `group-hover:h-${7 * lines}`;
+
+    switch (lines) {
+      case 3:
+        return 'group-hover:h-20';
+      case 4:
+        return 'group-hover:h-28';
+      case 5:
+        return 'group-hover:h-20';
+      default:
+        break;
+    }
+
+    return className;
+  }
+
+  function countLines(str: string) {
+    let divWidth: number;
+    let fontSize: number;
+
+    if (checkBreakpoint('2xl')) {
+      divWidth = 385.53;
+      fontSize = 18;
+    } else if (checkBreakpoint('xl')) {
+      divWidth = 385.53;
+      fontSize = 18;
+    } else if (checkBreakpoint('lg')) {
+      divWidth = 385.53;
+      fontSize = 18;
+    } else if (checkBreakpoint('md')) {
+      divWidth = 362.8;
+      fontSize = 16;
+    } else {
+      divWidth = 290;
+      fontSize = 14;
+    }
+
+    const tempDiv = document.createElement('div');
+    tempDiv.style.position = 'absolute';
+    tempDiv.style.visibility = 'hidden';
+    tempDiv.style.width = `${divWidth}px`;
+    tempDiv.style.fontSize = `${fontSize}px`;
+    tempDiv.style.lineHeight = '1';
+    tempDiv.style.whiteSpace = 'pre-wrap';
+    tempDiv.textContent = str;
+
+    document.body.appendChild(tempDiv);
+
+    // Get the computed height of the text and calculate lines
+    const totalHeight = tempDiv.clientHeight;
+    const lineHeight = parseInt(
+      window.getComputedStyle(tempDiv).lineHeight,
+      10,
+    );
+    const numLines = Math.ceil(totalHeight / lineHeight);
+
+    // Clean up
+    document.body.removeChild(tempDiv);
+
+    return numLines;
+  }
+
+  function skibidi() {
+    const description = document.querySelectorAll('.description');
+    for (const desc of description) {
+      const height = getHeight(desc.textContent!);
+      desc.classList.add(height);
+    }
+  }
+
+  skibidi();
+
+  // run skibidi() on window resize
+  window.addEventListener('resize', skibidi);
+</script>
