@@ -104,24 +104,6 @@ const { portfolios } = Astro.props;
     return window.matchMedia(query).matches;
   }
 
-  function getHeight(str: string) {
-    const lines = countLines(str);
-    const className = `group-hover:h-${7 * lines}`;
-
-    switch (lines) {
-      case 3:
-        return 'group-hover:h-20';
-      case 4:
-        return 'group-hover:h-28';
-      case 5:
-        return 'group-hover:h-20';
-      default:
-        break;
-    }
-
-    return className;
-  }
-
   function countLines(str: string) {
     let divWidth: number;
     let fontSize: number;
@@ -168,16 +150,43 @@ const { portfolios } = Astro.props;
     return numLines;
   }
 
-  function skibidi() {
-    const description = document.querySelectorAll('.description');
-    for (const desc of description) {
-      const height = getHeight(desc.textContent!);
-      desc.classList.add(height);
-    }
+  // function skibidi() {
+  const description = document.querySelectorAll('.description');
+  for (const desc of description) {
+    // const height = getHeight(desc.textContent!);
+    const lines = countLines(desc.textContent!);
+    desc.classList.add(`line-${lines}`);
   }
+  // }
 
-  skibidi();
+  // skibidi();
 
   // run skibidi() on window resize
-  window.addEventListener('resize', skibidi);
+  // window.addEventListener('resize', skibidi);
 </script>
+
+<style>
+  @tailwind base;
+  @tailwind components;
+  @tailwind utilities;
+
+  .line-1 {
+    @apply group-hover:h-7;
+  }
+
+  .line-2 {
+    @apply group-hover:h-14;
+  }
+
+  .line-3 {
+    @apply group-hover:h-20;
+  }
+
+  .line-4 {
+    @apply group-hover:h-28;
+  }
+
+  .line-5 {
+    @apply group-hover:h-20;
+  }
+</style>
