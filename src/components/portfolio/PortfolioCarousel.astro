@@ -27,7 +27,7 @@ const { portfolios } = Astro.props;
 >
   {
     portfolios.map((portfolio) => (
-      <Card className='group border-2 bg-gray-900 transition hover:border-teal-300 w-full md:w-[49.5%] lg:w-[32.75%] flex-shrink-0 snap-center relative h-[20rem] md:h-[24.5rem] lg:h-[25.5rem]'>
+      <Card className='rounded-md group border-2 bg-gray-900 transition hover:border-teal-300 w-full md:w-[49.5%] lg:w-[32.75%] flex-shrink-0 snap-center relative h-[20rem] md:h-[24.5rem] lg:h-[25.5rem]'>
         <Image
           src={portfolio.image}
           alt={portfolio.name}
@@ -35,7 +35,7 @@ const { portfolios } = Astro.props;
           height={500}
           class='mx-auto aspect-video w-full rounded-t-md object-cover grayscale transition group-hover:grayscale-0'
         />
-        <div class='absolute inset-x-0 bottom-0 z-40 flex flex-col justify-between space-y-2 bg-gray-900 p-4 pb-6 transition-all md:p-6'>
+        <div class='absolute inset-x-0 bottom-0 z-40 flex flex-col justify-between space-y-2 rounded-b-md bg-gray-900 p-4 pb-6 transition-all md:p-6'>
           <div class='space-y-2'>
             <div class='flex items-center justify-between'>
               <h4 class='flex-wrap font-bold md:text-xl'>{portfolio.name}</h4>
