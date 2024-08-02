@@ -12,7 +12,7 @@
     "format": "prettier --write --plugin=prettier-plugin-astro \"src/**/*.{js,ts,jsx,tsx,astro}\""
   },
   "dependencies": {
-    "@astrojs/check": "^0.5.10",
+    "@astrojs/check": "^0.9.1",
     "@astrojs/react": "^3.6.1",
     "@astrojs/tailwind": "^5.1.0",
     "@directus/sdk": "^15.1.0",
@@ -28,7 +28,7 @@
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
     "embla-carousel-react": "^8.1.8",
-    "lucide-react": "^0.344.0",
+    "lucide-react": "^0.424.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "tailwind-merge": "^2.4.0",
@@ -44,8 +44,8 @@
     "eslint-plugin-astro": "^0.31.4",
     "eslint-plugin-jsx-a11y": "^6.9.0",
     "prettier": "^3.3.3",
-    "prettier-plugin-astro": "^0.13.0",
-    "prettier-plugin-tailwindcss": "^0.5.14",
+    "prettier-plugin-astro": "^0.14.1",
+    "prettier-plugin-tailwindcss": "^0.6.5",
     "sharp": "^0.33.4"
   }
 }
