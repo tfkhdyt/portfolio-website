@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { Card, CardContent } from "@/components/ui/card";
-import { Copy } from "lucide-react";
+import { Copy, Maximize2, Minimize2 } from "lucide-react";
 
 export default function JsonViewer() {
   const [copied, setCopied] = useState(false);
@@ -67,15 +67,26 @@ export default function JsonViewer() {
       >
         <div className="relative z-10 flex flex-col h-full">
           <div className="flex items-center  px-4 py-2 border-b border-white/10 relative">
-            <div className="flex space-x-2 absolute left-4">
-              <div className="w-3 h-3 rounded-full bg-red-500/80" />
-              <button
-                className="w-3 h-3 rounded-full bg-yellow-500/80"
-                onClick={toggleMaximize}
-                aria-label="maximize"
-              ></button>
-              <div className="w-3 h-3 rounded-full bg-green-500/80" />
-            </div>
+            {/* <div className="flex space-x-2 absolute left-4"> */}
+            {/*   <button */}
+            {/*     className="w-3 h-3 rounded-full bg-red-500/80" */}
+            {/*     onClick={closeWindow} */}
+            {/*     aria-label="Close window" */}
+            {/*   ></button> */}
+            {/*   <button */}
+            {/*     className="w-3 h-3 rounded-full bg-yellow-500/80" */}
+            {/*     onClick={toggleMaximize} */}
+            {/*     aria-label="maximize" */}
+            {/*   ></button> */}
+            {/*   <div className="w-3 h-3 rounded-full bg-green-500/80" /> */}
+            {/* </div> */}
+            <button
+              onClick={toggleMaximize}
+              className="text-gray-400 hover:text-white transition-colors p-1 rounded absolute left-4"
+              aria-label={isMaximized ? "Minimize" : "Maximize"}
+            >
+              {isMaximized ? <Minimize2 size={16} /> : <Maximize2 size={16} />}
+            </button>
             <span className="text-sm text-gray-300 font-medium mx-auto">
               resume.json
             </span>
