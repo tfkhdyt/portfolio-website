@@ -1,4 +1,4 @@
-import JsonViewer from "@/json-viewer";
+import JsonViewer from "@/components/json-viewer";
 
 export default function Home() {
   return (
