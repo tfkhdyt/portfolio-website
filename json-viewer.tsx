@@ -60,10 +60,10 @@ export default function JsonViewer() {
 
   return (
     <div
-      className={`transition-all duration-300 ease-in-out ${isMaximized ? "fixed inset-4 z-50" : "w-full max-w-3xl mx-auto"}`}
+      className={`fixed z-50 transition-all duration-300 ease-in-out ${isMaximized ? "inset-4" : "inset-[5%] md:inset-[10%] lg:inset-[25%] mt-44 md:mt-0 lg:-mt-24"}`}
     >
       <Card
-        className={`border border-white/10 shadow-xl bg-slate-700/25 backdrop-blur-md relative overflow-hidden rounded-xl ${isMaximized ? "h-full" : ""}`}
+        className={`border border-white/10 shadow-xl bg-slate-700/25 backdrop-blur-md relative overflow-hidden rounded-xl transition-all duration-300 ease-in-out ${isMaximized ? "h-full" : "h-[50vh] md:h-[80vh] lg:h-[70vh]"}`}
       >
         <div className="relative z-10 flex flex-col h-full">
           <div className="flex items-center  px-4 py-2 border-b border-white/10 relative">
@@ -95,7 +95,7 @@ export default function JsonViewer() {
 
           <CardContent className="p-0 flex-1 overflow-hidden">
             <pre
-              className={`text-white font-mono text-sm p-4 overflow-auto custom-scrollbar whitespace-pre-wrap break-words ${isMaximized ? "h-full" : "max-h-[500px]"}`}
+              className={`text-white font-mono text-sm p-4 overflow-auto custom-scrollbar whitespace-pre-wrap break-words transition-all duration-300 ease-in-out h-full selection:bg-slate-700/50`}
             >
               <code
                 dangerouslySetInnerHTML={{
