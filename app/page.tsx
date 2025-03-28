@@ -1,17 +1,13 @@
-import JsonViewer from "@/json-viewer"
+import JsonViewer from "@/json-viewer";
 
 export default function Home() {
   return (
-    <main className="relative flex min-h-screen flex-col items-center justify-center p-4 bg-gray-950 overflow-hidden">
+    <main className="relative flex min-h-screen flex-col items-center justify-center p-4 bg-[#13111C] overflow-hidden">
       {/* Background glows */}
-      <div className="fixed top-0 left-0 w-[500px] h-[500px] rounded-full bg-blue-600/30 blur-3xl animate-pulse-slow" />
-      <div className="fixed bottom-0 right-0 w-[500px] h-[500px] rounded-full bg-purple-600/30 blur-3xl animate-pulse-slow" />
-      <div className="fixed top-0 right-0 w-[300px] h-[300px] rounded-full bg-indigo-600/20 blur-3xl animate-pulse-slow opacity-70" />
-      <div className="fixed bottom-0 left-0 w-[300px] h-[300px] rounded-full bg-violet-600/20 blur-3xl animate-pulse-slow opacity-70" />
-
+      <div className="fixed -top-48 -left-48 w-[450px] h-[450px] rounded-full bg-blue-500/20 blur-3xl animate-pulse-slow" />
+      <div className="fixed -bottom-48 -right-48 w-[450px] h-[450px] rounded-full bg-fuchsia-600/25 blur-3xl animate-pulse-slow" />
       {/* Content */}
       <JsonViewer />
     </main>
-  )
+  );
 }
-
