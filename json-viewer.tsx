@@ -3,6 +3,8 @@
 import { useState } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Copy, Maximize2, Minimize2 } from "lucide-react";
+import SyntaxHighlighter from "react-syntax-highlighter";
+import { tomorrowNight } from "react-syntax-highlighter/dist/esm/styles/hljs";
 
 export default function JsonViewer() {
   const [copied, setCopied] = useState(false);
@@ -29,7 +31,14 @@ export default function JsonViewer() {
           location: "Bekasi, Indonesia",
           status: "Full Time",
           work_model: "Remote",
-          start_date: "2023-12-01T00:00:00Z",
+          start_at: "2023-12-18T00:00:00Z",
+          end_at: "2025-04-01T00:00:00Z",
+          responsibilities: [
+            "Developed a ticketing application for an ISP in Bekasi using Golang and Fiber framework. Optimized system performance, resulting in 20% faster query processing and improved system scalability to handle 2x previous user load.",
+            "Build a backend billing system using Node.js and Adonis.js for the same ISP to manage complex financial transaction.",
+            "Created a responsive landing page for a cloud service provider in Jakarta using TypeScript and Astro.js. Achieved 98-100% performance score on Google Lighthouse and reduced page load times to under 2 seconds, improving user engagement.",
+            "Develop a full-featured online manga reading application using SvelteKit and Pocketbase.",
+          ],
         },
       ],
       created_at: "2002-04-01T23:00:00Z",
@@ -46,16 +55,6 @@ export default function JsonViewer() {
 
   const toggleMaximize = () => {
     setIsMaximized(!isMaximized);
-  };
-
-  // Function to add syntax highlighting
-  const highlightJson = (json: string) => {
-    return json
-      .replace(/"([^"]+)":/g, '<span class="text-cyan-400">"$1"</span>:')
-      .replace(/: "([^"]+)"/g, ': <span class="text-amber-300">"$1"</span>')
-      .replace(/: (\d+\.?\d*)/g, ': <span class="text-green-400">$1</span>')
-      .replace(/: (true|false)/g, ': <span class="text-purple-400">$1</span>')
-      .replace(/: (null)/g, ': <span class="text-gray-400">$1</span>');
   };
 
   return (
@@ -87,7 +86,7 @@ export default function JsonViewer() {
             >
               {isMaximized ? <Minimize2 size={16} /> : <Maximize2 size={16} />}
             </button>
-            <span className="text-sm text-gray-300 font-medium mx-auto">
+            <span className="text-sm text-gray-400 font-medium mx-auto">
               resume.json
             </span>
             <button
@@ -104,16 +103,17 @@ export default function JsonViewer() {
             </button>
           </div>
 
-          <CardContent className="p-0 flex-1 overflow-hidden">
-            <pre
-              className={`text-white font-mono text-sm p-4 overflow-auto custom-scrollbar whitespace-pre-wrap break-words transition-all duration-300 ease-in-out h-full selection:bg-slate-700/50`}
+          <CardContent className="p-2 flex-1 overflow-auto custom-scrollbar transition-all duration-300 ease-in-out font-mono selection:bg-slate-800">
+            <SyntaxHighlighter
+              language="json"
+              style={tomorrowNight}
+              wrapLongLines
+              customStyle={{
+                backgroundColor: "transparent",
+              }}
             >
-              <code
-                dangerouslySetInnerHTML={{
-                  __html: highlightJson(formattedJson),
-                }}
-              />
-            </pre>
+              {formattedJson}
+            </SyntaxHighlighter>
           </CardContent>
         </div>
       </Card>
