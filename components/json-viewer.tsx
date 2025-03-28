@@ -25,7 +25,7 @@ export default function JsonViewer() {
 
   return (
     <div
-      className={`fixed z-50 transition-all duration-300 ease-in-out ${isMaximized ? "inset-8" : "inset-[5%] md:inset-[10%] lg:inset-[25%] mt-44 md:mt-0 lg:-mt-24"}`}
+      className={`fixed z-50 transition-all duration-300 ease-in-out ${isMaximized ? "inset-4 md:inset-8" : "inset-[5%] md:inset-[10%] lg:inset-[25%] mt-44 md:mt-0 lg:-mt-24"}`}
     >
       <Card
         className={`border border-white/10 shadow-xl bg-slate-600/25 backdrop-blur-md relative overflow-hidden rounded-xl transition-all duration-300 ease-in-out ${isMaximized ? "h-full" : "h-[50vh] md:h-[80vh] lg:h-[70vh]"}`}
@@ -69,7 +69,7 @@ export default function JsonViewer() {
             </button>
           </div>
 
-          <CardContent className="p-2 flex-1 overflow-auto custom-scrollbar transition-all duration-300 ease-in-out font-mono selection:bg-slate-800">
+          <CardContent className="p-2 flex-1 overflow-auto custom-scrollbar transition-all duration-300 ease-in-out font-mono selection:bg-slate-800 text-sm md:text-base">
             <SyntaxHighlighter
               language="json"
               style={atomOneDark}
