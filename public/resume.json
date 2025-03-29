@@ -12,7 +12,6 @@
     "introduction": "Software Developer with proven track record in crafting modern web solutions using TypeScript and Golang. At Netovas Eterna Teknologi, built high-impact applications including an optimized ticketing system with 20% improved performance and a comprehensive billing platform. Distinguished Informatics Engineering graduate with multiple academic awards and a portfolio of successful open-source projects ranging from developer tools to web applications. Seeking challenging opportunities to create innovative, scalable software solutions that deliver measurable business value.",
     "work_experience": [
       {
-        "id": 2,
         "company": "Netovas Eterna Teknologi",
         "role": "Full Stack Developer",
         "location": "Bekasi, Indonesia",
@@ -28,7 +27,6 @@
         ]
       },
       {
-        "id": 1,
         "company": "Inovindo Digital Media",
         "role": "Junior Web Developer",
         "location": "Bandung, Indonesia",
