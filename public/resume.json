@@ -68,7 +68,13 @@
       }
     ],
     "technical_skill": {
-      "programming_language": ["TypeScript", "JavaScript", "Golang", "Python"],
+      "programming_language": [
+        "TypeScript",
+        "JavaScript",
+        "Golang",
+        "Rust",
+        "Python"
+      ],
       "front_end": ["Svelte", "React", "Tailwind CSS"],
       "back_end": ["Node.js", "Adonis", "Hono", "Fiber", "Bun"],
       "database": ["PostgreSQL", "MySQL", "SQLite", "Redis", "MongoDB"],
