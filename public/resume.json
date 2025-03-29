@@ -17,8 +17,8 @@
         "location": "Bekasi, Indonesia",
         "status": "Full-time",
         "work_model": "Remote",
-        "start_at": "2023-12-18T00:00:00Z",
-        "end_at": "2025-04-01T00:00:00Z",
+        "started_at": "2023-12-18T00:00:00Z",
+        "ended_at": "2025-04-01T00:00:00Z",
         "responsibilities": [
           "Developed a ticketing application for an ISP in Bekasi using Golang and Fiber framework. Optimized system performance, resulting in 20% faster query processing and improved system scalability to handle 2x previous user load.",
           "Build a backend billing system using Node.js and Adonis.js for the same ISP to manage complex financial transaction.",
@@ -32,8 +32,8 @@
         "location": "Bandung, Indonesia",
         "status": "Internship",
         "work_model": "On-site",
-        "start_at": "2019-01-01T00:00:00Z",
-        "end_at": "2019-03-31T00:00:00Z",
+        "started_at": "2019-01-01T00:00:00Z",
+        "ended_at": "2019-03-31T00:00:00Z",
         "responsibilities": [
           "Developed an e-commerce website tailored for resellers.",
           "Deployed completed websites by the development team to various hosting platforms.",
@@ -48,8 +48,8 @@
         "school": "Bale Bandung University",
         "degree": "Bachelor of Computer Science",
         "major": "Informatics Engineering",
-        "start_at": "2020-09-01T00:00:00Z",
-        "end_at": "2024-11-30T00:00:00Z",
+        "started_at": "2020-09-01T00:00:00Z",
+        "ended_at": "2024-11-30T00:00:00Z",
         "gpa": 3.78,
         "achievements": [
           "Best Informatics Engineering Student (2024 Faculty of Information Technology Judicium)",
@@ -61,8 +61,8 @@
         "school": "SMK Negeri 7 Baleendah",
         "degree": null,
         "major": "Software Engineering",
-        "start_at": "2017-09-01T00:00:00Z",
-        "end_at": "2020-05-30T00:00:00Z",
+        "started_at": "2017-09-01T00:00:00Z",
+        "ended_at": "2020-05-30T00:00:00Z",
         "gpa": null,
         "achievements": []
       }
