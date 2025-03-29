@@ -69,7 +69,7 @@ export default function JsonViewer() {
             </button>
           </div>
 
-          <CardContent className="p-2 flex-1 overflow-auto custom-scrollbar transition-all duration-300 ease-in-out font-mono selection:bg-slate-800 text-xs md:text-sm xl:text-base">
+          <CardContent className="p-2 flex-1 overflow-auto custom-scrollbar transition-all duration-300 ease-in-out font-mono selection:bg-slate-700/50 text-xs md:text-sm xl:text-base">
             <SyntaxHighlighter
               language="json"
               style={atomOneDark}
