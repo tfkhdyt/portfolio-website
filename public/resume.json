@@ -15,7 +15,7 @@
         "company": "Netovas Eterna Teknologi",
         "role": "Full Stack Developer",
         "location": "Bekasi, Indonesia",
-        "status": "Full Time",
+        "status": "Full-time",
         "work_model": "Remote",
         "start_at": "2023-12-18T00:00:00Z",
         "end_at": "2025-04-01T00:00:00Z",
@@ -91,12 +91,13 @@
       {
         "name": "geminicommit",
         "description": "CLI that writes your git commit messages for you with Google Gemini AI.",
-        "tech_stack": ["Golang"],
-        "repo_url": "https://github.com/tfkhdyt/geminicommit"
+        "repo_url": "https://github.com/tfkhdyt/geminicommit",
+        "tech_stack": ["Golang"]
       },
       {
         "name": "Yukitanya",
         "description": "Platform that connects many students into a discussion forum to complete schoolwork together.",
+        "repo_url": "https://github.com/tfkhdyt/yukitanya",
         "tech_stack": [
           "Node.js",
           "TypeScript",
@@ -105,12 +106,12 @@
           "Shadcn UI",
           "PostgreSQL",
           "Drizzle ORM"
-        ],
-        "repo_url": "https://github.com/tfkhdyt/yukitanya"
+        ]
       },
       {
         "name": "Remove Biji",
         "description": "Online Image Background Remover",
+        "repo_url": "https://github.com/tfkhdyt/remove-biji",
         "tech_stack": [
           "Node.js",
           "TypeScript",
@@ -119,54 +120,54 @@
           "Skeleton UI",
           "PostgreSQL",
           "Drizzle ORM"
-        ],
-        "repo_url": "https://github.com/tfkhdyt/remove-biji"
+        ]
       },
       {
         "name": "Minipom",
         "description": "Minimalistic Pomodoro Timer Desktop App written in Tauri and SvelteKit.",
+        "repo_url": "https://github.com/tfkhdyt/minipom",
         "tech_stack": [
           "Tauri",
           "TypeScript",
           "Svelte",
           "Tailwind CSS",
           "Shadcn Svelte"
-        ],
-        "repo_url": "https://github.com/tfkhdyt/minipom"
+        ]
       },
       {
         "name": "WA Sticker Bot",
         "description": "WhatsApp Sticker Generator Bot",
-        "tech_stack": ["Node.js", "TypeScript", "whatsapp-web.js"],
-        "repo_url": "https://github.com/tfkhdyt/wa-sticker-bot"
+        "repo_url": "https://github.com/tfkhdyt/wa-sticker-bot",
+        "tech_stack": ["Node.js", "TypeScript", "whatsapp-web.js"]
       },
       {
         "name": "axu",
         "description": "CLI tool to check your Arch Linux explicitly installed packages updates",
-        "tech_stack": ["Rust"],
-        "repo_url": "https://github.com/tfkhdyt/axu"
+        "repo_url": "https://github.com/tfkhdyt/axu",
+        "tech_stack": ["Rust"]
       },
       {
         "name": "WhatsApp Link Generator",
         "description": "Web app to generate WhatsApp contact link with default message easily",
+        "repo_url": "https://github.com/tfkhdyt/wa-sticker-bot",
         "tech_stack": [
           "Node.js",
           "TypeScript",
           "Svelte",
           "Tailwind CSS",
           "Flowbite"
-        ],
-        "repo_url": "https://github.com/tfkhdyt/wa-sticker-bot"
+        ]
       },
       {
         "name": "Auto EPP",
         "description": "Program that automatically manages the energy performance preferences (EPP) of your AMD CPU using the AMD-Pstate driver",
-        "tech_stack": ["Rust"],
-        "repo_url": "https://github.com/tfkhdyt/auto-epp-rs"
+        "repo_url": "https://github.com/tfkhdyt/auto-epp-rs",
+        "tech_stack": ["Rust"]
       },
       {
         "name": "Pondokeun",
         "description": "Lightweight, Modern, Free and Open Source Link Shortener",
+        "repo_url": "https://github.com/tfkhdyt/pondokeun",
         "tech_stack": [
           "Node.js",
           "TypeScript",
@@ -175,20 +176,19 @@
           "Flowbite",
           "PostgreSQL",
           "Prisma"
-        ],
-        "repo_url": "https://github.com/tfkhdyt/pondokeun"
+        ]
       },
       {
         "name": "Urban CLI",
         "description": "Blazingly fast command line interface for Urban Dictionary",
-        "tech_stack": ["Golang"],
-        "repo_url": "https://github.com/tfkhdyt/urban-cli"
+        "repo_url": "https://github.com/tfkhdyt/urban-cli",
+        "tech_stack": ["Golang"]
       },
       {
         "name": "With Catch",
         "description": "Utilities that wrap promise or synchronous function to catch the error then return the result and error in consistent tuple format.",
-        "tech_stack": ["TypeScript"],
-        "repo_url": "https://github.com/tfkhdyt/with-catch"
+        "repo_url": "https://github.com/tfkhdyt/with-catch",
+        "tech_stack": ["TypeScript"]
       }
     ],
     "created_at": "2002-04-01T23:00:00Z"
