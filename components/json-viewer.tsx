@@ -25,10 +25,10 @@ export default function JsonViewer() {
 
   return (
     <div
-      className={`fixed z-50 transition-all duration-300 ease-in-out ${isMaximized ? "inset-4 md:inset-8" : "inset-[5%] md:inset-[10%] lg:inset-[25%] mt-44 md:mt-0 lg:-mt-24"}`}
+      className={`fixed z-50 transition-all duration-300 ease-in-out ${isMaximized ? "inset-4 md:inset-8" : "inset-[5%] md:inset-[10%] xl:inset-[25%] mt-44 md:mt-0 xl:-mt-24"}`}
     >
       <Card
-        className={`border border-white/10 shadow-xl bg-slate-600/25 backdrop-blur-md relative overflow-hidden rounded-xl transition-all duration-300 ease-in-out ${isMaximized ? "h-full" : "h-[50vh] md:h-[80vh] lg:h-[70vh]"}`}
+        className={`border border-white/10 shadow-xl bg-slate-600/25 backdrop-blur-md relative overflow-hidden rounded-xl transition-all duration-300 ease-in-out ${isMaximized ? "h-full" : "h-[50vh] md:h-[80vh] xl:h-[70vh]"}`}
       >
         <div className="relative z-10 flex flex-col h-full">
           <div className="flex items-center px-4 py-2 border-b border-white/10 relative">
