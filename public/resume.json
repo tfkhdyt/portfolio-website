@@ -141,6 +141,18 @@
         "tech_stack": ["Node.js", "TypeScript", "whatsapp-web.js"]
       },
       {
+        "name": "Roast GitHub",
+        "description": "Roast your GitHub profile with AI",
+        "repo_url": "https://github.com/tfkhdyt/roastgithub",
+        "tech_stack": [
+          "Node.js",
+          "TypeScript",
+          "Svelte",
+          "Tailwind CSS",
+          "Shadcn Svelte"
+        ]
+      },
+      {
         "name": "axu",
         "description": "CLI tool to check your Arch Linux explicitly installed packages updates",
         "repo_url": "https://github.com/tfkhdyt/axu",
