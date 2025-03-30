@@ -161,7 +161,7 @@
       {
         "name": "WhatsApp Link Generator",
         "description": "Web app to generate WhatsApp contact link with default message easily",
-        "repo_url": "https://github.com/tfkhdyt/wa-sticker-bot",
+        "repo_url": "https://github.com/tfkhdyt/whatsapp-link-generator",
         "tech_stack": [
           "Node.js",
           "TypeScript",
