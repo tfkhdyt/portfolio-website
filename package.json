@@ -12,24 +12,23 @@
     "@fontsource-variable/jetbrains-mono": "^5.2.5",
     "autoprefixer": "^10.4.21",
     "clsx": "^2.1.1",
-    "date-fns": "4.1.0",
     "lucide-react": "^0.485.0",
-    "next": "15.1.0",
+    "next": "^15.2.4",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "react-syntax-highlighter": "^15.6.1",
     "tailwind-merge": "^2.6.0",
-    "tailwindcss-animate": "^1.0.7",
-    "zod": "^3.24.2"
+    "tailwindcss-animate": "^1.0.7"
   },
   "devDependencies": {
-    "@types/node": "^22.13.14",
-    "@types/react": "^19.0.12",
-    "@types/react-dom": "^19.0.4",
+    "@types/node": "^22.14.0",
+    "@types/react": "^19.1.0",
+    "@types/react-dom": "^19.1.1",
     "@types/react-syntax-highlighter": "^15.5.13",
+    "eslint-config-next": "15.2.4",
     "postcss": "^8.5.3",
     "tailwindcss": "^3.4.17",
     "typescript": "^5.8.2"
   },
-  "packageManager": "pnpm@10.7.0"
+  "packageManager": "pnpm@10.7.1"
 }
