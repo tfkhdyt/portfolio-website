@@ -1,0 +1,99 @@
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro');
+
+$globalFontSize: 13px;
+$globalFontFamily: 'Source Sans Pro', sans-serif;
+$globalBorderRadius: 3px;
+
+@mixin border-left-radius($radius) {
+  -webkit-border-top-left-radius: $radius;
+  -moz-border-top-left-radius: $radius;
+  -ms-border-top-left-radius: $radius;
+  -o-border-top-left-radius: $radius;
+  border-top-left-radius: $radius;
+
+  -webkit-border-bottom-left-radius: $radius;
+  -moz-border-bottom-left-radius: $radius;
+  -ms-border-bottom-left-radius: $radius;
+  -o-border-bottom-left-radius: $radius;
+  border-bottom-left-radius: $radius;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+
+  .nowplayingcard {
+    width: 20%;
+    margin: 0 auto;
+    margin-top: 3%;
+    font-family: $globalFontFamily;
+    font-size: $globalFontSize;
+
+    .nowplayingcontainer-inner {
+      width: 100%;
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+      transition: 0.3s;
+      display: inline-block;
+      @include border-left-radius($globalBorderRadius);
+
+      &:hover {
+        box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+      }
+
+      img#trackart {
+        max-width: 30%;
+        float: left;
+        left: 0;
+        @include border-left-radius($globalBorderRadius);
+      }
+
+      .trackInfo {
+        width: 70%;
+        float: left;
+        display: block;
+
+        a {
+          max-width: 90%;
+          display: block;
+          font-size: 14px;
+          text-align: left;
+          text-decoration: none;
+          vertical-align: middle;
+          overflow: hidden;
+          white-space: nowrap;
+          text-overflow: ellipsis;
+
+          &:nth-child(odd) {
+            img {
+              width: 15px;
+              height: 15px;
+              vertical-align: middle;
+              margin: -2% 3px 0 0;
+            }
+
+            color: black;
+            font-weight: bold;
+            vertical-align: middle;
+            line-height: 15px;
+            letter-spacing: 0.2px;
+            padding: 10% 0 0 5%;
+          }
+
+          &:nth-child(even) {
+            img {
+              width: 15px;
+              height: 15px;
+              vertical-align: middle;
+              margin: -2% 3px 0 0;
+            }
+
+            color: gray;
+            font-size: $globalFontSize - 1px;
+            letter-spacing: 0.1px;
+            padding: 5% 0 0 5%;
+          }
+        }
+      }
+    }
+  }
+}

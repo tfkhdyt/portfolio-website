@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>CRUD Project</title>
+    <meta name="robots" content="noindex" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <script src="crud/firebase.js"></script>
+    <script src="crud/jquery-3.2.1.slim.min.js"></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+      integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+      crossorigin="anonymous"
+    ></script>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="crud/fonts/font-awesome.min.css" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <style type="text/css" media="all">
+      body {
+        font-family: 'Source Sans Pro', sans-serif;
+        font-size: 10px;
+      }
+
+      h3 {
+        font-weight: bold;
+      }
+
+      table {
+        table-layout: fixed;
+        word-wrap: break-word;
+      }
+    </style>
+  </head>
+
+  <body onload="tampilData()">
+    <script type="text/javascript" charset="utf-8"></script>
+    <div style="padding: 15px; padding-top: 0">
+      <br />
+      <div class="row no-gutters">
+        <div class="col align-self-center">
+          <h3 class="text-left">
+            <i
+              class="fa fa-home"
+              onclick="tampilData()"
+              style="cursor: pointer"
+            ></i>
+            CRUD
+          </h3>
+        </div>
+        <div class="col align-self-center" style="padding: 12px">
+          <input
+            id="text_cari"
+            type="text"
+            placeholder="Cari berdasarkan Nama Project"
+            class="form-control"
+            style="padding: 6px"
+          />
+        </div>
+        <div class="col-auto align-self-center" style="padding: 6px">
+          <button class="btn btn-primary" type="button" onclick="CariData()">
+            <i class="fa fa-search"></i>
+          </button>
+        </div>
+        <div class="col-auto align-self-center" style="padding: 6px">
+          <button
+            class="btn btn-success"
+            type="button"
+            id="tambah_data"
+            style="margin-left: 10px"
+            data-toggle="modal"
+            data-target="#ModalAdd"
+            onclick="ambilDataTerakhir()"
+          >
+            <i class="fa fa-plus"></i>
+          </button>
+        </div>
+      </div>
+
+      <table
+        id="tabel-project"
+        class="
+          table
+          table-striped
+          table-bordered
+          table-hover
+          table-responsive
+          table-sm
+        "
+      >
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">Id</th>
+            <th scope="col" style="width: 50%">Aksi</th>
+            <th scope="col">Judul</th>
+            <th scope="col">Deskripsi</th>
+            <th scope="col">Tipe</th>
+            <th scope="col" style="word-wrap: break-word; width: 40px">Link</th>
+            <th scope="col" style="word-wrap: break-word; width: 40px">Foto</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+    <script
+      src="crud/crudConfig.js"
+      type="text/javascript"
+      charset="utf-8"
+    ></script>
+    <!-- Modal Update -->
+    <div
+      class="modal fade"
+      id="ModalUpdate"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="ModalUpdateLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="ModalUpdateLabel">Update Data</h5>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <h6>Id :</h6>
+            <input class="form-control" type="text" id="T4" />
+            <h6>Nama Project :</h6>
+            <input class="form-control" type="text" id="t4_nama" />
+            <h6>Deskripsi Project :</h6>
+            <input class="form-control" type="text" id="t4_deskripsi" />
+            <h6>Tipe :</h6>
+            <select name="t4_tipe" id="t4_tipe" class="form-control">
+              <option value="app">App</option>
+              <option value="art">Art</option>
+            </select>
+            <h6>Link Project :</h6>
+            <input class="form-control" type="text" id="t4_link" />
+            <h6>Foto Project :</h6>
+            <input class="form-control" type="text" id="t4_foto" />
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-dismiss="modal"
+            >
+              Batal
+            </button>
+            <button
+              type="button"
+              class="btn btn-primary"
+              onclick="updateData_Proses()"
+            >
+              Simpan
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal Add -->
+    <div
+      class="modal fade"
+      id="ModalAdd"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="ModalAddLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="ModalUpdateLabel">Tambah Data</h5>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <!--<h6>Id : </h6>-->
+            <input class="form-control" type="hidden" id="T4_add" />
+            <h6>Nama Project :</h6>
+            <input class="form-control" type="text" id="t4_nama_add" />
+            <h6>Deskripsi Project :</h6>
+            <input class="form-control" type="text" id="t4_deskripsi_add" />
+            <h6>Tipe Project:</h6>
+            <select name="t4_tipe" id="t4_tipe_add" class="form-control">
+              <option value="app" selected>App</option>
+              <option value="art">Art</option>
+            </select>
+            <h6>Link Project :</h6>
+            <input class="form-control" type="text" id="t4_link_add" />
+            <h6>Foto Project :</h6>
+            <input class="form-control" type="text" id="t4_foto_add" />
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-danger" data-dismiss="modal">
+              Batal
+            </button>
+            <a
+              href="https://postimages.org"
+              target="_blank"
+              class="btn btn-secondary"
+              >Upload</a
+            >
+            <button
+              type="button"
+              class="btn btn-primary"
+              onclick="addData_Proses()"
+            >
+              Simpan
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal Hapus Data -->
+    <div
+      class="modal fade"
+      id="ModalDel"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="ModalDelLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="ModalUpdateLabel">
+              Konfirmasi Hapus Data
+            </h5>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <h6>ID :</h6>
+            <input class="form-control" type="text" id="T4_del" />
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-dismiss="modal"
+            >
+              Batal
+            </button>
+            <button
+              type="button"
+              class="btn btn-danger"
+              onclick="delData_Proses()"
+            >
+              Hapus Data
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
