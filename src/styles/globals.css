@@ -1,0 +1,25 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.navbar,
+.gpu {
+  -webkit-transform: translate3d(0, 0, 0);
+  -moz-transform: translate3d(0, 0, 0);
+  -ms-transform: translate3d(0, 0, 0);
+  -o-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+}
+
+:root {
+  --tw-text-opacity: 1;
+  --chart-text-color: hsl(var(--ac) / var(--tw-text-opacity));
+}
+
+img {
+  pointer-events: none;
+}
+
+[data-theme='dracula'] {
+  color-scheme: dark;
+}
