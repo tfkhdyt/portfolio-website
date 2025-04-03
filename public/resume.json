@@ -18,7 +18,7 @@
         "status": "Full-time",
         "work_model": "Remote",
         "started_at": "2023-12-18T00:00:00Z",
-        "ended_at": "2025-04-01T00:00:00Z",
+        "ended_at": "2025-04-02T10:53:00Z",
         "responsibilities": [
           "Developed a ticketing application for an ISP in Bekasi using Golang and Fiber framework. Optimized system performance, resulting in 20% faster query processing and improved system scalability to handle 2x previous user load.",
           "Build a backend billing system using Node.js and Adonis.js for the same ISP to manage complex financial transaction.",
