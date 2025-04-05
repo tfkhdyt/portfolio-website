@@ -47,7 +47,7 @@ export default function JsonViewer() {
             {/* </div> */}
             <button
               onClick={copyToClipboard}
-              className="text-gray-400 hover:text-white transition-colors p-1 rounded absolute left-4"
+              className="text-gray-400 hover:text-white transition-colors p-1 rounded absolute left-4 cursor-pointer"
               aria-label="Copy JSON"
             >
               <Copy size={16} />
@@ -62,7 +62,7 @@ export default function JsonViewer() {
             </span>
             <button
               onClick={toggleMaximize}
-              className="text-gray-400 hover:text-white transition-colors p-1 rounded absolute right-4"
+              className="text-gray-400 hover:text-white transition-colors p-1 rounded absolute right-4 cursor-pointer"
               aria-label={isMaximized ? "Minimize" : "Maximize"}
             >
               {isMaximized ? <Minimize2 size={16} /> : <Maximize2 size={16} />}
