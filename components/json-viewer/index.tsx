@@ -1,11 +1,11 @@
 "use client";
 
 import { Card } from "@/components/ui/card";
+import { formatJson } from "@/lib/formatJson";
 import { useCallback, useState } from "react";
 import jsonData from "../../public/resume.json"; // Adjust path as needed
-import { formatJson } from "@/lib/formatJson";
-import JsonContent from "./JsonContent";
 import CardHeader from "./CardHeader";
+import JsonContent from "./JsonContent";
 
 export default function JsonViewer() {
   const [copied, setCopied] = useState(false);
@@ -36,9 +36,9 @@ export default function JsonViewer() {
           isMaximized ? "h-full" : "h-[50vh] md:h-[50vh] xl:h-[70vh]"
         }`}
       >
-        <div className="relative z-10 flex flex-col h-full">
+        <div className='relative z-10 flex flex-col h-full'>
           <CardHeader
-            filename="resume.json"
+            filename='resume.json'
             copied={copied}
             isMaximized={isMaximized}
             onCopy={copyToClipboard}
