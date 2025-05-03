@@ -1,38 +1,111 @@
-# sv
+# hidayat.dev
 
-Everything you need to build a Svelte project, powered by [`sv`](https://github.com/sveltejs/cli).
+A modern, minimalist portfolio site built with SvelteKit that displays resume data in a beautiful JSON viewer interface.
 
-## Creating a project
+![Portfolio Preview](./src/lib/assets/preview.png)
 
-If you're seeing this, you've probably already done this step. Congrats!
+## 🌟 Features
+
+- Interactive JSON-based resume display
+- Sleek, modern UI with background glow effects
+- Copy resume data with a single click
+- Responsive design that works on all devices
+- Maximizable view for better readability
+- Built with Svelte 5 and TypeScript
+- Styled with Tailwind CSS
+- Deployed on Cloudflare Pages
+
+## 🛠️ Tech Stack
+
+- **Frontend**: SvelteKit, Svelte 5, TypeScript
+- **Styling**: Tailwind CSS
+- **Deployment**: Cloudflare Pages
+- **Tools**: Vite, ESLint, Prettier
+
+## 🚀 Getting Started
+
+### Prerequisites
+
+- Node.js (v18+)
+- pnpm
+
+### Installation
+
+1. Clone the repository:
+
+   ```bash
+   git clone https://github.com/tfkhdyt/portfolio-website.git
+   cd portfolio-website
+   ```
+
+2. Install dependencies:
+
+   ```bash
+   pnpm install
+   ```
+
+3. Start the development server:
+
+   ```bash
+   pnpm run dev
+   ```
+
+4. Open your browser and navigate to `http://localhost:5173`
+
+## 📦 Building for Production
+
+To create a production build:
 
 ```bash
-# create a new project in the current directory
-npx sv create
-
-# create a new project in my-app
-npx sv create my-app
+pnpm run build
 ```
 
-## Developing
-
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+Preview the production build:
 
 ```bash
-npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
+pnpm run preview
 ```
 
-## Building
+## 🚢 Deployment
 
-To create a production version of your app:
+This project is configured for Cloudflare Pages deployment:
 
 ```bash
-npm run build
+pnpm run deploy
 ```
 
-You can preview the production build with `npm run preview`.
+## 📂 Project Structure
 
-> To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
+```
+portfolio-website/
+├── src/
+│   ├── lib/
+│   │   ├── assets/
+│   │   │   └── resume.json      # Resume data in JSON format
+│   │   ├── components/          # Reusable components
+│   │   └── ...
+│   ├── routes/
+│   │   ├── +page.svelte         # Main page component
+│   │   └── +layout.svelte       # App layout
+│   ├── app.css                  # Global styles
+│   └── app.html                 # HTML template
+├── static/                      # Static assets
+├── package.json
+└── ...
+```
+
+## 🧪 Customization
+
+To use this for your own portfolio:
+
+1. Edit the `src/lib/assets/resume.json` file with your information
+2. Customize colors and styling in the components
+3. Update metadata in `+page.svelte` (title, description, keywords)
+
+## 📄 License
+
+[MIT](LICENSE)
+
+## 👤 Author
+
+- **Taufik Hidayat** - [tfkhdyt](https://github.com/tfkhdyt)
