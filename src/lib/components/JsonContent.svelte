@@ -1,16 +1,55 @@
 <script lang="ts">
+	import { onMount } from 'svelte';
 	import Highlight from 'svelte-highlight';
 	import json from 'svelte-highlight/languages/json';
 	import 'svelte-highlight/styles/atom-one-dark.css';
 
 	let { formattedJson }: { formattedJson: string } = $props();
+	let highlightRef: HTMLElement;
+
+	// Use the original JSON for highlighting
+	const processedJson = $derived(formattedJson);
+
+	// Process links after rendering
+	onMount(() => {
+		processLinks();
+	});
+
+	function processLinks() {
+		if (!highlightRef) return;
+
+		// Find the highlighted code container
+		const codeElements = highlightRef.querySelectorAll('span');
+		const urlPattern = /(https?:\/\/[^\s"]+)/g;
+		const emailPattern = /([a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\.[a-zA-Z0-9._-]+)/g;
+
+		// Process each element
+		codeElements.forEach((element) => {
+			const content = element.textContent || '';
+			if (urlPattern.test(content) || emailPattern.test(content)) {
+				// First replace URLs
+				let html = content.replace(urlPattern, (url) => {
+					return `<a href="${url}" target="_blank" rel="noopener noreferrer" class="hover:underline">${url}</a>`;
+				});
+
+				// Then replace emails with mailto links
+				html = html.replace(emailPattern, (email) => {
+					return `<a href="mailto:${email}" class="hover:underline">${email}</a>`;
+				});
+
+				// Safe way to update since we're fully controlling the content
+				element.innerHTML = html;
+			}
+		});
+	}
 </script>
 
 <div
 	class="custom-scrollbar flex-1 overflow-x-hidden overflow-y-auto p-2 font-mono text-sm transition-all duration-300 ease-in-out selection:bg-slate-700/50 xl:text-base"
 	style="overscroll-behavior: contain; -webkit-overflow-scrolling: touch; transform: translateZ(0);"
+	bind:this={highlightRef}
 >
-	<Highlight language={json} code={formattedJson} />
+	<Highlight language={json} code={processedJson} />
 </div>
 
 <style>
@@ -37,4 +76,10 @@
 		overflow-x: hidden !important;
 		will-change: transform; /* Hint for hardware acceleration */
 	}
+
+	/* :global(.json-url) {
+		color: #61afef !important;
+		text-decoration: none;
+		transition: all 0.2s ease;
+	} */
 </style>
