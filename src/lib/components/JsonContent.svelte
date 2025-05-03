@@ -33,5 +33,6 @@
 	:global(.hljs) {
 		background: transparent !important;
 		white-space: pre-wrap !important;
+		overflow-x: hidden !important;
 	}
 </style>
