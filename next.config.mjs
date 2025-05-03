@@ -1,3 +1,5 @@
+import { setupDevPlatform } from "@cloudflare/next-on-pages/next-dev";
+
 import MillionLint from "@million/lint";
 let userConfig = undefined;
 try {
@@ -24,6 +26,10 @@ const nextConfig = {
   // },
 };
 
+if (process.env.NODE_ENV === "development") {
+  setupDevPlatform(nextConfig);
+}
+
 mergeConfig(nextConfig, userConfig);
 
 function mergeConfig(nextConfig, userConfig) {
@@ -48,5 +54,5 @@ function mergeConfig(nextConfig, userConfig) {
 
 export default MillionLint.next({
   enabled: true,
-  rsc: true
+  rsc: true,
 })(nextConfig);
