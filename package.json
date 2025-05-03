@@ -41,7 +41,12 @@
 	},
 	"pnpm": {
 		"onlyBuiltDependencies": [
-			"esbuild"
+			"esbuild",
+			"sharp",
+			"workerd"
 		]
+	},
+	"dependencies": {
+		"svelte-highlight": "^7.8.3"
 	}
 }

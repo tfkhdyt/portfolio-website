@@ -7,6 +7,10 @@ settings:
 importers:
 
   .:
+    dependencies:
+      svelte-highlight:
+        specifier: ^7.8.3
+        version: 7.8.3
     devDependencies:
       '@cloudflare/workers-types':
         specifier: ^4.20250503.0
@@ -1363,6 +1367,10 @@ packages:
     resolution: {integrity: sha512-0hJU9SCPvmMzIBdZFqNPXWa6dqh7WdH0cII9y+CyS8rG3nL48Bclra9HmKhVVUHyPWNH5Y7xDwAB7bfgSjkUMQ==}
     engines: {node: '>= 0.4'}
 
+  highlight.js@11.11.1:
+    resolution: {integrity: sha512-Xwwo44whKBVCYoliBQwaPvtd/2tYFkRQtXDWj1nackaV2JPXx3L0+Jvd8/qCJ2p+ML0/XVkJ2q+Mr+UVdpJK5w==}
+    engines: {node: '>=12.0.0'}
+
   http-errors@2.0.0:
     resolution: {integrity: sha512-FtwrG/euBzaEjYeRqOgly7G0qviiXoJWnvEH2Z1plBdXgbyjv34pHTSb9zoeHMyDy33+DWy5Wt9Wo+TURtOYSQ==}
     engines: {node: '>= 0.8'}
@@ -1935,6 +1943,9 @@ packages:
     peerDependenciesMeta:
       svelte:
         optional: true
+
+  svelte-highlight@7.8.3:
+    resolution: {integrity: sha512-i4CE/6yda1fCh0ovUVATk1S1feu1y3+CV+l1brgtMPPRO9VTGq+hPpUjVEJWQkE7hPAgwgVpHccoa5M2gpKxYQ==}
 
   svelte@5.28.2:
     resolution: {integrity: sha512-FbWBxgWOpQfhKvoGJv/TFwzqb4EhJbwCD17dB0tEpQiw1XyUEKZJtgm4nA4xq3LLsMo7hu5UY/BOFmroAxKTMg==}
@@ -3274,6 +3285,8 @@ snapshots:
     dependencies:
       function-bind: 1.1.2
 
+  highlight.js@11.11.1: {}
+
   http-errors@2.0.0:
     dependencies:
       depd: 2.0.0
@@ -3784,6 +3797,10 @@ snapshots:
       postcss-selector-parser: 7.1.0
     optionalDependencies:
       svelte: 5.28.2
+
+  svelte-highlight@7.8.3:
+    dependencies:
+      highlight.js: 11.11.1
 
   svelte@5.28.2:
     dependencies:

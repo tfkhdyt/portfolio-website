@@ -1,0 +1,218 @@
+{
+  "success": true,
+  "data": {
+    "id": "8b52d99c-dfc5-4b77-b180-79a783ccbd44",
+    "name": "Taufik Hidayat",
+    "email": "taufik@hidayat.dev",
+    "url": {
+      "linkedin": "https://linkedin.com/in/tfkhdyt142",
+      "github": "https://github.com/tfkhdyt"
+    },
+    "is_open_to_work": false,
+    "introduction": "Software Developer with proven track record in crafting modern web solutions using TypeScript and Golang. At Netovas Eterna Teknologi, built high-impact applications including an optimized ticketing system with 20% improved performance and a comprehensive billing platform. Distinguished Informatics Engineering graduate with multiple academic awards and a portfolio of successful open-source projects ranging from developer tools to web applications. Seeking challenging opportunities to create innovative, scalable software solutions that deliver measurable business value.",
+    "work_experience": [
+      {
+        "company": "Generative Studio",
+        "role": "Full Stack Developer",
+        "location": "Tallinn, Estonia",
+        "status": "Full-time",
+        "work_model": "Remote",
+        "started_at": "2025-04-09T14:00:00+07:00",
+        "ended_at": null,
+        "responsibilities": []
+      },
+      {
+        "company": "Netovas Eterna Teknologi",
+        "role": "Full Stack Developer",
+        "location": "Bekasi, Indonesia",
+        "status": "Full-time",
+        "work_model": "Remote",
+        "started_at": "2023-12-18T00:00:00+07:00",
+        "ended_at": "2025-04-02T10:53:00+07:00",
+        "responsibilities": [
+          "Developed a ticketing application for an ISP in Bekasi using Golang and Fiber framework. Optimized system performance, resulting in 20% faster query processing and improved system scalability to handle 2x previous user load.",
+          "Build a backend billing system using Node.js and Adonis.js for the same ISP to manage complex financial transaction.",
+          "Created a responsive landing page for a cloud service provider in Jakarta using TypeScript and Astro.js. Achieved 98-100% performance score on Google Lighthouse and reduced page load times to under 2 seconds, improving user engagement.",
+          "Develop a full-featured online manga reading application using SvelteKit and Pocketbase."
+        ]
+      },
+      {
+        "company": "Inovindo Digital Media",
+        "role": "Junior Web Developer",
+        "location": "Bandung, Indonesia",
+        "status": "Internship",
+        "work_model": "On-site",
+        "started_at": "2019-01-01T00:00:00+07:00",
+        "ended_at": "2019-03-31T00:00:00+07:00",
+        "responsibilities": [
+          "Developed an e-commerce website tailored for resellers.",
+          "Deployed completed websites by the development team to various hosting platforms.",
+          "Managed the company’s product list database.",
+          "Published articles for client company blogs.",
+          "Enhanced search engine optimization (SEO) of client websites to improve visibility and performance."
+        ]
+      }
+    ],
+    "education": [
+      {
+        "school": "Bale Bandung University",
+        "degree": "Bachelor of Computer Science",
+        "major": "Informatics Engineering",
+        "started_at": "2020-09-01T00:00:00+07:00",
+        "ended_at": "2024-11-30T00:00:00+07:00",
+        "gpa": 3.78,
+        "achievements": [
+          "Best Informatics Engineering Student (2024 Faculty of Information Technology Judicium)",
+          "Best Academic Achievement in MSIB Batch 5 at seKODlah (Forest Interactive)",
+          "Best Capstone Project Winner (Yukitanya) in MSIB Batch 5 at seKODlah (Forest Interactive)"
+        ]
+      },
+      {
+        "school": "SMK Negeri 7 Baleendah",
+        "degree": null,
+        "major": "Software Engineering",
+        "started_at": "2017-09-01T00:00:00+07:00",
+        "ended_at": "2020-05-30T00:00:00+07:00",
+        "gpa": null,
+        "achievements": []
+      }
+    ],
+    "technical_skill": {
+      "programming_language": [
+        "TypeScript",
+        "JavaScript",
+        "Golang",
+        "Rust",
+        "Python"
+      ],
+      "front_end": ["Svelte", "React", "Tailwind CSS"],
+      "back_end": ["Node.js", "Adonis", "Hono", "Fiber", "Bun"],
+      "database": ["PostgreSQL", "MySQL", "SQLite", "Redis", "MongoDB"],
+      "dev_ops": [
+        "Linux",
+        "Docker",
+        "GitHub Actions",
+        "NGINX",
+        "PM2",
+        "Dokploy"
+      ]
+    },
+    "portfolio": [
+      {
+        "name": "geminicommit",
+        "description": "CLI that writes your git commit messages for you with Google Gemini AI.",
+        "repo_url": "https://github.com/tfkhdyt/geminicommit",
+        "tech_stack": ["Golang"]
+      },
+      {
+        "name": "Yukitanya",
+        "description": "Platform that connects many students into a discussion forum to complete schoolwork together.",
+        "repo_url": "https://github.com/tfkhdyt/yukitanya",
+        "tech_stack": [
+          "Node.js",
+          "TypeScript",
+          "Next.js",
+          "Tailwind CSS",
+          "Shadcn UI",
+          "PostgreSQL",
+          "Drizzle ORM"
+        ]
+      },
+      {
+        "name": "Remove Biji",
+        "description": "Online Image Background Remover",
+        "repo_url": "https://github.com/tfkhdyt/remove-biji",
+        "tech_stack": [
+          "Node.js",
+          "TypeScript",
+          "Svelte",
+          "Tailwind CSS",
+          "Skeleton UI",
+          "PostgreSQL",
+          "Drizzle ORM"
+        ]
+      },
+      {
+        "name": "Minipom",
+        "description": "Minimalistic Pomodoro Timer Desktop App written in Tauri and SvelteKit.",
+        "repo_url": "https://github.com/tfkhdyt/minipom",
+        "tech_stack": [
+          "Tauri",
+          "TypeScript",
+          "Svelte",
+          "Tailwind CSS",
+          "Shadcn Svelte"
+        ]
+      },
+      {
+        "name": "WA Sticker Bot",
+        "description": "WhatsApp Sticker Generator Bot",
+        "repo_url": "https://github.com/tfkhdyt/wa-sticker-bot",
+        "tech_stack": ["Node.js", "TypeScript", "whatsapp-web.js"]
+      },
+      {
+        "name": "Roast GitHub",
+        "description": "Roast your GitHub profile with AI",
+        "repo_url": "https://github.com/tfkhdyt/roastgithub",
+        "tech_stack": [
+          "Node.js",
+          "TypeScript",
+          "Svelte",
+          "Tailwind CSS",
+          "Shadcn Svelte"
+        ]
+      },
+      {
+        "name": "axu",
+        "description": "CLI tool to check your Arch Linux explicitly installed packages updates",
+        "repo_url": "https://github.com/tfkhdyt/axu",
+        "tech_stack": ["Rust"]
+      },
+      {
+        "name": "WhatsApp Link Generator",
+        "description": "Web app to generate WhatsApp contact link with default message easily",
+        "repo_url": "https://github.com/tfkhdyt/whatsapp-link-generator",
+        "tech_stack": [
+          "Node.js",
+          "TypeScript",
+          "Svelte",
+          "Tailwind CSS",
+          "Flowbite"
+        ]
+      },
+      {
+        "name": "Auto EPP",
+        "description": "Program that automatically manages the energy performance preferences (EPP) of your AMD CPU using the AMD-Pstate driver",
+        "repo_url": "https://github.com/tfkhdyt/auto-epp-rs",
+        "tech_stack": ["Rust"]
+      },
+      {
+        "name": "Pondokeun",
+        "description": "Lightweight, Modern, Free and Open Source Link Shortener",
+        "repo_url": "https://github.com/tfkhdyt/pondokeun",
+        "tech_stack": [
+          "Node.js",
+          "TypeScript",
+          "SvelteKit",
+          "Tailwind CSS",
+          "Flowbite",
+          "PostgreSQL",
+          "Prisma"
+        ]
+      },
+      {
+        "name": "Urban CLI",
+        "description": "Blazingly fast command line interface for Urban Dictionary",
+        "repo_url": "https://github.com/tfkhdyt/urban-cli",
+        "tech_stack": ["Golang"]
+      },
+      {
+        "name": "With Catch",
+        "description": "Utilities that wrap promise or synchronous function to catch the error then return the result and error in consistent tuple format.",
+        "repo_url": "https://github.com/tfkhdyt/with-catch",
+        "tech_stack": ["TypeScript"]
+      }
+    ],
+    "created_at": "2002-04-01T23:00:00+07:00"
+  }
+}
