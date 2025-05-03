@@ -2,11 +2,19 @@
 	import JsonContent from './JsonContent.svelte';
 	import ResumeHeader from './ResumeHeader.svelte';
 
-	export let isMaximized: boolean;
-	export let copied: boolean;
-	export let formattedJson: string;
-	export let copyToClipboard: () => void;
-	export let toggleMaximize: () => void;
+	let {
+		isMaximized,
+		copied,
+		formattedJson,
+		copyToClipboard,
+		toggleMaximize
+	}: {
+		isMaximized: boolean;
+		copied: boolean;
+		formattedJson: string;
+		copyToClipboard: () => void;
+		toggleMaximize: () => void;
+	} = $props();
 </script>
 
 <div

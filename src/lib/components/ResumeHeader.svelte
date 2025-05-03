@@ -1,8 +1,15 @@
 <script lang="ts">
-	export let copied: boolean;
-	export let isMaximized: boolean;
-	export let copyToClipboard: () => void;
-	export let toggleMaximize: () => void;
+	let {
+		copied,
+		isMaximized,
+		copyToClipboard,
+		toggleMaximize
+	}: {
+		copied: boolean;
+		isMaximized: boolean;
+		copyToClipboard: () => void;
+		toggleMaximize: () => void;
+	} = $props();
 </script>
 
 <div class="relative flex items-center border-b border-white/10 px-4 py-2">

@@ -3,7 +3,7 @@
 	import json from 'svelte-highlight/languages/json';
 	import 'svelte-highlight/styles/atom-one-dark.css';
 
-	export let formattedJson: string;
+	let { formattedJson }: { formattedJson: string } = $props();
 </script>
 
 <div
