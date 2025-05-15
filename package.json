@@ -7,7 +7,7 @@
 		"dev": "vite dev",
 		"build": "vite build",
 		"preview": "pnpm run build && wrangler pages dev",
-		"prepare": "svelte-kit sync || echo ''",
+		"prepare": "husky",
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
 		"format": "prettier --write .",
@@ -27,6 +27,8 @@
 		"eslint-config-prettier": "^10.1.2",
 		"eslint-plugin-svelte": "^3.5.1",
 		"globals": "^16.0.0",
+		"husky": "^9.1.7",
+		"lint-staged": "^16.0.0",
 		"prettier": "^3.5.3",
 		"prettier-plugin-svelte": "^3.3.3",
 		"prettier-plugin-tailwindcss": "^0.6.11",
@@ -48,5 +50,12 @@
 	"dependencies": {
 		"clsx": "^2.1.1",
 		"svelte-highlight": "^7.8.3"
+	},
+	"lint-staged": {
+		"*.{js,ts,svelte}": [
+			"eslint",
+			"svelte-kit sync && svelte-check --tsconfig ./tsconfig.json"
+		],
+		"*": "prettier --check"
 	}
 }
