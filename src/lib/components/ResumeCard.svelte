@@ -28,7 +28,7 @@
 >
 	<div
 		class={clsx(
-			'relative overflow-hidden rounded-xl border border-white/10 bg-slate-600/25 shadow-xl backdrop-blur-md transition-all duration-300 ease-in-out',
+			'relative overflow-hidden rounded-xl border border-white/10 bg-slate-700/20 shadow-xl transition-all duration-300 ease-in-out md:backdrop-blur-md',
 			isMaximized ? 'h-full' : 'h-[50vh] md:h-[50vh] xl:h-[70vh]'
 		)}
 	>
