@@ -45,7 +45,7 @@
 </script>
 
 <div
-	class="custom-scrollbar flex-1 overflow-x-hidden overflow-y-auto p-2 font-mono text-sm transition-all duration-300 ease-in-out selection:bg-slate-700/50 xl:text-base"
+	class="custom-scrollbar flex-1 overflow-x-hidden overflow-y-auto p-2 font-mono text-sm transition-none duration-300 ease-in-out selection:bg-slate-700/50 md:transition-all xl:text-base"
 	style="overscroll-behavior: contain; -webkit-overflow-scrolling: touch; transform: translateZ(0);"
 	bind:this={highlightRef}
 >
@@ -76,10 +76,4 @@
 		overflow-x: hidden !important;
 		will-change: transform; /* Hint for hardware acceleration */
 	}
-
-	/* :global(.json-url) {
-		color: #61afef !important;
-		text-decoration: none;
-		transition: all 0.2s ease;
-	} */
 </style>
