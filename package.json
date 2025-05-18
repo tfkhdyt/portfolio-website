@@ -53,9 +53,9 @@
 	},
 	"lint-staged": {
 		"*.{js,ts,svelte}": [
+			"prettier --check",
 			"eslint",
-			"svelte-kit sync && svelte-check --tsconfig ./tsconfig.json"
-		],
-		"*": "prettier --check"
+			"pnpm check"
+		]
 	}
 }
