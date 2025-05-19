@@ -45,7 +45,7 @@
 </script>
 
 <div
-	class="custom-scrollbar flex-1 overflow-x-hidden overflow-y-auto p-2 font-mono text-xs leading-3 transition-none duration-300 ease-in-out selection:bg-slate-700/50 md:text-sm md:leading-6 md:transition-all xl:text-base"
+	class="custom-scrollbar flex-1 overflow-x-hidden overflow-y-auto p-2 font-mono text-xs leading-5 transition-none duration-300 ease-in-out selection:bg-slate-700/50 md:text-sm md:leading-6 md:transition-all xl:text-base"
 	style="overscroll-behavior: contain; -webkit-overflow-scrolling: touch; transform: translateZ(0);"
 	bind:this={highlightRef}
 >
