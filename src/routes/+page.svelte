@@ -42,7 +42,7 @@
 </svelte:head>
 
 <main
-	class="relative flex min-h-screen flex-col items-center justify-center overflow-hidden bg-[#13111C] p-4"
+	class="relative flex min-h-screen flex-col items-center justify-center overflow-hidden bg-[#13111C] md:p-4"
 >
 	<!-- Background glows -->
 	<BackgroundGlows />
