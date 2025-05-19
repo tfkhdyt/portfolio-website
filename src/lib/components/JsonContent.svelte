@@ -29,12 +29,12 @@
 			if (urlPattern.test(content) || emailPattern.test(content)) {
 				// First replace URLs
 				let html = content.replace(urlPattern, (url) => {
-					return `<a href="${url}" target="_blank" rel="noopener noreferrer" class="hover:underline">${url}</a>`;
+					return `<a href="${url}" target="_blank" rel="noopener noreferrer" class="underline md:no-underline md:hover:underline underline-offset-3">${url}</a>`;
 				});
 
 				// Then replace emails with mailto links
 				html = html.replace(emailPattern, (email) => {
-					return `<a href="mailto:${email}" class="hover:underline">${email}</a>`;
+					return `<a href="mailto:${email}" class="underline md:no-underline md:hover:underline underline-offset-3">${email}</a>`;
 				});
 
 				// Safe way to update since we're fully controlling the content
@@ -45,7 +45,7 @@
 </script>
 
 <div
-	class="custom-scrollbar flex-1 overflow-x-hidden overflow-y-auto p-2 font-mono text-sm transition-none duration-300 ease-in-out selection:bg-slate-700/50 md:transition-all xl:text-base"
+	class="custom-scrollbar flex-1 overflow-x-hidden overflow-y-auto p-2 font-mono text-xs leading-6 transition-none duration-300 ease-in-out selection:bg-slate-700/50 md:text-sm md:transition-all xl:text-base"
 	style="overscroll-behavior: contain; -webkit-overflow-scrolling: touch; transform: translateZ(0);"
 	bind:this={highlightRef}
 >
