@@ -29,12 +29,12 @@
 			if (urlPattern.test(content) || emailPattern.test(content)) {
 				// First replace URLs
 				let html = content.replace(urlPattern, (url) => {
-					return `<a href="${url}" target="_blank" rel="noopener noreferrer" class="underline md:no-underline md:hover:underline underline-offset-3 md:brightness-75">${url}</a>`;
+					return `<a href="${url}" target="_blank" rel="noopener noreferrer" class="underline md:no-underline md:hover:underline underline-offset-3">${url}</a>`;
 				});
 
 				// Then replace emails with mailto links
 				html = html.replace(emailPattern, (email) => {
-					return `<a href="mailto:${email}" class="underline md:no-underline md:hover:underline underline-offset-3 md:brightness-75">${email}</a>`;
+					return `<a href="mailto:${email}" class="underline md:no-underline md:hover:underline underline-offset-3">${email}</a>`;
 				});
 
 				// Safe way to update since we're fully controlling the content
