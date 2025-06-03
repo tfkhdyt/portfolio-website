@@ -82,10 +82,10 @@
 		],
 		"technical_skill": {
 			"programming_language": ["TypeScript", "JavaScript", "Golang", "Rust", "Python"],
-			"front_end": ["Svelte", "React", "Tailwind CSS"],
-			"back_end": ["Node.js", "Adonis", "Hono", "Fiber", "Bun"],
-			"database": ["PostgreSQL", "MySQL", "SQLite", "Redis", "MongoDB"],
-			"dev_ops": ["Linux", "Docker", "GitHub Actions", "NGINX", "PM2", "Dokploy"]
+			"front_end": ["Svelte", "React", "Tailwind CSS", "Astro"],
+			"back_end": ["Node.js", "Adonis", "Hono", "NestJS", "Fiber", "Bun", "FastAPI"],
+			"database": ["PostgreSQL", "MySQL", "SQLite", "Redis", "MongoDB", "Supabase"],
+			"dev_ops": ["Linux", "Docker", "GitHub Actions", "NGINX", "PM2", "Dokploy", "AWS"]
 		},
 		"portfolio": [
 			{
