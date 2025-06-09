@@ -21,7 +21,8 @@
 				"ended_at": null,
 				"responsibilities": [
 					"Developed a cutting-edge AI-powered financial document analysis system using SvelteKit, Supabase, and Tailwind CSS, revolutionizing financial data extraction with 95% accuracy while delivering an intuitive user experience for complex operations.",
-					"Developed a dynamic multilingual project management marketing page with SvelteKit and Tailwind CSS, implementing a headless WordPress CMS architecture with full i18n support that boosted client engagement by 30% across international markets."
+					"Implemented a dynamic multilingual project management marketing page with SvelteKit and Tailwind CSS, implementing a headless WordPress CMS architecture with full i18n support that boosted client engagement by 30% across international markets.",
+					"Built an AI-powered family heritage SaaS platform with SvelteKit frontend (interactive family trees, data vault, knowledge center, Stripe billing) and FastAPI backend featuring immersive AI video calls via Daily WebRTC, Cartesia TTS, Groq Whisper, AI avatar generation (Simli/Tavus), and PostgreSQL database for personalized family assistant experiences."
 				]
 			},
 			{
@@ -34,9 +35,10 @@
 				"ended_at": "2025-04-02T10:53:00+07:00",
 				"responsibilities": [
 					"Developed a ticketing application for an ISP in Bekasi using Golang and Fiber framework. Optimized system performance, resulting in 20% faster query processing and improved system scalability to handle 2x previous user load.",
-					"Build a backend billing system using Node.js and Adonis.js for the same ISP to manage complex financial transaction.",
+					"Built a backend billing system using Node.js and Adonis.js for the same ISP to manage complex financial transaction.",
 					"Created a responsive landing page for a cloud service provider in Jakarta using TypeScript and Astro.js. Achieved 98-100% performance score on Google Lighthouse and reduced page load times to under 2 seconds, improving user engagement.",
-					"Develop a full-featured online manga reading application using SvelteKit and Pocketbase."
+					"Engineered a full-featured online manga reading application using SvelteKit and Pocketbase.",
+					"Architected an admin panel for anime streaming platform using React Router and Tailwind CSS, featuring automated WordPress data migration to PostgreSQL database and anime metadata synchronization from MyAnimeList API integration."
 				]
 			},
 			{
