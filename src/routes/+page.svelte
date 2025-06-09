@@ -1,6 +1,6 @@
 <script lang="ts">
 	// Import resume.json
-	import resumeJson from '$lib/assets/resume.json';
+	import { default as resume, default as resumeJson } from '$lib/assets/resume.json';
 	import BackgroundGlows from '$lib/components/BackgroundGlows.svelte';
 	import ResumeCard from '$lib/components/ResumeCard.svelte';
 
@@ -8,8 +8,7 @@
 
 	// Constants
 	const pageTitle = 'Taufik Hidayat - Full Stack Developer';
-	const pageDescription =
-		'Full Stack Developer with proven track record in crafting modern web solutions using TypeScript, Svelte, and Golang. Experienced in building high-impact applications including AI-powered financial analysis systems, multilingual project management marketing page, and optimized ticketing systems with improved performance. Distinguished Informatics Engineering graduate with multiple academic awards and a portfolio of successful open-source projects ranging from developer tools to web applications. Seeking challenging opportunities to create innovative, scalable software solutions that deliver measurable business value.';
+	const pageDescription = resume.data.introduction;
 	const siteName = "Taufik Hidayat's Portfolio";
 
 	// States
