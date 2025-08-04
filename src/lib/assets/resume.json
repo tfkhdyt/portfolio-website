@@ -9,7 +9,7 @@
 			"github": "https://github.com/tfkhdyt"
 		},
 		"is_open_to_work": false,
-		"introduction": "Award-winning Full Stack Developer specializing in AI-powered web applications and performance optimization. Proven expertise in TypeScript, Svelte, and Golang with a track record of delivering 95% accuracy AI systems, 30% engagement improvements, and 20% performance gains. Distinguished Computer Science graduate (3.78 GPA) with extensive open-source contributions and experience building scalable solutions from enterprise applications to developer tools. Passionate about leveraging cutting-edge technologies to solve complex business challenges and drive measurable results.",
+		"introduction": "Experienced Full Stack Developer with 2+ years of expertise in building scalable web applications and AI-powered solutions. Specialized in TypeScript, SvelteKit, Golang, and modern web technologies with a proven track record of delivering high-performance systems that achieve 95% accuracy in AI implementations and 20% performance improvements. Currently contributing to cutting-edge projects at Generative Studio, developing financial document analysis systems and multilingual SaaS platforms. Computer Science graduate with extensive experience in both enterprise applications and open-source development, passionate about creating innovative solutions that drive measurable business impact.",
 		"work_experience": [
 			{
 				"company": "Generative Studio",
@@ -20,9 +20,10 @@
 				"started_at": "2025-04-09T14:00:00+07:00",
 				"ended_at": null,
 				"responsibilities": [
-					"Developed a cutting-edge AI-powered financial document analysis system using SvelteKit, Supabase, and Tailwind CSS, revolutionizing financial data extraction with 95% accuracy while delivering an intuitive user experience for complex operations.",
-					"Implemented a dynamic multilingual project management marketing page with SvelteKit and Tailwind CSS, implementing a headless WordPress CMS architecture with full i18n support that boosted client engagement by 30% across international markets.",
-					"Built an AI-powered family heritage SaaS platform with SvelteKit frontend (interactive family trees, data vault, knowledge center, Stripe billing) and FastAPI backend featuring immersive AI video calls via Daily WebRTC, Cartesia TTS, Groq Whisper, AI avatar generation (Simli/Tavus), and PostgreSQL database for personalized family assistant experiences."
+					"Developed a cutting-edge AI-powered financial-document analysis system with SvelteKit, Supabase, and Tailwind CSS. This system achieved 95% extraction accuracy while streamlining data-review workflows for finance teams.",
+					"Implemented a dynamic multilingual project-management marketing site using SvelteKit and Tailwind CSS. By integrating a headless WordPress CMS with full i18n support, the page boosted international client engagement by 30%.",
+					"Architected a personal and family data-management SaaS platform built with SvelteKit 5, Supabase (PostgreSQL / Auth / Storage), Tailwind CSS, and Stripe. Bardo combines interactive family-tree visualization, secure file vaults, AI-generated avatars, and knowledge-base tooling. Its modular, shadcn-inspired UI cut feature delivery time by ≈ 40%.",
+					"Built Klavo, an AI-powered self-service platform enabling rapid deployment of conversational phone and chat agents for businesses. Leveraging SvelteKit 5, Supabase, Stripe, and Tailwind CSS, the solution delivers live call transcription capabilities, automated voicemail recognition, and customizable conversation workflows."
 				]
 			},
 			{
