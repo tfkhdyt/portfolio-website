@@ -23,7 +23,7 @@
 					"Developed a cutting-edge AI-powered financial-document analysis system with SvelteKit, Supabase, and Tailwind CSS. This system achieved 95% extraction accuracy while streamlining data-review workflows for finance teams.",
 					"Implemented a dynamic multilingual project-management marketing site using SvelteKit and Tailwind CSS. By integrating a headless WordPress CMS with full i18n support, the page boosted international client engagement by 30%.",
 					"Architected a personal and family data-management SaaS platform built with SvelteKit 5, Supabase (PostgreSQL / Auth / Storage), Tailwind CSS, and Stripe. Bardo combines interactive family-tree visualization, secure file vaults, AI-generated avatars, and knowledge-base tooling. Its modular, shadcn-inspired UI cut feature delivery time by ≈ 40%.",
-					"Built Klavo, an AI-powered self-service platform enabling rapid deployment of conversational phone and chat agents for businesses. Leveraging SvelteKit 5, Supabase, Stripe, and Tailwind CSS, the solution delivers live call transcription capabilities, automated voicemail recognition, and customizable conversation workflows."
+					"Built an AI-powered self-service platform enabling rapid deployment of conversational phone and chat agents for businesses. Leveraging SvelteKit 5, Supabase, Stripe, and Tailwind CSS, the solution delivers live call transcription capabilities, automated voicemail recognition, and customizable conversation workflows."
 				]
 			},
 			{
