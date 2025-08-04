@@ -3,3 +3,7 @@
 html {
 	color-scheme: dark;
 }
+
+@theme {
+  --font-mono: "Google Sans Code", monospace; 
+}
