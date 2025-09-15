@@ -9,7 +9,7 @@
 			"github": "https://github.com/tfkhdyt"
 		},
 		"is_open_to_work": false,
-		"introduction": "Experienced Full Stack Developer with 2+ years of expertise in building scalable web applications and AI-powered solutions. Specialized in TypeScript, SvelteKit, Golang, and modern web technologies with a proven track record of delivering high-performance systems that achieve 95% accuracy in AI implementations and 20% performance improvements. Currently contributing to cutting-edge projects at Generative Studio, developing financial document analysis systems and multilingual SaaS platforms. Computer Science graduate with extensive experience in both enterprise applications and open-source development, passionate about creating innovative solutions that drive measurable business impact.",
+		"introduction": "Experienced Software Developer with 2+ years of expertise in building scalable web applications and AI-powered solutions. Specialized in TypeScript, SvelteKit, Golang, and modern web technologies with a proven track record of delivering high-performance systems that achieve 95% accuracy in AI implementations and 20% performance improvements. Currently contributing to cutting-edge projects at Generative Studio, developing financial document analysis systems and multilingual SaaS platforms. Computer Science graduate with extensive experience in both enterprise applications and open-source development, passionate about creating innovative solutions that drive measurable business impact.",
 		"work_experience": [
 			{
 				"company": "Generative Studio",
@@ -44,7 +44,7 @@
 			},
 			{
 				"company": "Inovindo Digital Media",
-				"role": "Junior Web Developer",
+				"role": "Web Developer",
 				"location": "Bandung, Indonesia",
 				"status": "Internship",
 				"work_model": "On-site",
