@@ -20,10 +20,10 @@
 				"started_at": "2025-04-09T14:00:00+07:00",
 				"ended_at": null,
 				"responsibilities": [
-					"Developed a cutting-edge AI-powered financial-document analysis system with SvelteKit, Supabase, and Tailwind CSS. This system achieved 95% extraction accuracy while streamlining data-review workflows for finance teams.",
-					"Implemented a dynamic multilingual project-management marketing site using SvelteKit and Tailwind CSS. By integrating a headless WordPress CMS with full i18n support, the page boosted international client engagement by 30%.",
-					"Architected a personal and family data-management SaaS platform built with SvelteKit 5, Supabase (PostgreSQL / Auth / Storage), Tailwind CSS, and Stripe. Bardo combines interactive family-tree visualization, secure file vaults, AI-generated avatars, and knowledge-base tooling. Its modular, shadcn-inspired UI cut feature delivery time by ≈ 40%.",
-					"Built an AI-powered self-service platform enabling rapid deployment of conversational phone and chat agents for businesses. Leveraging SvelteKit 5, Supabase, Stripe, and Tailwind CSS, the solution delivers live call transcription capabilities, automated voicemail recognition, and customizable conversation workflows."
+					"Developed an AI-powered financial-document analysis system with SvelteKit, Supabase, and Tailwind CSS. Achieved 95% extraction accuracy and streamlined data-review workflows for finance teams.",
+					"Built a dynamic multilingual project-management marketing site using SvelteKit and Tailwind CSS. By integrating a headless WordPress CMS with full i18n support, the page boosted international client engagement by 30%.",
+					"Architected a personal and family data-management SaaS platform built with SvelteKit 5, Supabase (PostgreSQL / Auth / Storage), Tailwind CSS, and Stripe. It combines interactive family-tree visualization, secure file vaults, AI-generated avatars, and knowledge-base tooling. Its modular, shadcn-inspired UI cut feature delivery time by ≈ 40%.",
+					"Developed a self-serve AI-assistant dashboard that lets businesses deploy phone and chat agents in minutes. Built with SvelteKit 5, Supabase, Stripe, and Tailwind CSS, it features real-time call transcription, voicemail detection, and configurable call flows."
 				]
 			},
 			{
@@ -91,6 +91,12 @@
 			"dev_ops": ["Linux", "Docker", "GitHub Actions", "NGINX", "PM2", "Dokploy", "AWS"]
 		},
 		"portfolio": [
+			{
+				"name": "VelociView",
+				"description": "Generate clean, customizable image overlays of activity stats from TCX files.",
+				"repo_url": "https://github.com/tfkhdyt/velociview",
+				"tech_stack": ["Svelte", "Vite", "TypeScript"]
+			},
 			{
 				"name": "geminicommit",
 				"description": "CLI that writes your git commit messages for you with Google Gemini AI.",
