@@ -33,7 +33,7 @@
 <Metadata {pageTitle} {pageDescription} origin={data.origin} {siteName} />
 
 <main
-	class="relative flex min-h-screen flex-col items-center justify-center overflow-hidden bg-[#13111C] md:p-4"
+	class="relative flex min-h-screen flex-col items-center justify-center overflow-hidden bg-gradient-to-b from-[#0f0f11] to-[#16161a] md:p-4"
 >
 	<!-- Background glows -->
 	<BackgroundGlows />

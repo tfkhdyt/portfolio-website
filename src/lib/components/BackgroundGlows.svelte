@@ -1,24 +1,41 @@
 <div class="background-glows">
 	<div
-		class="animate-pulse-slow fixed -top-48 -left-48 h-[450px] w-[450px] rounded-full bg-blue-500/20 blur-3xl"
+		class="glow-1 fixed -top-64 -left-64 h-[600px] w-[600px] rounded-full bg-white/[3%] blur-3xl"
 	></div>
 	<div
-		class="animate-pulse-slow fixed -right-48 -bottom-48 h-[450px] w-[450px] rounded-full bg-fuchsia-600/25 blur-3xl"
+		class="glow-2 fixed -right-64 -bottom-64 h-[500px] w-[500px] rounded-full bg-white/[4%] blur-3xl"
+	></div>
+	<div
+		class="glow-3 fixed top-1/3 left-1/3 h-[400px] w-[400px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-white/[2%] blur-3xl"
 	></div>
 </div>
 
 <style>
-	:global(.animate-pulse-slow) {
-		animation: pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+	.glow-1 {
+		animation: drift 30s ease-in-out infinite;
 	}
 
-	@keyframes pulse {
+	.glow-2 {
+		animation: drift 25s ease-in-out infinite reverse;
+	}
+
+	.glow-3 {
+		animation: drift 35s ease-in-out infinite;
+	}
+
+	@keyframes drift {
 		0%,
 		100% {
-			opacity: 0.5;
+			transform: translate(0, 0);
+		}
+		25% {
+			transform: translate(60px, -40px);
 		}
 		50% {
-			opacity: 0.8;
+			transform: translate(-30px, 60px);
+		}
+		75% {
+			transform: translate(40px, 30px);
 		}
 	}
 </style>

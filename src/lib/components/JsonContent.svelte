@@ -42,7 +42,7 @@
 </script>
 
 <div
-	class="custom-scrollbar flex-1 overflow-x-hidden overflow-y-auto p-2 font-mono text-xs leading-5 transition-none duration-300 ease-in-out selection:bg-slate-700/50 md:text-sm md:leading-6 md:transition-all xl:text-base"
+	class="custom-scrollbar flex-1 overflow-x-hidden overflow-y-auto p-2 font-mono text-xs leading-5 transition-none duration-300 ease-in-out md:text-sm md:leading-6 md:transition-all xl:text-base"
 	style="overscroll-behavior: contain; -webkit-overflow-scrolling: touch; transform: translateZ(0);"
 	bind:this={highlightRef}
 >
@@ -51,26 +51,25 @@
 
 <style>
 	.custom-scrollbar::-webkit-scrollbar {
-		width: 8px;
+		width: 4px;
 	}
 
 	.custom-scrollbar::-webkit-scrollbar-track {
-		background: rgba(255, 255, 255, 0.05);
+		background: transparent;
 	}
 
 	.custom-scrollbar::-webkit-scrollbar-thumb {
-		background-color: rgba(255, 255, 255, 0.1);
+		background-color: rgba(255, 255, 255, 0.08);
 		border-radius: 4px;
 	}
 
 	.custom-scrollbar::-webkit-scrollbar-thumb:hover {
-		background-color: rgba(255, 255, 255, 0.2);
+		background-color: rgba(255, 255, 255, 0.18);
 	}
 
 	:global(.hljs) {
 		background: transparent !important;
 		white-space: pre-wrap !important;
 		overflow-x: hidden !important;
-		will-change: transform; /* Hint for hardware acceleration */
 	}
 </style>

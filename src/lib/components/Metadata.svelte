@@ -30,7 +30,7 @@
 	<meta name="generator" content="SvelteKit" />
 	<meta name="license" content="MIT" />
 	<meta name="color-scheme" content="dark" />
-	<meta name="theme-color" content="#13111C" />
+	<meta name="theme-color" content="#0f0f11" />
 	<meta name="format-detection" content="telephone=no" />
 	<link rel="robots" href={robotsUrl} />
 </svelte:head>
