@@ -20,10 +20,11 @@
 				"started_at": "2025-04-09T14:00:00+07:00",
 				"ended_at": null,
 				"responsibilities": [
-					"Developed an AI-powered financial-document analysis system with SvelteKit, Supabase, and Tailwind CSS. Achieved 95% extraction accuracy and streamlined data-review workflows for finance teams.",
-					"Built a dynamic multilingual project-management marketing site using SvelteKit and Tailwind CSS. By integrating a headless WordPress CMS with full i18n support, the page boosted international client engagement by 30%.",
-					"Architected a personal and family data-management SaaS platform built with SvelteKit 5, Supabase (PostgreSQL / Auth / Storage), Tailwind CSS, and Stripe. It combines interactive family-tree visualization, secure file vaults, AI-generated avatars, and knowledge-base tooling. Its modular, shadcn-inspired UI cut feature delivery time by ≈ 40%.",
-					"Developed a self-serve AI-assistant dashboard that lets businesses deploy phone and chat agents in minutes. Built with SvelteKit 5, Supabase, Stripe, and Tailwind CSS, it features real-time call transcription, voicemail detection, and configurable call flows."
+					"Built AI financial-doc analysis (SvelteKit, Supabase, Tailwind) — 95% extraction accuracy. Created multilingual marketing site (SvelteKit, WordPress, i18n) — 30% client engagement lift.",
+					"Architected family data-management SaaS (SvelteKit 5, Supabase, Stripe, Tailwind) with family-tree viz, file vaults, AI avatars, knowledge-base tooling. shadcn-inspired UI cut feature delivery ~40%.",
+					"Built AI phone-assistant dashboard (SvelteKit 5, Supabase, Stripe, Tailwind) — assistant setup, call logs, billing, analytics. Backend (FastAPI, LiveKit, Telnyx) — realtime voice, RAG, email/SMS/Cal.com automation.",
+					"Engineered multi-tenant webphone (SvelteKit 5, Convex, Better Auth, Tailwind, shadcn-svelte) — Telnyx WebRTC calls, org invites/roles, per-user AI receptionists (Vapi.ai) with transcripts/summaries.",
+					"Developed multi-tenant booking platform (SvelteKit 5, Convex, Better Auth, Tailwind, shadcn-svelte) — public realtime booking, hybrid auth, i18n."
 				]
 			},
 			{
