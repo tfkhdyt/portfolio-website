@@ -18,7 +18,7 @@ You cannot do a great job without having necessary context, such as target audie
 
 Attempt to gather these from the current thread or codebase.
 
-1. If you don't find *exact* information and have to infer from existing design and functionality, you MUST STOP and STOP and call the AskUserQuestionTool to clarify. whether you got it right.
+1. If you don't find _exact_ information and have to infer from existing design and functionality, you MUST STOP and STOP and call the AskUserQuestionTool to clarify. whether you got it right.
 2. Otherwise, if you can't fully infer or your level of confidence is medium or lower, you MUST STOP and call the AskUserQuestionTool to clarify. clarifying questions first to complete your context.
 
 Do NOT proceed until you have answers. Guessing leads to generic design.
@@ -67,6 +67,7 @@ Create a strategy to reduce intensity while maintaining impact:
 Systematically reduce intensity across these dimensions:
 
 ### Color Refinement
+
 - **Reduce saturation**: Shift from fully saturated to 70-85% saturation
 - **Soften palette**: Replace bright colors with muted, sophisticated tones
 - **Reduce color variety**: Use fewer colors more thoughtfully
@@ -76,18 +77,21 @@ Systematically reduce intensity across these dimensions:
 - **Never gray on color**: If you have gray text on a colored background, use a darker shade of that color or transparency instead
 
 ### Visual Weight Reduction
+
 - **Typography**: Reduce font weights (900 → 600, 700 → 500), decrease sizes where appropriate
 - **Hierarchy through subtlety**: Use weight, size, and space instead of color and boldness
 - **White space**: Increase breathing room, reduce density
 - **Borders & lines**: Reduce thickness, decrease opacity, or remove entirely
 
 ### Simplification
+
 - **Remove decorative elements**: Gradients, shadows, patterns, textures that don't serve purpose
 - **Simplify shapes**: Reduce border radius extremes, simplify custom shapes
 - **Reduce layering**: Flatten visual hierarchy where possible
 - **Clean up effects**: Reduce or remove blur effects, glows, multiple shadows
 
 ### Motion Reduction
+
 - **Reduce animation intensity**: Shorter distances (10-20px instead of 40px), gentler easing
 - **Remove decorative animations**: Keep functional motion, remove flourishes
 - **Subtle micro-interactions**: Replace dramatic effects with gentle feedback
@@ -95,11 +99,13 @@ Systematically reduce intensity across these dimensions:
 - **Remove animations entirely** if they're not serving a clear purpose
 
 ### Composition Refinement
+
 - **Reduce scale jumps**: Smaller contrast between sizes creates calmer feeling
 - **Align to grid**: Bring rogue elements back into systematic alignment
 - **Even out spacing**: Replace extreme spacing variations with consistent rhythm
 
 **NEVER**:
+
 - Make everything the same size/weight (hierarchy still matters)
 - Remove all color (quiet ≠ grayscale)
 - Eliminate all personality (maintain character through refinement)

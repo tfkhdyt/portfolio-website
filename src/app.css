@@ -5,5 +5,5 @@ html {
 }
 
 @theme {
-  --font-mono: "Google Sans Code", monospace; 
+	--font-mono: 'Google Sans Code', monospace;
 }

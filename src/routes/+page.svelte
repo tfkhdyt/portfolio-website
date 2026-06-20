@@ -1,6 +1,6 @@
 <script lang="ts">
 	// Import resume.json
-	import { default as resume, default as resumeJson } from '$lib/assets/resume.json';
+	import resume from '$lib/assets/resume.json';
 	import BackgroundGlows from '$lib/components/BackgroundGlows.svelte';
 	import ResumeCard from '$lib/components/ResumeCard.svelte';
 	import Metadata from '$lib/components/Metadata.svelte';
@@ -16,12 +16,7 @@
 	let copied = $state(false);
 	let isMaximized = $state(false);
 
-	// Format JSON data
-	function formatJson<T>(jsonData: T) {
-		return JSON.stringify(jsonData, null, 2);
-	}
-
-	let formattedJson = $derived(formatJson(resumeJson));
+	let formattedJson = $derived(JSON.stringify(resume, null, 2));
 
 	// Functions
 	function copyToClipboard() {
@@ -40,7 +35,7 @@
 <main
 	class="relative flex min-h-screen flex-col items-center justify-center overflow-hidden bg-[#13111C] md:p-4"
 >
-	<!-- Ba kground glows -->
+	<!-- Background glows -->
 	<BackgroundGlows />
 
 	<!-- Content -->

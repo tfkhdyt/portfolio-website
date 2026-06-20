@@ -18,7 +18,7 @@ You cannot do a great job without having necessary context, such as target audie
 
 Attempt to gather these from the current thread or codebase.
 
-1. If you don't find *exact* information and have to infer from existing design and functionality, you MUST STOP and STOP and call the AskUserQuestionTool to clarify. whether you got it right.
+1. If you don't find _exact_ information and have to infer from existing design and functionality, you MUST STOP and STOP and call the AskUserQuestionTool to clarify. whether you got it right.
 2. Otherwise, if you can't fully infer or your level of confidence is medium or lower, you MUST STOP and call the AskUserQuestionTool to clarify. clarifying questions first to complete your context.
 
 Do NOT proceed until you have answers. Guessing leads to inappropriate or excessive animation.
@@ -66,12 +66,14 @@ Create a purposeful animation plan:
 Add motion systematically across these categories:
 
 ### Entrance Animations
+
 - **Page load choreography**: Stagger element reveals (100-150ms delays), fade + slide combinations
 - **Hero section**: Dramatic entrance for primary content (scale, parallax, or creative effects)
 - **Content reveals**: Scroll-triggered animations using intersection observer
 - **Modal/drawer entry**: Smooth slide + fade, backdrop fade, focus management
 
 ### Micro-interactions
+
 - **Button feedback**:
   - Hover: Subtle scale (1.02-1.05), color shift, shadow increase
   - Click: Quick scale down then up (0.95 → 1), ripple effect
@@ -84,6 +86,7 @@ Add motion systematically across these categories:
 - **Like/favorite**: Scale + rotation, particle effects, color transition
 
 ### State Transitions
+
 - **Show/hide**: Fade + slide (not instant), appropriate timing (200-300ms)
 - **Expand/collapse**: Height transition with overflow handling, icon rotation
 - **Loading states**: Skeleton screen fades, spinner animations, progress bars
@@ -91,18 +94,21 @@ Add motion systematically across these categories:
 - **Enable/disable**: Opacity transitions, cursor changes
 
 ### Navigation & Flow
+
 - **Page transitions**: Crossfade between routes, shared element transitions
 - **Tab switching**: Slide indicator, content fade/slide
 - **Carousel/slider**: Smooth transforms, snap points, momentum
 - **Scroll effects**: Parallax layers, sticky headers with state changes, scroll progress indicators
 
 ### Feedback & Guidance
+
 - **Hover hints**: Tooltip fade-ins, cursor changes, element highlights
 - **Drag & drop**: Lift effect (shadow + scale), drop zone highlights, smooth repositioning
 - **Copy/paste**: Brief highlight flash on paste, "copied" confirmation
 - **Focus flow**: Highlight path through form or workflow
 
 ### Delight Moments
+
 - **Empty states**: Subtle floating animations on illustrations
 - **Completed actions**: Confetti, check mark flourish, success celebrations
 - **Easter eggs**: Hidden interactions for discovery
@@ -115,17 +121,19 @@ Use appropriate techniques for each animation:
 ### Timing & Easing
 
 **Durations by purpose:**
+
 - **100-150ms**: Instant feedback (button press, toggle)
 - **200-300ms**: State changes (hover, menu open)
 - **300-500ms**: Layout changes (accordion, modal)
 - **500-800ms**: Entrance animations (page load)
 
 **Easing curves (use these, not CSS defaults):**
+
 ```css
 /* Recommended - natural deceleration */
---ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);    /* Smooth, refined */
---ease-out-quint: cubic-bezier(0.22, 1, 0.36, 1);   /* Slightly snappier */
---ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);     /* Confident, decisive */
+--ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1); /* Smooth, refined */
+--ease-out-quint: cubic-bezier(0.22, 1, 0.36, 1); /* Slightly snappier */
+--ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1); /* Confident, decisive */
 
 /* AVOID - feel dated and tacky */
 /* bounce: cubic-bezier(0.34, 1.56, 0.64, 1); */
@@ -135,6 +143,7 @@ Use appropriate techniques for each animation:
 **Exit animations are faster than entrances.** Use ~75% of enter duration.
 
 ### CSS Animations
+
 ```css
 /* Prefer for simple, declarative animations */
 - transitions for state changes
@@ -143,6 +152,7 @@ Use appropriate techniques for each animation:
 ```
 
 ### JavaScript Animation
+
 ```javascript
 /* Use for complex, interactive animations */
 - Web Animations API for programmatic control
@@ -151,23 +161,26 @@ Use appropriate techniques for each animation:
 ```
 
 ### Performance
+
 - **GPU acceleration**: Use `transform` and `opacity`, avoid layout properties
 - **will-change**: Add sparingly for known expensive animations
 - **Reduce paint**: Minimize repaints, use `contain` where appropriate
 - **Monitor FPS**: Ensure 60fps on target devices
 
 ### Accessibility
+
 ```css
 @media (prefers-reduced-motion: reduce) {
-  * {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-  }
+	* {
+		animation-duration: 0.01ms !important;
+		animation-iteration-count: 1 !important;
+		transition-duration: 0.01ms !important;
+	}
 }
 ```
 
 **NEVER**:
+
 - Use bounce or elastic easing curves—they feel dated and draw attention to the animation itself
 - Animate layout properties (width, height, top, left)—use transform instead
 - Use durations over 500ms for feedback—it feels laggy

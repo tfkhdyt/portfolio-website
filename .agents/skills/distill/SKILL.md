@@ -18,7 +18,7 @@ You cannot do a great job without having necessary context, such as target audie
 
 Attempt to gather these from the current thread or codebase.
 
-1. If you don't find *exact* information and have to infer from existing design and functionality, you MUST STOP and STOP and call the AskUserQuestionTool to clarify. whether you got it right.
+1. If you don't find _exact_ information and have to infer from existing design and functionality, you MUST STOP and STOP and call the AskUserQuestionTool to clarify. whether you got it right.
 2. Otherwise, if you can't fully infer or your level of confidence is medium or lower, you MUST STOP and call the AskUserQuestionTool to clarify. clarifying questions first to complete your context.
 
 Do NOT proceed until you have answers. Simplifying the wrong things destroys usability.
@@ -67,6 +67,7 @@ Create a ruthless editing strategy:
 Systematically remove complexity across these dimensions:
 
 ### Information Architecture
+
 - **Reduce scope**: Remove secondary actions, optional features, redundant information
 - **Progressive disclosure**: Hide complexity behind clear entry points (accordions, modals, step-through flows)
 - **Combine related actions**: Merge similar buttons, consolidate forms, group related content
@@ -74,6 +75,7 @@ Systematically remove complexity across these dimensions:
 - **Remove redundancy**: If it's said elsewhere, don't repeat it here
 
 ### Visual Simplification
+
 - **Reduce color palette**: Use 1-2 colors plus neutrals, not 5-7 colors
 - **Limit typography**: One font family, 3-4 sizes maximum, 2-3 weights
 - **Remove decorations**: Eliminate borders, shadows, backgrounds that don't serve hierarchy or function
@@ -82,6 +84,7 @@ Systematically remove complexity across these dimensions:
 - **Consistent spacing**: Use one spacing scale, remove arbitrary gaps
 
 ### Layout Simplification
+
 - **Linear flow**: Replace complex grids with simple vertical flow where possible
 - **Remove sidebars**: Move secondary content inline or hide it
 - **Full-width**: Use available space generously instead of complex multi-column layouts
@@ -89,6 +92,7 @@ Systematically remove complexity across these dimensions:
 - **Generous white space**: Let content breathe, don't pack everything tight
 
 ### Interaction Simplification
+
 - **Reduce choices**: Fewer buttons, fewer options, clearer path forward (paradox of choice is real)
 - **Smart defaults**: Make common choices automatic, only ask when necessary
 - **Inline actions**: Replace modal flows with inline editing where possible
@@ -96,6 +100,7 @@ Systematically remove complexity across these dimensions:
 - **Clear CTAs**: ONE obvious next step, not five competing actions
 
 ### Content Simplification
+
 - **Shorter copy**: Cut every sentence in half, then do it again
 - **Active voice**: "Save changes" not "Changes will be saved"
 - **Remove jargon**: Plain language always wins
@@ -104,12 +109,14 @@ Systematically remove complexity across these dimensions:
 - **Remove redundant copy**: No headers restating intros, no repeated explanations, say it once
 
 ### Code Simplification
+
 - **Remove unused code**: Dead CSS, unused components, orphaned files
 - **Flatten component trees**: Reduce nesting depth
 - **Consolidate styles**: Merge similar styles, use utilities consistently
 - **Reduce variants**: Does that component need 12 variations, or can 3 cover 90% of cases?
 
 **NEVER**:
+
 - Remove necessary functionality (simplicity ≠ feature-less)
 - Sacrifice accessibility for simplicity (clear labels and ARIA still required)
 - Make things so simple they're unclear (mystery ≠ minimalism)
@@ -130,6 +137,7 @@ Ensure simplification improves usability:
 ## Document Removed Complexity
 
 If you removed features or options:
+
 - Document why they were removed
 - Consider if they need alternative access points
 - Note any user feedback to monitor

@@ -19,7 +19,7 @@ Before making changes, deeply understand the context:
    - Target audience and personas
    - Component patterns and conventions
    - Design tokens (colors, typography, spacing)
-   
+
    **CRITICAL**: If something isn't clear, ask. Don't guess at design system principles.
 
 2. **Analyze the current feature**: Assess what works and what doesn't:
@@ -31,7 +31,7 @@ Before making changes, deeply understand the context:
    - Which components can be replaced with design system equivalents?
    - Which styles need to use design tokens instead of hard-coded values?
    - How can UX patterns match established user flows?
-   
+
    **IMPORTANT**: Great design is effective design. Prioritize UX consistency and usability over visual polish alone. Think through the best possible experience for your use case and personas first.
 
 ## Execute
@@ -48,6 +48,7 @@ Systematically address all inconsistencies across these dimensions:
 - **Progressive Disclosure**: Match information hierarchy and complexity management to established patterns.
 
 **NEVER**:
+
 - Create new one-off components when design system equivalents exist
 - Hard-code values that should use design tokens
 - Introduce new patterns that diverge from the design system

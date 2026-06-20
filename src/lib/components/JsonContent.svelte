@@ -7,9 +7,6 @@
 	let { formattedJson }: { formattedJson: string } = $props();
 	let highlightRef: HTMLElement;
 
-	// Use the original JSON for highlighting
-	const processedJson = $derived(formattedJson);
-
 	// Process links after rendering
 	onMount(() => {
 		processLinks();
@@ -49,7 +46,7 @@
 	style="overscroll-behavior: contain; -webkit-overflow-scrolling: touch; transform: translateZ(0);"
 	bind:this={highlightRef}
 >
-	<Highlight language={json} code={processedJson} />
+	<Highlight language={json} code={formattedJson} />
 </div>
 
 <style>

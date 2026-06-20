@@ -40,17 +40,8 @@
 		"vite": "^6.3.6",
 		"wrangler": "^4.37.0"
 	},
-	"pnpm": {
-		"onlyBuiltDependencies": [
-			"@tailwindcss/oxide",
-			"esbuild",
-			"sharp",
-			"workerd"
-		]
-	},
 	"dependencies": {
 		"@fontsource/google-sans-code": "^5.2.2",
-		"clsx": "^2.1.1",
 		"svelte-highlight": "^7.8.4"
 	},
 	"lint-staged": {

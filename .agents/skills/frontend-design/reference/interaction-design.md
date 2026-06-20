@@ -4,16 +4,16 @@
 
 Every interactive element needs these states designed:
 
-| State | When | Visual Treatment |
-|-------|------|------------------|
-| **Default** | At rest | Base styling |
-| **Hover** | Pointer over (not touch) | Subtle lift, color shift |
-| **Focus** | Keyboard/programmatic focus | Visible ring (see below) |
-| **Active** | Being pressed | Pressed in, darker |
-| **Disabled** | Not interactive | Reduced opacity, no pointer |
-| **Loading** | Processing | Spinner, skeleton |
-| **Error** | Invalid state | Red border, icon, message |
-| **Success** | Completed | Green check, confirmation |
+| State        | When                        | Visual Treatment            |
+| ------------ | --------------------------- | --------------------------- |
+| **Default**  | At rest                     | Base styling                |
+| **Hover**    | Pointer over (not touch)    | Subtle lift, color shift    |
+| **Focus**    | Keyboard/programmatic focus | Visible ring (see below)    |
+| **Active**   | Being pressed               | Pressed in, darker          |
+| **Disabled** | Not interactive             | Reduced opacity, no pointer |
+| **Loading**  | Processing                  | Spinner, skeleton           |
+| **Error**    | Invalid state               | Red border, icon, message   |
+| **Success**  | Completed                   | Green check, confirmation   |
 
 **The common miss**: Designing hover without focus, or vice versa. They're different. Keyboard users never see hover states.
 
@@ -24,17 +24,18 @@ Every interactive element needs these states designed:
 ```css
 /* Hide focus ring for mouse/touch */
 button:focus {
-  outline: none;
+	outline: none;
 }
 
 /* Show focus ring for keyboard */
 button:focus-visible {
-  outline: 2px solid var(--color-accent);
-  outline-offset: 2px;
+	outline: 2px solid var(--color-accent);
+	outline-offset: 2px;
 }
 ```
 
 **Focus ring design**:
+
 - High contrast (3:1 minimum against adjacent colors)
 - 2-3px thick
 - Offset from element (not inside it)
@@ -55,11 +56,11 @@ Focus trapping in modals used to require complex JavaScript. Now use the `inert`
 ```html
 <!-- When modal is open -->
 <main inert>
-  <!-- Content behind modal can't be focused or clicked -->
+	<!-- Content behind modal can't be focused or clicked -->
 </main>
 <dialog open>
-  <h2>Modal Title</h2>
-  <!-- Focus stays inside modal -->
+	<h2>Modal Title</h2>
+	<!-- Focus stays inside modal -->
 </dialog>
 ```
 
@@ -67,7 +68,7 @@ Or use the native `<dialog>` element:
 
 ```javascript
 const dialog = document.querySelector('dialog');
-dialog.showModal();  // Opens with focus trap, closes on Escape
+dialog.showModal(); // Opens with focus trap, closes on Escape
 ```
 
 ## The Popover API
@@ -77,8 +78,8 @@ For tooltips, dropdowns, and non-modal overlays, use native popovers:
 ```html
 <button popovertarget="menu">Open menu</button>
 <div id="menu" popover>
-  <button>Option 1</button>
-  <button>Option 2</button>
+	<button>Option 1</button>
+	<button>Option 2</button>
 </div>
 ```
 
@@ -96,9 +97,9 @@ For component groups (tabs, menu items, radio groups), one item is tabbable; arr
 
 ```html
 <div role="tablist">
-  <button role="tab" tabindex="0">Tab 1</button>
-  <button role="tab" tabindex="-1">Tab 2</button>
-  <button role="tab" tabindex="-1">Tab 3</button>
+	<button role="tab" tabindex="0">Tab 1</button>
+	<button role="tab" tabindex="-1">Tab 2</button>
+	<button role="tab" tabindex="-1">Tab 3</button>
 </div>
 ```
 

@@ -1,6 +1,4 @@
 <script lang="ts">
-	import clsx from 'clsx';
-
 	let {
 		copied,
 		isMaximized,
@@ -37,10 +35,7 @@
 			<path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
 		</svg>
 		<span
-			class={clsx(
-				'absolute top-1 left-10 text-xs transition-opacity',
-				copied ? 'opacity-100' : 'opacity-0'
-			)}
+			class={`absolute top-1 left-10 text-xs transition-opacity ${copied ? 'opacity-100' : 'opacity-0'}`}
 		>
 			{copied ? 'Copied!' : ''}
 		</span>
